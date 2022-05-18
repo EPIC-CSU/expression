@@ -1,0 +1,960 @@
+
+
+Terminals which are not used:
+
+   OPT_COLON
+
+
+State 36 contains 1 shift/reduce conflict.
+State 44 contains 1 shift/reduce conflict.
+
+Grammar
+rule 1    @1 ->		/* empty */
+rule 2    description -> @1 OPT_LBRACE ruleList OPT_RBRACE
+rule 3    ruleList -> ruleList rule
+rule 4    ruleList -> rule
+rule 5    rule -> generics targets
+rule 6    rule -> lhs rhs
+rule 7    generics -> OPT_LBRACE genericPart
+rule 8    targets -> targetPart OPT_RBRACE
+rule 9    lhs -> OPT_LBRACE lhsPart
+rule 10   rhs -> rhsPart OPT_RBRACE
+rule 11   genericPart -> OPT_LBRACE OPT_GENERIC OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE
+rule 12   targetPart -> OPT_LBRACE OPT_TARGET OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE
+rule 13   lhsPart -> OPT_LBRACE OPT_LHS OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE
+rule 14   rhsPart -> OPT_LBRACE OPT_RHS OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE
+rule 15   opGenList -> opGenList Op
+rule 16   opGenList -> Op
+rule 17   opTarList -> opTarList Op
+rule 18   opTarList -> Op
+rule 19   Op -> OPT_LBRACE OPT_OPCODE dstList srcList OPT_RBRACE
+rule 20   dstList -> dstList dstNum OPT_EQUAL argType argIdent
+rule 21   dstList -> dstNum OPT_EQUAL argType argIdent
+rule 22   dstList ->		/* empty */
+rule 23   srcList -> srcList srcNum OPT_EQUAL argType argIdent
+rule 24   srcList -> srcNum OPT_EQUAL argType argIdent
+rule 25   srcList ->		/* empty */
+rule 26   dstNum -> OPT_DST OPT_LPAREN val OPT_RPAREN
+rule 27   srcNum -> OPT_SRC OPT_LPAREN val OPT_RPAREN
+rule 28   val -> OPT_NUM
+rule 29   argType -> OPT_TYPE
+rule 30   argType -> OPT_TYPE immVal
+rule 31   argIdent -> OPT_LBRACE OPT_NUM OPT_RBRACE
+rule 32   argIdent -> OPT_LBRACE OPT_NUM operator OPT_NUM OPT_RBRACE
+rule 33   operator -> OPT_ADD_OPERATOR
+rule 34   operator -> OPT_SUB_OPERATOR
+rule 35   operator -> OPT_EQ_OPERATOR
+rule 36   operator -> OPT_LT_OPERATOR
+rule 37   immVal -> operator OPT_NUM
+
+Terminals, with rules where they appear
+
+$ (-1)
+error (256)
+OPT_GENERIC (258) 11
+OPT_TARGET (259) 12
+OPT_LHS (260) 13
+OPT_RHS (261) 14
+OPT_DST (262) 26
+OPT_SRC (263) 27
+OPT_LPAREN (264) 26 27
+OPT_RPAREN (265) 26 27
+OPT_LBRACE (266) 2 7 9 11 12 13 14 19 31 32
+OPT_RBRACE (267) 2 8 10 11 12 13 14 19 31 32
+OPT_COLON (268)
+OPT_EQUAL (269) 20 21 23 24
+OPT_ADD_OPERATOR (270) 33
+OPT_SUB_OPERATOR (271) 34
+OPT_EQ_OPERATOR (272) 35
+OPT_LT_OPERATOR (273) 36
+OPT_NUM (274) 28 31 32 37
+OPT_TYPE (275) 29 30
+OPT_OPCODE (276) 19
+
+Nonterminals, with rules where they appear
+
+description (22)
+    on left: 2
+@1 (23)
+    on left: 1, on right: 2
+ruleList (24)
+    on left: 3 4, on right: 2 3
+rule (25)
+    on left: 5 6, on right: 3 4
+generics (26)
+    on left: 7, on right: 5
+targets (27)
+    on left: 8, on right: 5
+lhs (28)
+    on left: 9, on right: 6
+rhs (29)
+    on left: 10, on right: 6
+genericPart (30)
+    on left: 11, on right: 7
+targetPart (31)
+    on left: 12, on right: 8
+lhsPart (32)
+    on left: 13, on right: 9
+rhsPart (33)
+    on left: 14, on right: 10
+opGenList (34)
+    on left: 15 16, on right: 11 13 15
+opTarList (35)
+    on left: 17 18, on right: 12 14 17
+Op (36)
+    on left: 19, on right: 15 16 17 18
+dstList (37)
+    on left: 20 21 22, on right: 19 20
+srcList (38)
+    on left: 23 24 25, on right: 19 23
+dstNum (39)
+    on left: 26, on right: 20 21
+srcNum (40)
+    on left: 27, on right: 23 24
+val (41)
+    on left: 28, on right: 26 27
+argType (42)
+    on left: 29 30, on right: 20 21 23 24
+argIdent (43)
+    on left: 31 32, on right: 20 21 23 24
+operator (44)
+    on left: 33 34 35 36, on right: 32 37
+immVal (45)
+    on left: 37, on right: 30
+
+
+state 0
+
+    $default	reduce using rule 1 (@1)
+
+    description	go to state 89
+    @1  	go to state 1
+
+
+
+state 1
+
+    description  ->  @1 . OPT_LBRACE ruleList OPT_RBRACE   (rule 2)
+
+    OPT_LBRACE	shift, and go to state 2
+
+
+
+state 2
+
+    description  ->  @1 OPT_LBRACE . ruleList OPT_RBRACE   (rule 2)
+
+    OPT_LBRACE	shift, and go to state 3
+
+    ruleList	go to state 4
+    rule	go to state 5
+    generics	go to state 6
+    lhs 	go to state 7
+
+
+
+state 3
+
+    generics  ->  OPT_LBRACE . genericPart   (rule 7)
+    lhs  ->  OPT_LBRACE . lhsPart   (rule 9)
+
+    OPT_LBRACE	shift, and go to state 8
+
+    genericPart	go to state 9
+    lhsPart	go to state 10
+
+
+
+state 4
+
+    description  ->  @1 OPT_LBRACE ruleList . OPT_RBRACE   (rule 2)
+    ruleList  ->  ruleList . rule   (rule 3)
+
+    OPT_LBRACE	shift, and go to state 3
+    OPT_RBRACE	shift, and go to state 11
+
+    rule	go to state 12
+    generics	go to state 6
+    lhs 	go to state 7
+
+
+
+state 5
+
+    ruleList  ->  rule .   (rule 4)
+
+    $default	reduce using rule 4 (ruleList)
+
+
+
+state 6
+
+    rule  ->  generics . targets   (rule 5)
+
+    OPT_LBRACE	shift, and go to state 13
+
+    targets	go to state 14
+    targetPart	go to state 15
+
+
+
+state 7
+
+    rule  ->  lhs . rhs   (rule 6)
+
+    OPT_LBRACE	shift, and go to state 16
+
+    rhs 	go to state 17
+    rhsPart	go to state 18
+
+
+
+state 8
+
+    genericPart  ->  OPT_LBRACE . OPT_GENERIC OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE   (rule 11)
+    lhsPart  ->  OPT_LBRACE . OPT_LHS OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE   (rule 13)
+
+    OPT_GENERIC	shift, and go to state 19
+    OPT_LHS	shift, and go to state 20
+
+
+
+state 9
+
+    generics  ->  OPT_LBRACE genericPart .   (rule 7)
+
+    $default	reduce using rule 7 (generics)
+
+
+
+state 10
+
+    lhs  ->  OPT_LBRACE lhsPart .   (rule 9)
+
+    $default	reduce using rule 9 (lhs)
+
+
+
+state 11
+
+    description  ->  @1 OPT_LBRACE ruleList OPT_RBRACE .   (rule 2)
+
+    $default	reduce using rule 2 (description)
+
+
+
+state 12
+
+    ruleList  ->  ruleList rule .   (rule 3)
+
+    $default	reduce using rule 3 (ruleList)
+
+
+
+state 13
+
+    targetPart  ->  OPT_LBRACE . OPT_TARGET OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE   (rule 12)
+
+    OPT_TARGET	shift, and go to state 21
+
+
+
+state 14
+
+    rule  ->  generics targets .   (rule 5)
+
+    $default	reduce using rule 5 (rule)
+
+
+
+state 15
+
+    targets  ->  targetPart . OPT_RBRACE   (rule 8)
+
+    OPT_RBRACE	shift, and go to state 22
+
+
+
+state 16
+
+    rhsPart  ->  OPT_LBRACE . OPT_RHS OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE   (rule 14)
+
+    OPT_RHS	shift, and go to state 23
+
+
+
+state 17
+
+    rule  ->  lhs rhs .   (rule 6)
+
+    $default	reduce using rule 6 (rule)
+
+
+
+state 18
+
+    rhs  ->  rhsPart . OPT_RBRACE   (rule 10)
+
+    OPT_RBRACE	shift, and go to state 24
+
+
+
+state 19
+
+    genericPart  ->  OPT_LBRACE OPT_GENERIC . OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE   (rule 11)
+
+    OPT_LBRACE	shift, and go to state 25
+
+
+
+state 20
+
+    lhsPart  ->  OPT_LBRACE OPT_LHS . OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE   (rule 13)
+
+    OPT_LBRACE	shift, and go to state 26
+
+
+
+state 21
+
+    targetPart  ->  OPT_LBRACE OPT_TARGET . OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE   (rule 12)
+
+    OPT_LBRACE	shift, and go to state 27
+
+
+
+state 22
+
+    targets  ->  targetPart OPT_RBRACE .   (rule 8)
+
+    $default	reduce using rule 8 (targets)
+
+
+
+state 23
+
+    rhsPart  ->  OPT_LBRACE OPT_RHS . OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE   (rule 14)
+
+    OPT_LBRACE	shift, and go to state 28
+
+
+
+state 24
+
+    rhs  ->  rhsPart OPT_RBRACE .   (rule 10)
+
+    $default	reduce using rule 10 (rhs)
+
+
+
+state 25
+
+    genericPart  ->  OPT_LBRACE OPT_GENERIC OPT_LBRACE . opGenList OPT_RBRACE OPT_RBRACE   (rule 11)
+
+    OPT_LBRACE	shift, and go to state 29
+
+    opGenList	go to state 30
+    Op  	go to state 31
+
+
+
+state 26
+
+    lhsPart  ->  OPT_LBRACE OPT_LHS OPT_LBRACE . opGenList OPT_RBRACE OPT_RBRACE   (rule 13)
+
+    OPT_LBRACE	shift, and go to state 29
+
+    opGenList	go to state 32
+    Op  	go to state 31
+
+
+
+state 27
+
+    targetPart  ->  OPT_LBRACE OPT_TARGET OPT_LBRACE . opTarList OPT_RBRACE OPT_RBRACE   (rule 12)
+
+    OPT_LBRACE	shift, and go to state 29
+
+    opTarList	go to state 33
+    Op  	go to state 34
+
+
+
+state 28
+
+    rhsPart  ->  OPT_LBRACE OPT_RHS OPT_LBRACE . opTarList OPT_RBRACE OPT_RBRACE   (rule 14)
+
+    OPT_LBRACE	shift, and go to state 29
+
+    opTarList	go to state 35
+    Op  	go to state 34
+
+
+
+state 29
+
+    Op  ->  OPT_LBRACE . OPT_OPCODE dstList srcList OPT_RBRACE   (rule 19)
+
+    OPT_OPCODE	shift, and go to state 36
+
+
+
+state 30
+
+    genericPart  ->  OPT_LBRACE OPT_GENERIC OPT_LBRACE opGenList . OPT_RBRACE OPT_RBRACE   (rule 11)
+    opGenList  ->  opGenList . Op   (rule 15)
+
+    OPT_LBRACE	shift, and go to state 29
+    OPT_RBRACE	shift, and go to state 37
+
+    Op  	go to state 38
+
+
+
+state 31
+
+    opGenList  ->  Op .   (rule 16)
+
+    $default	reduce using rule 16 (opGenList)
+
+
+
+state 32
+
+    lhsPart  ->  OPT_LBRACE OPT_LHS OPT_LBRACE opGenList . OPT_RBRACE OPT_RBRACE   (rule 13)
+    opGenList  ->  opGenList . Op   (rule 15)
+
+    OPT_LBRACE	shift, and go to state 29
+    OPT_RBRACE	shift, and go to state 39
+
+    Op  	go to state 38
+
+
+
+state 33
+
+    targetPart  ->  OPT_LBRACE OPT_TARGET OPT_LBRACE opTarList . OPT_RBRACE OPT_RBRACE   (rule 12)
+    opTarList  ->  opTarList . Op   (rule 17)
+
+    OPT_LBRACE	shift, and go to state 29
+    OPT_RBRACE	shift, and go to state 40
+
+    Op  	go to state 41
+
+
+
+state 34
+
+    opTarList  ->  Op .   (rule 18)
+
+    $default	reduce using rule 18 (opTarList)
+
+
+
+state 35
+
+    rhsPart  ->  OPT_LBRACE OPT_RHS OPT_LBRACE opTarList . OPT_RBRACE OPT_RBRACE   (rule 14)
+    opTarList  ->  opTarList . Op   (rule 17)
+
+    OPT_LBRACE	shift, and go to state 29
+    OPT_RBRACE	shift, and go to state 42
+
+    Op  	go to state 41
+
+
+
+state 36
+
+    Op  ->  OPT_LBRACE OPT_OPCODE . dstList srcList OPT_RBRACE   (rule 19)
+
+    OPT_DST	shift, and go to state 43
+
+    OPT_DST	[reduce using rule 22 (dstList)]
+    $default	reduce using rule 22 (dstList)
+
+    dstList	go to state 44
+    dstNum	go to state 45
+
+
+
+state 37
+
+    genericPart  ->  OPT_LBRACE OPT_GENERIC OPT_LBRACE opGenList OPT_RBRACE . OPT_RBRACE   (rule 11)
+
+    OPT_RBRACE	shift, and go to state 46
+
+
+
+state 38
+
+    opGenList  ->  opGenList Op .   (rule 15)
+
+    $default	reduce using rule 15 (opGenList)
+
+
+
+state 39
+
+    lhsPart  ->  OPT_LBRACE OPT_LHS OPT_LBRACE opGenList OPT_RBRACE . OPT_RBRACE   (rule 13)
+
+    OPT_RBRACE	shift, and go to state 47
+
+
+
+state 40
+
+    targetPart  ->  OPT_LBRACE OPT_TARGET OPT_LBRACE opTarList OPT_RBRACE . OPT_RBRACE   (rule 12)
+
+    OPT_RBRACE	shift, and go to state 48
+
+
+
+state 41
+
+    opTarList  ->  opTarList Op .   (rule 17)
+
+    $default	reduce using rule 17 (opTarList)
+
+
+
+state 42
+
+    rhsPart  ->  OPT_LBRACE OPT_RHS OPT_LBRACE opTarList OPT_RBRACE . OPT_RBRACE   (rule 14)
+
+    OPT_RBRACE	shift, and go to state 49
+
+
+
+state 43
+
+    dstNum  ->  OPT_DST . OPT_LPAREN val OPT_RPAREN   (rule 26)
+
+    OPT_LPAREN	shift, and go to state 50
+
+
+
+state 44
+
+    Op  ->  OPT_LBRACE OPT_OPCODE dstList . srcList OPT_RBRACE   (rule 19)
+    dstList  ->  dstList . dstNum OPT_EQUAL argType argIdent   (rule 20)
+
+    OPT_DST	shift, and go to state 43
+    OPT_SRC	shift, and go to state 51
+
+    OPT_SRC	[reduce using rule 25 (srcList)]
+    $default	reduce using rule 25 (srcList)
+
+    srcList	go to state 52
+    dstNum	go to state 53
+    srcNum	go to state 54
+
+
+
+state 45
+
+    dstList  ->  dstNum . OPT_EQUAL argType argIdent   (rule 21)
+
+    OPT_EQUAL	shift, and go to state 55
+
+
+
+state 46
+
+    genericPart  ->  OPT_LBRACE OPT_GENERIC OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE .   (rule 11)
+
+    $default	reduce using rule 11 (genericPart)
+
+
+
+state 47
+
+    lhsPart  ->  OPT_LBRACE OPT_LHS OPT_LBRACE opGenList OPT_RBRACE OPT_RBRACE .   (rule 13)
+
+    $default	reduce using rule 13 (lhsPart)
+
+
+
+state 48
+
+    targetPart  ->  OPT_LBRACE OPT_TARGET OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE .   (rule 12)
+
+    $default	reduce using rule 12 (targetPart)
+
+
+
+state 49
+
+    rhsPart  ->  OPT_LBRACE OPT_RHS OPT_LBRACE opTarList OPT_RBRACE OPT_RBRACE .   (rule 14)
+
+    $default	reduce using rule 14 (rhsPart)
+
+
+
+state 50
+
+    dstNum  ->  OPT_DST OPT_LPAREN . val OPT_RPAREN   (rule 26)
+
+    OPT_NUM	shift, and go to state 56
+
+    val 	go to state 57
+
+
+
+state 51
+
+    srcNum  ->  OPT_SRC . OPT_LPAREN val OPT_RPAREN   (rule 27)
+
+    OPT_LPAREN	shift, and go to state 58
+
+
+
+state 52
+
+    Op  ->  OPT_LBRACE OPT_OPCODE dstList srcList . OPT_RBRACE   (rule 19)
+    srcList  ->  srcList . srcNum OPT_EQUAL argType argIdent   (rule 23)
+
+    OPT_SRC	shift, and go to state 51
+    OPT_RBRACE	shift, and go to state 59
+
+    srcNum	go to state 60
+
+
+
+state 53
+
+    dstList  ->  dstList dstNum . OPT_EQUAL argType argIdent   (rule 20)
+
+    OPT_EQUAL	shift, and go to state 61
+
+
+
+state 54
+
+    srcList  ->  srcNum . OPT_EQUAL argType argIdent   (rule 24)
+
+    OPT_EQUAL	shift, and go to state 62
+
+
+
+state 55
+
+    dstList  ->  dstNum OPT_EQUAL . argType argIdent   (rule 21)
+
+    OPT_TYPE	shift, and go to state 63
+
+    argType	go to state 64
+
+
+
+state 56
+
+    val  ->  OPT_NUM .   (rule 28)
+
+    $default	reduce using rule 28 (val)
+
+
+
+state 57
+
+    dstNum  ->  OPT_DST OPT_LPAREN val . OPT_RPAREN   (rule 26)
+
+    OPT_RPAREN	shift, and go to state 65
+
+
+
+state 58
+
+    srcNum  ->  OPT_SRC OPT_LPAREN . val OPT_RPAREN   (rule 27)
+
+    OPT_NUM	shift, and go to state 56
+
+    val 	go to state 66
+
+
+
+state 59
+
+    Op  ->  OPT_LBRACE OPT_OPCODE dstList srcList OPT_RBRACE .   (rule 19)
+
+    $default	reduce using rule 19 (Op)
+
+
+
+state 60
+
+    srcList  ->  srcList srcNum . OPT_EQUAL argType argIdent   (rule 23)
+
+    OPT_EQUAL	shift, and go to state 67
+
+
+
+state 61
+
+    dstList  ->  dstList dstNum OPT_EQUAL . argType argIdent   (rule 20)
+
+    OPT_TYPE	shift, and go to state 63
+
+    argType	go to state 68
+
+
+
+state 62
+
+    srcList  ->  srcNum OPT_EQUAL . argType argIdent   (rule 24)
+
+    OPT_TYPE	shift, and go to state 63
+
+    argType	go to state 69
+
+
+
+state 63
+
+    argType  ->  OPT_TYPE .   (rule 29)
+    argType  ->  OPT_TYPE . immVal   (rule 30)
+
+    OPT_ADD_OPERATOR	shift, and go to state 70
+    OPT_SUB_OPERATOR	shift, and go to state 71
+    OPT_EQ_OPERATOR	shift, and go to state 72
+    OPT_LT_OPERATOR	shift, and go to state 73
+
+    $default	reduce using rule 29 (argType)
+
+    operator	go to state 74
+    immVal	go to state 75
+
+
+
+state 64
+
+    dstList  ->  dstNum OPT_EQUAL argType . argIdent   (rule 21)
+
+    OPT_LBRACE	shift, and go to state 76
+
+    argIdent	go to state 77
+
+
+
+state 65
+
+    dstNum  ->  OPT_DST OPT_LPAREN val OPT_RPAREN .   (rule 26)
+
+    $default	reduce using rule 26 (dstNum)
+
+
+
+state 66
+
+    srcNum  ->  OPT_SRC OPT_LPAREN val . OPT_RPAREN   (rule 27)
+
+    OPT_RPAREN	shift, and go to state 78
+
+
+
+state 67
+
+    srcList  ->  srcList srcNum OPT_EQUAL . argType argIdent   (rule 23)
+
+    OPT_TYPE	shift, and go to state 63
+
+    argType	go to state 79
+
+
+
+state 68
+
+    dstList  ->  dstList dstNum OPT_EQUAL argType . argIdent   (rule 20)
+
+    OPT_LBRACE	shift, and go to state 76
+
+    argIdent	go to state 80
+
+
+
+state 69
+
+    srcList  ->  srcNum OPT_EQUAL argType . argIdent   (rule 24)
+
+    OPT_LBRACE	shift, and go to state 76
+
+    argIdent	go to state 81
+
+
+
+state 70
+
+    operator  ->  OPT_ADD_OPERATOR .   (rule 33)
+
+    $default	reduce using rule 33 (operator)
+
+
+
+state 71
+
+    operator  ->  OPT_SUB_OPERATOR .   (rule 34)
+
+    $default	reduce using rule 34 (operator)
+
+
+
+state 72
+
+    operator  ->  OPT_EQ_OPERATOR .   (rule 35)
+
+    $default	reduce using rule 35 (operator)
+
+
+
+state 73
+
+    operator  ->  OPT_LT_OPERATOR .   (rule 36)
+
+    $default	reduce using rule 36 (operator)
+
+
+
+state 74
+
+    immVal  ->  operator . OPT_NUM   (rule 37)
+
+    OPT_NUM	shift, and go to state 82
+
+
+
+state 75
+
+    argType  ->  OPT_TYPE immVal .   (rule 30)
+
+    $default	reduce using rule 30 (argType)
+
+
+
+state 76
+
+    argIdent  ->  OPT_LBRACE . OPT_NUM OPT_RBRACE   (rule 31)
+    argIdent  ->  OPT_LBRACE . OPT_NUM operator OPT_NUM OPT_RBRACE   (rule 32)
+
+    OPT_NUM	shift, and go to state 83
+
+
+
+state 77
+
+    dstList  ->  dstNum OPT_EQUAL argType argIdent .   (rule 21)
+
+    $default	reduce using rule 21 (dstList)
+
+
+
+state 78
+
+    srcNum  ->  OPT_SRC OPT_LPAREN val OPT_RPAREN .   (rule 27)
+
+    $default	reduce using rule 27 (srcNum)
+
+
+
+state 79
+
+    srcList  ->  srcList srcNum OPT_EQUAL argType . argIdent   (rule 23)
+
+    OPT_LBRACE	shift, and go to state 76
+
+    argIdent	go to state 84
+
+
+
+state 80
+
+    dstList  ->  dstList dstNum OPT_EQUAL argType argIdent .   (rule 20)
+
+    $default	reduce using rule 20 (dstList)
+
+
+
+state 81
+
+    srcList  ->  srcNum OPT_EQUAL argType argIdent .   (rule 24)
+
+    $default	reduce using rule 24 (srcList)
+
+
+
+state 82
+
+    immVal  ->  operator OPT_NUM .   (rule 37)
+
+    $default	reduce using rule 37 (immVal)
+
+
+
+state 83
+
+    argIdent  ->  OPT_LBRACE OPT_NUM . OPT_RBRACE   (rule 31)
+    argIdent  ->  OPT_LBRACE OPT_NUM . operator OPT_NUM OPT_RBRACE   (rule 32)
+
+    OPT_RBRACE	shift, and go to state 85
+    OPT_ADD_OPERATOR	shift, and go to state 70
+    OPT_SUB_OPERATOR	shift, and go to state 71
+    OPT_EQ_OPERATOR	shift, and go to state 72
+    OPT_LT_OPERATOR	shift, and go to state 73
+
+    operator	go to state 86
+
+
+
+state 84
+
+    srcList  ->  srcList srcNum OPT_EQUAL argType argIdent .   (rule 23)
+
+    $default	reduce using rule 23 (srcList)
+
+
+
+state 85
+
+    argIdent  ->  OPT_LBRACE OPT_NUM OPT_RBRACE .   (rule 31)
+
+    $default	reduce using rule 31 (argIdent)
+
+
+
+state 86
+
+    argIdent  ->  OPT_LBRACE OPT_NUM operator . OPT_NUM OPT_RBRACE   (rule 32)
+
+    OPT_NUM	shift, and go to state 87
+
+
+
+state 87
+
+    argIdent  ->  OPT_LBRACE OPT_NUM operator OPT_NUM . OPT_RBRACE   (rule 32)
+
+    OPT_RBRACE	shift, and go to state 88
+
+
+
+state 88
+
+    argIdent  ->  OPT_LBRACE OPT_NUM operator OPT_NUM OPT_RBRACE .   (rule 32)
+
+    $default	reduce using rule 32 (argIdent)
+
+
+
+state 89
+
+    $   	go to state 90
+
+
+
+state 90
+
+    $   	go to state 91
+
+
+
+state 91
+
+    $default	accept
