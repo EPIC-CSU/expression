@@ -10,4 +10,8 @@ The key features of our design methodology include:
 - Explicit specification of the memory subsystem allowing novel memory organizations and hierarchies.
 - Efficient specification of architectural resource constraints allowing extraction of detailed Reservation Tables (RTs) for compiler scheduling.
 
+
+![EXPRESSION GUI](https://github.com/EPIC-CSU/expression/blob/main/expression-gui.jpg)
+
+
 The complete EXPRESSION toolkit is now available as an Open Source Release in the public domain. The goal of this Open Source release is to promote usage of EXPRESSION ADL to specify processor-memory architectures and provide a reference point for further research into ADLs. 
