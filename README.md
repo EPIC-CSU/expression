@@ -33,3 +33,19 @@ The EXPRESSION project aims to achieve exploration of Systems-On-Chip (SOCs) wit
 **V-SAT** provides a visual environment to graphically specify the architecture and perform Architectural DSE in an intuitive manner. The EXPRESSION description of the processor can be automatically generated from the V-SAT specification.
 
 **EXPRESSION** is an ADL supporting architectural design space exploration (DSE) for embedded Systems-on-Chip (SOC) and automatic generation of a retargetable compiler/simulator toolkit.
+
+## System Requirements
+
+The EXPRESSION toolkit is available as downloadable source code which needs to be compiled on a host machine before it can be executed. To run EXPRESSION, you will require a machine running Windows and Visual C++ installed on it. The EXPRESSION toolkit has been tested on the following systems:
+
+
+OS: Microsoft Windows XP Professional, Windows 2000 Server
+System Type: X86-based PC
+Processor: x86 Family 15 Model 1 Stepping 2 Genuine Intel ~1 Ghz
+Total Physical Memory: 512.00 MB
+Total Virtual Memory: 1.72 GB
+Page File Space: 1.22 GB
+
+Development Platform: Visual C++ 6.0 Enterprise Edition
+
+Additionally, you will also require access to a SUN Sparc workstation if you plan to compile your own C applications (see manual for details). This step can also be performed online, by clicking here to go to the web based compilation  page where you can upload your C program and get the requisite .defs and .procs files needed by the EXPRESSION toolkit after compilation.
