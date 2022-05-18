@@ -1,0 +1,185 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "acesMIPS Base Class Lib"=".\systemDll\acesMIPS Base Class Lib\acesMIPS Base Class Lib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "acesMIPS Build System Lib"=".\systemDll\acesMIPS Build System Lib\acesMIPS Build System Lib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "acesMIPS Derived Class Lib"=".\systemDll\acesMIPS Derived Class Lib\acesMIPS Derived Class Lib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "acesMIPS Simulator Functions Lib"=".\systemDll\acesMIPS Simulator Functions Lib\acesMIPS Simulator Functions Lib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "acesMIPSconsole"=.\acesMIPSconsole\acesMIPSconsole.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name acesMIPSdll
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expression dll
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "acesMIPSdll"=.\acesMIPSdll\acesMIPSdll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name acesMIPS Derived Class Lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name acesMIPS Build System Lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name acesMIPS Simulator Functions Lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expression dll
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name acesMIPS Base Class Lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name acesMIPSfuncSimulator
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "acesMIPSfuncSimulator"=.\acesMIPSfuncSimulator\acesMIPSfuncSimulator.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "expression console"=".\expression console\expression console.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name expression dll
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "expression dll"=".\expression dll\expression dll.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "graphViz"=.\pcProGUI\graphViz\graphViz.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "pcProGUI"=.\pcProGUI\pcProGUI.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name graphViz
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name acesMIPSdll
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expression console
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
