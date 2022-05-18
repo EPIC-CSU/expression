@@ -1,0 +1,4 @@
+for i
+do
+   mips-fe $i
+done

@@ -1,0 +1,54 @@
+#!/opt/public/bin/bash
+
+SCR_PATH=""
+
+if $SCR_PATH
+then
+  echo "Error: Set SCR_PATH to the path you copied the unix scripts to !"
+  exit
+else
+  echo "SCR_PATH is $SCR_PATH"
+fi
+
+for i
+do
+
+file=`basename $i .s`
+
+echo "Running MIPS2EXPR script on $file.s"
+
+if /usr/bin/perl5 $SCR_PATH/mips2expr.pl $file.s >/dev/null
+then
+:
+else
+echo Status: $?
+echo "Error, exiting..."
+exit
+fi
+
+
+echo "Running EXPRESS script on $file.x"
+
+if /usr/bin/perl5 $SCR_PATH/proc_defs.pl $file.x
+then
+:
+else
+echo Status: $?
+echo "Error, exiting..."
+exit
+fi
+
+
+
+#if /usr/bin/perl5 $SCR_PATH/replace.pl $file.defs $file.procs
+#then
+#:
+#else
+#echo Status: $?
+#echo "Error, exiting..."
+#exit
+#fi
+
+
+done
+

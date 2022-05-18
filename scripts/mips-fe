@@ -1,0 +1,27 @@
+#!/bin/csh -f
+
+set file = $1:r
+
+set path = ( . $path )
+
+echo "Running MIPS front-end on $file.c"
+
+
+#mips-elf-gcc -mcpu=r3000 -msoft-float -g -mips1 -O0 -mgpopt -mmemcpy -S -D__unix__ -o $file.s $file.c -fno-thread-jumps -fno-function-cse -fno-delayed-branch -fno-common -fno-schedule-insns -fno-schedule-insns2 -fno-peephole 
+
+
+#mips-elf-gcc -O -g -mips1 -mgpopt -mmemcpy -S -D__unix__ -o $file.s $file.c -fno-thread-jumps -fno-function-cse -fno-delayed-branch -fno-common -fno-schedule-insns -fno-schedule-insns2 -fno-peephole
+
+#mips-elf-gcc -g -mips1 -mgpopt -mmemcpy -S -DSPEC -D__unix__ -o $file.s $file.c -fno-thread-jumps -fno-function-cse -fno-delayed-branch -fno-common -fno-schedule-insns -fno-schedule-insns2 -fno-peephole
+
+
+#mips-elf-gcc -O -g -mips1 -mgpopt -mmemcpy -S -DSPEC -D__unix__ -o $file.s $file.c -fno-thread-jumps -fno-function-cse -fno-delayed-branch -fno-common -fno-schedule-insns -fno-schedule-insns2 -fno-peephole
+
+
+#mips-gcc -O -fpic -g -mips1 -S -DSPEC -D__unix__ -o $file.s $file.c -mno-check-zero-division
+
+
+#-O makes the LLs structured (without -O they are unstructured)
+
+mips-gcc -O -fpic -g -mips1 -mgpopt -mmemcpy -S -DSPEC -D__unix__ -o $file.s $file.c -fno-thread-jumps -fno-function-cse -fno-delayed-branch -fno-common -fno-schedule-insns -fno-schedule-insns2 -fno-peephole -mno-check-zero-division -fno-omit-frame-pointer $2
+
