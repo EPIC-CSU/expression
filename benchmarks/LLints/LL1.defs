@@ -1,0 +1,51 @@
+
+						;	.file	1 "LL1.c"
+						;gcc2_compiled.:
+						;__gnu_compiled_c:
+						;.stabs "/home/ahalambi/open/LLINTS/llsfordebug/",100,0,0,$Ltext0
+						;.stabs "LL1.c",100,0,0,$Ltext0
+						;	.text
+						;$Ltext0:
+						;.stabs "int:t1=r1;0020000000000;0017777777777;",128,0,0,0
+						;.stabs "char:t2=r2;0;127;",128,0,0,0
+						;.stabs "long int:t3=r1;0020000000000;0017777777777;",128,0,0,0
+						;.stabs "unsigned int:t4=r1;0000000000000;0037777777777;",128,0,0,0
+						;.stabs "long unsigned int:t5=r1;0000000000000;0037777777777;",128,0,0,0
+						;.stabs "long long int:t6=r1;01000000000000000000000;0777777777777777777777;",128,0,0,0
+						;.stabs "long long unsigned int:t7=r1;0000000000000;01777777777777777777777;",128,0,0,0
+						;.stabs "short int:t8=r8;-32768;32767;",128,0,0,0
+						;.stabs "short unsigned int:t9=r9;0;65535;",128,0,0,0
+						;.stabs "signed char:t10=r10;-128;127;",128,0,0,0
+						;.stabs "unsigned char:t11=r11;0;255;",128,0,0,0
+						;.stabs "float:t12=r1;4;0;",128,0,0,0
+						;.stabs "double:t13=r1;4;0;",128,0,0,0
+						;.stabs "long double:t14=r1;8;0;",128,0,0,0
+						;.stabs "complex int:t15=s8real:1,0,32;imag:1,32,32;;",128,0,0,0
+						;.stabs "complex float:t16=r16;4;0;",128,0,0,0
+						;.stabs "complex double:t17=r17;4;0;",128,0,0,0
+						;.stabs "complex long double:t18=r18;8;0;",128,0,0,0
+						;.stabs "void:t19=19",128,0,0,0
+						;	.align	2
+						;	.globl	main
+						;	.text
+(LOCATION 6)					;$LM1:
+						;	.stabn 68,0,6,$LM1
+						;.stabs "LL1.c",132,0,0,$Ltext0
+	(PROC_BEGIN	_main
+
+
+)	 ; END OF _main	;	.end	main
+
+
+						;.stabs "main:F1",36,0,6,main
+						;.stabs "k:r1",64,0,7,5
+						;.stabs "cksum:20=ar1;0;20;1",128,0,8,-12120
+						;.stabs "x:21=ar1;0;1001;1",128,0,9,-12032
+						;.stabs "y:22=ar1;0;1001;1",128,0,9,-8024
+						;.stabs "z:23=ar1;0;1001;1",128,0,9,-4016
+						;.stabs "r:r1",64,0,10,11
+						;.stabs "t:r1",64,0,10,10
+						;.stabn 192,0,0,$LBB2
+						;.stabn 224,0,0,$LBE2
+						;$Lscope0:
+						;.stabs "",36,0,0,$Lscope0-main

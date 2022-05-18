@@ -1,0 +1,273 @@
+
+	(PROC_BEGIN	_main			;	.ent	main
+(LABEL _main)					;main:
+						;	.frame	$fp,3680,$31		# vars= 3600, regs= 8/0, args= 48, extra= 0
+						;	.mask	0xc03f0000,-4
+						;	.fmask	0x00000000,0
+	(ISUB	$sp $sp 3680)			;	subu	$sp,$sp,3680
+	(IVSTORE	3676 $sp $31)			;	sw	$31,3676($sp)
+	(IVSTORE	3672 $sp $fp)			;	sw	$fp,3672($sp)
+	(IVSTORE	3668 $sp $21)			;	sw	$21,3668($sp)
+	(IVSTORE	3664 $sp $20)			;	sw	$20,3664($sp)
+	(IVSTORE	3660 $sp $19)			;	sw	$19,3660($sp)
+	(IVSTORE	3656 $sp $18)			;	sw	$18,3656($sp)
+	(IVSTORE	3652 $sp $17)			;	sw	$17,3652($sp)
+	(IVSTORE	3648 $sp $16)			;	sw	$16,3648($sp)
+	(IASSIGN	$fp $sp)			;	move	$fp,$sp						;	jal	__gccmain
+(LOCATION 8)					;$LM2:
+						;	.stabn 68,0,8,$LM2
+						;$LBB2:
+(LOCATION 19)					;$LM3:
+						;	.stabn 68,0,19,$LM3
+	(IADD	$15 $fp 48)			;	addu	$15,$fp,48
+	(ICONSTANT	$4 1)			;	li	$4,1			# 0x1
+	(ICONSTANT	$3 29)			;	li	$3,29			# 0x1d
+	(IADD	$2 $fp 164)			;	addu	$2,$fp,164
+(LABEL L6)					;$L6:
+(LOCATION 20)					;$LM4:
+						;	.stabn 68,0,20,$LM4
+	(IVSTORE	0 $2 $4)			;	sw	$4,0($2)
+(LOCATION 19)					;$LM5:
+						;	.stabn 68,0,19,$LM5
+	(IADD	$2 $2 -4)			;	addu	$2,$2,-4
+	(IADD	$3 $3 -1)			;	addu	$3,$3,-1
+	(IGE	$cc0 $3 $0)
+	(IF	$cc L6)			;	bgez	$3,$L6
+	(LOCATION 33)					;$LM6:
+						;	.stabn 68,0,33,$LM6
+	(ICONSTANT	$21 2)			;	li	$21,2			# 0x2
+(LOCATION 34)					;$LM7:
+						;	.stabn 68,0,34,$LM7
+	(ICONSTANT	$14 10)			;	li	$14,10			# 0xa
+(LOCATION 38)					;$LM8:
+						;	.stabn 68,0,38,$LM8
+	(ICONSTANT	$3 1)			;	li	$3,1			# 0x1
+	(ICONSTANT	$20 1)			;	li	$20,1			# 0x1
+	(ICONSTANT	$19 20)			;	li	$19,20			# 0x14
+	(IASSIGN	$25 $0)			;	move	$25,$0
+(LABEL L11)					;$L11:
+(LOCATION 40)					;$LM9:
+						;	.stabn 68,0,40,$LM9
+	(ICONSTANT	$11 1)			;	li	$11,1			# 0x1
+	(IADD	$24 $3 1)			;	addu	$24,$3,1
+(LABEL L41)					;$L41:
+(LOCATION 42)					;$LM10:
+						;	.stabn 68,0,42,$LM10
+	(IADD	$2 $11 -1)			;	addu	$2,$11,-1
+	(IMUL	$hilo $19 $2)			;	mult	$19,$2
+	(MFLO	$2 $hilo)			;	mflo	$2
+						;	#nop
+						;	#nop
+	(IADD	$3 $2 1)			;	addu	$3,$2,1
+(LOCATION 43)					;$LM11:
+						;	.stabn 68,0,43,$LM11
+	(ICONSTANT	$12 1)			;	li	$12,1			# 0x1
+	(INE	$cc0 $25 $0)
+	(IF	$cc L14)			;	bne	$25,$0,$L14
+	(IADD	$10 $fp 1248)			;	addu	$10,$fp,1248
+	(IADD	$6 $fp 2448)			;	addu	$6,$fp,2448
+	(IVLOAD	$13 48 $fp)			;	lw	$13,48($fp)
+	(IADD	$2 $2 2)			;	addu	$2,$2,2
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$9 $2 $15)			;	addu	$9,$2,$15
+	(ILLSH	$2 $3 2)			;	sll	$2,$3,2
+	(IADD	$7 $2 $15)			;	addu	$7,$2,$15
+	(IASSIGN	$8 $7)			;	move	$8,$7
+(LABEL L18)					;$L18:
+(LOCATION 47)					;$LM12:
+						;	.stabn 68,0,47,$LM12
+	(IVLOAD	$5 0 $9)			;	lw	$5,0($9)
+(LOCATION 48)					;$LM13:
+						;	.stabn 68,0,48,$LM13
+						;	#nop
+	(ILT	$2 $5 10)			;	slt	$2,$5,10
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L19)			;	beq	$2,$0,$L19
+	(LOCATION 50)					;$LM14:
+						;	.stabn 68,0,50,$LM14
+	(IADD	$2 $5 6)			;	addu	$2,$5,6
+	(ILT	$2 $2 10)			;	slt	$2,$2,10
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L20)			;	beq	$2,$0,$L20
+	(LOCATION 52)					;$LM15:
+						;	.stabn 68,0,52,$LM15
+	(IADD	$2 $5 -1)			;	addu	$2,$5,-1
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $10 $2)			;	addu	$2,$10,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $2 $18)			;	subu	$2,$2,$18
+(LOCATION 53)					;$LM16:
+						;	.stabn 68,0,53,$LM16
+	(GOTO	L24)			;	j	$L24
+(LABEL L20)					;$L20:
+(LOCATION 56)					;$LM17:
+						;	.stabn 68,0,56,$LM17
+	(IADD	$2 $5 3)			;	addu	$2,$5,3
+	(ILT	$2 $2 10)			;	slt	$2,$2,10
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L22)			;	beq	$2,$0,$L22
+	(LOCATION 58)					;$LM18:
+						;	.stabn 68,0,58,$LM18
+	(IADD	$2 $5 -1)			;	addu	$2,$5,-1
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $10 $2)			;	addu	$2,$10,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $2 $17)			;	subu	$2,$2,$17
+(LOCATION 59)					;$LM19:
+						;	.stabn 68,0,59,$LM19
+	(GOTO	L24)			;	j	$L24
+(LABEL L22)					;$L22:
+(LOCATION 62)					;$LM20:
+						;	.stabn 68,0,62,$LM20
+	(IADD	$2 $5 -1)			;	addu	$2,$5,-1
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $10 $2)			;	addu	$2,$10,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $2 $16)			;	subu	$2,$2,$16
+(LOCATION 65)					;$LM21:
+						;	.stabn 68,0,65,$LM21
+	(GOTO	L24)			;	j	$L24
+(LABEL L19)					;$L19:
+(LOCATION 66)					;$LM22:
+						;	.stabn 68,0,66,$LM22
+	(IEQ	$cc0 $5 $14)
+	(IF	$cc L14)			;	beq	$5,$14,$L14
+	(LOCATION 73)					;$LM23:
+						;	.stabn 68,0,73,$LM23
+	(IADD	$4 $5 -1)			;	addu	$4,$5,-1
+	(ILLSH	$4 $4 2)			;	sll	$4,$4,2
+	(IADD	$4 $6 $4)			;	addu	$4,$6,$4
+	(IADD	$3 $5 -2)			;	addu	$3,$5,-2
+	(ILLSH	$3 $3 2)			;	sll	$3,$3,2
+	(IADD	$3 $6 $3)			;	addu	$3,$6,$3
+	(IADD	$2 $5 -3)			;	addu	$2,$5,-3
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $6 $2)			;	addu	$2,$6,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $18 $2)			;	subu	$2,$18,$2
+	(IVLOAD	$3 0 $3)			;	lw	$3,0($3)
+						;	#nop
+	(IMUL	$hilo $3 $2)			;	mult	$3,$2
+	(MFLO	$3 $hilo)			;	mflo	$3
+						;	#nop
+						;	#nop
+	(IMUL	$hilo $3 $2)			;	mult	$3,$2
+	(MFLO	$3 $hilo)			;	mflo	$3
+						;	#nop
+	(IADD	$2 $5 -4)			;	addu	$2,$5,-4
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $6 $2)			;	addu	$2,$6,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $17 $2)			;	subu	$2,$17,$2
+	(IMUL	$hilo $2 $2)			;	mult	$2,$2
+	(MFLO	$2 $hilo)			;	mflo	$2
+						;	#nop
+						;	#nop
+	(IADD	$3 $3 $2)			;	addu	$3,$3,$2
+	(IADD	$2 $5 -5)			;	addu	$2,$5,-5
+	(ILLSH	$2 $2 2)			;	sll	$2,$2,2
+	(IADD	$2 $6 $2)			;	addu	$2,$6,$2
+	(IVLOAD	$2 0 $2)			;	lw	$2,0($2)
+						;	#nop
+	(ISUB	$2 $16 $2)			;	subu	$2,$16,$2
+	(IMUL	$hilo $2 $2)			;	mult	$2,$2
+	(MFLO	$2 $hilo)			;	mflo	$2
+						;	#nop
+						;	#nop
+	(IADD	$3 $3 $2)			;	addu	$3,$3,$2
+	(IVLOAD	$2 0 $4)			;	lw	$2,0($4)
+						;	#nop
+	(ISUB	$2 $2 $3)			;	subu	$2,$2,$3
+(LABEL L24)					;$L24:
+(LOCATION 76)					;$LM24:
+						;	.stabn 68,0,76,$LM24
+	(IGE	$cc0 $2 $0)
+	(IF	$cc L27)			;	bgez	$2,$L27
+	(LOCATION 78)					;$LM25:
+						;	.stabn 68,0,78,$LM25
+	(IVLOAD	$2 0 $7)			;	lw	$2,0($7)
+						;	#nop
+	(ILT	$cc0 $2 $0)
+	(IF	$cc L17)			;	bltz	$2,$L17
+	(LOCATION 82)					;$LM26:
+						;	.stabn 68,0,82,$LM26
+	(GOTO	L43)			;	j	$L43
+(LABEL L27)					;$L27:
+(LOCATION 83)					;$LM27:
+						;	.stabn 68,0,83,$LM27
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L14)			;	beq	$2,$0,$L14
+	(LOCATION 85)					;$LM28:
+						;	.stabn 68,0,85,$LM28
+	(IVLOAD	$2 0 $8)			;	lw	$2,0($8)
+						;	#nop
+	(IGT	$cc0 $2 $0)
+	(IF	$cc L17)			;	bgtz	$2,$L17
+	(LOCATION 87)					;$LM29:
+						;	.stabn 68,0,87,$LM29
+(LABEL L43)					;$L43:
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L14)			;	beq	$2,$0,$L14
+	(LOCATION 91)					;$LM30:
+						;	.stabn 68,0,91,$LM30
+	(IADD	$11 $11 1)			;	addu	$11,$11,1
+(LOCATION 92)					;$LM31:
+						;	.stabn 68,0,92,$LM31
+	(ILT	$2 $13 $11)			;	slt	$2,$13,$11
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L14)			;	beq	$2,$0,$L14
+	(LOCATION 93)					;$LM32:
+						;	.stabn 68,0,93,$LM32
+	(ICONSTANT	$11 1)			;	li	$11,1			# 0x1
+(LOCATION 97)					;$LM33:
+						;	.stabn 68,0,97,$LM33
+	(GOTO	L14)			;	j	$L14
+(LOCATION 43)					;$LM34:
+						;	.stabn 68,0,43,$LM34
+(LABEL L17)					;$L17:
+	(IADD	$8 $8 8)			;	addu	$8,$8,8
+	(IADD	$7 $7 8)			;	addu	$7,$7,8
+	(IADD	$9 $9 8)			;	addu	$9,$9,8
+	(IADD	$12 $12 1)			;	addu	$12,$12,1
+	(ILT	$2 $14 $12)			;	slt	$2,$14,$12
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L18)			;	beq	$2,$0,$L18
+	(LABEL L14)					;$L14:
+(LOCATION 100)					;$LM35:
+						;	.stabn 68,0,100,$LM35
+	(INE	$cc0 $20 $11)
+	(IF	$cc L41)			;	bne	$20,$11,$L41
+	(LOCATION 38)					;$LM36:
+						;	.stabn 68,0,38,$LM36
+	(IASSIGN	$3 $24)			;	move	$3,$24
+	(ILT	$2 $21 $3)			;	slt	$2,$21,$3
+	(IEQ	$cc0 $2 $0)
+	(IF	$cc L11)			;	beq	$2,$0,$L11
+(LOCATION 102)					;$LM37:
+						;	.stabn 68,0,102,$LM37
+	(IVLOAD	$4 128 $fp)			;	lw	$4,128($fp)
+(PSEUDOS					; #APP
+	(parm $4)				;	# (parm $4)
+)						; #NO_APP
+	(CALL	_DEBUG_PRINT)			;	jal	DEBUG_PRINT
+	(IASSIGN	$sp $fp)			;	move	$sp,$fp
+	(IVLOAD	$31 3676 $sp)			;	lw	$31,3676($sp)
+	(IVLOAD	$fp 3672 $sp)			;	lw	$fp,3672($sp)
+	(IVLOAD	$21 3668 $sp)			;	lw	$21,3668($sp)
+	(IVLOAD	$20 3664 $sp)			;	lw	$20,3664($sp)
+	(IVLOAD	$19 3660 $sp)			;	lw	$19,3660($sp)
+	(IVLOAD	$18 3656 $sp)			;	lw	$18,3656($sp)
+	(IVLOAD	$17 3652 $sp)			;	lw	$17,3652($sp)
+	(IVLOAD	$16 3648 $sp)			;	lw	$16,3648($sp)
+						;	#nop
+	(IADD	$sp $sp 3680)			;	addu	$sp,$sp,3680
+	(IGOTO	$31)			;	j	$31
+(LOCATION 103)					;$LM38:
+						;	.stabn 68,0,103,$LM38
+						;$LBE2:
+)	 ; END OF _main	;	.end	main

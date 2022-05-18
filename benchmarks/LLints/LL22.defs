@@ -1,0 +1,70 @@
+
+						;	.file	1 "LL22.c"
+						;gcc2_compiled.:
+						;__gnu_compiled_c:
+						;.stabs "/home/ahalambi/open/LLINTS/llsfordebug/",100,0,0,$Ltext0
+						;.stabs "LL22.c",100,0,0,$Ltext0
+						;	.text
+						;$Ltext0:
+						;.stabs "int:t1=r1;0020000000000;0017777777777;",128,0,0,0
+						;.stabs "char:t2=r2;0;127;",128,0,0,0
+						;.stabs "long int:t3=r1;0020000000000;0017777777777;",128,0,0,0
+						;.stabs "unsigned int:t4=r1;0000000000000;0037777777777;",128,0,0,0
+						;.stabs "long unsigned int:t5=r1;0000000000000;0037777777777;",128,0,0,0
+						;.stabs "long long int:t6=r1;01000000000000000000000;0777777777777777777777;",128,0,0,0
+						;.stabs "long long unsigned int:t7=r1;0000000000000;01777777777777777777777;",128,0,0,0
+						;.stabs "short int:t8=r8;-32768;32767;",128,0,0,0
+						;.stabs "short unsigned int:t9=r9;0;65535;",128,0,0,0
+						;.stabs "signed char:t10=r10;-128;127;",128,0,0,0
+						;.stabs "unsigned char:t11=r11;0;255;",128,0,0,0
+						;.stabs "float:t12=r1;4;0;",128,0,0,0
+						;.stabs "double:t13=r1;4;0;",128,0,0,0
+						;.stabs "long double:t14=r1;8;0;",128,0,0,0
+						;.stabs "complex int:t15=s8real:1,0,32;imag:1,32,32;;",128,0,0,0
+						;.stabs "complex float:t16=r16;4;0;",128,0,0,0
+						;.stabs "complex double:t17=r17;4;0;",128,0,0,0
+						;.stabs "complex long double:t18=r18;8;0;",128,0,0,0
+						;.stabs "void:t19=19",128,0,0,0
+						;.stabs "__int32_t:t20=1",128,0,106,0
+						;.stabs "__uint32_t:t21=4",128,0,107,0
+						;.stabs "size_t:t22=4",128,0,170,0
+						;.stabs "__gnuc_va_list:t23=24=*2",128,0,29,0
+						;.stabs "clock_t:t25=5",128,0,36,0
+						;.stabs "time_t:t26=3",128,0,41,0
+						;.stabs "tm:T27=s36tm_sec:1,0,32;tm_min:1,32,32;tm_hour:1,64,32;tm_mday:1,96,32;tm_mon:1,128,32;tm_year:1,160,32;tm_wday:1,192,32;tm_yday:1,224,32;tm_isdst:1,256,32;;",128,0,0,0
+						;.stabs "__ULong:t28=21",128,0,28,0
+						;.stabs "_glue:T29=s12_next:30=*29,0,32;_niobs:1,32,32;_iobs:31=*32=xs__sFILE:,64,32;;",128,0,0,0
+						;.stabs "_Bigint:T33=s24_next:34=*33,0,32;_k:1,32,32;_maxwds:1,64,32;_sign:1,96,32;_wds:1,128,32;_x:35=ar1;0;0;28,160,32;;",128,0,0,0
+						;.stabs "_atexit:T36=s136_next:37=*36,0,32;_ind:1,32,32;_fns:38=ar1;0;31;39=*40=f19,64,1024;;",128,0,0,0
+						;.stabs "__sbuf:T41=s8_base:42=*11,0,32;_size:1,32,32;;",128,0,0,0
+						;.stabs "_fpos_t:t43=3",128,0,74,0
+						;.stabs "__sFILE:T32=s88_p:42,0,32;_r:1,32,32;_w:1,64,32;_flags:8,96,16;_file:8,112,16;_bf:41,128,64;_lbfsize:1,192,32;_cookie:44=*19,224,32;_read:45=*46=f1,256,32;_write:47=*48=f1,288,32;_seek:49=*50=f43,320,32;_close:51=*52=f1,352,32;_ub:41,384,64;_up:42,448,32;_ur:1,480,32;_ubuf:53=ar1;0;2;11,512,24;_nbuf:54=ar1;0;0;11,536,8;_lb:41,544,64;_blksize:1,608,32;_offset:1,640,32;_data:55=*56=xs_reent:,672,32;;",128,0,0,0
+						;.stabs "_reent:T56=s748_errno:1,0,32;_stdin:31,32,32;_stdout:31,64,32;_stderr:31,96,32;_inc:1,128,32;_emergency:57=ar1;0;24;2,160,200;_current_category:1,384,32;_current_locale:58=*2,416,32;__sdidinit:1,448,32;__cleanup:59=*60=f19,480,32;_result:34,512,32;_result_k:1,544,32;_p5s:34,576,32;_freelist:61=*34,608,32;_cvtlen:1,640,32;_cvtbuf:24,672,32;_new:62=u240_reent:63=s76_rand_next:4,0,32;_strtok_last:24,32,32;_asctime_buf:64=ar1;0;25;2,64,208;_localtime_buf:27,288,288;_gamma_signgam:1,576,32;;,0,608;_unused:65=s240_nextf:66=ar1;0;29;42,0,960;_nmalloc:67=ar1;0;29;4,960,960;;,0,1920;;,704,1920;_atexit:37,2624,32;_atexit0:36,2656,1088;_sig_func:68=*69=*70=f19,3744,32;__sglue:29,3776,96;__sf:71=ar1;0;2;32,3872,2112;;",128,0,0,0
+						;.stabs "fpos_t:t72=43",128,0,50,0
+						;.stabs "FILE:t73=32",128,0,52,0
+						;	.align	2
+						;	.globl	main
+						;	.text
+(LOCATION 6)					;$LM1:
+						;	.stabn 68,0,6,$LM1
+						;.stabs "LL22.c",132,0,0,$Ltext0
+	(PROC_BEGIN	_main
+
+
+)	 ; END OF _main	;	.end	main
+
+
+						;.stabs "main:F1",36,0,6,main
+						;.stabs "k:r3",64,0,7,9
+						;.stabs "l:r3",64,0,7,3
+						;.stabs "x:74=ar1;0;1000;1",128,0,8,-20048
+						;.stabs "y:75=ar1;0;1000;1",128,0,8,-16040
+						;.stabs "u:76=ar1;0;1000;1",128,0,8,-12032
+						;.stabs "v:77=ar1;0;1000;1",128,0,8,-8024
+						;.stabs "w:78=ar1;0;1000;1",128,0,8,-4016
+						;.stabs "expmax:r1",64,0,9,4
+						;.stabs "i:r1",64,0,10,3
+						;.stabn 192,0,0,$LBB2
+						;.stabn 224,0,0,$LBE2
+						;$Lscope0:
+						;.stabs "",36,0,0,$Lscope0-main

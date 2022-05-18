@@ -1,0 +1,28 @@
+
+	(PROC_BEGIN	_DEBUG_PRINT			;	.ent	DEBUG_PRINT
+(LABEL _DEBUG_PRINT)					;DEBUG_PRINT:
+						;	.frame	$fp,56,$31		# vars= 0, regs= 2/0, args= 48, extra= 0
+						;	.mask	0xc0000000,-4
+						;	.fmask	0x00000000,0
+	(ISUB	$sp $sp 56)			;	subu	$sp,$sp,56
+	(IVSTORE	52 $sp $31)			;	sw	$31,52($sp)
+	(IVSTORE	48 $sp $fp)			;	sw	$fp,48($sp)
+	(IASSIGN	$fp $sp)			;	move	$fp,$sp
+	(IASSIGN	$5 $4)			;	move	$5,$4
+(LOCATION 5)					;$LM2:
+						;	.stabn 68,0,5,$LM2
+	(ICONSTANT	$4 LC0)			;	la	$4,$LC0
+(PSEUDOS					; #APP
+	(parm $4)				;	# (parm $4)
+	(parm $5)				;	# (parm $5)
+)						; #NO_APP
+	(CALL	_printf $4)			;	jal	printf,$4		# return value hack
+	(IASSIGN	$sp $fp)			;	move	$sp,$fp
+	(IVLOAD	$31 52 $sp)			;	lw	$31,52($sp)
+	(IVLOAD	$fp 48 $sp)			;	lw	$fp,48($sp)
+						;	#nop
+	(IADD	$sp $sp 56)			;	addu	$sp,$sp,56
+	(IGOTO	$31)			;	j	$31
+(LOCATION 6)					;$LM3:
+						;	.stabn 68,0,6,$LM3
+)	 ; END OF _DEBUG_PRINT	;	.end	DEBUG_PRINT

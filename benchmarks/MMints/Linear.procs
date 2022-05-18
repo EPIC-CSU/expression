@@ -1,0 +1,131 @@
+
+	(PROC_BEGIN	_main			;	.ent	main
+(LABEL _main)					;main:
+						;	.frame	$fp,1280,$31		# vars= 1224, regs= 2/0, args= 48, extra= 0
+						;	.mask	0xc0000000,-4
+						;	.fmask	0x00000000,0
+	(ISUB	$sp $sp 1280)			;	subu	$sp,$sp,1280
+	(IVSTORE	1276 $sp $31)			;	sw	$31,1276($sp)
+	(IVSTORE	1272 $sp $fp)			;	sw	$fp,1272($sp)
+	(IASSIGN	$fp $sp)			;	move	$fp,$sp						;	jal	__gccmain
+(LOCATION 30)					;$LM2:
+						;	.stabn 68,0,30,$LM2
+						;$LBB2:
+(LOCATION 31)					;$LM3:
+						;	.stabn 68,0,31,$LM3
+	(IASSIGN	$4 $0)			;	move	$4,$0
+(LOCATION 34)					;$LM4:
+						;	.stabn 68,0,34,$LM4
+	(IASSIGN	$8 $0)			;	move	$8,$0
+	(IADD	$9 $fp 48)			;	addu	$9,$fp,48
+	(IADD	$10 $fp 456)			;	addu	$10,$fp,456
+	(IADD	$7 $fp 864)			;	addu	$7,$fp,864
+	(IASSIGN	$6 $9)			;	move	$6,$9
+	(IASSIGN	$5 $10)			;	move	$5,$10
+	(IASSIGN	$3 $7)			;	move	$3,$7
+(LABEL L6)					;$L6:
+(LOCATION 35)					;$LM5:
+						;	.stabn 68,0,35,$LM5
+	(IVSTORE	0 $3 $8)			;	sw	$8,0($3)
+	(IVSTORE	0 $5 $8)			;	sw	$8,0($5)
+	(IVSTORE	0 $6 $8)			;	sw	$8,0($6)
+(LOCATION 34)					;$LM6:
+						;	.stabn 68,0,34,$LM6
+	(IADD	$6 $6 4)			;	addu	$6,$6,4
+	(IADD	$5 $5 4)			;	addu	$5,$5,4
+	(IADD	$3 $3 4)			;	addu	$3,$3,4
+	(IADD	$8 $8 1)			;	addu	$8,$8,1
+	(ILT	$2 $8 10)			;	slt	$2,$8,10
+	(INE	$cc0 $2 $0)
+	(IF	$cc L6)			;	bne	$2,$0,$L6
+	(LOCATION 40)					;$LM7:
+						;	.stabn 68,0,40,$LM7
+	(ICONSTANT	$3 1)			;	li	$3,1			# 0x1
+	(IASSIGN	$12 $7)			;	move	$12,$7
+	(IASSIGN	$11 $9)			;	move	$11,$9
+	(IASSIGN	$15 $12)			;	move	$15,$12
+	(IASSIGN	$14 $11)			;	move	$14,$11
+	(IASSIGN	$13 $10)			;	move	$13,$10
+(LABEL L11)					;$L11:
+(LOCATION 41)					;$LM8:
+						;	.stabn 68,0,41,$LM8
+	(IADD	$9 $3 1)			;	addu	$9,$3,1
+	(IASSIGN	$7 $12)			;	move	$7,$12
+	(IASSIGN	$6 $11)			;	move	$6,$11
+	(IASSIGN	$5 $10)			;	move	$5,$10
+	(ICONSTANT	$8 4)			;	li	$8,4			# 0x4
+(LABEL L15)					;$L15:
+(LOCATION 42)					;$LM9:
+						;	.stabn 68,0,42,$LM9
+	(IVLOAD	$3 0 $5)			;	lw	$3,0($5)
+						;	#nop
+	(IMUL	$hilo $4 $3)			;	mult	$4,$3
+	(MFLO	$3 $hilo)			;	mflo	$3
+						;	#nop
+	(IVLOAD	$2 0 $6)			;	lw	$2,0($6)
+						;	#nop
+	(IADD	$2 $2 $3)			;	addu	$2,$2,$3
+	(IVSTORE	0 $7 $2)			;	sw	$2,0($7)
+(LOCATION 43)					;$LM10:
+						;	.stabn 68,0,43,$LM10
+	(ISUB	$4 $2 $4)			;	subu	$4,$2,$4
+(LOCATION 41)					;$LM11:
+						;	.stabn 68,0,41,$LM11
+	(IADD	$7 $7 4)			;	addu	$7,$7,4
+	(IADD	$6 $6 4)			;	addu	$6,$6,4
+	(IADD	$5 $5 4)			;	addu	$5,$5,4
+	(IADD	$8 $8 -1)			;	addu	$8,$8,-1
+	(IGE	$cc0 $8 $0)
+	(IF	$cc L15)			;	bgez	$8,$L15
+	(LOCATION 45)					;$LM12:
+						;	.stabn 68,0,45,$LM12
+	(ICONSTANT	$8 1)			;	li	$8,1			# 0x1
+	(IADD	$7 $15 16)			;	addu	$7,$15,16
+	(IADD	$6 $14 16)			;	addu	$6,$14,16
+	(IADD	$5 $13 16)			;	addu	$5,$13,16
+(LABEL L20)					;$L20:
+(LOCATION 47)					;$LM13:
+						;	.stabn 68,0,47,$LM13
+	(IVLOAD	$2 0 $5)			;	lw	$2,0($5)
+						;	#nop
+	(IMUL	$hilo $4 $2)			;	mult	$4,$2
+	(MFLO	$2 $hilo)			;	mflo	$2
+						;	#nop
+	(IVLOAD	$3 0 $6)			;	lw	$3,0($6)
+						;	#nop
+	(IADD	$3 $3 $2)			;	addu	$3,$3,$2
+	(IVSTORE	0 $7 $3)			;	sw	$3,0($7)
+(LOCATION 48)					;$LM14:
+						;	.stabn 68,0,48,$LM14
+	(ISUB	$4 $3 $4)			;	subu	$4,$3,$4
+(LOCATION 45)					;$LM15:
+						;	.stabn 68,0,45,$LM15
+	(IADD	$7 $7 -4)			;	addu	$7,$7,-4
+	(IADD	$6 $6 -4)			;	addu	$6,$6,-4
+	(IADD	$5 $5 -4)			;	addu	$5,$5,-4
+	(IADD	$8 $8 1)			;	addu	$8,$8,1
+	(ILT	$2 $8 6)			;	slt	$2,$8,6
+	(INE	$cc0 $2 $0)
+	(IF	$cc L20)			;	bne	$2,$0,$L20
+	(LOCATION 40)					;$LM16:
+						;	.stabn 68,0,40,$LM16
+	(IASSIGN	$3 $9)			;	move	$3,$9
+	(ILT	$2 $3 3)			;	slt	$2,$3,3
+	(INE	$cc0 $2 $0)
+	(IF	$cc L11)			;	bne	$2,$0,$L11
+(LOCATION 51)					;$LM17:
+						;	.stabn 68,0,51,$LM17
+(PSEUDOS					; #APP
+	(parm $4)				;	# (parm $4)
+)						; #NO_APP
+	(CALL	_DEBUG_PRINT)			;	jal	DEBUG_PRINT
+	(IASSIGN	$sp $fp)			;	move	$sp,$fp
+	(IVLOAD	$31 1276 $sp)			;	lw	$31,1276($sp)
+	(IVLOAD	$fp 1272 $sp)			;	lw	$fp,1272($sp)
+						;	#nop
+	(IADD	$sp $sp 1280)			;	addu	$sp,$sp,1280
+	(IGOTO	$31)			;	j	$31
+(LOCATION 52)					;$LM18:
+						;	.stabn 68,0,52,$LM18
+						;$LBE2:
+)	 ; END OF _main	;	.end	main
