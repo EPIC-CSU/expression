@@ -1,0 +1,5 @@
+/* : : generated from /home/ek/work/src/libcdt/features/cdt by iffe version 02/29/96 : : */
+#ifndef _def_cdt_cdt
+#define _def_cdt_cdt	1
+#define _sys_types	1	/* #include <sys/types.h> ok */
+#endif
