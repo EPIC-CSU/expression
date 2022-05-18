@@ -1,0 +1,59 @@
+/********************************************/
+/* file: lex_parse.txt						*/
+/* created: Wed Jun 30 1999					*/
+/* authors: Ashok Halambi					*/
+/* last modified:							*/
+/* contents: Comments regarding parsing		*/
+/* the .s file								*/
+/********************************************/
+
+The .s file created by running the gcc front-end contains
+two types of information.
+
+1) With each procedure, the body of the procedure.
+   The body contains the PROLOGUE, EPILOGUE and the list
+   of executable instructions. Further, it contains any
+   assertions associated with operations/operands.
+
+2) With each procedure, the header consisting of the symbol
+   table information. The header is immediately preceeding
+   the body of the procedure.
+
+The current strategy to parse and build the IR is as follows:
+
+1) Run the .s file thru a perl script that creates 2 files:
+	a) .proc file: contains the body of the procedure,
+	   including the lines that identify the procedure.
+	b) .defs file: contains the header of the procedure,
+	   including the lines that identify the procedure.
+
+2) The .proc file, which contains the PROLOGUE, body, and EPILOGUE
+   is parsed inorder to create the IR.
+   The parser is a relatively simple parser that takes each line of
+   the body and feeds it to a routine (buildMIPSInstr) that further
+   parses the operation into opcode, arguments and so forth.
+
+   Note: The semantic assertions inside each operation are ignored.
+   Below is an example of assertions:
+
+   a) (NAME "<name>", BASETYPENAME "<string>")
+
+
+3) The .defs file is ignored currently.
+   The parser (or the function that parses each line) will be more
+   complex than the one for the .proc files.
+   Below are examples of some of the symbol table definitions to be
+   found in the .defs file:
+
+   a) (DEF "<name>" (val <int>) (scl <int>) (type <string>))
+   b) (DEF "<name>" (val <int>) (scl <int>) (struct_name <string>) (type <string>))
+   c) (DEF "<name>" (val <int>) (scl <int>) (dim <list(int)>) (size <int>) (type <list(string)>))
+   d) (DEF "<name>" (scl <int>) (struct_name <string>) (type <string>))
+
+   a) (DECL (IS_GLOBAL <int>) (ALIGN <int>) <name> (SPACE <int>))
+   b) (DECL (IS_GLOBAL <int>) (ALIGN <int>) <name> (ASCII "<string>"))
+   c) (DECL (IS_GLOBAL <int>) (ALIGN <int>) <name> (WORD <int>))
+   d) (DECL (IS_GLOBAL <int>) (ALIGN <int>) <name> (HALF <int>))
+   e) (DECL (IS_GLOBAL <int>) (ALIGN <int>) <name> (BYTE <int>))
+
+   Other types of defintions include TYPE_DEF, NAME etc.

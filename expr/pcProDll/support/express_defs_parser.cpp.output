@@ -1,0 +1,439 @@
+
+
+Terminals which are not used:
+
+   TT_GLOBAL
+   TT_PROCBEGIN
+   TT_LOCATION
+   TT_LABEL
+   TT_PSEUDOS
+   TT_parm
+   TT_BEGINSCOPE
+   TT_ENDSCOPE
+   TT_PROLOGUE
+   TT_EPILOGUE
+   TT_END
+   TT_NAME
+   TT_BASETYPENAME
+   TT_VALUE
+   TT_DOLLAR
+   '+'
+   '-'
+   ','
+   '/'
+   ':'
+   '<'
+   '='
+   '>'
+   '['
+   ']'
+   '\\'
+
+
+State 20 contains 6 shift/reduce conflicts.
+
+Grammar
+rule 1    definitions -> node_list
+rule 2    definitions ->		/* empty */
+rule 3    node -> TT_CHARSTRING
+rule 4    node -> TT_IDENTIFIER
+rule 5    node -> TT_INTEGER
+rule 6    node -> '*'
+rule 7    node -> TT_FLOAT
+rule 8    node -> '(' TT_DEF TT_CHARSTRING node_list ')'
+rule 9    node -> '(' TT_DECL node_list TT_IDENTIFIER node_list ')'
+rule 10   node -> '(' TT_DECL node_list TT_IDENTIFIER ')'
+rule 11   node -> '(' TT_TYPE_DEF node_list ')'
+rule 12   node -> '(' node_list ')'
+rule 13   node_list -> node_list node
+rule 14   node_list -> node
+
+Terminals, with rules where they appear
+
+$ (-1)
+'(' (40) 8 9 10 11 12
+')' (41) 8 9 10 11 12
+'*' (42) 6
+'+' (43)
+',' (44)
+'-' (45)
+'/' (47)
+':' (58)
+'<' (60)
+'=' (61)
+'>' (62)
+'[' (91)
+'\\' (92)
+']' (93)
+error (256)
+TT_GLOBAL (258)
+TT_PROCBEGIN (259)
+TT_LOCATION (260)
+TT_LABEL (261)
+TT_PSEUDOS (262)
+TT_parm (263)
+TT_BEGINSCOPE (264)
+TT_ENDSCOPE (265)
+TT_PROLOGUE (266)
+TT_EPILOGUE (267)
+TT_END (268)
+TT_NAME (269)
+TT_BASETYPENAME (270)
+TT_VALUE (271)
+TT_DOLLAR (272)
+TT_INTEGER (273) 5
+TT_FLOAT (274) 7
+TT_CHARSTRING (275) 3 8
+TT_IDENTIFIER (276) 4 9 10
+TT_DEF (277) 8
+TT_TYPE_DEF (278) 11
+TT_DECL (279) 9 10
+
+Nonterminals, with rules where they appear
+
+definitions (39)
+    on left: 1 2
+node (40)
+    on left: 3 4 5 6 7 8 9 10 11 12, on right: 13 14
+node_list (41)
+    on left: 13 14, on right: 1 8 9 10 11 12 13
+
+
+state 0
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    $default	reduce using rule 2 (definitions)
+
+    definitions	go to state 25
+    node	go to state 7
+    node_list	go to state 8
+
+
+
+state 1
+
+    node  ->  TT_INTEGER .   (rule 5)
+
+    $default	reduce using rule 5 (node)
+
+
+
+state 2
+
+    node  ->  TT_FLOAT .   (rule 7)
+
+    $default	reduce using rule 7 (node)
+
+
+
+state 3
+
+    node  ->  TT_CHARSTRING .   (rule 3)
+
+    $default	reduce using rule 3 (node)
+
+
+
+state 4
+
+    node  ->  TT_IDENTIFIER .   (rule 4)
+
+    $default	reduce using rule 4 (node)
+
+
+
+state 5
+
+    node  ->  '(' . TT_DEF TT_CHARSTRING node_list ')'   (rule 8)
+    node  ->  '(' . TT_DECL node_list TT_IDENTIFIER node_list ')'   (rule 9)
+    node  ->  '(' . TT_DECL node_list TT_IDENTIFIER ')'   (rule 10)
+    node  ->  '(' . TT_TYPE_DEF node_list ')'   (rule 11)
+    node  ->  '(' . node_list ')'   (rule 12)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    TT_DEF	shift, and go to state 9
+    TT_TYPE_DEF	shift, and go to state 10
+    TT_DECL	shift, and go to state 11
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    node	go to state 7
+    node_list	go to state 12
+
+
+
+state 6
+
+    node  ->  '*' .   (rule 6)
+
+    $default	reduce using rule 6 (node)
+
+
+
+state 7
+
+    node_list  ->  node .   (rule 14)
+
+    $default	reduce using rule 14 (node_list)
+
+
+
+state 8
+
+    definitions  ->  node_list .   (rule 1)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    $default	reduce using rule 1 (definitions)
+
+    node	go to state 13
+
+
+
+state 9
+
+    node  ->  '(' TT_DEF . TT_CHARSTRING node_list ')'   (rule 8)
+
+    TT_CHARSTRING	shift, and go to state 14
+
+
+
+state 10
+
+    node  ->  '(' TT_TYPE_DEF . node_list ')'   (rule 11)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    node	go to state 7
+    node_list	go to state 15
+
+
+
+state 11
+
+    node  ->  '(' TT_DECL . node_list TT_IDENTIFIER node_list ')'   (rule 9)
+    node  ->  '(' TT_DECL . node_list TT_IDENTIFIER ')'   (rule 10)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    node	go to state 7
+    node_list	go to state 16
+
+
+
+state 12
+
+    node  ->  '(' node_list . ')'   (rule 12)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    ')' 	shift, and go to state 17
+    '*' 	shift, and go to state 6
+
+    node	go to state 13
+
+
+
+state 13
+
+    node_list  ->  node_list node .   (rule 13)
+
+    $default	reduce using rule 13 (node_list)
+
+
+
+state 14
+
+    node  ->  '(' TT_DEF TT_CHARSTRING . node_list ')'   (rule 8)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    node	go to state 7
+    node_list	go to state 18
+
+
+
+state 15
+
+    node  ->  '(' TT_TYPE_DEF node_list . ')'   (rule 11)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    ')' 	shift, and go to state 19
+    '*' 	shift, and go to state 6
+
+    node	go to state 13
+
+
+
+state 16
+
+    node  ->  '(' TT_DECL node_list . TT_IDENTIFIER node_list ')'   (rule 9)
+    node  ->  '(' TT_DECL node_list . TT_IDENTIFIER ')'   (rule 10)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 20
+    '(' 	shift, and go to state 5
+    '*' 	shift, and go to state 6
+
+    node	go to state 13
+
+
+
+state 17
+
+    node  ->  '(' node_list ')' .   (rule 12)
+
+    $default	reduce using rule 12 (node)
+
+
+
+state 18
+
+    node  ->  '(' TT_DEF TT_CHARSTRING node_list . ')'   (rule 8)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    ')' 	shift, and go to state 21
+    '*' 	shift, and go to state 6
+
+    node	go to state 13
+
+
+
+state 19
+
+    node  ->  '(' TT_TYPE_DEF node_list ')' .   (rule 11)
+
+    $default	reduce using rule 11 (node)
+
+
+
+state 20
+
+    node  ->  TT_IDENTIFIER .   (rule 4)
+    node  ->  '(' TT_DECL node_list TT_IDENTIFIER . node_list ')'   (rule 9)
+    node  ->  '(' TT_DECL node_list TT_IDENTIFIER . ')'   (rule 10)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    ')' 	shift, and go to state 22
+    '*' 	shift, and go to state 6
+
+    TT_INTEGER	[reduce using rule 4 (node)]
+    TT_FLOAT	[reduce using rule 4 (node)]
+    TT_CHARSTRING	[reduce using rule 4 (node)]
+    TT_IDENTIFIER	[reduce using rule 4 (node)]
+    '(' 	[reduce using rule 4 (node)]
+    '*' 	[reduce using rule 4 (node)]
+    $default	reduce using rule 4 (node)
+
+    node	go to state 7
+    node_list	go to state 23
+
+
+
+state 21
+
+    node  ->  '(' TT_DEF TT_CHARSTRING node_list ')' .   (rule 8)
+
+    $default	reduce using rule 8 (node)
+
+
+
+state 22
+
+    node  ->  '(' TT_DECL node_list TT_IDENTIFIER ')' .   (rule 10)
+
+    $default	reduce using rule 10 (node)
+
+
+
+state 23
+
+    node  ->  '(' TT_DECL node_list TT_IDENTIFIER node_list . ')'   (rule 9)
+    node_list  ->  node_list . node   (rule 13)
+
+    TT_INTEGER	shift, and go to state 1
+    TT_FLOAT	shift, and go to state 2
+    TT_CHARSTRING	shift, and go to state 3
+    TT_IDENTIFIER	shift, and go to state 4
+    '(' 	shift, and go to state 5
+    ')' 	shift, and go to state 24
+    '*' 	shift, and go to state 6
+
+    node	go to state 13
+
+
+
+state 24
+
+    node  ->  '(' TT_DECL node_list TT_IDENTIFIER node_list ')' .   (rule 9)
+
+    $default	reduce using rule 9 (node)
+
+
+
+state 25
+
+    $   	go to state 26
+
+
+
+state 26
+
+    $   	go to state 27
+
+
+
+state 27
+
+    $default	accept
