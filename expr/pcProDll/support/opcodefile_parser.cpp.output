@@ -1,0 +1,502 @@
+
+Grammar
+rule 1    opcodefile ->		/* empty */
+rule 2    opcodefile -> opcode_def_list
+rule 3    opcode_def_list -> opcode_def
+rule 4    opcode_def_list -> opcode_def opcode_def_list
+rule 5    @1 ->		/* empty */
+rule 6    opcode_def -> TT_OPEN_PAREN TT_OPCODE opcode @1 datatypes TT_CLOSE_PAREN
+rule 7    datatypes -> TT_OPEN_PAREN TT_DATATYPES destination_list source_list TT_CLOSE_PAREN
+rule 8    datatypes -> TT_OPEN_PAREN TT_DATATYPES source_list TT_CLOSE_PAREN
+rule 9    datatypes -> TT_OPEN_PAREN TT_DATATYPES destination_list TT_CLOSE_PAREN
+rule 10   datatypes -> TT_OPEN_PAREN TT_DATATYPES TT_CLOSE_PAREN
+rule 11   @2 ->		/* empty */
+rule 12   destination_list -> TT_OPEN_PAREN TT_DST_LIST_ @2 operand_type_list TT_CLOSE_PAREN
+rule 13   @3 ->		/* empty */
+rule 14   source_list -> TT_OPEN_PAREN TT_SRC_LIST_ @3 operand_type_list TT_CLOSE_PAREN
+rule 15   operand_type_list -> TT_OPEN_PAREN operand_types TT_CLOSE_PAREN
+rule 16   operand_types -> operand_type TT_AND operand_types
+rule 17   operand_types -> operand_type
+rule 18   operand_type -> operand TT_TYPE dtype
+rule 19   opcode -> TT_STRING
+rule 20   operand -> TT_STRING
+rule 21   dtype -> TT_INTEGER
+rule 22   dtype -> TT_DOUBLE
+rule 23   dtype -> TT_FLOAT
+rule 24   dtype -> TT_ANY
+
+Terminals, with rules where they appear
+
+$ (-1)
+error (256)
+TT_OPEN_PAREN (258) 6 7 8 9 10 12 14 15
+TT_CLOSE_PAREN (259) 6 7 8 9 10 12 14 15
+TT_OPCODE (260) 6
+TT_DATATYPES (261) 7 8 9 10
+TT_DST_LIST_ (262) 12
+TT_SRC_LIST_ (263) 14
+TT_AND (264) 16
+TT_TYPE (265) 18
+TT_STRING (266) 19 20
+TT_INTEGER (267) 21
+TT_FLOAT (268) 23
+TT_ANY (269) 24
+TT_DOUBLE (270) 22
+
+Nonterminals, with rules where they appear
+
+opcodefile (16)
+    on left: 1 2
+opcode_def_list (17)
+    on left: 3 4, on right: 2 4
+opcode_def (18)
+    on left: 6, on right: 3 4
+@1 (19)
+    on left: 5, on right: 6
+datatypes (20)
+    on left: 7 8 9 10, on right: 6
+destination_list (21)
+    on left: 12, on right: 7 9
+@2 (22)
+    on left: 11, on right: 12
+source_list (23)
+    on left: 14, on right: 7 8
+@3 (24)
+    on left: 13, on right: 14
+operand_type_list (25)
+    on left: 15, on right: 12 14
+operand_types (26)
+    on left: 16 17, on right: 15 16
+operand_type (27)
+    on left: 18, on right: 16 17
+opcode (28)
+    on left: 19, on right: 6
+operand (29)
+    on left: 20, on right: 18
+dtype (30)
+    on left: 21 22 23 24, on right: 18
+
+
+state 0
+
+    TT_OPEN_PAREN	shift, and go to state 1
+
+    $default	reduce using rule 1 (opcodefile)
+
+    opcodefile	go to state 44
+    opcode_def_list	go to state 2
+    opcode_def	go to state 3
+
+
+
+state 1
+
+    opcode_def  ->  TT_OPEN_PAREN . TT_OPCODE opcode @1 datatypes TT_CLOSE_PAREN   (rule 6)
+
+    TT_OPCODE	shift, and go to state 4
+
+
+
+state 2
+
+    opcodefile  ->  opcode_def_list .   (rule 2)
+
+    $default	reduce using rule 2 (opcodefile)
+
+
+
+state 3
+
+    opcode_def_list  ->  opcode_def .   (rule 3)
+    opcode_def_list  ->  opcode_def . opcode_def_list   (rule 4)
+
+    TT_OPEN_PAREN	shift, and go to state 1
+
+    $default	reduce using rule 3 (opcode_def_list)
+
+    opcode_def_list	go to state 5
+    opcode_def	go to state 3
+
+
+
+state 4
+
+    opcode_def  ->  TT_OPEN_PAREN TT_OPCODE . opcode @1 datatypes TT_CLOSE_PAREN   (rule 6)
+
+    TT_STRING	shift, and go to state 6
+
+    opcode	go to state 7
+
+
+
+state 5
+
+    opcode_def_list  ->  opcode_def opcode_def_list .   (rule 4)
+
+    $default	reduce using rule 4 (opcode_def_list)
+
+
+
+state 6
+
+    opcode  ->  TT_STRING .   (rule 19)
+
+    $default	reduce using rule 19 (opcode)
+
+
+
+state 7
+
+    opcode_def  ->  TT_OPEN_PAREN TT_OPCODE opcode . @1 datatypes TT_CLOSE_PAREN   (rule 6)
+
+    $default	reduce using rule 5 (@1)
+
+    @1  	go to state 8
+
+
+
+state 8
+
+    opcode_def  ->  TT_OPEN_PAREN TT_OPCODE opcode @1 . datatypes TT_CLOSE_PAREN   (rule 6)
+
+    TT_OPEN_PAREN	shift, and go to state 9
+
+    datatypes	go to state 10
+
+
+
+state 9
+
+    datatypes  ->  TT_OPEN_PAREN . TT_DATATYPES destination_list source_list TT_CLOSE_PAREN   (rule 7)
+    datatypes  ->  TT_OPEN_PAREN . TT_DATATYPES source_list TT_CLOSE_PAREN   (rule 8)
+    datatypes  ->  TT_OPEN_PAREN . TT_DATATYPES destination_list TT_CLOSE_PAREN   (rule 9)
+    datatypes  ->  TT_OPEN_PAREN . TT_DATATYPES TT_CLOSE_PAREN   (rule 10)
+
+    TT_DATATYPES	shift, and go to state 11
+
+
+
+state 10
+
+    opcode_def  ->  TT_OPEN_PAREN TT_OPCODE opcode @1 datatypes . TT_CLOSE_PAREN   (rule 6)
+
+    TT_CLOSE_PAREN	shift, and go to state 12
+
+
+
+state 11
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES . destination_list source_list TT_CLOSE_PAREN   (rule 7)
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES . source_list TT_CLOSE_PAREN   (rule 8)
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES . destination_list TT_CLOSE_PAREN   (rule 9)
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES . TT_CLOSE_PAREN   (rule 10)
+
+    TT_OPEN_PAREN	shift, and go to state 13
+    TT_CLOSE_PAREN	shift, and go to state 14
+
+    destination_list	go to state 15
+    source_list	go to state 16
+
+
+
+state 12
+
+    opcode_def  ->  TT_OPEN_PAREN TT_OPCODE opcode @1 datatypes TT_CLOSE_PAREN .   (rule 6)
+
+    $default	reduce using rule 6 (opcode_def)
+
+
+
+state 13
+
+    destination_list  ->  TT_OPEN_PAREN . TT_DST_LIST_ @2 operand_type_list TT_CLOSE_PAREN   (rule 12)
+    source_list  ->  TT_OPEN_PAREN . TT_SRC_LIST_ @3 operand_type_list TT_CLOSE_PAREN   (rule 14)
+
+    TT_DST_LIST_	shift, and go to state 17
+    TT_SRC_LIST_	shift, and go to state 18
+
+
+
+state 14
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES TT_CLOSE_PAREN .   (rule 10)
+
+    $default	reduce using rule 10 (datatypes)
+
+
+
+state 15
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES destination_list . source_list TT_CLOSE_PAREN   (rule 7)
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES destination_list . TT_CLOSE_PAREN   (rule 9)
+
+    TT_OPEN_PAREN	shift, and go to state 19
+    TT_CLOSE_PAREN	shift, and go to state 20
+
+    source_list	go to state 21
+
+
+
+state 16
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES source_list . TT_CLOSE_PAREN   (rule 8)
+
+    TT_CLOSE_PAREN	shift, and go to state 22
+
+
+
+state 17
+
+    destination_list  ->  TT_OPEN_PAREN TT_DST_LIST_ . @2 operand_type_list TT_CLOSE_PAREN   (rule 12)
+
+    $default	reduce using rule 11 (@2)
+
+    @2  	go to state 23
+
+
+
+state 18
+
+    source_list  ->  TT_OPEN_PAREN TT_SRC_LIST_ . @3 operand_type_list TT_CLOSE_PAREN   (rule 14)
+
+    $default	reduce using rule 13 (@3)
+
+    @3  	go to state 24
+
+
+
+state 19
+
+    source_list  ->  TT_OPEN_PAREN . TT_SRC_LIST_ @3 operand_type_list TT_CLOSE_PAREN   (rule 14)
+
+    TT_SRC_LIST_	shift, and go to state 18
+
+
+
+state 20
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES destination_list TT_CLOSE_PAREN .   (rule 9)
+
+    $default	reduce using rule 9 (datatypes)
+
+
+
+state 21
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES destination_list source_list . TT_CLOSE_PAREN   (rule 7)
+
+    TT_CLOSE_PAREN	shift, and go to state 25
+
+
+
+state 22
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES source_list TT_CLOSE_PAREN .   (rule 8)
+
+    $default	reduce using rule 8 (datatypes)
+
+
+
+state 23
+
+    destination_list  ->  TT_OPEN_PAREN TT_DST_LIST_ @2 . operand_type_list TT_CLOSE_PAREN   (rule 12)
+
+    TT_OPEN_PAREN	shift, and go to state 26
+
+    operand_type_list	go to state 27
+
+
+
+state 24
+
+    source_list  ->  TT_OPEN_PAREN TT_SRC_LIST_ @3 . operand_type_list TT_CLOSE_PAREN   (rule 14)
+
+    TT_OPEN_PAREN	shift, and go to state 26
+
+    operand_type_list	go to state 28
+
+
+
+state 25
+
+    datatypes  ->  TT_OPEN_PAREN TT_DATATYPES destination_list source_list TT_CLOSE_PAREN .   (rule 7)
+
+    $default	reduce using rule 7 (datatypes)
+
+
+
+state 26
+
+    operand_type_list  ->  TT_OPEN_PAREN . operand_types TT_CLOSE_PAREN   (rule 15)
+
+    TT_STRING	shift, and go to state 29
+
+    operand_types	go to state 30
+    operand_type	go to state 31
+    operand	go to state 32
+
+
+
+state 27
+
+    destination_list  ->  TT_OPEN_PAREN TT_DST_LIST_ @2 operand_type_list . TT_CLOSE_PAREN   (rule 12)
+
+    TT_CLOSE_PAREN	shift, and go to state 33
+
+
+
+state 28
+
+    source_list  ->  TT_OPEN_PAREN TT_SRC_LIST_ @3 operand_type_list . TT_CLOSE_PAREN   (rule 14)
+
+    TT_CLOSE_PAREN	shift, and go to state 34
+
+
+
+state 29
+
+    operand  ->  TT_STRING .   (rule 20)
+
+    $default	reduce using rule 20 (operand)
+
+
+
+state 30
+
+    operand_type_list  ->  TT_OPEN_PAREN operand_types . TT_CLOSE_PAREN   (rule 15)
+
+    TT_CLOSE_PAREN	shift, and go to state 35
+
+
+
+state 31
+
+    operand_types  ->  operand_type . TT_AND operand_types   (rule 16)
+    operand_types  ->  operand_type .   (rule 17)
+
+    TT_AND	shift, and go to state 36
+
+    $default	reduce using rule 17 (operand_types)
+
+
+
+state 32
+
+    operand_type  ->  operand . TT_TYPE dtype   (rule 18)
+
+    TT_TYPE	shift, and go to state 37
+
+
+
+state 33
+
+    destination_list  ->  TT_OPEN_PAREN TT_DST_LIST_ @2 operand_type_list TT_CLOSE_PAREN .   (rule 12)
+
+    $default	reduce using rule 12 (destination_list)
+
+
+
+state 34
+
+    source_list  ->  TT_OPEN_PAREN TT_SRC_LIST_ @3 operand_type_list TT_CLOSE_PAREN .   (rule 14)
+
+    $default	reduce using rule 14 (source_list)
+
+
+
+state 35
+
+    operand_type_list  ->  TT_OPEN_PAREN operand_types TT_CLOSE_PAREN .   (rule 15)
+
+    $default	reduce using rule 15 (operand_type_list)
+
+
+
+state 36
+
+    operand_types  ->  operand_type TT_AND . operand_types   (rule 16)
+
+    TT_STRING	shift, and go to state 29
+
+    operand_types	go to state 38
+    operand_type	go to state 31
+    operand	go to state 32
+
+
+
+state 37
+
+    operand_type  ->  operand TT_TYPE . dtype   (rule 18)
+
+    TT_INTEGER	shift, and go to state 39
+    TT_FLOAT	shift, and go to state 40
+    TT_ANY	shift, and go to state 41
+    TT_DOUBLE	shift, and go to state 42
+
+    dtype	go to state 43
+
+
+
+state 38
+
+    operand_types  ->  operand_type TT_AND operand_types .   (rule 16)
+
+    $default	reduce using rule 16 (operand_types)
+
+
+
+state 39
+
+    dtype  ->  TT_INTEGER .   (rule 21)
+
+    $default	reduce using rule 21 (dtype)
+
+
+
+state 40
+
+    dtype  ->  TT_FLOAT .   (rule 23)
+
+    $default	reduce using rule 23 (dtype)
+
+
+
+state 41
+
+    dtype  ->  TT_ANY .   (rule 24)
+
+    $default	reduce using rule 24 (dtype)
+
+
+
+state 42
+
+    dtype  ->  TT_DOUBLE .   (rule 22)
+
+    $default	reduce using rule 22 (dtype)
+
+
+
+state 43
+
+    operand_type  ->  operand TT_TYPE dtype .   (rule 18)
+
+    $default	reduce using rule 18 (operand_type)
+
+
+
+state 44
+
+    $   	go to state 45
+
+
+
+state 45
+
+    $   	go to state 46
+
+
+
+state 46
+
+    $default	accept
