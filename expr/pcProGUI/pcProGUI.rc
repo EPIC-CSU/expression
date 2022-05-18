@@ -1,0 +1,2514 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\pcProGUI.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\pcProGUI.ico"
+IDR_PCPROTYPE           ICON    DISCARDABLE     "res\\pcProGUIDoc.ico"
+IDR_PCPROTYPE1          ICON    DISCARDABLE     "res\\idr_pcpr.ico"
+IDI_NO_CHECK            ICON    DISCARDABLE     "res\\nocheck.ico"
+IDI_CHECK               ICON    DISCARDABLE     "res\\check.ico"
+IDI_OLDMAIN             ICON    DISCARDABLE     "res\\oldmain.ico"
+IDI_PLAIN               ICON    DISCARDABLE     "res\\plain.ico"
+IDI_UP                  ICON    DISCARDABLE     "res\\up.ico"
+IDI_DOWN                ICON    DISCARDABLE     "res\\down.ico"
+IDI_DELETE              ICON    DISCARDABLE     "res\\delete.ico"
+IDI_ADD                 ICON    DISCARDABLE     "res\\add.ico"
+IDI_ADD_OP              ICON    DISCARDABLE     "res\\add_op.ico"
+IDI_ADD_GROUP           ICON    DISCARDABLE     "res\\add_grou.ico"
+IDI_DEL_GROUP           ICON    DISCARDABLE     "res\\del_grou.ico"
+IDI_DEL_OP              ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_CFILE               ICON    DISCARDABLE     "res\\cfile.ico"
+IDI_FUNC                ICON    DISCARDABLE     "res\\func.ico"
+IDI_CFILE_CHECK         ICON    DISCARDABLE     "res\\cfile_ch.ico"
+IDI_FUNC_CHECK          ICON    DISCARDABLE     "res\\func_che.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_CONSOLETOOLBAR      BITMAP  DISCARDABLE     "res\\consolet.bmp"
+IDR_EXPRESSION          BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_PROJECT_ADD
+    BUTTON      ID_PROJECT_REMOVE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+    BUTTON      ID_CONTEXT_HELP
+END
+
+IDR_CONSOLETOOLBAR TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_CONSOLE_CLEAR
+    BUTTON      ID_CONSOLE_COPY
+END
+
+IDR_EXPRESSION TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_DEFAULT
+    BUTTON      ID_ADD_COMP_UNIT
+    BUTTON      ID_ADD_UNIT
+    BUTTON      ID_ADD_STORAGE
+    BUTTON      ID_ADD_LATCH
+    BUTTON      ID_ADD_PORT
+    BUTTON      ID_ADD_CONNECTION
+    BUTTON      ID_ADD_BUS
+    BUTTON      ID_ADD_PIPELINESTAGE
+    BUTTON      ID_ADD_DATAPATH
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_PCPROTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&Project"
+    BEGIN
+        MENUITEM "&Add Files",                  ID_PROJECT_ADD
+        MENUITEM "&Remove Files",               ID_PROJECT_REMOVE
+    END
+    POPUP "Compile"
+    BEGIN
+        MENUITEM "&Batch Compile",              ID_PROJECT_COMPILE
+        POPUP "Step Compile"
+        BEGIN
+            MENUITEM "Initialize Compiler",         ID_COMPILE_STEPCOMPILE_INITIALIZECOMPILER
+
+            MENUITEM "Build SSA",                   ID_COMPILE_STEPCOMPILE_SSA
+            , GRAYED
+            MENUITEM "DataFlow Analysis",           ID_COMPILE_STEPCOMPILE_UDDUANALYSIS
+            , GRAYED
+            MENUITEM "Build HTG",                   ID_COMPILE_STEPCOMPILE_BUILDHTG
+            , GRAYED
+            MENUITEM "TrailBlazing",                ID_COMPILE_STEPCOMPILE_TRAILBLAZING
+            , GRAYED
+            MENUITEM "Mark Basic Blocks",           ID_MARK_BLOCKS, GRAYED
+            MENUITEM "If-Convert",                  ID_IFCONVERT, GRAYED
+            MENUITEM "Percolate",                   ID_PERCOLATE, GRAYED
+            MENUITEM SEPARATOR
+            MENUITEM "Print Routine",               ID_COMPILE_STEPCOMPILE_PRINTROUTINE
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Build",                      ID_PROJECT_BUILD
+    END
+    POPUP "&Graphs"
+    BEGIN
+        MENUITEM "Instruction List Graph",      ID_GRAPHS_ILG
+        MENUITEM "Control Flow Graph",          ID_GRAPHS_CFG
+        MENUITEM "Hierarchical Task Graph",     ID_GRAPHS_HTG
+    END
+    POPUP "&Architecture"
+    BEGIN
+        MENUITEM "&New",                        ID_SIM_NEW
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_CFG MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Print Instruction",           ID_PBB_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "Set Percolation Flag",        ID_PBB_SETPERC
+        MENUITEM "Reset Percolation Flag",      ID_PBB_RESETPERC
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Basic Block", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Set Start Block",             ID_PBB_SETSTART
+        MENUITEM "Set Stop Block",              ID_PBB_SETSTOP
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Simple HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse If HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Loop HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Compund HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Refresh Graph",               ID_REFRESH_GRAPH
+    END
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_ILG MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+        MENUITEM "Print Instruction",           ID_PBB_PRINT
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Basic Block", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Simple HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse If HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Loop HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Compund HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Refresh Graph",               ID_REFRESH_GRAPH
+    END
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_HTG MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+        MENUITEM "Print Instruction",           ID_PBB_PRINT
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Basic Block", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show/Hide UD Chains",         ID_PBB_UD
+        MENUITEM "Show/Hide DU Chains",         ID_PBB_DU
+        MENUITEM "&Show/Hide UD/DU Chains",     ID_PBB_UDDU
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Simple HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse If HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Loop HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "&Expand/Collapse Compund HTG Node", ID_PBB_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            ID_PBB_SHOWPROPERTIES
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Refresh Graph",               ID_REFRESH_GRAPH
+    END
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_SIMULATOR MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Load Graphical Machine Description", 
+                                                ID_FILE_LOAD_GRAPHICAL_MACHINE_DESCRIPTION
+
+        MENUITEM "Save Graphical Machine Description", 
+                                                ID_FILE_SAVE_GRAPHICAL_MACHINE_DESCRIPTION
+
+        MENUITEM "Save Graphical Machine Description As...", 
+                                                ID_FILE_SAVE_GRAPHICAL_MACHINE_DESCRIPTION_AS
+
+        MENUITEM SEPARATOR
+        MENUITEM "Load EXPRESSION Instruction Description", 
+                                                ID_FILE_LOAD_EXPR_INSTR_DESC
+        MENUITEM "Save EXPRESSION Machine Description", 
+                                                ID_FILE_SAVE_EXPR_DESCR
+        MENUITEM "Save EXPRESSION Machine Description As...", 
+                                                ID_FILE_SAVE_EXPR_DESCR_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Components"
+    BEGIN
+        MENUITEM "Move/Edit",                   ID_DEFAULT
+        MENUITEM "Delete",                      ID_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Add Compound Unit",           ID_ADD_COMP_UNIT, GRAYED
+        MENUITEM "Add &Unit",                   ID_ADD_UNIT
+        MENUITEM "Add &Storage",                ID_ADD_STORAGE
+        MENUITEM "Add Latch",                   ID_ADD_LATCH
+        MENUITEM "Add &Connection",             ID_ADD_CONNECTION
+        MENUITEM "Add Bus",                     ID_ADD_BUS, GRAYED
+        MENUITEM "Add &Port",                   ID_ADD_PORT
+        MENUITEM SEPARATOR
+        MENUITEM "Add Pipeline Stage",          ID_ADD_PIPELINESTAGE
+        MENUITEM SEPARATOR
+        MENUITEM "Add Datapath",                ID_ADD_DATAPATH
+        MENUITEM "Edit datapaths",              ID_EDIT_DATAPATHS
+    END
+    POPUP "Instruction Set"
+    BEGIN
+        MENUITEM "Set VAR_GROUPS",              ID_INSTRUCTIONSET_SETVARGROUPS
+
+        MENUITEM "Set OP_GROUPs",               ID_INSTRUCTIONSET_SETOPGROUPS
+
+        MENUITEM "Set OPERAND_MAPPING",         ID_INSTRUCTIONSET_SETOPERANDMAPPING
+
+        MENUITEM "Set TREE_MAPPING",            ID_INSTRUCTIONSET_SETOPMAPPINGS
+
+        MENUITEM "Set Instruction Description", ID_INSTRUCTIONSET_SETINSTRUCTIONDESCRIPTION
+
+        MENUITEM SEPARATOR
+        MENUITEM "Load Instruction Set Description", ID_LOAD_IS_DESCR
+        MENUITEM "Save Instruction Set Description", ID_SAVE_IS_DESCR
+        MENUITEM "Save Instruction Set Description As...", 
+                                                ID_SAVE_IS_DESCR_AS
+    END
+    POPUP "&Simulator", GRAYED
+    BEGIN
+        MENUITEM "Sto&p\tCtrl+S",               ID_SIM_STOP, GRAYED
+        MENUITEM "Rese&t",                      ID_SIM_RESET, GRAYED
+        MENUITEM "&Step",                       ID_SIM_STEP, GRAYED
+        MENUITEM "&Run\tCtrl+R",                ID_SIM_RUN, GRAYED
+        MENUITEM "",                            1
+        MENUITEM "Toggle &Breakpoints",         ID_BREAK, GRAYED
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_SIM MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Compund Unit Type 1",         ID_SIM_COMP_UNIT_TYPE_1
+        MENUITEM "Compund Unit Type 2",         ID_SIM_COMP_UNIT_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Unit Type 1",                 ID_SIM_UNIT_TYPE_1
+        MENUITEM "Unit Type 2",                 ID_SIM_UNIT_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Latch Type 1",                ID_SIM_LATCH_TYPE_1
+        MENUITEM "Latch Unit Type 2",           ID_SIM_LATCH_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Port Type 1",                 ID_SIM_PORT_TYPE_1
+        MENUITEM "Port Type 2",                 ID_SIM_PORT_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Connection Type 1",           ID_SIM_CONNECTION_TYPE_1
+        MENUITEM "Connection Type 2",           ID_SIM_CONNECTION_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Bus Type 1",                  ID_SIM_CONNECTION_TYPE_1
+        MENUITEM "Bus Type 2",                  ID_SIM_CONNECTION_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Storage Type 1",              ID_SIM_STORAGE_TYPE_1
+        MENUITEM "Storage Type 2",              ID_SIM_STORAGE_TYPE_2
+        MENUITEM "...",                         ID_
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Properties",            32790
+        MENUITEM "&Resize",                     ID_RESIZE
+    END
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&Simulator"
+    BEGIN
+        MENUITEM "&New",                        ID_SIM_NEW
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Console",                    ID_VIEW_CONSOLE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About pcProGUI...",          ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_DELETE,              VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 239, 72
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE
+CAPTION "About EXPRESSION"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,20
+    LTEXT           "EXPRESSION Version 1.0",IDC_STATIC,41,11,84,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2003 CECS, UC Irvine",IDC_STATIC,41,57,
+                    113,8
+    DEFPUSHBUTTON   "OK",IDOK,194,7,38,14,WS_GROUP
+    LTEXT           "An optimizing retargetable compiler/simulator toolkit.",
+                    IDC_STATIC,41,25,163,8
+    LTEXT           "Questions or Comments? Contact: express@cecs.uci.edu",
+                    IDC_STATIC,42,41,182,8
+END
+
+IDD_CONSOLE DIALOGEX 0, 0, 490, 485
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "EXPRESS Console"
+FONT 7, "Small Fonts", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_STATUS,1,24,487,459,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,20,490,1
+END
+
+IDD_PROP_INSTR DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Instruction"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME,2,12,133,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ADDRESS2,141,12,73,12,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_OP_LIST,2,43,212,136,LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "mvOP",IDC_MOVE_OP,2,183,25,14
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Operations:",IDC_STATIC,2,30,37,8
+    LTEXT           "Name:",IDC_STATIC,2,2,33,9
+    LTEXT           "Address:",IDC_STATIC,141,2,33,9
+    PUSHBUTTON      "mvCJ",IDC_MOVE_CJ,28,183,25,14
+    PUSHBUTTON      "unify",IDC_UNIFY,54,183,24,14
+    PUSHBUTTON      "migrate",IDC_MIGRATE,78,183,28,14
+END
+
+IDD_PROP_UNIT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Unit"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_OPCODES_SELECTED_BACK,2,51,101,55,WS_GROUP
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME2,113,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "All",IDC_OPCODES_ALL,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,9,38,39,11
+    CONTROL         "Selected",IDC_OPCODES_SELECTED,"Button",
+                    BS_AUTORADIOBUTTON,9,50,45,13
+    LISTBOX         IDC_OP_TREE,8,63,90,39,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_CAPACITY,113,37,101,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_TIMING,113,64,101,39,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CUSTOM_PROP,2,155,212,24,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14,WS_DISABLED
+    LTEXT           "Capacity:",IDC_STATIC,113,27,30,8
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Custom Properties:",IDC_STATIC,2,143,60,8
+    LTEXT           "Timing:",IDC_STATIC,113,54,24,8
+    LTEXT           "Supported OpCodes:",IDC_STATIC,2,27,69,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+    EDITTEXT        IDC_INSTRIN,113,116,101,12,ES_AUTOHSCROLL | ES_NUMBER | 
+                    WS_GROUP
+    EDITTEXT        IDC_INSTROUT,113,139,101,12,ES_AUTOHSCROLL | ES_NUMBER | 
+                    WS_GROUP
+    LTEXT           "Instruction In",IDC_STATIC,113,106,42,8
+    LTEXT           "Instruction Out",IDC_STATIC,113,129,47,8
+END
+
+IDD_PROP_CONN DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Connection"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME2,113,12,101,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CUSTOM_PROP,2,41,212,138,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Custom Properties:",IDC_STATIC,2,28,60,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+END
+
+IDD_PROP_PORT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Port"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME2,113,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Read",IDC_PORT_TYPE_READ,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,11,45,60,10
+    CONTROL         "Write",IDC_PORT_TYPE_WRITE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,75,45,60,10
+    CONTROL         "Read/Write",IDC_PORT_TYPE_READWRITE,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,139,45,60,10
+    EDITTEXT        IDC_CUSTOM_PROP,2,79,212,100,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | 
+                    WS_GROUP
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Custom Properties:",IDC_STATIC,2,66,60,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+    GROUPBOX        "Port Type:",IDC_STATIC,2,31,212,30,WS_GROUP
+END
+
+IDD_PROP_STOR DIALOGEX 0, 0, 218, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Storage"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Register File",IDC_REGFILE,"Button",BS_AUTORADIOBUTTON,
+                    9,12,55,10
+    CONTROL         "ICache",IDC_ICACHE,"Button",BS_AUTORADIOBUTTON,83,12,55,
+                    12
+    CONTROL         "SRAM",IDC_SRAM,"Button",BS_AUTORADIOBUTTON,9,33,55,12
+    EDITTEXT        IDC_NAME2,2,59,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME2,117,61,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_WIDTH,2,84,101,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_MEM_SIZE,117,82,101,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_ASSOCIATIVITY,2,108,101,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_LINE,117,102,101,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_ACCESS_TIME,2,131,101,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_ADDR_RANGE_FROM,21,162,81,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_ADDR_RANGE_TO,21,180,81,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_CUSTOM_PROP,116,124,101,18,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,109,179,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,166,179,50,14,WS_GROUP
+    GROUPBOX        "Type",IDC_STATIC,2,2,216,48,WS_GROUP
+    LTEXT           "Class Name",IDC_STATIC,114,51,38,8
+    LTEXT           "Size",IDC_MEM_SIZE_L,114,74,41,8
+    LTEXT           "Address Range:",IDC_ADDR_RANGE_L,2,148,52,8
+    LTEXT           "To:",IDC_ADDR_RANGE_TO_L,2,182,18,8
+    LTEXT           "Width",IDC_WIDTH_L,2,73,41,8
+    LTEXT           "Cache Lines (Sets):",IDC_LINE_L,113,94,62,8
+    LTEXT           "Access Time:",IDC_ACCESS_TIME_L,2,122,44,8
+    LTEXT           "Custom Properties:",IDC_STATIC,113,115,60,8
+    LTEXT           "From:",IDC_ADDR_RANGE_FROM_L,2,164,18,8
+    LTEXT           "Associativity:",IDC_ASSOCIATIVITY_L,2,96,42,8
+    LTEXT           "Name:",IDC_STATIC,2,50,22,8
+    CONTROL         "DCache",IDC_DCACHE,"Button",BS_AUTORADIOBUTTON,149,12,
+                    55,12
+    CONTROL         "DRAM",IDC_DRAM,"Button",BS_AUTORADIOBUTTON,83,33,55,12
+    EDITTEXT        IDC_MNEMONIC,116,157,101,14,ES_AUTOHSCROLL
+    LTEXT           "Mnemonic",IDC_MNEMONIC_L,116,146,34,8
+END
+
+IDD_PROP_BASE DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CTEXT           "No object selected.",IDC_STATIC,65,94,85,10,
+                    SS_CENTERIMAGE
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_FILE DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - File"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    EDITTEXT        IDC_NAME,2,2,212,12,ES_AUTOHSCROLL | ES_READONLY | NOT 
+                    WS_BORDER
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    CONTROL         "Print Instruction List",IDC_PRINT_IL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,27,77,10
+    CONTROL         "Print Control Flow Graph",IDC_PRINT_CFG,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,42,92,10
+    CONTROL         "Print Hierarchical Task Graph",IDC_PRINT_HTG,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,57,109,10
+    CONTROL         "Also do above after trailblazing",IDC_AFTER_TBZ,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,72,112,10
+    CONTROL         "Do trailblazing",IDC_DO_TBZ,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,87,60,10
+    CONTROL         "Pipelined",IDC_DO_TBZ_PIPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,73,87,45,10
+    CONTROL         "doMut",IDC_DO_MUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    8,102,36,10
+    CONTROL         "SimHTG",IDC_SIM_HTG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,113,122,43,10
+    CONTROL         "SimNoSSA",IDC_SIM_NOSSA,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,122,51,10
+    CONTROL         "SimSSA",IDC_SIM_SSA,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,137,41,10
+    CONTROL         "SimISel",IDC_SIM_ISEL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,63,122,39,10
+    CONTROL         "SimTbz",IDC_SIM_TBZ,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,63,137,39,10
+    CONTROL         "doISel",IDC_DO_ISEL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,73,102,36,10
+    CONTROL         "printMC",IDC_PRINT_MC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,123,27,40,10
+    CONTROL         "doUnroll",IDC_DO_UNROLL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,130,102,42,10
+    LTEXT           "Compilation switches",IDC_STATIC,2,14,101,8
+END
+
+IDD_PROP_BBLOCK DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Basic Block"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LISTBOX         IDC_INSTR_LIST,2,43,212,137,LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Instructions:",IDC_STATIC,2,30,39,8
+    LTEXT           "DFS Num:",IDC_STATIC,2,2,33,9
+    EDITTEXT        IDC_NAME,2,12,133,12,ES_AUTOHSCROLL
+    LTEXT           "Address:",IDC_STATIC,141,2,33,9
+    EDITTEXT        IDC_ADDRESS2,141,12,73,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_HTG_SIMPLE DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - HTG Simple Node"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_HTG_IF DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - HTG If Node"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_HTG_LOOP DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - HTG Loop Node"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_HTG_COMPOUND DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - HTG Compound Node"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+END
+
+IDD_PROP_COMP_UNIT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Compund Unit"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME3,113,12,101,12,ES_AUTOHSCROLL
+    LISTBOX         IDC_SUBUNITS,2,38,212,66,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_CUSTOM_PROP,2,119,212,60,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Custom Properties:",IDC_STATIC,2,108,60,8
+    LTEXT           "SubUnits:",IDC_STATIC,2,27,32,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+END
+
+IDD_PROP_LATCH DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Latch"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Port Type:",IDC_STATIC,2,31,212,30,WS_GROUP
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME,113,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Input",IDC_LATCH_TYPE_INPUT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,11,45,60,10
+    CONTROL         "Output",IDC_LATCH_TYPE_OUTPUT,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,75,45,60,10
+    CONTROL         "Other",IDC_LATCH_TYPE_OTHER,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,139,45,60,10
+    LTEXT           "Custom Properties:",IDC_STATIC,2,66,60,8
+    EDITTEXT        IDC_CUSTOM_PROP,2,79,212,100,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+END
+
+IDD_PROP_PIPELINESTAGE DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Pipeline Stage"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",-1,2,2,22,8
+END
+
+IDD_DATAPATHS DIALOG DISCARDABLE  0, 0, 354, 276
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Data Paths"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_DATAPATHS,2,3,349,218,LBS_SORT | LBS_MULTIPLESEL | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Remove",ID_REMOVE,169,259,50,14
+    DEFPUSHBUTTON   "OK",IDOK,237,259,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,301,259,50,14
+    PUSHBUTTON      "Remove All",ID_REMOVE_ALL,103,259,50,14
+END
+
+IDD_STAT_SIM DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Simulator"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    LISTBOX         IDC_STATS,2,2,212,161,LBS_OWNERDRAWVARIABLE | 
+                    LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Selected Item:",IDC_STATIC,2,168,46,8
+    EDITTEXT        IDC_SELECTION,50,167,164,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 135, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_WIDTH,31,7,31,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_HEIGHT,97,7,31,14,ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "OK",IDOK,78,28,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,25,28,50,14
+    LTEXT           "Width:",IDC_STATIC,7,8,22,8
+    LTEXT           "Height:",IDC_STATIC,71,8,24,8
+END
+
+IDD_STAT_COMP_UNIT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Compound Unit"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_STAT_CONN DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Connection"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_STAT_LATCH DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Latch"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_STAT_PORT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Port"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_STAT_STOR DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Storage"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+END
+
+IDD_STAT_UNIT DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Statistics - Unit"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&Remove Stat",IDC_REMOVE_STAT,165,183,50,14,WS_DISABLED
+    PUSHBUTTON      "&Add Stat",IDC_ADD_STAT,111,183,50,14
+    LISTBOX         IDC_STATS,2,2,212,161,LBS_OWNERDRAWVARIABLE | 
+                    LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_SELECTION,50,167,164,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Selected Item:",IDC_STATIC,2,168,46,8
+END
+
+IDD_ADD_STAT DIALOG DISCARDABLE  0, 0, 241, 191
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_STAT_LIST,7,17,227,69,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_DISP_LIST,7,103,227,66,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,131,170,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,184,170,50,14
+    LTEXT           "Statistic Type:",IDC_STATIC,7,7,46,8
+    LTEXT           "Display Type:",IDC_STATIC,7,90,46,8
+END
+
+IDD_IS_OP_GROUPS DIALOG DISCARDABLE  0, 0, 440, 394
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Operation Groups"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,145,46,279,69
+    GROUPBOX        "",IDC_STATIC,145,118,279,69
+    GROUPBOX        "",IDC_STATIC,145,193,279,69
+    LISTBOX         IDC_OP_TREE,7,7,128,255,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add group",IDC_ADD_GROUP,7,373,21,14,BS_ICON | NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "Add Op",IDC_ADD_OP,30,373,21,14,BS_ICON | WS_DISABLED | 
+                    NOT WS_TABSTOP
+    PUSHBUTTON      "Delete group",IDC_DELETE_GROUP,53,373,21,14,BS_ICON | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    PUSHBUTTON      "Delete Op",IDC_DELETE_OP,76,373,21,14,BS_ICON | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_UP,102,373,16,14,BS_ICON | BS_CENTER | BS_VCENTER | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_DOWN,119,373,16,14,BS_ICON | BS_CENTER | 
+                    BS_VCENTER | WS_DISABLED | NOT WS_TABSTOP
+    EDITTEXT        IDC_NAME,169,12,108,12,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Apply",IDC_APPLY,379,11,45,14,WS_DISABLED
+    COMBOBOX        IDC_TYPE,318,11,57,78,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_BEHAVIOR,179,29,245,12,ES_AUTOHSCROLL | WS_DISABLED
+    CONTROL         "",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,154,
+                    45,12,12
+    COMBOBOX        IDC_OPERAND_11,160,71,39,85,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_11,202,71,81,62,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_12,286,71,39,85,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_12,328,71,81,62,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_13,160,97,39,85,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_13,202,97,81,62,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_14,286,97,39,85,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_14,328,97,81,62,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,154,
+                    117,12,12
+    CONTROL         "",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,154,
+                    187,12,12
+    COMBOBOX        IDC_OPERAND_21,160,143,39,83,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_21,202,143,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_22,286,143,39,82,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_22,328,143,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_23,160,169,39,83,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_23,202,169,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_24,286,169,39,84,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_24,328,169,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_31,160,213,39,103,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_31,202,213,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_32,286,213,39,102,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_32,328,213,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_33,160,240,39,91,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_33,202,240,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_34,286,240,39,92,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OPERAND_TYPE_34,328,240,81,62,CBS_DROPDOWN | 
+                    CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Cancel",IDCANCEL,327,373,50,14
+    DEFPUSHBUTTON   "OK",IDOK,383,373,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,144,7,289,361
+    LTEXT           "Op Type:",IDC_STATIC,284,14,30,8
+    LTEXT           "Behavior:",IDC_STATIC,145,31,31,8
+    LTEXT           "Operand 1",IDC_STATIC,160,60,34,8
+    LTEXT           "Operand 1 Type",IDC_STATIC,202,60,52,8
+    LTEXT           "Operand 2",IDC_STATIC,286,60,34,8
+    LTEXT           "Operand 2 Type",IDC_STATIC,328,60,52,8
+    LTEXT           "Operand 3",IDC_STATIC,160,86,34,8
+    LTEXT           "Operand 3 Type",IDC_STATIC,202,86,52,8
+    LTEXT           "Operand 4",IDC_STATIC,286,86,34,8
+    LTEXT           "Operand 4 Type",IDC_STATIC,328,86,52,8
+    LTEXT           "Operand 1",IDC_STATIC,160,132,34,8
+    LTEXT           "Operand 1 Type",IDC_STATIC,202,132,52,8
+    LTEXT           "Operand 2",IDC_STATIC,286,132,34,8
+    LTEXT           "Operand 2 Type",IDC_STATIC,328,132,52,8
+    LTEXT           "Operand 3",IDC_STATIC,160,158,34,8
+    LTEXT           "Operand 3 Type",IDC_STATIC,202,158,52,8
+    LTEXT           "Operand 4",IDC_STATIC,286,157,34,8
+    LTEXT           "Operand 4 Type",IDC_STATIC,328,157,52,8
+    LTEXT           "Operand 1",IDC_STATIC,160,203,34,8
+    LTEXT           "Operand 1 Type",IDC_STATIC,202,203,52,8
+    LTEXT           "Operand 2",IDC_STATIC,286,202,34,8
+    LTEXT           "Operand 2 Type",IDC_STATIC,328,202,52,8
+    LTEXT           "Operand 3",IDC_STATIC,160,229,34,8
+    LTEXT           "Operand 3 Type",IDC_STATIC,202,229,52,8
+    LTEXT           "Operand 4",IDC_STATIC,286,228,34,8
+    LTEXT           "Operand 4 Type",IDC_STATIC,328,228,52,8
+    LTEXT           "Name:",IDC_STATIC,145,14,22,8
+    EDITTEXT        IDC_EDIT2,165,329,249,33,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_DISABLED
+    EDITTEXT        IDC_EDIT3,165,276,249,33,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_DISABLED
+    LTEXT           "ASM FORMAT",IDC_STATIC,167,264,48,8
+    LTEXT           "IR DUMP FORMAT",IDC_STATIC,167,318,64,8
+END
+
+IDD_IS_INSTR_DESCR DIALOG DISCARDABLE  0, 0, 261, 186
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Instruction Description"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_WORDLEN,57,7,47,95,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LISTBOX         IDC_SLOT_LIST,14,49,217,62,LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_UP,234,65,16,14,BS_ICON | BS_CENTER | BS_VCENTER | 
+                    WS_DISABLED
+    PUSHBUTTON      "",IDC_DOWN,234,82,16,14,BS_ICON | BS_CENTER | 
+                    BS_VCENTER | WS_DISABLED
+    COMBOBOX        IDC_TYPE,21,137,57,78,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_BITWIDTH,85,137,31,95,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_UNIT,123,137,82,99,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Slot",IDC_ADD_SLOT,209,137,16,14,BS_ICON | 
+                    WS_DISABLED
+    PUSHBUTTON      "",IDC_DELETE_SLOT,227,137,16,14,BS_ICON | WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,150,164,50,14
+    DEFPUSHBUTTON   "OK",IDOK,204,164,50,14
+    LTEXT           "Type:",IDC_STATIC,21,126,19,8
+    GROUPBOX        "Slot",IDC_STATIC,14,113,234,42
+    LTEXT           "Bitwidth:",IDC_STATIC,85,126,28,8
+    LTEXT           "Unit:",IDC_STATIC,123,126,16,8
+    LTEXT           "Word Length:",IDC_STATIC,7,9,44,8
+    LTEXT           "Type",IDC_STATIC,14,38,17,8
+    LTEXT           "Bitwidth",IDC_STATIC,65,38,26,8
+    LTEXT           "Unit",IDC_STATIC,115,38,14,8
+    GROUPBOX        "Instruction Slots",IDC_STATIC,7,26,247,134
+END
+
+IDD_IS_OP_MAPPINGS DIALOG DISCARDABLE  0, 0, 385, 234
+STYLE DS_SYSMODAL | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "TREE MAPPING (Generic -> Target Opcode Mapping)"
+FONT 9, "Courier New"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,328,213,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,253,213,50,14
+    CONTROL         "",IDC_RICHTEXTCTRL1,
+                    "{3B7C8860-D78F-101B-B9B5-04021C009402}",WS_TABSTOP,11,
+                    22,367,180
+    LTEXT           "Press CNTRL Enter for newline after typing text",
+                    IDC_STATIC,15,7,212,10
+END
+
+IDD_IS_VAR_GROUP DIALOG DISCARDABLE  0, 0, 340, 228
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "VAR_GROUPs"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_VAR_GROUPS,7,18,325,147,LBS_SORT | LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_NAME,13,182,64,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COMPONENTS,175,182,116,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add VAR_GROUP",IDC_ADD_VAR_GROUP,294,182,16,14,BS_ICON | 
+                    WS_DISABLED
+    PUSHBUTTON      "Delete VAR_GROUP",IDC_DELETE_VAR_GROUP,312,182,16,14,
+                    BS_ICON | WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,231,206,50,14
+    DEFPUSHBUTTON   "OK",IDOK,283,206,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,7,167,325,37
+    LTEXT           "Name:",IDC_STATIC,13,172,22,8
+    LTEXT           "Components",IDC_STATIC,174,172,40,8
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    LTEXT           "Components",IDC_STATIC,149,7,40,8
+    EDITTEXT        IDC_DATATYPE,86,183,79,13,ES_AUTOHSCROLL
+    LTEXT           "Datatype",IDC_STATIC,85,172,62,8
+    LTEXT           "Datatype",IDC_STATIC,68,7,30,8
+END
+
+IDD_PROP_BUS DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Bus"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME2,2,12,101,12,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_CLASS_NAME2,113,12,101,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CUSTOM_PROP,2,41,212,138,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14
+    LTEXT           "Name:",IDC_STATIC,2,2,22,8
+    LTEXT           "Custom Properties:",IDC_STATIC,2,28,60,8
+    LTEXT           "Class Name:",IDC_STATIC,113,2,40,8
+END
+
+IDD_PROP_ROUTINE DIALOGEX 0, 0, 216, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Properties - Function"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",WS_BORDER | WS_TABSTOP,
+                    2,26,212,155
+    PUSHBUTTON      "&Undo",IDC_UNDO,110,183,50,14,WS_DISABLED
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,164,183,50,14,WS_DISABLED
+    EDITTEXT        IDC_NAME,2,2,212,12,ES_AUTOHSCROLL | ES_READONLY | NOT 
+                    WS_BORDER | NOT WS_TABSTOP
+    LTEXT           "Routine Statistics",IDC_STATIC,2,14,70,12
+END
+
+IDD_IS_OP_MAPPINGS1 DIALOG DISCARDABLE  0, 0, 385, 234
+STYLE DS_SYSMODAL | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "OPERAND MAPPING"
+FONT 9, "Courier New"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,328,213,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,253,213,50,14
+    EDITTEXT        IDC_MAPPING_TEXT1,7,7,371,198,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | 
+                    WS_VSCROLL | WS_HSCROLL | WS_GROUP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "acesMIPSGUI MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "acesMIPSGUI\0"
+            VALUE "LegalCopyright", "Copyright (C) 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "pcProGUI.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "acesMIPSGUI Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 65
+    END
+
+    IDD_CONSOLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 488
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 483
+    END
+
+    IDD_PROP_INSTR, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_UNIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_CONN, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_PORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_STOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_BASE, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_FILE, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_BBLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_HTG_SIMPLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_HTG_IF, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_HTG_LOOP, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_HTG_COMPOUND, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_COMP_UNIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_LATCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_PIPELINESTAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_DATAPATHS, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 351
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 273
+    END
+
+    IDD_STAT_SIM, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 128
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_STAT_COMP_UNIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_STAT_CONN, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_STAT_LATCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_STAT_PORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_STAT_STOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_STAT_UNIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_ADD_STAT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 234
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_IS_OP_GROUPS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 433
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 387
+    END
+
+    IDD_IS_INSTR_DESCR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 178
+    END
+
+    IDD_IS_OP_MAPPINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 378
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 227
+    END
+
+    IDD_IS_VAR_GROUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 333
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 221
+    END
+
+    IDD_PROP_BUS, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_PROP_ROUTINE, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 214
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_IS_OP_MAPPINGS1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 378
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 227
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_IS_INSTR_DESCR DLGINIT
+BEGIN
+    IDC_WORDLEN, 0x403, 2, 0
+0x0031, 
+    IDC_WORDLEN, 0x403, 2, 0
+0x0032, 
+    IDC_WORDLEN, 0x403, 2, 0
+0x0034, 
+    IDC_WORDLEN, 0x403, 2, 0
+0x0038, 
+    IDC_WORDLEN, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_WORDLEN, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_WORDLEN, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_WORDLEN, 0x403, 4, 0
+0x3231, 0x0038, 
+    IDC_TYPE, 0x403, 5, 0
+0x4144, 0x4154, "\000" 
+    IDC_TYPE, 0x403, 8, 0
+0x4f43, 0x544e, 0x4f52, 0x004c, 
+    IDC_TYPE, 0x403, 5, 0
+0x4c46, 0x574f, "\000" 
+    IDC_BITWIDTH, 0x403, 2, 0
+0x0031, 
+    IDC_BITWIDTH, 0x403, 2, 0
+0x0032, 
+    IDC_BITWIDTH, 0x403, 2, 0
+0x0034, 
+    IDC_BITWIDTH, 0x403, 2, 0
+0x0038, 
+    IDC_BITWIDTH, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_BITWIDTH, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_BITWIDTH, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0031, 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0032, 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0033, 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0034, 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0035, 
+    IDC_UNIT, 0x403, 6, 0
+0x6e55, 0x7469, 0x0036, 
+    0
+END
+
+IDD_IS_OP_GROUPS DLGINIT
+BEGIN
+    IDC_TYPE, 0x403, 8, 0
+0x4f43, 0x544e, 0x4f52, 0x004c, 
+    IDC_TYPE, 0x403, 5, 0
+0x4144, 0x4154, "\000" 
+    IDC_TYPE, 0x403, 5, 0
+0x4c46, 0x574f, "\000" 
+    IDC_OPERAND_11, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_11, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_11, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_11, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_11, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_11, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_11, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_11, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_11, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_11, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_11, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_11, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_11, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_11, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_11, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_12, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_12, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_12, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_12, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_12, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_12, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_12, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_12, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_12, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_12, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_12, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_12, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_12, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_12, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_12, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_13, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_13, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_13, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_13, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_13, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_13, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_13, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_13, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_13, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_13, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_13, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_13, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_13, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_13, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_13, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_14, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_14, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_14, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_14, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_14, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_14, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_14, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_14, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_14, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_14, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_14, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_14, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_14, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_14, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_14, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_21, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_21, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_21, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_21, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_21, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_21, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_21, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_21, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_21, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_21, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_21, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_21, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_21, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_21, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_21, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_22, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_22, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_22, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_22, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_22, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_22, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_22, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_22, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_22, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_22, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_22, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_22, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_22, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_22, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_22, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_23, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_23, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_23, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_23, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_23, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_23, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_23, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_23, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_23, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_23, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_23, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_23, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_23, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_23, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_23, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_24, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_24, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_24, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_24, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_24, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_24, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_24, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_24, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_24, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_24, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_24, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_24, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_24, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_24, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_24, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_31, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_31, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_31, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_31, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_31, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_31, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_31, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_31, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_31, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_31, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_31, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_31, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_31, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_31, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_31, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_32, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_32, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_32, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_32, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_32, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_32, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_32, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_32, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_32, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_32, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_32, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_32, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_32, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_32, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_32, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_33, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_33, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_33, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_33, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_33, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_33, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_33, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_33, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_33, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_33, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_33, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_33, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_33, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_33, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_33, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_34, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_34, 0x403, 4, 0
+0x5344, 0x0054, 
+    IDC_OPERAND_34, 0x403, 6, 0
+0x5253, 0x2043, 0x0031, 
+    IDC_OPERAND_34, 0x403, 6, 0
+0x5253, 0x2043, 0x0032, 
+    IDC_OPERAND_34, 0x403, 8, 0
+0x4552, 0x2047, 0x5344, 0x0054, 
+    IDC_OPERAND_34, 0x403, 8, 0
+0x454d, 0x204d, 0x5253, 0x0043, 
+    IDC_OPERAND_34, 0x403, 8, 0
+0x454d, 0x204d, 0x5344, 0x0054, 
+    IDC_OPERAND_34, 0x403, 8, 0
+0x4552, 0x2047, 0x5253, 0x0043, 
+    IDC_OPERAND_34, 0x403, 6, 0
+0x5253, 0x2043, 0x0033, 
+    IDC_OPERAND_TYPE_34, 0x403, 1, 0
+"\000" 
+    IDC_OPERAND_TYPE_34, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6e61, 0x0079, 
+    IDC_OPERAND_TYPE_34, 0x403, 14, 0
+0x6e69, 0x5f74, 0x6d69, 0x656d, 0x6964, 0x7461, 0x0065, 
+    IDC_OPERAND_TYPE_34, 0x403, 8, 0
+0x6e69, 0x5f74, 0x6c61, 0x006c, 
+    IDC_OPERAND_TYPE_34, 0x403, 15, 0
+0x6f64, 0x6275, 0x656c, 0x5f31, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    IDC_OPERAND_TYPE_34, 0x403, 13, 0
+0x6c66, 0x616f, 0x5f74, 0x6f6e, 0x6d72, 0x6c61, "\000" 
+    0
+END
+
+IDD_IS_OP_MAPPINGS DLGINIT
+BEGIN
+    IDC_RICHTEXTCTRL1, 0x37a, 161, 0
+0x0017, 0x0000, 0x0020, 0x0071, 0x0068, 0x006a, 0x0020, 0x005a, 0x0074, 
+0x0075, 0x0051, 0x0068, 0x0061, 0x003b, 0x006a, 0x0064, 0x0066, 0x006e, 
+0x005b, 0x0069, 0x0061, 0x0065, 0x0074, 0x0072, 0x0020, 0x0023, 0x0000, 
+0x0001, 0x0000, 0x001b, 0x0000, 0x0001, 0x8001, 0x0000, 0x000a, 0x0000, 
+0x001a, 0x0000, 0x0002, 0x8001, 0x0001, 0x0000, 0x2100, 0x3443, 0x0812, 
+0x0000, 0x5a00, 0x0042, 0xef00, 0x0022, 0x2100, 0x3443, 0x0112, 0x0600, 
+0x3000, 0x0000, 0x0000, 0xff00, 0x00ff, 0xff00, 0x01ff, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0500, 0x0000, 0x0080, 0x0000, 
+0x0000, 0x0100, 0x0300, 0x0100, 0x0100, 0x0200, 0x0000, 0x0000, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "EXPRESSION"
+    IDR_PCPROTYPE           "\npcPro\npcPro\npcPro Files (*.pcp)\n.pcp\npcPro.Document\npcPro Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "pcProGUI"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_CONSOLE         "Show or hide the console\nToggle Console"
+    ID_PROJECT_ADD          "Add files to current project\nAdd Files"
+    ID_PROJECT_REMOVE       "Remove files to current project\nRemove Files"
+    ID_PROJECT_COMPILE      "Compiles the selected file in the project\nCompile File"
+    ID_PROJECT_BUILD        "Builds all checked files in the project\nBuild"
+    ID_GRAPHS_CONTROLFLOWGRAPH 
+                            "Show or hide the control flow graph\nToggle CFG"
+    ID_GRAPHS_CFG           "Show or hide the control flow graph\nShow CFG"
+    ID_GRAPHS_HIERARCHICALTASKGRAPH 
+                            "Show or hide the control flow graph\nToggle HTG"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GRAPHS_HTG           "Show or hide the hierarchical task graph\nShow HTG"
+    ID_GRAPHS_INSTRUCTIONLISTGRAPH 
+                            "Show or hide the instruction list graph\nToggle ILG"
+    ID_GRAPHS_ILG           "Show or hide the instruction list graph\nShow ILG"
+    ID_ADD_STORAGE          "Add a storage component to the simulator\nAdd storage"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SIM_STOP             "Stop simulator\nStop"
+    ID_SIM_RESET            "Reset simulator\nReset"
+    ID_SIM_STEP             "Step simulator\nStep"
+    ID_SIM_RUN              "Run simulator\nRun"
+    ID_ADD_UNIT             "Add a unit component to the simulator\nAdd unit"
+    ID_ADD_CONNECTION       "Add a connection component to the simulator\nAdd connection"
+    ID_COMPONENTS_ADDPORT   "Add a port component to the simulator\nAdd port"
+    ID_SIM_NEW              "New simulator window\\New Simulator"
+    ID_ADD_PORT             "Add a port component to the simulator\nAdd port"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DEFAULT              "Move/edit components in the simulator\nMove/Edit"
+    ID_BREAK                "Toggle brakpoints in the simulator\nToggle breakpoints"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ADD_COMP_UNIT        "Add a compound unit component to the simulator\nAdd compound unit"
+    ID_FILE_LOAD_EXPR_INSTR_DESC 
+                            "Loads file containing EXPRESSION description of the machine instruction set\nLoad"
+    ID_FILE_SAVE_EXPR_DESCR "Saves the machine structural and instuction description in EXPRESSION format\nSave"
+    ID_FILE_LOAD_GRAPHICAL_MACHINE_DESCRIPTION 
+                            "Loads a diagram from a graphical machine description file\nLoad graphical description"
+    ID_FILE_SAVE_GRAPHICAL_MACHINE_DESCRIPTION 
+                            "Saves current diagram as a graphical machine description file\nSave graphical description"
+    ID_ADD_LATCH            "Add a latch component to the simulator\nAdd latch"
+    ID_ADD_PIPELINESTAGE    "Add a pipeline stage marker\nAdd pipeline stage"
+    ID_DATAPATH             "Add new data path\nAdd datapath"
+    ID_ADD_DATAPATH         "Add new datapath\nAdd datapath"
+    ID_EDIT_DATAPATHS       "Edit datapaths\nEdit datapaths"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ADD_BUS              "Add a bus component to the simulator\nAdd bus"
+    ID_COMPILE_STEPCOMPILE_SSA "Build SSA for current file\nBuild SSA"
+    ID_COMPILE_STEPCOMPILE_BUILDHTG "Build HTG for current file\nBuild HTG"
+    ID_COMPILE_STEPCOMPILE_UDDUANALYSIS 
+                            "Do dataflow analysis for current file\nDo Dataflow Analysis"
+    ID_COMPILE_STEPCOMPILE_TRAILBLAZING 
+                            "Do trailblazing for current file\nDo Trailblazing"
+    ID_COMPILE_STEPCOMPILE_INITIALIZECOMPILER 
+                            "Initialize compiler for current file\nInit Compiler"
+    ID_IFCONVERT            "If-convert current routine\nIf-Convert"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COMPILE_STEPCOMPILE_PRINTROUTINE 
+                            "Print CFG/HTG for current routine\nPrint routine"
+    ID_PERCOLATE            "Do percolation for current routine\nPercolation"
+    ID_IFCONVERT_MARK       "Mark BBs to if-convert for current routine\nMark for ifConversion"
+    ID_MARK_BLOCKS          "Marks basic blocks between START and STOP\nMark Basic Blocks"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DELETE               "Delete component"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_SAVE_GRAPHICAL_MACHINE_DESCRIPTION_AS 
+                            "Save Graphical Machine Description As..."
+    ID_FILE_SAVE_EXPR_DESCR_AS "Save EXPRESSION Machine Description As..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\pcProGUI.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
