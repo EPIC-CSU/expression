@@ -1,0 +1,341 @@
+%{
+#include "stdafx.h"
+
+#include <assert.h>
+
+#ifndef WIN32
+#include <stdio.h>
+#include <stdlib.h>
+#endif
+
+#define MY_TRACE
+
+#include "TreeBuilding.h"
+
+// fixes the anoying error C2440: '=' : cannot convert from 'struct isel_state::burm_state *' to 'struct isel_state *'
+#define burm_state	isel_state
+
+//START: MFC DEBUG NEW: THIS MUST BE AFTER ALL THE #INCLUDES IN A FILE
+#ifdef WIN32
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+#endif
+//END MFC DEBUG NEW: 
+
+
+static void burm_trace(NODEPTR_TYPE p, int eruleno, int cost, int bestcost) {
+#ifdef MY_TRACE
+	extern char *burm_string[];
+
+	fprintf(stderr, "0x%p matched %s with cost %d vs. %d\n", p,
+		burm_string[eruleno], cost, bestcost);
+#endif
+}
+%}
+%term IADD=1 IGE=2 IGT=3 ILE=4 IASH=5 ISUB=6 ILSH=7 ILT=8 NOP=9 ICONSTANT=10 IASSIGN=11 IF=12 IGOTO=13 IVLOAD=14 
+%term DVLOAD=15 IVSTORE=16 DVSTORE=17 ASSIGN=18 DCONSTANT=19 DADD=20 FASSIGN=21 DMUL=22 DSUB=23 DMTC1=24 GOTO=25 TRUNCID=26
+%term MFC1=27 MTC1=28 CVTDI=29 ILAND=30 DASSIGN=31 DGE=32 DLT=33 DLE=34 DGT=35 CVTSD=36 CVTDS=37
+%term DMFC1=38 DDIV=39 DEQ=40 FADD=41 FSUB=42 FMUL=43 FDIV=44 FVLOAD=45 FVSTORE=46 CALL=47 RETURN=48
+%term IRASH=49 ILASH=50 IRLSH=51 ILLSH=52 FCONSTANT=53 INE=54 CVTSI=55 TRUNCIS=56 IEQ=58 IOR=59 IAND=60 
+%term IXOR=61 IMUL=62 MFLO=63 QIVLOADU=64 QIVLOAD=65 QIVSTORE=66 QIVSTOREU=67 HIVLOADU=68 HIVLOAD=69 HIVSTORE=70 HIVSTOREU=71
+%term IGEU=72 IGTU=73 ILEU=74 ILTU=75 IDIV=76 MFHI=77 DNEG=78 FGT=79 FGE=80 FLT=81 FLE=82 FNEG=83 FEQ=84
+%term R0=101 R1=102 R2=103 R3=104 R4=105 R5=106 R6=107 R7=108 R8=109 R9=110 R10=111 R11=112 R12=113 R13=114 R14=115 R15=116
+%term R16=117 R17=118 R18=119 R19=120 R20=121 R21=122 R22=123 R23=124 R24=125 R25=126
+%term R26=173 R27=174 R28=175 R29=176 R30=177 R31=178 isel_label=179 
+%term sp0=127 cc0=128 f0=129 f1=130 f2=131 f3=132 f4=133 f5=134 f6=135 f7=136 f8=137
+%term f9=138 f10=139 f11=140 f12=141 f13=142 f14=143 f15=144 
+%term f16=145 f17=146 f18=147 f19=148 f20=149 f21=150 f22=151 f23=152 f24=153
+%term f25=154 f26=155 f27=156 f28=157 f29=158 f30=159 f31=160 
+%term fp0=161 hilo0=180
+%term temp0=162 temp1=163 temp2=164 temp3=165 temp4=166 temp5=167 temp6=168 temp7=169 temp8=170 temp9=171 temp10=172
+%term DEF=201 INT=202 IND=203 SRC2=204 FLOAT=205
+%term NONE=400 ALU1=401 ALU2=402
+
+%term addu=500 subu=501 lw=502 sw=503 move=504 srl=505 sra=506 mul_d=507 add_d=508 sub_d=509 la=510 
+%term sge=511 slt=512 sgtu=558 sltu=559 sgeu=560 sleu=561 div=562 mfhi=563
+%term sle=513 sgt=514 trunc_w_d=515 li=516 mtc1=517 cvt_d_w=518 and=519 cvt_s_d=520 cvt_d_s=521 
+%term div_d=522 bnez=523 add_s=524 sub_s=525 mul_s=526 div_s=527 l_d=528 s_d=529 jal=530 jr=531
+%term mov_d=532 mfc1=533 li_d=534 l_s=535 s_s=536 cvt_s_w=537 trunc_w_s=538 li_s=539 
+%term sne=540 seq=541 sll=542 sla=543 j=544 ori=545 andi=546 xori=547 mult=548 mflo=549
+%term lbu=550 lb=551 sb=552 sbu=553 lhu=554 lh=555 sh=556 shu=557 or=564 la2=565 mov_s=566
+%term c_lt_d=567 c_le_d=568 c_ge_d=569 c_gt_d=570 neg_d=571
+%term c_lt_s=572 c_le_s=573 c_ge_s=574 c_gt_s=575 neg_s=576 c_eq_s=577
+
+%%
+def: 	DEF(reg,expr) = 1 (0);
+def:	reg = 2 (0);
+def: 	const = 3 (0);
+def:    isel_label = 4 (0);
+def:    float_const = 400 (0);
+
+expr: 	IADD(def,def)		= 5 (2);
+expr:	ISUB(def,def)		= 6 (2);
+expr:	IVLOAD(def,def)		= 7 (2);
+expr:	IVSTORE(def,def)	= 8 (2);
+expr:	IASSIGN(def)		= 9 (1);
+expr:	ILSH(def,const)		= 10 (1);
+expr:	IASH(def,const)		= 11 (1);
+expr:	DMUL(def,def)		= 12 (4);
+expr:	DADD(def,def)		= 13 (3);
+expr:	DSUB(def,def)		= 14 (3);
+expr:	ICONSTANT(const_label)	= 15 (1);
+expr:	ASSIGN(def)			= 16 (1);
+expr:	IGE(def,def)		= 17 (1);
+expr:	ILT(def,def)		= 18 (1);
+expr:	ILE(def,def)		= 19 (1);
+expr:	IGT(def,def)		= 20 (1);
+expr:	DMTC1(def)			= 21 (1);
+expr:	TRUNCID(def)		= 22 (1);
+expr:	MFC1(def)			= 23 (1);
+expr:	DCONSTANT(const_label)	= 24 (1);
+expr:	MTC1(def)			= 25 (1);
+expr:	CVTDI(def)			= 26 (1);
+expr:	ILAND(def,def)			= 27 (1);
+expr:	DASSIGN(def)		= 28 (1);
+expr:	DGE(def,def)		= 29 (1);
+expr:	DLT(def,def)		= 30 (1);
+expr:	DLE(def,def)		= 31 (1);
+expr:	DGT(def,def)		= 32 (1);
+expr:	CVTSD(def)			= 33 (1);
+expr:	CVTDS(def)			= 34 (1);
+expr:	DMFC1(def)			= 35 (1);
+expr:	DDIV(def,def)		= 36 (3);
+expr:	DEQ(def,def)		= 37 (2);
+expr:	FADD(def,def)		= 38 (3);
+expr:	FSUB(def,def)		= 39 (3);
+expr:	FMUL(def,def)		= 40 (3);
+expr:	FDIV(def,def)		= 41 (3);
+expr:	DVLOAD(def,def)		= 42 (2);
+expr:	DVSTORE(def,def)	= 43 (2);
+expr:	FVLOAD(def,def)		= 44 (2);
+expr:	FVSTORE(def,def)	= 45 (2);
+expr:	ICONSTANT(const)    = 46 (1);
+expr:   IRASH(def,def)    = 47 (2);
+expr:   ILASH(def,def)    = 48 (2);
+expr:   IRLSH(def,def)    = 49 (2);
+expr:   ILLSH(def,def)    = 50 (2);
+expr:   FCONSTANT(const_label)  = 51 (2);
+expr:   FCONSTANT(float_const)  = 52 (2);
+expr:   FASSIGN(def)        = 53 (2);
+expr:   INE(def,def)        = 54 (2);
+expr:	TRUNCIS(def)		= 55 (1);
+expr:	CVTSI(def)			= 56 (1);
+expr:   DCONSTANT(float_const)  = 57 (1);
+expr:   IEQ(def,def)        = 58 (1);
+expr:   IOR(def,const)        = 59 (1);
+expr:   IAND(def,const)        = 60 (1);
+expr:   IXOR(def,def)        = 61 (1);
+expr:   IMUL(def,def)        = 62 (1);
+expr:   MFLO(def)        = 63 (1);
+expr:	QIVLOADU(def,def)		= 64 (2);
+expr:	QIVLOAD(def,def)		= 65 (2);
+expr:	QIVSTORE(def,def)		= 66 (2);
+expr:	QIVSTOREU(def,def)		= 67 (2);
+expr:	HIVLOADU(def,def)		= 68 (2);
+expr:	HIVLOAD(def,def)		= 69 (2);
+expr:	HIVSTORE(def,def)		= 70 (2);
+expr:	HIVSTOREU(def,def)		= 71 (2);
+expr:	IGEU(def,def)		= 72 (1);
+expr:	ILTU(def,def)		= 73 (1);
+expr:	ILEU(def,def)		= 74 (1);
+expr:	IGTU(def,def)		= 75 (1);
+expr:   IDIV(def,def)        = 76 (1);
+expr:   MFHI(def)        = 77 (1);
+expr:   IOR(def,def)        = 78 (1);
+expr:   IAND(def,def)       = 79 (1);
+expr: 	IADD(const_label,def)		= 80 (2);
+expr:	ISUB(const_label,def)		= 81 (2);
+expr:	NOP				= 82 (1);
+expr:	DNEG(def)		= 83 (2);
+expr:	FNEG(def)		= 84 (2);
+expr:	FGE(def,def)		= 85 (2);
+expr:	FLT(def,def)		= 86 (2);
+expr:	FLE(def,def)		= 87 (2);
+expr:	FGT(def,def)		= 88 (2);
+expr:	FEQ(def,def)		= 89 (2);
+
+expr: 	addu(def,def)		= 200 (2);
+expr: 	subu(def,def)		= 201 (2);
+expr: 	lw(def,def)		= 202 (2);
+expr: 	sw(def,def)		= 203 (2);
+expr: 	move(def)				= 204 (2);
+expr: 	srl(def,def)		= 205 (2);
+expr: 	sra(def,def)		= 206 (2);
+expr: 	mul_d(def,def)		= 207 (2);
+expr: 	add_d(def,def)		= 208 (2);
+expr: 	sub_d(def,def)			= 209 (2);
+expr: 	la(def)		= 210 (2);
+expr: 	sge(def,def)		= 211 (2);
+expr: 	slt(def,def)		= 212 (2);
+expr: 	sle(def,def)			= 213 (2);
+expr: 	sgt(def,def)	= 214 (2);
+expr: 	trunc_w_d(def)	= 215 (2);
+expr: 	li(def)			= 216 (2);
+expr: 	mtc1(def)			= 217 (2);
+expr: 	cvt_d_w(def)	= 218 (2);
+expr: 	and(def,def)		= 219 (2);
+expr: 	cvt_s_d(def)		= 220 (2);
+expr: 	cvt_d_s(def)		= 221 (2);
+expr: 	div_d(def,def)		= 222 (2);
+expr: 	bnez(def,def)		= 223 (2);
+expr: 	add_s(def,def)		= 224 (2);
+expr: 	sub_s(def,def)		= 225 (2);
+expr: 	mul_s(def,def)		= 226 (2);
+expr: 	div_s(def,def)		= 227 (2);
+expr: 	l_d(def,def)		= 228 (2);
+expr: 	s_d(def,def)		= 229 (2);
+expr:   jal(def)        = 230 (2);
+expr:   jr(def)          = 231 (2);
+expr:   mov_d(def)       = 232 (2);
+expr:   mfc1(def)        = 233 (2);
+expr:   li_d(def)        = 234 (2);
+expr:   l_s(def,def)     = 235 (2);
+expr:   s_s(def,def)     = 236 (2);
+expr:   cvt_s_w(def)     = 237 (2);
+expr:   trunc_w_s(def)   = 238 (2);	
+expr:   li_s(def)        = 239 (2);
+expr:   sne(def,def)     = 240 (2);
+expr:   seq(def,def)     = 241 (2);
+expr:   sll(def,def)     = 242 (2);
+expr:   sla(def,def)     = 243 (2);
+expr:   j(def)           = 244 (2);
+expr:   ori(def,def)     = 245 (2);
+expr:   andi(def,def)     = 246 (2);
+expr:   xori(def,def)     = 247 (2);
+expr:   mult(def,def)     = 248 (2);
+expr:   mflo(def)     = 249 (2);
+expr: 	lbu(def,def)		= 250 (2);
+expr: 	lb(def,def)		= 251 (2);
+expr: 	sb(def,def)		= 252 (2);
+expr: 	sbu(def,def)		= 253 (2);
+expr: 	lhu(def,def)		= 254 (2);
+expr: 	lh(def,def)		= 255 (2);
+expr: 	sh(def,def)		= 256 (2);
+expr: 	shu(def,def)		= 257 (2);
+expr: 	sgeu(def,def)		= 258 (2);
+expr: 	sltu(def,def)		= 259 (2);
+expr: 	sleu(def,def)			= 260 (2);
+expr: 	sgtu(def,def)	= 261 (2);
+expr:   div(def,def)     = 262 (2);
+expr:   mfhi(def)     = 263 (2);
+expr:   or(def,def)     = 264 (2);
+expr: 	la2(def,def)		= 265 (2);
+expr: 	mov_s(def)		= 266 (2);
+expr:	c_gt_d(def,def)		= 267 (2);
+expr:	c_ge_d(def,def)		= 268 (2);
+expr:	c_lt_d(def,def)		= 269 (2);
+expr:	c_le_d(def,def)		= 270 (2);
+expr: 	neg_d(def)		= 271 (2);
+expr:	c_gt_s(def,def)		= 272 (2);
+expr:	c_ge_s(def,def)		= 273 (2);
+expr:	c_lt_s(def,def)		= 274 (2);
+expr:	c_le_s(def,def)		= 275 (2);
+expr:	c_eq_s(def,def)		= 276 (2);
+expr: 	neg_s(def)		= 277 (2);
+
+reg: 	rf1									= 114;
+reg: 	rf2									= 115;
+reg: 	rf3									= 142;
+
+rf1: 	R0									= 116;
+rf1: 	R1									= 117;
+rf1: 	R2									= 118;
+rf1: 	R3									= 119;
+rf1: 	R4									= 120;
+rf1: 	R5									= 121;
+rf1: 	R6 									= 122;
+rf1: 	R7 									= 123;
+
+rf2: 	R8 									= 124;
+rf2: 	R9 									= 125;
+rf2: 	R10 								= 126;
+rf2:	R11 								= 127;
+rf2: 	R12 								= 128;
+rf2: 	R13 								= 129;
+rf2: 	R14 								= 130;
+rf2:	R15 								= 131;
+
+rf3: 	R16									= 132;
+rf3: 	R17									= 133;
+rf3: 	R18 								= 134;
+rf3:	R19 								= 135;
+rf3: 	R20 								= 136;
+rf3: 	R21 								= 137;
+rf3: 	R22 								= 138;
+rf3:	R23 								= 139;
+rf3: 	R24 								= 140;
+rf3:	R25 								= 141;
+rf3:	R26 								= 190;
+rf3:	R27 								= 191;
+rf3:	R28 								= 192;
+rf3:	R29 								= 193;
+rf3:	R30 								= 194;
+rf3:	R31 								= 195;
+rf3:	isel_label 								= 196;
+
+rf3:	sp0 								= 143;
+rf3:	cc0 								= 144;
+rf3:	f0	 								= 145;
+rf3:	f1	 								= 146;
+rf3:	f2	 								= 147;
+rf3:	f3	 								= 148;
+rf3:	f4	 								= 149;
+rf3:	f5	 								= 150;
+rf3:	f6	 								= 151;
+rf3:	f7	 								= 152;
+rf3:	f8	 								= 153;
+rf3:	f9	 								= 154;
+rf3:	f10	 								= 155;
+rf3:	f11	 								= 156;
+rf3:	f12	 								= 157;
+rf3:	f13	 								= 158;
+rf3:	f14	 								= 159;
+rf3:	f15	 								= 160;
+
+rf3:	f16	 								= 161;
+rf3:	f17	 								= 162;
+rf3:	f18	 								= 163;
+rf3:	f19	 								= 164;
+rf3:	f20	 								= 165;
+rf3:	f21	 								= 166;
+rf3:	f22	 								= 167;
+rf3:	f23	 								= 168;
+rf3:	f24	 								= 169;
+rf3:	f25	 								= 170;
+rf3:	f26	 								= 171;
+rf3:	f27	 								= 172;
+rf3:	f28	 								= 173;
+rf3:	f29	 								= 174;
+rf3:	f30	 								= 175;
+rf3:	f31	 								= 176;
+
+rf3:	fp0	 								= 177;
+rf3:	hilo0	 								= 401;
+
+
+const:	INT 								= 178;
+float_const:   FLOAT                        = 199;
+
+rf3:	temp0								= 179;
+rf3:	temp1								= 180;
+
+rf3:	temp2								= 181;
+rf3:	temp3								= 182;
+rf3:	temp4								= 183;
+rf3:	temp5								= 184;
+rf3:	temp6								= 185;
+rf3:	temp7								= 186;
+rf3:	temp8								= 187;
+rf3:	temp9								= 188;
+rf3:	temp10								= 189;
+
+
+const_label: const							= 197;
+const_label: isel_label						= 198;
+const_label: float_const                    = 113;
+
+
+%%

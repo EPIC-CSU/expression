@@ -1,0 +1,966 @@
+
+
+Terminals which are not used:
+
+   ISEL_COLON
+
+
+State 37 contains 1 shift/reduce conflict.
+State 45 contains 1 shift/reduce conflict.
+
+Grammar
+rule 1    description -> ISEL_LBRACE ISEL_TREE_MAPPING ruleList ISEL_END_TREE_MAPPING ISEL_RBRACE
+rule 2    ruleList -> ruleList rule
+rule 3    ruleList -> rule
+rule 4    rule -> generics targets
+rule 5    rule -> lhs rhs
+rule 6    generics -> ISEL_LBRACE genericPart
+rule 7    targets -> targetPart ISEL_RBRACE
+rule 8    lhs -> ISEL_LBRACE lhsPart
+rule 9    rhs -> rhsPart ISEL_RBRACE
+rule 10   genericPart -> ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE
+rule 11   targetPart -> ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE
+rule 12   lhsPart -> ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE
+rule 13   rhsPart -> ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE
+rule 14   opGenList -> opGenList Op
+rule 15   opGenList -> Op
+rule 16   opTarList -> opTarList Op
+rule 17   opTarList -> Op
+rule 18   Op -> ISEL_LBRACE ISEL_OPCODE dstList srcList ISEL_RBRACE
+rule 19   dstList -> dstList dstNum ISEL_EQUAL argType argIdent
+rule 20   dstList -> dstNum ISEL_EQUAL argType argIdent
+rule 21   dstList ->		/* empty */
+rule 22   srcList -> srcList srcNum ISEL_EQUAL argType argIdent
+rule 23   srcList -> srcNum ISEL_EQUAL argType argIdent
+rule 24   srcList ->		/* empty */
+rule 25   dstNum -> ISEL_DST ISEL_LPAREN val ISEL_RPAREN
+rule 26   srcNum -> ISEL_SRC ISEL_LPAREN val ISEL_RPAREN
+rule 27   val -> ISEL_NUM
+rule 28   argType -> ISEL_TYPE
+rule 29   argType -> ISEL_TYPE immVal
+rule 30   argIdent -> ISEL_LBRACE ISEL_NUM ISEL_RBRACE
+rule 31   argIdent -> ISEL_LBRACE ISEL_NUM operator ISEL_NUM ISEL_RBRACE
+rule 32   operator -> ISEL_ADD_OPERATOR
+rule 33   operator -> ISEL_SUB_OPERATOR
+rule 34   operator -> ISEL_EQ_OPERATOR
+rule 35   operator -> ISEL_LT_OPERATOR
+rule 36   immVal -> operator ISEL_NUM
+
+Terminals, with rules where they appear
+
+$ (-1)
+error (256)
+ISEL_GENERIC (258) 10
+ISEL_TARGET (259) 11
+ISEL_LHS (260) 12
+ISEL_RHS (261) 13
+ISEL_DST (262) 25
+ISEL_SRC (263) 26
+ISEL_LPAREN (264) 25 26
+ISEL_RPAREN (265) 25 26
+ISEL_LBRACE (266) 1 6 8 10 11 12 13 18 30 31
+ISEL_RBRACE (267) 1 7 9 10 11 12 13 18 30 31
+ISEL_COLON (268)
+ISEL_EQUAL (269) 19 20 22 23
+ISEL_ADD_OPERATOR (270) 32
+ISEL_SUB_OPERATOR (271) 33
+ISEL_EQ_OPERATOR (272) 34
+ISEL_LT_OPERATOR (273) 35
+ISEL_TREE_MAPPING (274) 1
+ISEL_END_TREE_MAPPING (275) 1
+ISEL_NUM (276) 27 30 31 36
+ISEL_TYPE (277) 28 29
+ISEL_OPCODE (278) 18
+
+Nonterminals, with rules where they appear
+
+description (24)
+    on left: 1
+ruleList (25)
+    on left: 2 3, on right: 1 2
+rule (26)
+    on left: 4 5, on right: 2 3
+generics (27)
+    on left: 6, on right: 4
+targets (28)
+    on left: 7, on right: 4
+lhs (29)
+    on left: 8, on right: 5
+rhs (30)
+    on left: 9, on right: 5
+genericPart (31)
+    on left: 10, on right: 6
+targetPart (32)
+    on left: 11, on right: 7
+lhsPart (33)
+    on left: 12, on right: 8
+rhsPart (34)
+    on left: 13, on right: 9
+opGenList (35)
+    on left: 14 15, on right: 10 12 14
+opTarList (36)
+    on left: 16 17, on right: 11 13 16
+Op (37)
+    on left: 18, on right: 14 15 16 17
+dstList (38)
+    on left: 19 20 21, on right: 18 19
+srcList (39)
+    on left: 22 23 24, on right: 18 22
+dstNum (40)
+    on left: 25, on right: 19 20
+srcNum (41)
+    on left: 26, on right: 22 23
+val (42)
+    on left: 27, on right: 25 26
+argType (43)
+    on left: 28 29, on right: 19 20 22 23
+argIdent (44)
+    on left: 30 31, on right: 19 20 22 23
+operator (45)
+    on left: 32 33 34 35, on right: 31 36
+immVal (46)
+    on left: 36, on right: 29
+
+
+state 0
+
+    ISEL_LBRACE	shift, and go to state 1
+
+    description	go to state 90
+
+
+
+state 1
+
+    description  ->  ISEL_LBRACE . ISEL_TREE_MAPPING ruleList ISEL_END_TREE_MAPPING ISEL_RBRACE   (rule 1)
+
+    ISEL_TREE_MAPPING	shift, and go to state 2
+
+
+
+state 2
+
+    description  ->  ISEL_LBRACE ISEL_TREE_MAPPING . ruleList ISEL_END_TREE_MAPPING ISEL_RBRACE   (rule 1)
+
+    ISEL_LBRACE	shift, and go to state 3
+
+    ruleList	go to state 4
+    rule	go to state 5
+    generics	go to state 6
+    lhs 	go to state 7
+
+
+
+state 3
+
+    generics  ->  ISEL_LBRACE . genericPart   (rule 6)
+    lhs  ->  ISEL_LBRACE . lhsPart   (rule 8)
+
+    ISEL_LBRACE	shift, and go to state 8
+
+    genericPart	go to state 9
+    lhsPart	go to state 10
+
+
+
+state 4
+
+    description  ->  ISEL_LBRACE ISEL_TREE_MAPPING ruleList . ISEL_END_TREE_MAPPING ISEL_RBRACE   (rule 1)
+    ruleList  ->  ruleList . rule   (rule 2)
+
+    ISEL_LBRACE	shift, and go to state 3
+    ISEL_END_TREE_MAPPING	shift, and go to state 11
+
+    rule	go to state 12
+    generics	go to state 6
+    lhs 	go to state 7
+
+
+
+state 5
+
+    ruleList  ->  rule .   (rule 3)
+
+    $default	reduce using rule 3 (ruleList)
+
+
+
+state 6
+
+    rule  ->  generics . targets   (rule 4)
+
+    ISEL_LBRACE	shift, and go to state 13
+
+    targets	go to state 14
+    targetPart	go to state 15
+
+
+
+state 7
+
+    rule  ->  lhs . rhs   (rule 5)
+
+    ISEL_LBRACE	shift, and go to state 16
+
+    rhs 	go to state 17
+    rhsPart	go to state 18
+
+
+
+state 8
+
+    genericPart  ->  ISEL_LBRACE . ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 10)
+    lhsPart  ->  ISEL_LBRACE . ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 12)
+
+    ISEL_GENERIC	shift, and go to state 19
+    ISEL_LHS	shift, and go to state 20
+
+
+
+state 9
+
+    generics  ->  ISEL_LBRACE genericPart .   (rule 6)
+
+    $default	reduce using rule 6 (generics)
+
+
+
+state 10
+
+    lhs  ->  ISEL_LBRACE lhsPart .   (rule 8)
+
+    $default	reduce using rule 8 (lhs)
+
+
+
+state 11
+
+    description  ->  ISEL_LBRACE ISEL_TREE_MAPPING ruleList ISEL_END_TREE_MAPPING . ISEL_RBRACE   (rule 1)
+
+    ISEL_RBRACE	shift, and go to state 21
+
+
+
+state 12
+
+    ruleList  ->  ruleList rule .   (rule 2)
+
+    $default	reduce using rule 2 (ruleList)
+
+
+
+state 13
+
+    targetPart  ->  ISEL_LBRACE . ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 11)
+
+    ISEL_TARGET	shift, and go to state 22
+
+
+
+state 14
+
+    rule  ->  generics targets .   (rule 4)
+
+    $default	reduce using rule 4 (rule)
+
+
+
+state 15
+
+    targets  ->  targetPart . ISEL_RBRACE   (rule 7)
+
+    ISEL_RBRACE	shift, and go to state 23
+
+
+
+state 16
+
+    rhsPart  ->  ISEL_LBRACE . ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 13)
+
+    ISEL_RHS	shift, and go to state 24
+
+
+
+state 17
+
+    rule  ->  lhs rhs .   (rule 5)
+
+    $default	reduce using rule 5 (rule)
+
+
+
+state 18
+
+    rhs  ->  rhsPart . ISEL_RBRACE   (rule 9)
+
+    ISEL_RBRACE	shift, and go to state 25
+
+
+
+state 19
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC . ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 10)
+
+    ISEL_LBRACE	shift, and go to state 26
+
+
+
+state 20
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS . ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 12)
+
+    ISEL_LBRACE	shift, and go to state 27
+
+
+
+state 21
+
+    description  ->  ISEL_LBRACE ISEL_TREE_MAPPING ruleList ISEL_END_TREE_MAPPING ISEL_RBRACE .   (rule 1)
+
+    $default	reduce using rule 1 (description)
+
+
+
+state 22
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET . ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 11)
+
+    ISEL_LBRACE	shift, and go to state 28
+
+
+
+state 23
+
+    targets  ->  targetPart ISEL_RBRACE .   (rule 7)
+
+    $default	reduce using rule 7 (targets)
+
+
+
+state 24
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS . ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 13)
+
+    ISEL_LBRACE	shift, and go to state 29
+
+
+
+state 25
+
+    rhs  ->  rhsPart ISEL_RBRACE .   (rule 9)
+
+    $default	reduce using rule 9 (rhs)
+
+
+
+state 26
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE . opGenList ISEL_RBRACE ISEL_RBRACE   (rule 10)
+
+    ISEL_LBRACE	shift, and go to state 30
+
+    opGenList	go to state 31
+    Op  	go to state 32
+
+
+
+state 27
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE . opGenList ISEL_RBRACE ISEL_RBRACE   (rule 12)
+
+    ISEL_LBRACE	shift, and go to state 30
+
+    opGenList	go to state 33
+    Op  	go to state 32
+
+
+
+state 28
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE . opTarList ISEL_RBRACE ISEL_RBRACE   (rule 11)
+
+    ISEL_LBRACE	shift, and go to state 30
+
+    opTarList	go to state 34
+    Op  	go to state 35
+
+
+
+state 29
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE . opTarList ISEL_RBRACE ISEL_RBRACE   (rule 13)
+
+    ISEL_LBRACE	shift, and go to state 30
+
+    opTarList	go to state 36
+    Op  	go to state 35
+
+
+
+state 30
+
+    Op  ->  ISEL_LBRACE . ISEL_OPCODE dstList srcList ISEL_RBRACE   (rule 18)
+
+    ISEL_OPCODE	shift, and go to state 37
+
+
+
+state 31
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList . ISEL_RBRACE ISEL_RBRACE   (rule 10)
+    opGenList  ->  opGenList . Op   (rule 14)
+
+    ISEL_LBRACE	shift, and go to state 30
+    ISEL_RBRACE	shift, and go to state 38
+
+    Op  	go to state 39
+
+
+
+state 32
+
+    opGenList  ->  Op .   (rule 15)
+
+    $default	reduce using rule 15 (opGenList)
+
+
+
+state 33
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList . ISEL_RBRACE ISEL_RBRACE   (rule 12)
+    opGenList  ->  opGenList . Op   (rule 14)
+
+    ISEL_LBRACE	shift, and go to state 30
+    ISEL_RBRACE	shift, and go to state 40
+
+    Op  	go to state 39
+
+
+
+state 34
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList . ISEL_RBRACE ISEL_RBRACE   (rule 11)
+    opTarList  ->  opTarList . Op   (rule 16)
+
+    ISEL_LBRACE	shift, and go to state 30
+    ISEL_RBRACE	shift, and go to state 41
+
+    Op  	go to state 42
+
+
+
+state 35
+
+    opTarList  ->  Op .   (rule 17)
+
+    $default	reduce using rule 17 (opTarList)
+
+
+
+state 36
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList . ISEL_RBRACE ISEL_RBRACE   (rule 13)
+    opTarList  ->  opTarList . Op   (rule 16)
+
+    ISEL_LBRACE	shift, and go to state 30
+    ISEL_RBRACE	shift, and go to state 43
+
+    Op  	go to state 42
+
+
+
+state 37
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE . dstList srcList ISEL_RBRACE   (rule 18)
+
+    ISEL_DST	shift, and go to state 44
+
+    ISEL_DST	[reduce using rule 21 (dstList)]
+    $default	reduce using rule 21 (dstList)
+
+    dstList	go to state 45
+    dstNum	go to state 46
+
+
+
+state 38
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE . ISEL_RBRACE   (rule 10)
+
+    ISEL_RBRACE	shift, and go to state 47
+
+
+
+state 39
+
+    opGenList  ->  opGenList Op .   (rule 14)
+
+    $default	reduce using rule 14 (opGenList)
+
+
+
+state 40
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE . ISEL_RBRACE   (rule 12)
+
+    ISEL_RBRACE	shift, and go to state 48
+
+
+
+state 41
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE . ISEL_RBRACE   (rule 11)
+
+    ISEL_RBRACE	shift, and go to state 49
+
+
+
+state 42
+
+    opTarList  ->  opTarList Op .   (rule 16)
+
+    $default	reduce using rule 16 (opTarList)
+
+
+
+state 43
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE . ISEL_RBRACE   (rule 13)
+
+    ISEL_RBRACE	shift, and go to state 50
+
+
+
+state 44
+
+    dstNum  ->  ISEL_DST . ISEL_LPAREN val ISEL_RPAREN   (rule 25)
+
+    ISEL_LPAREN	shift, and go to state 51
+
+
+
+state 45
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList . srcList ISEL_RBRACE   (rule 18)
+    dstList  ->  dstList . dstNum ISEL_EQUAL argType argIdent   (rule 19)
+
+    ISEL_DST	shift, and go to state 44
+    ISEL_SRC	shift, and go to state 52
+
+    ISEL_SRC	[reduce using rule 24 (srcList)]
+    $default	reduce using rule 24 (srcList)
+
+    srcList	go to state 53
+    dstNum	go to state 54
+    srcNum	go to state 55
+
+
+
+state 46
+
+    dstList  ->  dstNum . ISEL_EQUAL argType argIdent   (rule 20)
+
+    ISEL_EQUAL	shift, and go to state 56
+
+
+
+state 47
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE .   (rule 10)
+
+    $default	reduce using rule 10 (genericPart)
+
+
+
+state 48
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE .   (rule 12)
+
+    $default	reduce using rule 12 (lhsPart)
+
+
+
+state 49
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE .   (rule 11)
+
+    $default	reduce using rule 11 (targetPart)
+
+
+
+state 50
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE .   (rule 13)
+
+    $default	reduce using rule 13 (rhsPart)
+
+
+
+state 51
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN . val ISEL_RPAREN   (rule 25)
+
+    ISEL_NUM	shift, and go to state 57
+
+    val 	go to state 58
+
+
+
+state 52
+
+    srcNum  ->  ISEL_SRC . ISEL_LPAREN val ISEL_RPAREN   (rule 26)
+
+    ISEL_LPAREN	shift, and go to state 59
+
+
+
+state 53
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList srcList . ISEL_RBRACE   (rule 18)
+    srcList  ->  srcList . srcNum ISEL_EQUAL argType argIdent   (rule 22)
+
+    ISEL_SRC	shift, and go to state 52
+    ISEL_RBRACE	shift, and go to state 60
+
+    srcNum	go to state 61
+
+
+
+state 54
+
+    dstList  ->  dstList dstNum . ISEL_EQUAL argType argIdent   (rule 19)
+
+    ISEL_EQUAL	shift, and go to state 62
+
+
+
+state 55
+
+    srcList  ->  srcNum . ISEL_EQUAL argType argIdent   (rule 23)
+
+    ISEL_EQUAL	shift, and go to state 63
+
+
+
+state 56
+
+    dstList  ->  dstNum ISEL_EQUAL . argType argIdent   (rule 20)
+
+    ISEL_TYPE	shift, and go to state 64
+
+    argType	go to state 65
+
+
+
+state 57
+
+    val  ->  ISEL_NUM .   (rule 27)
+
+    $default	reduce using rule 27 (val)
+
+
+
+state 58
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN val . ISEL_RPAREN   (rule 25)
+
+    ISEL_RPAREN	shift, and go to state 66
+
+
+
+state 59
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN . val ISEL_RPAREN   (rule 26)
+
+    ISEL_NUM	shift, and go to state 57
+
+    val 	go to state 67
+
+
+
+state 60
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList srcList ISEL_RBRACE .   (rule 18)
+
+    $default	reduce using rule 18 (Op)
+
+
+
+state 61
+
+    srcList  ->  srcList srcNum . ISEL_EQUAL argType argIdent   (rule 22)
+
+    ISEL_EQUAL	shift, and go to state 68
+
+
+
+state 62
+
+    dstList  ->  dstList dstNum ISEL_EQUAL . argType argIdent   (rule 19)
+
+    ISEL_TYPE	shift, and go to state 64
+
+    argType	go to state 69
+
+
+
+state 63
+
+    srcList  ->  srcNum ISEL_EQUAL . argType argIdent   (rule 23)
+
+    ISEL_TYPE	shift, and go to state 64
+
+    argType	go to state 70
+
+
+
+state 64
+
+    argType  ->  ISEL_TYPE .   (rule 28)
+    argType  ->  ISEL_TYPE . immVal   (rule 29)
+
+    ISEL_ADD_OPERATOR	shift, and go to state 71
+    ISEL_SUB_OPERATOR	shift, and go to state 72
+    ISEL_EQ_OPERATOR	shift, and go to state 73
+    ISEL_LT_OPERATOR	shift, and go to state 74
+
+    $default	reduce using rule 28 (argType)
+
+    operator	go to state 75
+    immVal	go to state 76
+
+
+
+state 65
+
+    dstList  ->  dstNum ISEL_EQUAL argType . argIdent   (rule 20)
+
+    ISEL_LBRACE	shift, and go to state 77
+
+    argIdent	go to state 78
+
+
+
+state 66
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN val ISEL_RPAREN .   (rule 25)
+
+    $default	reduce using rule 25 (dstNum)
+
+
+
+state 67
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN val . ISEL_RPAREN   (rule 26)
+
+    ISEL_RPAREN	shift, and go to state 79
+
+
+
+state 68
+
+    srcList  ->  srcList srcNum ISEL_EQUAL . argType argIdent   (rule 22)
+
+    ISEL_TYPE	shift, and go to state 64
+
+    argType	go to state 80
+
+
+
+state 69
+
+    dstList  ->  dstList dstNum ISEL_EQUAL argType . argIdent   (rule 19)
+
+    ISEL_LBRACE	shift, and go to state 77
+
+    argIdent	go to state 81
+
+
+
+state 70
+
+    srcList  ->  srcNum ISEL_EQUAL argType . argIdent   (rule 23)
+
+    ISEL_LBRACE	shift, and go to state 77
+
+    argIdent	go to state 82
+
+
+
+state 71
+
+    operator  ->  ISEL_ADD_OPERATOR .   (rule 32)
+
+    $default	reduce using rule 32 (operator)
+
+
+
+state 72
+
+    operator  ->  ISEL_SUB_OPERATOR .   (rule 33)
+
+    $default	reduce using rule 33 (operator)
+
+
+
+state 73
+
+    operator  ->  ISEL_EQ_OPERATOR .   (rule 34)
+
+    $default	reduce using rule 34 (operator)
+
+
+
+state 74
+
+    operator  ->  ISEL_LT_OPERATOR .   (rule 35)
+
+    $default	reduce using rule 35 (operator)
+
+
+
+state 75
+
+    immVal  ->  operator . ISEL_NUM   (rule 36)
+
+    ISEL_NUM	shift, and go to state 83
+
+
+
+state 76
+
+    argType  ->  ISEL_TYPE immVal .   (rule 29)
+
+    $default	reduce using rule 29 (argType)
+
+
+
+state 77
+
+    argIdent  ->  ISEL_LBRACE . ISEL_NUM ISEL_RBRACE   (rule 30)
+    argIdent  ->  ISEL_LBRACE . ISEL_NUM operator ISEL_NUM ISEL_RBRACE   (rule 31)
+
+    ISEL_NUM	shift, and go to state 84
+
+
+
+state 78
+
+    dstList  ->  dstNum ISEL_EQUAL argType argIdent .   (rule 20)
+
+    $default	reduce using rule 20 (dstList)
+
+
+
+state 79
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN val ISEL_RPAREN .   (rule 26)
+
+    $default	reduce using rule 26 (srcNum)
+
+
+
+state 80
+
+    srcList  ->  srcList srcNum ISEL_EQUAL argType . argIdent   (rule 22)
+
+    ISEL_LBRACE	shift, and go to state 77
+
+    argIdent	go to state 85
+
+
+
+state 81
+
+    dstList  ->  dstList dstNum ISEL_EQUAL argType argIdent .   (rule 19)
+
+    $default	reduce using rule 19 (dstList)
+
+
+
+state 82
+
+    srcList  ->  srcNum ISEL_EQUAL argType argIdent .   (rule 23)
+
+    $default	reduce using rule 23 (srcList)
+
+
+
+state 83
+
+    immVal  ->  operator ISEL_NUM .   (rule 36)
+
+    $default	reduce using rule 36 (immVal)
+
+
+
+state 84
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM . ISEL_RBRACE   (rule 30)
+    argIdent  ->  ISEL_LBRACE ISEL_NUM . operator ISEL_NUM ISEL_RBRACE   (rule 31)
+
+    ISEL_RBRACE	shift, and go to state 86
+    ISEL_ADD_OPERATOR	shift, and go to state 71
+    ISEL_SUB_OPERATOR	shift, and go to state 72
+    ISEL_EQ_OPERATOR	shift, and go to state 73
+    ISEL_LT_OPERATOR	shift, and go to state 74
+
+    operator	go to state 87
+
+
+
+state 85
+
+    srcList  ->  srcList srcNum ISEL_EQUAL argType argIdent .   (rule 22)
+
+    $default	reduce using rule 22 (srcList)
+
+
+
+state 86
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM ISEL_RBRACE .   (rule 30)
+
+    $default	reduce using rule 30 (argIdent)
+
+
+
+state 87
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM operator . ISEL_NUM ISEL_RBRACE   (rule 31)
+
+    ISEL_NUM	shift, and go to state 88
+
+
+
+state 88
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM operator ISEL_NUM . ISEL_RBRACE   (rule 31)
+
+    ISEL_RBRACE	shift, and go to state 89
+
+
+
+state 89
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM operator ISEL_NUM ISEL_RBRACE .   (rule 31)
+
+    $default	reduce using rule 31 (argIdent)
+
+
+
+state 90
+
+    $   	go to state 91
+
+
+
+state 91
+
+    $   	go to state 92
+
+
+
+state 92
+
+    $default	accept

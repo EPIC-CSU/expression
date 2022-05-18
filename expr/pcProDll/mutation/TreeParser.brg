@@ -1,0 +1,249 @@
+%{
+#include "stdafx.h"
+
+#include <assert.h>
+
+#ifndef WIN32
+#include <stdio.h>
+#include <stdlib.h>
+#endif
+
+#define MY_TRACE
+
+#include "TreeBuilding.h"
+
+
+//START: MFC DEBUG NEW: THIS MUST BE AFTER ALL THE #INCLUDES IN A FILE
+#ifdef WIN32
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+#endif
+//END MFC DEBUG NEW: 
+
+
+static void burm_trace(NODEPTR_TYPE p, int eruleno, int cost, int bestcost) {
+#ifdef MY_TRACE
+	extern char *burm_string[];
+
+	fprintf(stderr, "0x%p matched %s with cost %d vs. %d\n", p,
+		burm_string[eruleno], cost, bestcost);
+#endif
+}
+%}
+%term IADD=1 IGE=2 IGT=3 ILE=4 IASH=5 ISUB=6 ILSH=7 ILT=8 NOP=9 ICONSTANT=10 IASSIGN=11 IF=12 IGOTO=13 IVLOAD=14 
+%term DVLOAD=15 IVSTORE=16 DVSTORE=17 ASSIGN=18 DCONSTANT=19 DADD=20 FASSIGN=21 DMUL=22 DSUB=23 DMTC1=24 GOTO=25 TRUNCID=26
+%term MFC1=27 MTC1=28 CVTDI=29 ILAND=30 DASSIGN=31 DGE=32 DLT=33 DLE=34 DGT=35 CVTSD=36 CVTDS=37
+%term DMFC1=38 DDIV=39 DEQ=40 FADD=41 FSUB=42 FMUL=43 FDIV=44 FVLOAD=45 FVSTORE=46
+%term FCONSTANT=47 CVTSI=48 TRUNCIS=49 INE=50
+%term R0=101 R1=102 R2=103 R3=104 R4=105 R5=106 R6=107 R7=108 R8=109 R9=110 R10=111 R11=112 R12=113 R13=114 R14=115 R15=116
+%term R16=117 R17=118 R18=119 R19=120 R20=121 R21=122 R22=123 R23=124 R24=125 R25=126
+%term sp0=127 cc0=128 f0=129 f1=130 f2=131 f3=132 f4=133 f5=134 f6=135 f7=136 f8=137
+%term f9=138 f10=139 f11=140 f12=141 f13=142 f14=143 f15=144 
+%term f16=145 f17=146 f18=147 f19=148 f20=149 f21=150 f22=151 f23=152 f24=153
+%term f25=154 f26=155 f27=156 f28=157 f29=158 f30=159 f31=160 
+%term fp0=161
+%term temp0=162 temp1=163 temp2=164 temp3=165 temp4=166 temp5=167 temp6=168 temp7=169 temp8=170 temp9=171 temp10=172 temp11=173 temp12=174
+%term DEF=201 INT=202 IND=203 SRC2=204 FLOAT=205
+%term NONE=400 ALU1=401 ALU2=402
+
+%%
+def: 	DEF(reg,expr) = 1 (0);
+def:	reg = 2 (0);
+def: 	const = 3 (0);
+
+expr: 	IADD(def,def)		= 5 (2);
+expr:	ISUB(def,def)		= 6 (2);
+expr:	IVLOAD(def,def)		= 7 (2);
+expr:	IVSTORE(def,def)	= 8 (2);
+expr:	IASSIGN(def)		= 9 (1);
+expr:	ILSH(def,const)		= 10 (1);
+expr:	IASH(def,const)		= 11 (1);
+expr:	DMUL(def,def)		= 12 (4);
+expr:	DADD(def,def)		= 13 (3);
+expr:	DSUB(def,def)		= 14 (3);
+expr:	ICONSTANT(const)	= 15 (1);
+expr:	ASSIGN(def)			= 16 (1);
+expr:	IGE(def,def)		= 17 (1);
+expr:	ILT(def,def)		= 18 (1);
+expr:	ILE(def,def)		= 19 (1);
+expr:	IGT(def,def)		= 20 (1);
+expr:	DMTC1(def)			= 21 (1);
+expr:	TRUNCID(def)		= 22 (1);
+expr:	MFC1(def)			= 23 (1);
+expr:	DCONSTANT(const)	= 24 (1);
+expr:	MTC1(def)			= 25 (1);
+expr:	CVTDI(def)			= 26 (1);
+expr:	ILAND(def,def)		= 27 (1);
+expr:	DASSIGN(def)		= 28 (1);
+expr:	DGE(def,def)		= 29 (1);
+expr:	DLT(def,def)		= 30 (1);
+expr:	DLE(def,def)		= 31 (1);
+expr:	DGT(def,def)		= 32 (1);
+expr:	CVTSD(def)			= 33 (1);
+expr:	CVTDS(def)			= 34 (1);
+expr:	DMFC1(def)			= 35 (1);
+expr:	DDIV(def,def)		= 36 (3);
+expr:	DEQ(def,def)		= 37 (2);
+expr:	FADD(def,def)		= 38 (3);
+expr:	FSUB(def,def)		= 39 (3);
+expr:	FMUL(def,def)		= 40 (3);
+expr:	FDIV(def,def)		= 41 (3);
+expr:	DVLOAD(def,def)		= 42 (2);
+expr:	DVSTORE(def,def)	= 43 (2);
+expr:	FVLOAD(def,def)		= 44 (2);
+expr:	FVSTORE(def,def)	= 45 (2);
+expr:	FCONSTANT(const)	= 46 (1);
+expr:	CVTSI(def)			= 47 (1);
+expr:	TRUNCIS(def)		= 48 (1);
+expr:	INE(def,def)		= 49 (1);
+
+
+
+expr:	DADD(DEF(reg,DMUL(def,def)),def)	= 201 (4);
+expr:	DADD(def,DEF(reg,DMUL(def,def)))	= 202 (4);
+
+expr:	IASSIGN(const)						= 203 (0);
+
+def:	DEF(reg,ICONSTANT(const))			= 204 (0);
+def:	DEF(reg,IASSIGN(def))				= 205 (0);
+
+expr:	IADD(INT, INT)					= 207 (0);
+expr:	ISUB(INT, INT)					= 208 (0);
+expr:	DMUL(INT, INT)					= 209 (0);
+
+
+expr:	DMUL(DEF(reg,DMUL(def,INT)),INT)= 211 (4);
+expr:	DMUL(INT,DEF(reg,DMUL(def,INT)))= 212 (4);
+expr:	DMUL(DEF(reg,DMUL(INT,def)),INT)= 213 (4);
+expr:	DMUL(INT,DEF(reg,DMUL(INT,def)))= 214 (4);
+
+expr:	DMUL(reg, INT)					= 220 (2);
+expr:	DMUL(INT, reg)					= 221 (2);
+
+def:	DEF(reg,DCONSTANT(const))			= 223 (0);
+
+def:	DEF(reg,ASSIGN(def))				= 224 (0);
+
+def:	DEF(reg,IADD(DEF(reg,IADD(DEF(reg,expr),def)),def))	= 225 (3);
+def:	DEF(reg,IADD(def,DEF(reg,IADD(def,DEF(reg,expr)))))	= 226 (3);
+
+
+expr:	IADD(DEF(reg,IADD(def,INT)),INT)= 227 (2);
+expr:	IADD(INT,DEF(reg,IADD(def,INT)))= 228 (2);
+expr:	IADD(DEF(reg,IADD(INT,def)),INT)= 229 (2);
+expr:	IADD(INT,DEF(reg,IADD(INT,def)))= 230 (2);
+
+def:	DEF(reg,DMUL(DEF(reg,DMUL(DEF(reg,expr),def)),def))	= 231 (3);
+def:	DEF(reg,DMUL(def,DEF(reg,DMUL(def,DEF(reg,expr)))))	= 232 (3);
+
+def:	DEF(reg,ISUB(DEF(reg,ISUB(DEF(reg,expr),def)),def))	= 233 (3);
+def:	DEF(reg,ISUB(def,DEF(reg,ISUB(def,DEF(reg,expr)))))	= 234 (3);
+
+def:	DEF(reg,IADD(DEF(reg,IADD(def,DEF(reg,expr))),def))	= 235 (3);
+def:	DEF(reg,IADD(def,DEF(reg,IADD(DEF(reg,expr),def))))	= 236 (3);
+
+
+expr:	DMUL(DEF(reg,DADD(def,def)),def)	= 237 (5);
+expr:	DMUL(def,DEF(reg,DADD(def,def)))	= 238 (5);
+
+def:	DEF(reg,DADD(DEF(reg,DADD(DEF(reg,expr),def)),def))	= 239 (3);
+def:	DEF(reg,DADD(def,DEF(reg,DADD(def,DEF(reg,expr)))))	= 240 (3);
+def:	DEF(reg,DADD(DEF(reg,DADD(def,DEF(reg,expr))),def))	= 241 (3);
+def:	DEF(reg,DADD(def,DEF(reg,DADD(DEF(reg,expr),def))))	= 242 (3);
+
+
+
+reg: 	rf1									= 114;
+reg: 	rf2									= 115;
+reg: 	rf3									= 142;
+
+rf1: 	R0									= 116;
+rf1: 	R1									= 117;
+rf1: 	R2									= 118;
+rf1: 	R3									= 119;
+rf1: 	R4									= 120;
+rf1: 	R5									= 121;
+rf1: 	R6 									= 122;
+rf1: 	R7 									= 123;
+
+rf2: 	R8 									= 124;
+rf2: 	R9 									= 125;
+rf2: 	R10 								= 126;
+rf2:	R11 								= 127;
+rf2: 	R12 								= 128;
+rf2: 	R13 								= 129;
+rf2: 	R14 								= 130;
+rf2:	R15 								= 131;
+
+rf3: 	R16									= 132;
+rf3: 	R17									= 133;
+rf3: 	R18 								= 134;
+rf3:	R19 								= 135;
+rf3: 	R20 								= 136;
+rf3: 	R21 								= 137;
+rf3: 	R22 								= 138;
+rf3:	R23 								= 139;
+rf3: 	R24 								= 140;
+rf3:	R25 								= 141;
+
+rf3:	sp0 								= 143;
+rf3:	cc0 								= 144;
+rf3:	f0	 								= 145;
+rf3:	f1	 								= 146;
+rf3:	f2	 								= 147;
+rf3:	f3	 								= 148;
+rf3:	f4	 								= 149;
+rf3:	f5	 								= 150;
+rf3:	f6	 								= 151;
+rf3:	f7	 								= 152;
+rf3:	f8	 								= 153;
+rf3:	f9	 								= 154;
+rf3:	f10	 								= 155;
+rf3:	f11	 								= 156;
+rf3:	f12	 								= 157;
+rf3:	f13	 								= 158;
+rf3:	f14	 								= 159;
+rf3:	f15	 								= 160;
+
+rf3:	f16	 								= 161;
+rf3:	f17	 								= 162;
+rf3:	f18	 								= 163;
+rf3:	f19	 								= 164;
+rf3:	f20	 								= 165;
+rf3:	f21	 								= 166;
+rf3:	f22	 								= 167;
+rf3:	f23	 								= 168;
+rf3:	f24	 								= 169;
+rf3:	f25	 								= 170;
+rf3:	f26	 								= 171;
+rf3:	f27	 								= 172;
+rf3:	f28	 								= 173;
+rf3:	f29	 								= 174;
+rf3:	f30	 								= 175;
+rf3:	f31	 								= 176;
+
+rf3:	fp0	 								= 177;
+
+
+const:	INT 								= 178;
+
+rf3:	temp0								= 179;
+rf3:	temp1								= 180;
+rf3:	temp2								= 181;
+rf3:	temp3								= 182;
+rf3:	temp4								= 183;
+rf3:	temp5								= 184;
+rf3:	temp6								= 185;
+rf3:	temp7								= 186;
+rf3:	temp8								= 187;
+rf3:	temp9								= 188;
+rf3:	temp10								= 189;
+rf3:	temp11								= 190;
+rf3:	temp12								= 191;
+
+const:	FLOAT 								= 192;
+
+%%
