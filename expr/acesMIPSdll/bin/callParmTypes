@@ -1,0 +1,3 @@
+_compress _VOID _VOID
+_getranchar _CHAR _CHAR _DBL
+_ran _FLT _VOID

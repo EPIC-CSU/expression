@@ -1,0 +1,105 @@
+DEFAULT 6 nop
+DUMP 6 nop
+DEBUG_PRINT 6 nop
+NOP 6 nop
+ICONSTANT 6 $1 iconstant
+DCONSTANT 6 $1 dconstant
+FCONSTANT 6 $1 fconstant
+IASSIGN 6 $1 iassign
+ASSIGN 6 $1 assign
+DASSIGN 6 $1 dassign
+FASSIGN 6 $1 fassign
+MFLO 6 mflo
+MFHI 6 mfhi
+MTLO 6 assert
+MTHI 6 assert
+IADD 6 $1+$2 iadd
+DADD 6 $1+$2 dadd
+FADD 6 $1+$2 fadd
+ISUB 6 $1-$2 isub
+DSUB 6 $1-$2 dsub
+FSUB 6 $1-$2 fsub
+IMUL 6 $1*$2 imulMIPS
+IMULU 6 $1*$2 imulu
+DMUL 6 $1*$2 dmul
+FMUL 6 $1*$2 fmul
+IDIV 6 idivMIPS
+IDIVU 6 idivu
+DDIV 6 ddiv
+FDIV 6 fdiv
+IREM 6 irem
+IEQ 6 ieq
+IEQU 6 ieq
+DEQ 6 deq
+FEQ 6 feq
+INE 6 ine
+INEU 6 ine
+DNE 6 dne
+FNE 6  fne
+ILE 6 ile
+ILEU 6 ile
+DLE 6 dle
+FLE 6 fle
+IGE 6 ige
+IGEU 6 ige
+DGE 6 dge
+FGE 6 fge
+ILT 6 ilt
+ILTU 6 ilt
+DLT 6 dlt
+FLT 6 flt
+IGT 6 igt
+IGTU 6 igt
+DGT 6 dgt
+FGT 6 fgt
+ILSH 6 ilsh
+IASH 6 iash
+IRASH 6 irash
+ILASH 6 ilash
+IRLSH 6 irlsh
+ILLSH 6 illsh
+ILAND 6 iland
+ILOR 6 ilor
+IAND 6 iand
+IOR 6 ior
+INOR 6 inor
+IXOR 6 ixor
+FNEG 6 fneg
+DNEG 6 dneg
+IVLOAD 7 ivload
+DVLOAD 7 dvload
+FVLOAD 7 fvload
+HIVLOAD 7 hivload
+HIVLOADU 7 hivload
+QIVLOAD 7 qivload
+QIVLOADU 7 qivloadu
+IVSTORE 8 ivstore
+DVSTORE 8 dvstore
+FVSTORE 8 fvstore
+HIVSTORE 8 hivstore
+HIVSTOREU 8 hivstoreu
+QIVSTORE 8 qivstore
+QIVSTOREU 8 qivstoreu
+IF 1 if
+IFFT 1 if
+GOTO 3 goto
+IGOTO 3 goto
+CALL 9 call
+SYSCALL 9 call
+DYNCALL 9 call
+RETURN 10 return
+CVTDI 6 cvtdi
+CVTID 6 truncid
+CVTSI 6 cvtsi
+CVTSD 6 cvtsd
+CVTDS 6 cvtds
+DMTC1 6 dmtc1
+DMFC1 6 dmfc1
+MFC1 6 mfc1
+MTC1 6 mtc1
+TRUNCID 6 truncid
+TRUNCIS 6 truncis
+IABS 6 iabs
+DABS 6 dabs
+SQRT 6 sqrt
+EXP 6 exp

@@ -1,0 +1,396 @@
+/*
+ *
+ */
+
+#define SYS_strcmp_IMPL										\
+{															\
+	SET_REG_I(RD,											\
+			  strcmp(MEM_POINTER_C(REG_A(PARAM_REG(0))),	\
+			  	     MEM_POINTER_C(REG_A(PARAM_REG(1)))));	\
+}
+DEFSYSCALL(SYS_strcmp, "_strcmp")
+
+
+#define SYS_strncmp_IMPL									\
+{															\
+	SET_REG_I(RD,											\
+			  strncmp(MEM_POINTER_C(REG_A(PARAM_REG(0))),	\
+			  	      MEM_POINTER_C(REG_A(PARAM_REG(1))),	\
+					  REG_I(PARAM_REG(2))));				\
+}
+DEFSYSCALL(SYS_strncmp, "_strncmp")
+
+
+#define SYS_strcpy_IMPL									\
+{														\
+	strcpy(MEM_POINTER_C(REG_A(PARAM_REG(0))),			\
+	 	   MEM_POINTER_C(REG_A(PARAM_REG(1))));			\
+	SET_REG_A(RD, REG_A(PARAM_REG(0)));					\
+}
+DEFSYSCALL(SYS_strcpy, "_strcpy")
+
+
+#define SYS_bcopy_IMPL									\
+{														\
+	memcpy(MEM_POINTER_V(REG_A(PARAM_REG(1))),			\
+		   MEM_POINTER_V(REG_A(PARAM_REG(0))),			\
+		   REG_I(PARAM_REG(2)));						\
+}
+DEFSYSCALL(SYS_bcopy, "_bcopy")
+
+
+#define SYS_strcat_IMPL									\
+{														\
+	strcat(MEM_POINTER_C(REG_A(PARAM_REG(0))),			\
+		   MEM_POINTER_C(REG_A(PARAM_REG(1))));			\
+	SET_REG_A(RD, REG_A(PARAM_REG(0)));					\
+}
+DEFSYSCALL(SYS_strcat, "_strcat")
+
+
+#define SYS_strlen_IMPL											\
+{																\
+	SET_REG_I(RD, strlen(MEM_POINTER_C(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_strlen, "_strlen")
+
+
+#define SYS_atoi_IMPL											\
+{																\
+	SET_REG_I(RD, atoi(MEM_POINTER_C(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_atoi, "_atoi")
+
+
+#define SYS_atof_IMPL											\
+{																\
+	SET_REG_D(RD, atof(MEM_POINTER_C(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_atof, "_atof")
+
+
+#define SYS_atol_IMPL											\
+{																\
+	SET_REG_I(RD, atoi(MEM_POINTER_C(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_atol, "_atol")
+
+
+#define SYS_ceil_IMPL									\
+{														\
+	SET_REG_D(RD, ceil(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_ceil, "_ceil")
+
+
+#define SYS_floor_IMPL									\
+{														\
+	SET_REG_D(RD, floor(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_floor, "_floor")
+
+
+#define SYS_log10_IMPL									\
+{														\
+	SET_REG_D(RD, floor(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_log10, "_log10")
+
+
+#define SYS_fopen_IMPL									\
+{														\
+	SET_REG_A(RD, (md_addr_t) fopen(MEM_POINTER_C(REG_A(PARAM_REG(0))),		\
+									MEM_POINTER_C(REG_A(PARAM_REG(1)))));	\
+}
+DEFSYSCALL(SYS_fopen, "_fopen")
+
+
+#define SYS_fclose_IMPL									\
+{														\
+	SET_REG_I(RD, fclose((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_fclose, "_fclose")
+
+
+#define SYS_fseek_IMPL									\
+{														\
+	SET_REG_I(RD, fseek((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0))),	\
+						REG_I(PARAM_REG(1)),				\
+						REG_I(PARAM_REG(2))));				\
+}
+DEFSYSCALL(SYS_fseek, "_fseek")
+
+
+#define SYS_rewind_IMPL									\
+{														\
+	rewind((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_rewind, "_rewind")
+
+
+#define SYS_printf_IMPL									\
+{														\
+	SET_REG_I(RD, sys_printf(regs, mem, oper, 0));		\
+}
+DEFSYSCALL(SYS_printf, "_printf")
+
+
+#define SYS_scanf_IMPL									\
+{														\
+	SET_REG_I(RD, sys_scanf(regs, mem, oper, 0));		\
+}
+DEFSYSCALL(SYS_scanf, "_scanf")
+
+
+#define SYS_fprintf_IMPL								\
+{														\
+	SET_REG_I(RD, sys_printf(regs, mem, oper, 1));			\
+}
+DEFSYSCALL(SYS_fprintf, "_fprintf")
+
+
+#define SYS_sscanf_IMPL									\
+{														\
+	SET_REG_I(RD, sys_scanf(regs, mem, oper, 0));			\
+}
+DEFSYSCALL(SYS_sscanf, "_sscanf")
+
+
+#define SYS_fscanf_IMPL									\
+{														\
+	SET_REG_I(RD, sys_scanf(regs, mem, oper, 1));			\
+}
+DEFSYSCALL(SYS_fscanf, "_fscanf")
+
+
+#define SYS_read_IMPL									\
+{														\
+	SET_REG_I(RD, _read(REG_I(PARAM_REG(0)),				\
+					   MEM_POINTER_V(REG_A(PARAM_REG(1))),		\
+					   REG_I(PARAM_REG(2))));			\
+}
+DEFSYSCALL(SYS_read, "_read")
+
+
+#define SYS_fread_IMPL									\
+{														\
+	SET_REG_I(RD, fread(MEM_POINTER_V(REG_A(PARAM_REG(0))),		\
+						REG_I(PARAM_REG(1)),			\
+						REG_I(PARAM_REG(2)),			\
+						(struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(3)))));	\
+}
+DEFSYSCALL(SYS_fread, "_fread")
+
+
+#define SYS_fwrite_IMPL									\
+{														\
+	SET_REG_I(RD, fwrite(MEM_POINTER_V(REG_A(PARAM_REG(0))),		\
+						REG_I(PARAM_REG(1)),			\
+						REG_I(PARAM_REG(2)),			\
+						(struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(3)))));	\
+}
+DEFSYSCALL(SYS_fwrite, "_fwrite")
+
+
+#define SYS_fputs_IMPL									\
+{														\
+	SET_REG_I(RD, fputs(MEM_POINTER_C(REG_A(PARAM_REG(0))),		\
+						(struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(1)))));	\
+}
+DEFSYSCALL(SYS_fputs, "_fputs")
+
+
+#define SYS_puts_IMPL									\
+{														\
+	SET_REG_I(RD, puts(MEM_POINTER_C(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_puts, "_puts")
+
+
+#define SYS_getc_IMPL									\
+{														\
+	SET_REG_I(RD, getc((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_getc, "_getc")
+
+
+#define SYS_fgetc_IMPL									\
+{														\
+	SET_REG_I(RD, fgetc((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS_fgetc, "_fgetc")
+
+
+#define SYS_ungetc_IMPL									\
+{														\
+	SET_REG_I(RD, ungetc(REG_I(PARAM_REG(0)),			\
+						(struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(1)))));	\
+}
+DEFSYSCALL(SYS_ungetc, "_ungetc")
+
+
+#define SYS_fgets_IMPL									\
+{														\
+	SET_REG_A(RD, (md_addr_t) fgets(MEM_POINTER_C(REG_A(PARAM_REG(0))),		\
+						REG_I(PARAM_REG(1)),			\
+						(struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(2)))));	\
+}
+DEFSYSCALL(SYS_fgets, "_fgets")
+
+
+#define SYS_open_IMPL									\
+{														\
+	if (PAR_NO == 3) {									\
+		SET_REG_I(RD, open(MEM_POINTER_C(REG_A(PARAM_REG(0))),	\
+						   REG_I(PARAM_REG(1)),			\
+						   REG_I(PARAM_REG(2))));		\
+	} else {											\
+		SET_REG_I(RD, open(MEM_POINTER_C(REG_A(PARAM_REG(0))),	\
+						REG_I(PARAM_REG(1))));			\
+	}													\
+}
+DEFSYSCALL(SYS_open, "_open")
+
+
+#define SYS_close_IMPL									\
+{														\
+	SET_REG_I(RD, close(REG_I(PARAM_REG(1))));			\
+}
+DEFSYSCALL(SYS_close, "_close")
+
+
+#define SYS__flsbuf_IMPL									\
+{														\
+	SET_REG_I(RD, _flsbuf(REG_I(PARAM_REG(0)),			\
+						 (struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(1)))));	\
+}
+DEFSYSCALL(SYS__flsbuf, "__flsbuf")
+
+
+#define SYS__filbuf_IMPL									\
+{														\
+	SET_REG_I(RD, _filbuf((struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0)))));	\
+}
+DEFSYSCALL(SYS__filbuf, "__filbuf")
+
+
+#define SYS_fflush_IMPL									\
+{														\
+	FILE *fp = NULL;									\
+														\
+	if (PARAM_REG(0) == FS_STDOUT_HACK) {					\
+		fp = stdout;									\
+	} else if (PARAM_REG(0) == FS_STDERR_HACK) {			\
+		fp = stderr;									\
+	} else {											\
+		fp = (struct _iobuf *) MEM_POINTER_V(REG_A(PARAM_REG(0)));		\
+	}													\
+	SET_REG_I(RD, fflush(fp));							\
+}
+DEFSYSCALL(SYS_fflush, "_fflush")
+
+
+#define SYS_exit_IMPL									\
+{														\
+	SET_FINISHED();										\
+}
+DEFSYSCALL(SYS_exit, "_exit")
+
+
+#define SYS_perror_IMPL									\
+{														\
+	perror(MEM_POINTER_C(REG_A(PARAM_REG(0))));	\
+}
+DEFSYSCALL(SYS_perror, "_perror")
+
+
+#define SYS_malloc_IMPL									\
+{														\
+	int size = REG_I(PARAM_REG(0));						\
+	long retVal = fs_heapPointer;							\
+	fs_heapPointer += size;								\
+	fs_heapPointer += FS_MALLOC_ERROR_BUFFER_SIZE;			\
+	SET_REG_I(RD, retVal);								\
+}
+DEFSYSCALL(SYS_malloc, "_malloc")
+
+
+#define SYS_free_IMPL									\
+{														\
+}
+DEFSYSCALL(SYS_free, "_free")
+
+
+#define SYS_sin_IMPL									\
+{														\
+	SET_REG_D(RD, sin(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_sin, "_sin")
+
+
+#define SYS_cos_IMPL									\
+{														\
+	SET_REG_D(RD, cos(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_cos, "_cos")
+
+
+#define SYS_exp_IMPL									\
+{														\
+	SET_REG_D(RD, exp(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_exp, "_exp")
+
+
+#define SYS_sqrt_IMPL									\
+{														\
+	SET_REG_D(RD, sqrt(REG_D(PARAM_REG(0))));			\
+}
+DEFSYSCALL(SYS_sqrt, "_sqrt")
+
+
+
+
+#undef SYS_strcmp_IMPL
+#undef SYS_strncmp_IMPL
+#undef SYS_strcpy_IMPL
+#undef SYS_bcopy_IMPL
+#undef SYS_strcat_IMPL
+#undef SYS_strlen_IMPL
+#undef SYS_atoi_IMPL
+#undef SYS_atof_IMPL
+#undef SYS_atol_IMPL
+#undef SYS_ceil_IMPL
+#undef SYS_floor_IMPL
+#undef SYS_log10_IMPL
+#undef SYS_fopen_IMPL
+#undef SYS_fclose_IMPL
+#undef SYS_fseek_IMPL
+#undef SYS_rewind_IMPL
+#undef SYS_printf_IMPL
+#undef SYS_scanf_IMPL
+#undef SYS_fprintf_IMPL
+#undef SYS_sscanf_IMPL
+#undef SYS_fscanf_IMPL
+#undef SYS_read_IMPL
+#undef SYS_fread_IMPL
+#undef SYS_fwrite_IMPL
+#undef SYS_fputs_IMPL
+#undef SYS_puts_IMPL
+#undef SYS_getc_IMPL
+#undef SYS_fgetc_IMPL
+#undef SYS_ungetc_IMPL
+#undef SYS_fgets_IMPL
+#undef SYS_open_IMPL
+#undef SYS_close_IMPL
+#undef SYS__flsbuf_IMPL
+#undef SYS__filbuf_IMPL
+#undef SYS_fflush_IMPL
+#undef SYS_exit_IMPL
+#undef SYS_perror_IMPL
+#undef SYS_malloc_IMPL
+#undef SYS_free_IMPL
+#undef SYS_sin_IMPL
+#undef SYS_cos_IMPL
+#undef SYS_exp_IMPL
+#undef SYS_sqrt_IMPL

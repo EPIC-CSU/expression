@@ -1,0 +1,1492 @@
+/* Machine opcode semantics description for the functional simulator */
+
+
+#define NOP_IMPL										\
+	{													\
+		/**/											\
+	}						
+DEFINST(NOP, "NOP",	0)
+
+#define	ICONSTANT_IMPL									\
+	{													\
+		SET_REG_I(RD, IMM1_I);							\
+	}
+DEFINST(ICONSTANT, "ICONSTANT", 0)
+
+/* ICONSTANT -> li */
+#define	li_IMPL									\
+	{													\
+		SET_REG_I(RD, IMM1_I);							\
+	}
+DEFINST(li, "li", 0)
+
+
+/* ICONSTANT -> la */
+#define	la_IMPL									\
+	{													\
+		SET_REG_I(RD, IMM1_I);							\
+	}
+DEFINST(la, "la", 0)
+
+
+#define	DCONSTANT_IMPL									\
+	{													\
+		SET_REG_D(RD, IMM1_D);							\
+	}
+DEFINST(DCONSTANT, "DCONSTANT", 0)
+
+/* DCONSTANT -> li_d */
+#define	li_d_IMPL									\
+	{													\
+		SET_REG_D(RD, IMM1_D);							\
+	}
+DEFINST(li_d, "li_d", 0)
+
+
+#define	FCONSTANT_IMPL									\
+	{													\
+		SET_REG_F(RD, IMM1_D);							\
+	}
+DEFINST(FCONSTANT, "FCONSTANT", 0)
+
+/* FCONSTANT -> li_s */
+#define	li_s_IMPL									\
+	{													\
+		SET_REG_F(RD, IMM1_D);							\
+	}
+DEFINST(li_s, "li_s", 0)
+
+
+#define	IASSIGN_IMPL									\
+	{													\
+		/* SET_REG_I(RD, REG_I(RS1)); */				\
+		/* hacked to allow correct parameter passing */	\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(IASSIGN, "IASSIGN", 0)
+
+
+#define	ASSIGN_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(ASSIGN, "ASSIGN", 0)
+
+/* IASSIGN/ASSIGN -> move */
+#define	move_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(move, "move", 0)
+
+
+#define	FASSIGN_IMPL									\
+	{													\
+		SET_REG_F(RD, REG_F(RS1));						\
+	}
+DEFINST(FASSIGN, "FASSIGN", 0)
+
+/* FASSIGN -> mov_s */
+#define	mov_s_IMPL									\
+	{													\
+		SET_REG_F(RD, REG_F(RS1));						\
+	}
+DEFINST(mov_s, "mov_s", 0)
+
+
+#define	DASSIGN_IMPL									\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(DASSIGN, "DASSIGN", 0)
+
+/* DASSIGN -> mov_d */
+#define	mov_d_IMPL									\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(mov_d, "mov_d", 0)
+
+
+#define	IADD_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) + IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) + REG_I(RS2));		\
+	}
+DEFINST(IADD, "IADD", 0)
+
+
+/* IADD -> addu */
+#define	addu_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) + IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) + REG_I(RS2));		\
+	}
+DEFINST(addu, "addu", 0)
+
+
+
+#define	DADD_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) + REG_D(RS2));			\
+	}
+DEFINST(DADD, "DADD", 0)
+
+/* DADD -> add_d */
+#define	add_d_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) + REG_D(RS2));			\
+	}
+DEFINST(add_d, "add_d", 0)
+
+
+#define	FADD_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) + REG_F(RS2));			\
+	}
+DEFINST(FADD, "FADD", 0)
+
+/* FADD -> add_s */
+#define	add_s_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) + REG_F(RS2));			\
+	}
+DEFINST(add_s, "add_s", 0)
+
+
+#define	ISUB_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) - IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) - REG_I(RS2));		\
+	}
+DEFINST(ISUB, "ISUB", 0)
+
+
+/* ISUB -> subu */
+#define	subu_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) - IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) - REG_I(RS2));		\
+	}
+DEFINST(subu, "subu", 0)
+
+
+
+#define	DSUB_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) - REG_D(RS2));			\
+	}
+DEFINST(DSUB, "DSUB", 0)
+
+/* DSUB -> sub_d */
+#define	sub_d_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) - REG_D(RS2));			\
+	}
+DEFINST(sub_d, "sub_d", 0)
+
+
+#define	FSUB_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) - REG_F(RS2));			\
+	}
+DEFINST(FSUB, "FSUB", 0)
+
+/* FSUB -> sub_s */
+#define	sub_s_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) - REG_F(RS2));			\
+	}
+DEFINST(sub_s, "sub_s", 0)
+
+
+#define	IMUL_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) * IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) * REG_I(RS2));		\
+	}
+DEFINST(IMUL, "IMUL", 0)
+
+/* IMUL -> mult */
+#define	mult_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) * IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) * REG_I(RS2));		\
+	}
+DEFINST(mult, "mult", 0)
+
+
+#define	MFLO_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(MFLO, "MFLO", 0)
+
+/* MFLO -> mflo */
+#define	mflo_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(mflo, "mflo", 0)
+
+
+#define	MFHI_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(MFHI, "MFHI", 0)
+
+/* MFHI -> mfhi */
+#define	mfhi_IMPL										\
+	{													\
+		/* SET_REG_D(RD, REG_D(RS1)); */				\
+		/* regs[RD] = regs[RS1]; */						\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(mfhi, "mfhi", 0)
+
+
+#define	DMUL_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) * REG_D(RS2));			\
+	}
+DEFINST(DMUL, "DMUL", 0)
+
+/* DMUL -> mul_d */
+#define	mul_d_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) * REG_D(RS2));			\
+	}
+DEFINST(mul_d, "mul_d", 0)
+
+
+#define	FMUL_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) * REG_F(RS2));			\
+	}
+DEFINST(FMUL, "FMUL", 0)
+
+/* FMUL -> mul_s */
+#define	mul_s_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) * REG_F(RS2));			\
+	}
+DEFINST(mul_s, "mul_s", 0)
+
+
+#define	IDIV_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) / IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) / REG_I(RS2));		\
+	}
+DEFINST(IDIV, "IDIV", 0)
+
+/* IDIV -> div */
+#define	idiv_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) / IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) / REG_I(RS2));		\
+	}
+DEFINST(idiv, "div", 0)
+
+
+#define	DDIV_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) / REG_D(RS2));			\
+	}
+DEFINST(DDIV, "DDIV", 0)
+
+
+#define	FDIV_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) / REG_F(RS2));			\
+	}
+DEFINST(FDIV, "FDIV", 0)
+
+/* DDIV -> div_d */
+#define	div_d_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1) / REG_D(RS2));			\
+	}
+DEFINST(div_d, "div_d", 0)
+
+/* FDIV -> div_s */
+#define	div_s_IMPL										\
+	{													\
+		SET_REG_F(RD, REG_F(RS1) / REG_F(RS2));			\
+	}
+DEFINST(div_s, "div_s", 0)
+
+/* MIPS mapping not yet defined for IREM */
+#define	IREM_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, REG_I(RS1) % IMM2_I);			\
+		else											\
+			SET_REG_I(RD, REG_I(RS1) % REG_I(RS2));		\
+	}
+DEFINST(IREM, "IREM", 0)
+
+
+#define	IEQ_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) == IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) == REG_I(RS2)));	\
+	}
+DEFINST(IEQ, "IEQ", 0)
+
+/* IEQ -> seq */
+#define	seq_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) == IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) == REG_I(RS2)));	\
+	}
+DEFINST(seq, "seq", 0)
+
+
+#define	IEQU_IMPL			IEQ_IMPL
+DEFINST(IEQU, "IEQU", 0)
+
+
+#define	DEQ_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) == REG_D(RS2)));		\
+	}
+DEFINST(DEQ, "DEQ", 0)
+
+
+#define	FEQ_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) == REG_F(RS2)));		\
+	}
+DEFINST(FEQ, "FEQ", 0)
+
+/* DEQ -> c_eq_d
+#define	c_eq_d_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) == REG_D(RS2)));		\
+	}
+DEFINST(c_eq_d, "c_eq_d", 0)
+
+/* FEQ -> c_eq_s
+#define	c_eq_s_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) == REG_F(RS2)));		\
+	}
+DEFINST(c_eq_s, "c_eq_s", 0)
+
+
+#define	INE_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) != IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) != REG_I(RS2)));	\
+	}
+DEFINST(INE, "INE", 0)
+
+
+#define	INEU_IMPL			INE_IMPL
+DEFINST(INEU, "INEU", 0)
+
+
+/* INE -> sne */
+#define	sne_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) != IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) != REG_I(RS2)));	\
+	}
+DEFINST(sne, "sne", 0)
+
+
+#define	DNE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) != REG_D(RS2)));		\
+	}
+DEFINST(DNE, "DNE", 0)
+
+
+#define	FNE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) == REG_F(RS2)));		\
+	}
+DEFINST(FNE, "FNE", 0)
+
+
+#define	ILE_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) <= IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) <= REG_I(RS2)));	\
+	}
+DEFINST(ILE, "ILE", 0)
+
+
+#define	ILEU_IMPL			ILE_IMPL
+
+DEFINST(ILEU, "ILEU", 0)
+
+
+#define	DLE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) <= REG_D(RS2)));		\
+	}
+DEFINST(DLE, "DLE", 0)
+
+
+#define	FLE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) <= REG_F(RS2)));		\
+	}
+DEFINST(FLE, "FLE", 0)
+
+
+#define	IGE_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) >= IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) >= REG_I(RS2)));	\
+	}
+DEFINST(IGE, "IGE", 0)
+
+
+#define	IGEU_IMPL			IGE_IMPL
+DEFINST(IGEU, "IGEU", 0)
+
+
+#define	DGE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) >= REG_D(RS2)));		\
+	}
+DEFINST(DGE, "DGE", 0)
+
+
+#define	FGE_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) >= REG_F(RS2)));		\
+	}
+DEFINST(FGE, "FGE", 0)
+
+
+#define	ILT_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) < IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) < REG_I(RS2)));	\
+	}
+DEFINST(ILT, "ILT", 0)
+
+
+#define	ILTU_IMPL			ILT_IMPL
+DEFINST(ILTU, "ILTU", 0)
+
+
+#define	DLT_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) < REG_D(RS2)));		\
+	}
+DEFINST(DLT, "DLT", 0)
+
+
+#define	FLT_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) < REG_F(RS2)));		\
+	}
+DEFINST(FLT, "FLT", 0)
+
+
+#define	IGT_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) > IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) > REG_I(RS2)));	\
+	}
+DEFINST(IGT, "IGT", 0)
+
+
+#define	IGTU_IMPL			IGT_IMPL
+DEFINST(IGTU, "IGTU", 0)
+
+
+#define	DGT_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) > REG_D(RS2)));		\
+	}
+DEFINST(DGT, "DGT", 0)
+
+
+#define	FGT_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) > REG_F(RS2)));		\
+	}
+DEFINST(FGT, "FGT", 0)
+
+
+/* ILE -> sle */
+#define	sle_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) <= IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) <= REG_I(RS2)));	\
+	}
+DEFINST(sle, "sle", 0)
+
+/* ILEU -> sleu */
+#define	sleu_IMPL			sle_IMPL
+
+DEFINST(sleu, "sleu", 0)
+
+/* DLE -> c_le_d */
+#define	c_le_d_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) <= REG_D(RS2)));		\
+	}
+DEFINST(c_le_d, "c_le_d", 0)
+
+/* FLE -> c_le_s */
+#define	c_le_s_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) <= REG_F(RS2)));		\
+	}
+DEFINST(c_le_s, "c_le_s", 0)
+
+/* IGE -> sge */
+#define	sge_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) >= IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) >= REG_I(RS2)));	\
+	}
+DEFINST(sge, "sge", 0)
+
+/* IGEU -> sgeu */
+#define	sgeu_IMPL			sge_IMPL
+DEFINST(sgeu, "sgeu", 0)
+
+/* DGE -> c_ge_d */
+#define	c_ge_d_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) >= REG_D(RS2)));		\
+	}
+DEFINST(c_ge_d, "c_ge_d", 0)
+
+/* FGE -> c_ge_s */
+#define	c_ge_s_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) >= REG_F(RS2)));		\
+	}
+DEFINST(c_ge_s, "c_ge_s", 0)
+
+/* ILT -> slt */
+#define	slt_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) < IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) < REG_I(RS2)));	\
+	}
+DEFINST(slt, "slt", 0)
+
+/* ILTU -> sltu */
+#define	sltu_IMPL			slt_IMPL
+DEFINST(sltu, "sltu", 0)
+
+/* DLT -> c_lt_d */
+#define	c_lt_d_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) < REG_D(RS2)));		\
+	}
+DEFINST(c_lt_d, "c_lt_d", 0)
+
+/* FLT -> c_lt_s */
+#define	c_lt_s_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) < REG_F(RS2)));		\
+	}
+DEFINST(c_lt_s, "c_lt_s", 0)
+
+/* IGT -> sgt */
+#define	sgt_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) > IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) > REG_I(RS2)));	\
+	}
+DEFINST(sgt, "sgt", 0)
+
+/* IGTU -> sgtu */
+#define	sgtu_IMPL			sgt_IMPL
+DEFINST(sgtu, "sgtu", 0)
+
+/* DGT -> c_gt_d */
+#define	c_gt_d_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) > REG_D(RS2)));		\
+	}
+DEFINST(c_gt_d, "c_gt_d", 0)
+
+/* FGT -> c_gt_s */
+#define	c_gt_s_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_F(RS1) > REG_F(RS2)));		\
+	}
+DEFINST(c_gt_s, "c_gt_s", 0)
+
+
+
+
+
+#define	ILLSH_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (IMM2_I >= 0) ?				\
+						   REG_I(RS1) << IMM2_I :		\
+						   REG_I(RS1) >> -IMM2_I);		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS2) >= 0) ?			\
+						   REG_I(RS1) << REG_I(RS2) :	\
+						   REG_I(RS1) >> -REG_I(RS2));	\
+	}
+DEFINST(ILLSH, "ILLSH", 0)
+
+#define	ILASH_IMPL			ILLSH_IMPL
+
+DEFINST(ILASH, "ILASH", 0)
+
+
+
+/* ILLSH -> sll */
+#define	sll_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (IMM2_I >= 0) ?				\
+						   REG_I(RS1) << IMM2_I :		\
+						   REG_I(RS1) >> -IMM2_I);		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS2) >= 0) ?			\
+						   REG_I(RS1) << REG_I(RS2) :	\
+						   REG_I(RS1) >> -REG_I(RS2));	\
+	}
+DEFINST(sll, "sll", 0)
+
+/* ILASH -> sla */
+#define	sla_IMPL			sll_IMPL
+
+DEFINST(sla, "sla", 0)
+
+
+#define	IRLSH_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (IMM2_I >= 0) ?				\
+						   REG_I(RS1) >> IMM2_I :		\
+						   REG_I(RS1) << -IMM2_I);		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS2) >= 0) ?			\
+						   REG_I(RS1) >> REG_I(RS2) :	\
+						   REG_I(RS1) << -REG_I(RS2));	\
+	}
+DEFINST(IRLSH, "IRLSH", 0)
+
+
+#define	IRASH_IMPL			IRLSH_IMPL
+
+DEFINST(IRASH, "IRASH", 0)
+
+
+/* IRLSH -> srl */
+#define	srl_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (IMM2_I >= 0) ?				\
+						   REG_I(RS1) >> IMM2_I :		\
+						   REG_I(RS1) << -IMM2_I);		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS2) >= 0) ?			\
+						   REG_I(RS1) >> REG_I(RS2) :	\
+						   REG_I(RS1) << -REG_I(RS2));	\
+	}
+DEFINST(srl, "srl", 0)
+
+/* IRASH -> sra */
+#define	sra_IMPL			srl_IMPL
+
+DEFINST(sra, "sra", 0)
+
+
+#define	ILAND_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) & IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) & REG_I(RS2)));	\
+	}
+DEFINST(ILAND, "ILAND", 0)
+
+
+/* IAND/ILAND -> andi */
+#define	andi_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_I(RS1) & IMM2_I));		\
+	}
+DEFINST(andi, "andi", 0)
+
+/* IAND/ILAND -> and */
+#define	and_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_I(RS1) & REG_I(RS2)));	\
+	}
+DEFINST(and, "and", 0)
+
+#define	ILOR_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) | IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) | REG_I(RS2)));	\
+	}
+DEFINST(ILOR, "ILOR", 0)
+
+
+/* IOR/ILOR -> ori */
+#define	ori_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_I(RS1) | IMM2_I));		\
+	}
+DEFINST(ori, "ori", 0)
+
+/* IOR/ILOR -> or */
+#define	or_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_I(RS1) | REG_I(RS2)));	\
+	}
+DEFINST(or, "or", 0)
+
+
+
+#define	IAND_IMPL			ILAND_IMPL
+DEFINST(IAND, "IAND", 0)
+
+
+#define	IOR_IMPL			ILOR_IMPL
+DEFINST(IOR, "IOR", 0)
+
+
+#define	INOR_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, ~(REG_I(RS1) | IMM2_I));		\
+		else											\
+			SET_REG_I(RD, ~(REG_I(RS1) | REG_I(RS2)));	\
+	}
+DEFINST(INOR, "INOR", 0)
+
+
+#define	IXOR_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) ^ IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) ^ REG_I(RS2)));	\
+	}
+DEFINST(IXOR, "IXOR", 0)
+
+/*  IXOR -> xor */
+#define	xor_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, (REG_I(RS1) ^ IMM2_I));		\
+		else											\
+			SET_REG_I(RD, (REG_I(RS1) ^ REG_I(RS2)));	\
+	}
+DEFINST(xor, "xor", 0)
+
+/*  IXOR -> xori */
+#define	xori_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_I(RS1) ^ IMM2_I));		\
+	}
+DEFINST(xori, "xori", 0)
+
+
+#define	FNEG_IMPL										\
+	{													\
+		SET_REG_F(RD, -REG_F(RS1));						\
+	}
+DEFINST(FNEG, "FNEG", 0)
+
+
+#define	DNEG_IMPL										\
+	{													\
+		SET_REG_D(RD, -REG_D(RS1));						\
+	}
+DEFINST(DNEG, "DNEG", 0)
+
+
+#define	IVLOAD_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_I(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(IVLOAD, "IVLOAD", 0)
+
+/* IVLOAD -> lw */
+#define	lw_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_I(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(lw, "lw", 0)
+
+
+#define	DVLOAD_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_D(RD, MEM_READ_D(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(DVLOAD, "DVLOAD", 0)
+
+
+#define	FVLOAD_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_F(RD, MEM_READ_F(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(FVLOAD, "FVLOAD", 0)
+
+
+/* DVLOAD -> l_d */
+#define	l_d_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_D(RD, MEM_READ_D(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(l_d, "l_d", 0)
+
+/* FVLOAD -> l_s */
+#define	l_s_IMPL										\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_F(RD, MEM_READ_F(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(l_s, "l_s", 0)
+
+#define	HIVLOAD_IMPL									\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_H(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(HIVLOAD, "HIVLOAD", 0)
+
+
+#define	HIVLOADU_IMPL		HIVLOAD_IMPL
+DEFINST(HIVLOADU, "HIVLOADU", 0)
+
+/* HIVLOAD -> lh */
+#define	lh_IMPL									\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_H(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(lh, "lh", 0)
+
+/* HIVLOADU -> lhu */
+#define	lhu_IMPL		lh_IMPL
+DEFINST(lhu, "lhu", 0)
+
+#define	QIVLOAD_IMPL									\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_C(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(QIVLOAD, "QIVLOAD", 0)
+
+/* QIVLOAD -> lb */
+#define	lb_IMPL									\
+	{													\
+		if (HAS_IMM2())									\
+			SET_REG_I(RD, MEM_READ_I(IMM1_A + IMM2_A));	\
+		else											\
+		    SET_REG_I(RD, MEM_READ_C(IMM1_A + REG_A(RS2)));	\
+	}
+DEFINST(lb, "lb", 0)
+
+#define	QIVLOADU_IMPL		QIVLOAD_IMPL
+DEFINST(QIVLOADU, "QIVLOADU", 0)
+
+/* QIVLOADU -> lbu */
+#define	lbu_IMPL		lb_IMPL
+DEFINST(lbu, "lbu", 0)
+
+
+/* The STORE's are special cases where there are three sources
+and no destination. It is implemented as M(src1+src2) <- src3 */
+
+#define	IVSTORE_IMPL									\
+	{                                                   \
+		if (HAS_IMM1())									\
+			MEM_WRITE_I(IMM2_I + IMM1_I, REG_I(RS3));	\
+		else											\
+			MEM_WRITE_I(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(IVSTORE, "IVSTORE", 0)
+
+/* IVSTORE -> sw */
+#define	sw_IMPL									        \
+	{													\
+		if (HAS_IMM1())									\
+			MEM_WRITE_I(IMM2_I + IMM1_I, REG_I(RS3));	\
+		else											\
+			MEM_WRITE_I(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(sw, "sw", 0)
+
+
+#define	DVSTORE_IMPL									\
+	{													\
+		MEM_WRITE_D(IMM2_I + REG_A(RS1), REG_D(RS3));	\
+	}
+DEFINST(DVSTORE, "DVSTORE", 0)
+
+/* DVSTORE -> s_d */
+#define	s_d_IMPL									\
+	{													\
+		MEM_WRITE_D(IMM2_I + REG_A(RS1), REG_D(RS3));	\
+	}
+DEFINST(s_d, "s_d", 0)
+
+
+#define	FVSTORE_IMPL									\
+	{													\
+		MEM_WRITE_F(IMM2_I + REG_A(RS1), REG_F(RS3));	\
+	}
+DEFINST(FVSTORE, "FVSTORE", 0)
+
+/* FVSTORE -> s_s */
+#define	s_s_IMPL									\
+	{													\
+		MEM_WRITE_F(IMM2_I + REG_A(RS1), REG_F(RS3));	\
+	}
+DEFINST(s_s, "s_s", 0)
+
+
+#define	HIVSTORE_IMPL									\
+	{													\
+		MEM_WRITE_H(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(HIVSTORE, "HIVSTORE", 0)
+
+/* HIVSTORE -> sh */
+#define	sh_IMPL									\
+	{													\
+		MEM_WRITE_H(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(sh, "sh", 0)
+
+
+#define	HIVSTOREU_IMPL		HIVSTORE_IMPL
+DEFINST(HIVSTOREU, "HIVSTOREU", 0)
+
+/* HIVSTOREU -> shu */
+#define	shu_IMPL		sh_IMPL
+DEFINST(shu, "shu", 0)
+
+
+#define	QIVSTORE_IMPL									\
+	{													\
+		MEM_WRITE_C(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(QIVSTORE, "QIVSTORE", 0)
+
+/* QIVSTORE -> sb */
+#define	sb_IMPL									\
+	{													\
+		MEM_WRITE_C(IMM2_I + REG_A(RS1), REG_I(RS3));	\
+	}
+DEFINST(sb, "sb", 0)
+
+
+#define	QIVSTOREU_IMPL		QIVSTORE_IMPL
+DEFINST(QIVSTOREU, "QIVSTOREU", 0)
+
+/* QIVSTOREU -> sbu */
+#define	sbu_IMPL		sb_IMPL
+DEFINST(sbu, "sbu", 0)
+
+
+#define	IF_IMPL											\
+	{													\
+		if (REG_I(RS1))									\
+			SET_NPC(TARG2);								\
+	}
+DEFINST(IF, "IF", 0)
+
+/* IF -> bnez */
+#define	bnez_IMPL											\
+	{													\
+		if (REG_I(RS1))									\
+			SET_NPC(TARG2);								\
+	}
+DEFINST(bnez, "bnez", 0)
+
+#define	IFFT_IMPL											\
+	{													\
+		if (REG_I(RS1))									\
+			SET_NPC(TARG2);								\
+	}
+DEFINST(IFFT, "IFFT", 0)
+
+/* IFFT -> bc1t */
+#define	bc1t_IMPL											\
+	{													\
+		if (REG_I(RS1))									\
+			SET_NPC(TARG2);								\
+	}
+DEFINST(bc1t, "bc1t", 0)
+
+#define	CALL_IMPL										\
+	{													\
+		PUSH_PC(NPC);									\
+		DO_CALL_STUFF(TARG1);							\
+		SET_NPC(TARG1);									\
+	}
+DEFINST(CALL, "CALL", 0)
+
+/* CALL -> jal */
+#define	jal_IMPL										\
+	{													\
+		PUSH_PC(NPC);									\
+		DO_CALL_STUFF(TARG1);							\
+		SET_NPC(TARG1);									\
+	}
+DEFINST(jal, "jal", 0)
+
+
+#define	SYSCALL_IMPL									\
+	{													\
+		SYS_CALL(oper);									\
+	}
+DEFINST(SYSCALL, "SYSCALL", 0)
+
+
+#define	DYNCALL_IMPL									\
+	{													\
+		PUSH_PC(CPC);									\
+		if (IS_SYSCALL(REG_A(RS1))) {					\
+		} else {										\
+			DO_CALL_STUFF(REG_A(RS1));					\
+			SET_NPC(REG_A(RS1));						\
+		}												\
+	}
+DEFINST(DYNCALL, "DYNCALL", 0)
+
+
+#define	DEBUG_PRINT_IMPL								\
+	{													\
+		SPEC_CALL(oper);								\
+	}
+DEFINST(DEBUG_PRINT, "DEBUG_PRINT", 0)
+
+
+#define	RETURN_IMPL										\
+	{													\
+		if (END_OF_PROGRAM()) {							\
+			SET_FINISHED();								\
+		} else {										\
+			DO_RET_STUFF();								\
+			SET_NPC(POP_PC());							\
+		}												\
+	}
+DEFINST(RETURN, "RETURN", 0)
+
+/* RETURN -> jr */
+#define	jr_IMPL										\
+	{													\
+		if (END_OF_PROGRAM()) {							\
+			SET_FINISHED();								\
+		} else {										\
+			DO_RET_STUFF();								\
+			SET_NPC(POP_PC());							\
+		}												\
+	}
+DEFINST(jr, "jr", 0)
+
+
+#define	CVTDI_IMPL										\
+	{													\
+		SET_REG_D(RD, (double) REG_I(RS1));				\
+	}
+DEFINST(CVTDI, "CVTDI", 0)
+
+
+#define	CVTSI_IMPL										\
+	{													\
+		SET_REG_F(RD, (float) REG_I(RS1));				\
+	}
+DEFINST(CVTSI, "CVTSI", 0)
+
+
+#define	CVTSD_IMPL										\
+	{													\
+		SET_REG_F(RD, (float) REG_D(RS1));				\
+	}
+DEFINST(CVTSD, "CVTSD", 0)
+
+
+#define	CVTDS_IMPL										\
+	{													\
+		SET_REG_D(RD, (double) REG_F(RS1));				\
+	}
+DEFINST(CVTDS, "CVTDS", 0)
+
+
+/* CVTDI -> cvt_d_w */
+#define	cvt_d_w_IMPL										\
+	{													\
+		SET_REG_D(RD, (double) REG_I(RS1));				\
+	}
+DEFINST(cvt_d_w, "cvt_d_w", 0)
+
+/* CVTDI -> cvt_s_w */
+#define	cvt_s_w_IMPL										\
+	{													\
+		SET_REG_F(RD, (float) REG_I(RS1));				\
+	}
+DEFINST(cvt_s_w, "cvt_s_w", 0)
+
+/* CVTSD -> cvt_s_d */
+#define	cvt_s_d_IMPL										\
+	{													\
+		SET_REG_F(RD, (float) REG_D(RS1));				\
+	}
+DEFINST(cvt_s_d, "cvt_s_d", 0)
+
+/* CVTDS -> cvt_d_s */
+#define	cvt_d_s_IMPL										\
+	{													\
+		SET_REG_D(RD, (double) REG_F(RS1));				\
+	}
+DEFINST(cvt_d_s, "cvt_d_s", 0)
+
+
+#define	DMTC_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(DMTC, "DMTC1", 0)
+
+
+#define	DMFC_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(DMFC, "DMFC1", 0)
+
+
+#define	MFC_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(MFC, "MFC1", 0)
+
+
+#define	MTC_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(MTC, "MTC1", 0)
+
+
+/* DMTC -> dmtc1 */
+#define	dmtc1_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(dmtc1, "dmtc1", 0)
+
+/* MFC -> mfc1 */
+#define	mfc1_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(mfc1, "mfc1", 0)
+
+/* MTC -> mtc1 */
+#define	mtc1_IMPL										\
+	{													\
+		SET_REG_D(RD, REG_D(RS1));						\
+	}
+DEFINST(mtc1, "mtc1", 0)
+
+
+#define	TRUNCID_IMPL									\
+	{													\
+		SET_REG_I(RD, (int) REG_D(RS1));				\
+	}
+DEFINST(TRUNCID, "TRUNCID", 0)
+
+
+#define	TRUNCIS_IMPL									\
+	{													\
+		SET_REG_I(RD, (int) REG_F(RS1));				\
+	}
+DEFINST(TRUNCIS, "TRUNCIS", 0)
+
+/* TRUNCID -> trunc_w_d */
+#define	trunc_w_d_IMPL									\
+	{													\
+		SET_REG_I(RD, (int) REG_D(RS1));				\
+	}
+DEFINST(trunc_w_d, "trunc_w_d", 0)
+
+/* TRUNCIS -> trunc_w_s */
+#define	trunc_w_s_IMPL									\
+	{													\
+		SET_REG_I(RD, (int) REG_F(RS1));				\
+	}
+DEFINST(trunc_w_s, "trunc_w_s", 0)
+
+
+#define	IABS_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) < 0) ? -REG_D(RS1) : REG_D(RS1));		\
+	}
+DEFINST(IABS, "IABS", 0)
+
+
+#define	DABS_IMPL										\
+	{													\
+		SET_REG_I(RD, (REG_D(RS1) < 0.0) ? -REG_D(RS1) : REG_D(RS1));	\
+	}
+DEFINST(DABS, "DABS", 0)
+
+
+
+#undef NOP_IMPL
+#undef ICONSTANT_IMPL
+#undef DCONSTANT_IMPL
+#undef FCONSTANT_IMPL
+#undef IASSIGN_IMPL
+#undef ASSIGN_IMPL
+#undef DASSIGN_IMPL
+#undef FASSIGN_IMPL
+#undef IADD_IMPL
+#undef DADD_IMPL
+#undef FADD_IMPL
+#undef ISUB_IMPL
+#undef DSUB_IMPL
+#undef FSUB_IMPL
+#undef IMUL_IMPL
+#undef DMUL_IMPL
+#undef FMUL_IMPL
+#undef IDIV_IMPL
+#undef DDIV_IMPL
+#undef FDIV_IMPL
+#undef IREM_IMPL
+#undef IEQ_IMPL
+#undef IEQU_IMPL
+#undef DEQ_IMPL
+#undef FEQ_IMPL
+#undef INE_IMPL
+#undef INEU_IMPL
+#undef DNE_IMPL
+#undef FNE_IMPL
+#undef ILE_IMPL
+#undef ILEU_IMPL
+#undef DLE_IMPL
+#undef FLE_IMPL
+#undef IGE_IMPL
+#undef IGEU_IMPL
+#undef DGE_IMPL
+#undef FGE_IMPL
+#undef ILT_IMPL
+#undef ILTU_IMPL
+#undef DLT_IMPL
+#undef FLT_IMPL
+#undef IGT_IMPL
+#undef IGTU_IMPL
+#undef DGT_IMPL
+#undef FGT_IMPL
+#undef ILSH_IMPL
+#undef IASH_IMPL
+#undef ILAND_IMPL
+#undef ILOR_IMPL
+#undef IAND_IMPL
+#undef IOR_IMPL
+#undef INOR_IMPL
+#undef IXOR_IMPL
+#undef FNED_IMPL
+#undef DNEG_IMPL
+#undef IVLOAD_IMPL
+#undef DVLOAD_IMPL
+#undef FVLOAD_IMPL
+#undef HIVLOAD_IMPL
+#undef HIVLOADU_IMPL
+#undef QIVLOAD_IMPL
+#undef QIVLOADU_IMPL
+#undef IVSTORE_IMPL
+#undef DVSTORE_IMPL
+#undef FVSTORE_IMPL
+#undef HIVSTORE_IMPL
+#undef HIVSTOREU_IMPL
+#undef QIVSTORE_IMPL
+#undef QIVSTOREU_IMPL
+#undef IF_IMPL
+#undef IFFT_IMPL
+#undef CALL_IMPL
+#undef SYSCALL_IMPL
+#undef DYNCALL_IMPL
+#undef DEBUG_PRINT_IMPL
+#undef RETURN_IMPL
+#undef CVTDI_IMPL
+#undef CVTSI_IMPL
+#undef CVTSD_IMPL
+#undef CVTDS_IMPL
+#undef DMTC_IMPL
+#undef DMFC_IMPL
+#undef MFC_IMPL
+#undef MTC_IMPL
+#undef TRUNCID_IMPL
+#undef TRUNCIS_IMPL
+#undef IABS_IMPL
+#undef DABS_IMPL
+#undef MFLO_IMPL
+#undef MFHI_IMPL
+
+#undef	li_IMPL
+#undef	la_IMPL
+#undef	li_d_IMPL
+#undef	li_s_IMPL	
+#undef	move_IMPL	
+#undef	mov_s_IMPL	
+#undef	mov_d_IMPL	
+#undef	addu_IMPL	
+#undef	add_d_IMPL	
+#undef	add_s_IMPL	
+#undef	subu_IMPL	
+#undef	sub_d_IMPL	
+#undef	sub_s_IMPL	
+#undef	mult_IMPL	
+#undef	mul_d_IMPL	
+#undef	mul_s_IMPL	
+#undef	idiv_IMPL	
+#undef	div_d_IMPL	
+#undef	div_s_IMPL	
+#undef	seq_IMPL	
+#undef	sequ_IMPL	
+#undef	c_eq_d_IMPL	
+#undef	c_eq_s_IMPL	
+#undef	sne_IMPL	
+#undef	sle_IMPL	
+#undef	sleu_IMPL	
+#undef	c_le_d_IMPL	
+#undef	c_le_s_IMPL	
+#undef	sge_IMPL	
+#undef	sgeu_IMPL	
+#undef	c_ge_s_IMPL	
+#undef	slt_IMPL	
+#undef	sltu_IMPL	
+#undef	c_lt_d_IMPL	
+#undef	c_lt_s_IMPL	
+#undef	sgt_IMPL	
+#undef	sgtu_IMPL	
+#undef	c_gt_d_IMPL	
+#undef	c_gt_s_IMPL	
+#undef	sll_IMPL	
+#undef	srl_IMPL	
+#undef	sla_IMPL	
+#undef	sra_IMPL	
+#undef	andi_IMPL	
+#undef	and_IMPL	
+#undef	ori_IMPL	
+#undef	or_IMPL		
+#undef	xor_IMPL	
+#undef	xori_IMPL	
+#undef	lw_IMPL		
+#undef	lh_IMPL		
+#undef	lhu_IMPL	
+#undef	lb_IMPL		
+#undef	lbu_IMPL	
+#undef	sw_IMPL	
+	
+#undef	s_d_IMPL	
+#undef	s_s_IMPL	
+#undef	sh_IMPL		
+#undef	shu_IMPL	
+#undef	sb_IMPL		
+#undef	sbu_IMPL	
+#undef	bnez_IMPL	
+#undef	jal_IMPL	
+#undef	jr_IMPL		
+#undef	cvt_d_w_IMPL
+#undef	cvt_s_w_IMPL
+#undef	cvt_s_d_IMPL
+#undef	cvt_d_s_IMPL
+#undef	dmtc1_IMPL
+#undef	mfc_IMPL			
+#undef	mtc1_IMPL			
+#undef	trunc_w_d_IMPL		
+#undef	trunc_w_s_IMPL		
+#undef  mflo_IMPL
+#undef  mfhi_IMPL
+#undef  l_s_IMPL
+#undef  l_d_IMPL
+#undef  bc1t_IMPL

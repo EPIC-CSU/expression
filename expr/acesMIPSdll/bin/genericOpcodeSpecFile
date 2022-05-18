@@ -1,0 +1,304 @@
+(OPCODE IADD 
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ISUB
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE CALL 
+	   (DATATYPES )
+)
+	   
+(OPCODE ICONSTANT
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i)))
+)
+
+(OPCODE IASSIGN
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i)))
+)
+
+(OPCODE ASSIGN
+	   (DATATYPES (_DST_LIST_ (_DST_:a)) (_SRC_LIST_ (_SRC_1_:a)))
+)
+
+(OPCODE NOP
+	   (DATATYPES )
+)
+
+;(OPCODE INEG
+;	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i)))
+;)
+
+;(OPCODE INOT
+;	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i)))
+;)
+
+(OPCODE IAND
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ILAND
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ILOR
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE IEQ
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE INE 
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ILE  
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE IGE 
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ILT
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE IGT
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+
+(OPCODE IXOR
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE FASSIGN
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f)))
+)
+
+(OPCODE FCONSTANT
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+
+(OPCODE FNEG
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f)))
+)
+
+(OPCODE FADD
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FEQ
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FGT
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FLE
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FLT
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FGE
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+	   
+(OPCODE FNE
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+
+(OPCODE FSUB
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+	   
+(OPCODE DASSIGN
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+
+(OPCODE DCONSTANT
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+
+(OPCODE DNEG
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+	   
+(OPCODE DADD
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE DEQ
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+
+(OPCODE DGT
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+
+(OPCODE DLE
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE DLT
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE DGE
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE DNE
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE DSUB
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE CVTSD
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+	   
+(OPCODE CVTDS
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:f)))
+)
+	   
+(OPCODE CVTID
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+	   
+(OPCODE CVTDI
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:i)))
+)
+
+;(OPCODE CVTSI
+;	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:i)))
+;)
+	   
+;(OPCODE CVTIS
+;	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:f)))
+;)
+
+(OPCODE TRUNCID
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+	   
+(OPCODE TRUNCIS
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:f)))
+)
+
+(OPCODE DABS
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE FVLOAD
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i)))
+)
+	   
+(OPCODE FVSTORE
+	   (DATATYPES (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i , _SRC_3_:f)))
+)
+	   
+(OPCODE IVLOAD
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i)))
+)
+	   
+(OPCODE IVSTORE
+	   (DATATYPES (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i , _SRC_3_:i)))
+)
+	   
+(OPCODE QIVLOAD ;;;; Note: QIVLOAD actually loads in a byte.
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i)))
+)
+	   
+(OPCODE QIVSTORE ;;;; Note: QIVSTORE actually stores a byte.
+	   (DATATYPES (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i , _SRC_3_:i)))
+)
+
+(OPCODE DVLOAD
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i)))
+)
+	   
+(OPCODE DVSTORE
+	   (DATATYPES (_SRC_LIST_ (_SRC_1_:i , _OFFSET_:i , _SRC_3_:d)))
+)
+	   
+(OPCODE IASH
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE ILSH
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+	   
+(OPCODE IMUL 
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+	   
+(OPCODE IDIV
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+
+(OPCODE IREM
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i , _SRC_2_:i)))
+)
+	   
+(OPCODE FMUL
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+	   
+(OPCODE DMUL
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+	   
+(OPCODE FDIV
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f , _SRC_2_:f)))
+)
+	   
+(OPCODE DDIV
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d , _SRC_2_:d)))
+)
+
+;(OPCODE DEXP
+;	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+;)
+	   
+;(OPCODE DSQRT
+;	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+;)
+	   
+(OPCODE DMFC1
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+	   
+(OPCODE DMTC1
+	   (DATATYPES (_DST_LIST_ (_DST_:d)) (_SRC_LIST_ (_SRC_1_:d)))
+)
+
+(OPCODE MTC1
+	   (DATATYPES (_DST_LIST_ (_DST_:i)) (_SRC_LIST_ (_SRC_1_:i)))
+)
+	   
+(OPCODE MFC1
+	   (DATATYPES (_DST_LIST_ (_DST_:f)) (_SRC_LIST_ (_SRC_1_:f)))
+)
+	   
+(OPCODE GOTO
+	   (DATATYPES )
+)
+	   
+(OPCODE IGOTO
+	   (DATATYPES )
+)
+	   
+(OPCODE IF
+	   (DATATYPES )
+)

@@ -1,0 +1,25 @@
+(IALU1
+	IADD	5
+	ISUB	5
+)
+(IALU2
+	IEQ	5
+	IGT	5
+)
+(FALU
+	FADD	5
+	FMUL	5
+)
+(LDEX
+	IVLOAD	5
+	IVSTORE	5
+)
+(BR1
+	IF	5
+	GOTO	5
+	CALL	5
+)
+(BR2
+	IF	5
+	GOTO	5
+)

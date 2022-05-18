@@ -1,0 +1,7110 @@
+
+
+Terminals which are not used:
+
+   _src_
+   _mem_dst_
+   _mem_src_
+   _units_
+   _feedback_
+   _storages_
+   _icache_
+   _dcache_
+   _memory_
+   _line_
+   _write_policy_options
+   _replacement_policy_options
+   _path_
+   ISEL_COLON
+   ISEL_ADD_OPERATOR
+   ISEL_SUB_OPERATOR
+   ISEL_EQ_OPERATOR
+   ISEL_LT_OPERATOR
+   '*'
+   '+'
+   ','
+   '/'
+   ':'
+   '<'
+   '='
+   '>'
+   '\\'
+
+
+State 62 contains 1 shift/reduce conflict.
+State 249 contains 1 shift/reduce conflict.
+State 276 contains 1 shift/reduce conflict.
+State 282 contains 4 shift/reduce conflicts.
+State 391 contains 1 shift/reduce conflict.
+State 392 contains 1 shift/reduce conflict.
+State 393 contains 1 shift/reduce conflict.
+State 411 contains 1 shift/reduce conflict.
+State 442 contains 1 shift/reduce conflict.
+State 499 contains 1 shift/reduce conflict.
+State 500 contains 1 shift/reduce conflict.
+
+Grammar
+rule 1    @1 ->		/* empty */
+rule 2    @2 ->		/* empty */
+rule 3    @3 ->		/* empty */
+rule 4    @4 ->		/* empty */
+rule 5    @5 ->		/* empty */
+rule 6    @6 ->		/* empty */
+rule 7    description -> @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'
+rule 8    Operation_section -> op_group_list
+rule 9    Operation_section ->		/* empty */
+rule 10   op_group_list -> op_group_list op_group
+rule 11   op_group_list -> op_group
+rule 12   op_group -> '(' _opgroup_ Identifier op_list ')'
+rule 13   op_group -> '(' _vargroups_ vargroup_list ')'
+rule 14   op_list -> op_list op
+rule 15   op_list -> op
+rule 16   op -> '(' _opcode_ Opcode_list opattribute_list ')'
+rule 17   op -> '(' _opcode_ Opcode_list ')'
+rule 18   Opcode_list -> Opcode_list Identifier
+rule 19   Opcode_list -> Identifier
+rule 20   Identifier_list -> Identifier_list Identifier
+rule 21   Identifier_list -> Identifier
+rule 22   opattribute_list -> opattribute_list opattribute
+rule 23   opattribute_list -> opattribute
+rule 24   listOfAsmFormats -> '(' asmPrintFormat ')'
+rule 25   listOfAsmFormats -> listOfAsmFormats '(' asmPrintFormat ')'
+rule 26   asmPrintFormat -> asmCond asmPrint
+rule 27   asmCond -> '(' _asm_cond_ _char_string_ ')'
+rule 28   asmPrint -> '(' _asm_print_ _char_string_ ')'
+rule 29   listOfIRFormats -> '(' asmPrintFormat ')'
+rule 30   listOfIRFormats -> listOfIRFormats '(' asmPrintFormat ')'
+rule 31   opattribute -> '(' _optype_ optype ')'
+rule 32   opattribute -> '(' _operands_ operand_list ')'
+rule 33   opattribute -> '(' _behavior_ _char_string_ ')'
+rule 34   opattribute -> '(' _behavior_ _none_ ')'
+rule 35   opattribute -> '(' _bytesize_ Integer_lit ')'
+rule 36   opattribute -> '(' _asm_format_ listOfAsmFormats ')'
+rule 37   opattribute -> '(' _dump_format_ listOfIRFormats ')'
+rule 38   optype -> _dataop_
+rule 39   optype -> _controlop_
+rule 40   optype -> _flowop_
+rule 41   operand_list ->		/* empty */
+rule 42   operand_list -> operand_list one_operand
+rule 43   operand_list -> one_operand
+rule 44   one_operand -> '(' Identifier Identifier operand_semgroups ')'
+rule 45   one_operand -> '(' Identifier Identifier ')'
+rule 46   operand_semgroups -> operand_semgroups operand_semgroup
+rule 47   operand_semgroups -> operand_semgroup
+rule 48   operand_semgroup -> Identifier
+rule 49   operand_semgroup -> '(' _circ_ Identifier ')'
+rule 50   vargroup_list -> vargroup_list vargroup
+rule 51   vargroup_list -> vargroup
+rule 52   vargroup -> '(' Identifier datatype regs ')'
+rule 53   vargroup -> '(' Identifier regs ')'
+rule 54   vargroup -> '(' Identifier '(' reg_list ')' ')'
+rule 55   Identifier_list ->		/* empty */
+rule 56   datatype -> '(' _datatype_ Identifier ')'
+rule 57   regs -> '(' _regs_ reg_list ')'
+rule 58   reg_list -> reg
+rule 59   reg_list -> reg_list reg
+rule 60   reg -> Identifier
+rule 61   reg -> Identifier '[' range_list ']'
+rule 62   range_list -> range_list range
+rule 63   range_list -> range
+rule 64   range -> Integer_lit
+rule 65   range -> Integer_lit '-' Integer_lit
+rule 66   Instruction_section -> word_len slot_list
+rule 67   Instruction_section -> slot_list
+rule 68   Instruction_section ->		/* empty */
+rule 69   word_len -> '(' _wordlen_ Integer_lit ')'
+rule 70   slot_list -> '(' _slots_ s_list ')'
+rule 71   s_list -> s_list slot
+rule 72   s_list -> slot
+rule 73   slot -> '(' instr_attr_list ')'
+rule 74   instr_attr_list -> instr_attr
+rule 75   instr_attr_list -> instr_attr_list instr_attr
+rule 76   instr_attr -> '(' _type_ type_name_list ')'
+rule 77   instr_attr -> '(' _bitwidth_ Integer_lit ')'
+rule 78   instr_attr -> '(' _unit_ Identifier ')'
+rule 79   type_name_list -> type_name
+rule 80   type_name_list -> type_name_list type_name
+rule 81   type_name -> _data_
+rule 82   type_name -> _control_
+rule 83   type_name -> _flow_
+rule 84   OpMapping_section -> opcode_mapping operand_mapping _tree_mappings_ tree_description _end_tree_mappings_
+rule 85   OpMapping_section -> operand_mapping _tree_mappings_ tree_description _end_tree_mappings_
+rule 86   OpMapping_section -> opcode_mapping _tree_mappings_ tree_description _end_tree_mappings_
+rule 87   OpMapping_section -> _tree_mappings_ tree_description _end_tree_mappings_
+rule 88   tree_description -> ruleList
+rule 89   ruleList -> ruleList rule
+rule 90   ruleList -> rule
+rule 91   rule -> generics targets
+rule 92   rule -> lhs rhs
+rule 93   generics -> ISEL_LBRACE genericPart
+rule 94   targets -> targetPart ISEL_RBRACE
+rule 95   lhs -> ISEL_LBRACE lhsPart
+rule 96   rhs -> rhsPart ISEL_RBRACE
+rule 97   genericPart -> ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE
+rule 98   targetPart -> ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE
+rule 99   lhsPart -> ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE
+rule 100  rhsPart -> ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE
+rule 101  opGenList -> opGenList Op
+rule 102  opGenList -> Op
+rule 103  opTarList -> opTarList Op
+rule 104  opTarList -> Op
+rule 105  Op -> ISEL_LBRACE ISEL_OPCODE dstList srcList ISEL_RBRACE
+rule 106  dstList -> dstList dstNum ISEL_EQUAL argType argIdent
+rule 107  dstList -> dstNum ISEL_EQUAL argType argIdent
+rule 108  dstList ->		/* empty */
+rule 109  srcList -> srcList srcNum ISEL_EQUAL argType argIdent
+rule 110  srcList -> srcNum ISEL_EQUAL argType argIdent
+rule 111  srcList ->		/* empty */
+rule 112  dstNum -> ISEL_DST ISEL_LPAREN val ISEL_RPAREN
+rule 113  srcNum -> ISEL_SRC ISEL_LPAREN val ISEL_RPAREN
+rule 114  val -> ISEL_NUM
+rule 115  argType -> ISEL_TYPE
+rule 116  argIdent -> ISEL_LBRACE ISEL_NUM ISEL_RBRACE
+rule 117  opcode_mapping -> '(' _opcode_mapping_ opcode_map_list ')'
+rule 118  operand_mapping -> '(' _operand_mapping_ operand_map_list ')'
+rule 119  opcode_map_list -> opcode_map_list opcode_map
+rule 120  opcode_map_list -> opcode_map
+rule 121  opcode_map -> '(' _op_mapping_ pred_dr_ops_list ')'
+rule 122  pred_dr_ops_list -> pred_dr_ops
+rule 123  pred_dr_ops_list -> pred_dr_ops_list pred_dr_ops
+rule 124  pred_dr_ops -> '(' _predicate_ pred_list oper_seq ')'
+rule 125  pred_dr_ops -> oper_seq
+rule 126  pred_list -> pred
+rule 127  pred_list -> pred_list pred
+rule 128  pred -> '(' Identifier mapvar_id ')'
+rule 129  pred -> _true_
+rule 130  oper_seq -> '(' _generic_ operlist ')'
+rule 131  oper_seq -> '(' _target_ operlist ')'
+rule 132  oper_seq -> '(' _target_risa_ operlist ')'
+rule 133  operlist -> operlist oper
+rule 134  operlist -> oper
+rule 135  oper -> '(' Identifier mapvar_list ')'
+rule 136  mapvar_list ->		/* empty */
+rule 137  mapvar_list -> mapvar
+rule 138  mapvar_list -> mapvar_list mapvar
+rule 139  mapvar -> mapvar_id
+rule 140  mapvar -> '(' Identifier mapvar_id ')'
+rule 141  mapvar_id -> Identifier
+rule 142  mapvar_id -> Integer_lit
+rule 143  mapvar_id -> _dst_
+rule 144  operand_map_list -> operand_map_list operand_map
+rule 145  operand_map_list -> operand_map
+rule 146  operand_map -> '(' _op_mapping_ generic_operand target_operand ')'
+rule 147  generic_operand -> '(' _generic_ data_type class_type ')'
+rule 148  target_operand -> '(' _target_ Identifier ')'
+rule 149  data_type -> '(' _datatype_ Identifier ')'
+rule 150  class_type -> '(' _classtype_ Identifier ')'
+rule 151  ArchComponent_section -> subtype_decls compinst_list
+rule 152  ArchComponent_section ->		/* empty */
+rule 153  subtype_decls -> subtype_decl
+rule 154  subtype_decls -> subtype_decls subtype_decl
+rule 155  subtype_decl -> '(' _subtype_ base_type subtype_list ')'
+rule 156  subtype_list -> subtype_list Identifier
+rule 157  subtype_list -> Identifier
+rule 158  base_type -> _unit_
+rule 159  base_type -> _latch_
+rule 160  base_type -> _storage_
+rule 161  base_type -> _connection_
+rule 162  base_type -> _port_
+rule 163  compinst_list -> compinst_list compinst
+rule 164  compinst_list -> compinst
+rule 165  compinst -> '(' Identifier component_list ')'
+rule 166  component_list -> component_list one_comp
+rule 167  component_list -> one_comp
+rule 168  one_comp -> Identifier comp_initstr comp_attributes
+rule 169  one_comp -> Identifier comp_initstr
+rule 170  one_comp -> Identifier comp_attributes
+rule 171  one_comp -> Identifier
+rule 172  comp_initstr -> '(' _char_string_ ')'
+rule 173  comp_attributes -> comp_attributes comp_attribute
+rule 174  comp_attributes -> comp_attributes timings
+rule 175  comp_attributes -> comp_attribute
+rule 176  comp_attributes -> timings
+rule 177  comp_attribute -> sub_comps
+rule 178  comp_attribute -> latches
+rule 179  comp_attribute -> ports
+rule 180  comp_attribute -> connections
+rule 181  comp_attribute -> opcodes
+rule 182  comp_attribute -> capacity
+rule 183  comp_attribute -> argument
+rule 184  comp_attribute -> feedback_enq
+rule 185  comp_attribute -> feedback_deq
+rule 186  comp_attribute -> queue_enq
+rule 187  comp_attribute -> queue_deq
+rule 188  comp_attribute -> opcodes_enq
+rule 189  comp_attribute -> opcodes_deq
+rule 190  comp_attribute -> instrin
+rule 191  comp_attribute -> instrout
+rule 192  sub_comps -> '(' _subcomponents_ subcomp_list ')'
+rule 193  subcomp_list -> subcomp_list Identifier
+rule 194  subcomp_list -> Identifier
+rule 195  latches -> '(' _latches_ aggregate_latchlist ')'
+rule 196  latches -> '(' _latches_ _none_ ')'
+rule 197  aggregate_latchlist -> aggregate_latchlist '(' _input_ latch_list ')'
+rule 198  aggregate_latchlist -> aggregate_latchlist '(' _output_ latch_list ')'
+rule 199  aggregate_latchlist -> aggregate_latchlist '(' _other_ latch_list ')'
+rule 200  aggregate_latchlist ->		/* empty */
+rule 201  latch_list -> latch_list Identifier
+rule 202  latch_list -> Identifier
+rule 203  ports -> '(' _ports_ port_list ')'
+rule 204  ports -> '(' _ports_ _none_ ')'
+rule 205  port_list -> port_list Identifier
+rule 206  port_list -> Identifier
+rule 207  feedback_enq -> '(' _feedback_enq_ feedbacks_list ')'
+rule 208  feedback_enq -> '(' _feedback_enq_ _none_ ')'
+rule 209  feedback_deq -> '(' _feedback_deq_ feedbacks_list ')'
+rule 210  feedback_deq -> '(' _feedback_deq_ _none_ ')'
+rule 211  feedbacks_list -> feedbacks_list Identifier
+rule 212  feedbacks_list -> Identifier
+rule 213  queue_enq -> '(' _queues_enq_ queue_enq_list ')'
+rule 214  queue_enq -> '(' _queues_enq_ _none_ ')'
+rule 215  queue_enq_list -> queue_enq_list Identifier
+rule 216  queue_enq_list -> Identifier
+rule 217  queue_deq -> '(' _queues_deq_ queue_deq_list ')'
+rule 218  queue_deq -> '(' _queues_deq_ _none_ ')'
+rule 219  queue_deq_list -> queue_deq_list Identifier
+rule 220  queue_deq_list -> Identifier
+rule 221  connections -> '(' _connections_ connection_list ')'
+rule 222  connections -> '(' _connections_ _none_ ')'
+rule 223  connection_list -> connection_list Identifier
+rule 224  connection_list -> Identifier
+rule 225  opcodes -> '(' _opcodes_ Identifier_list ')'
+rule 226  opcodes -> '(' _opcodes_ _all_ ')'
+rule 227  opcodes_enq -> '(' _opcodes_enq_ Identifier_list ')'
+rule 228  opcodes_enq -> '(' _opcodes_enq_ _all_ ')'
+rule 229  opcodes_deq -> '(' _opcodes_deq_ Identifier_list ')'
+rule 230  opcodes_deq -> '(' _opcodes_deq_ _all_ ')'
+rule 231  timings -> '(' _timing_ cyclenum_list ')'
+rule 232  cyclenum_list -> cyclenum
+rule 233  cyclenum_list -> cyclenum_list cyclenum
+rule 234  cyclenum -> '(' Identifier_list Integer_lit ')'
+rule 235  cyclenum -> '(' _all_ Integer_lit ')'
+rule 236  Integer_lit_list -> Integer_lit
+rule 237  Integer_lit_list -> Integer_lit_list Integer_lit
+rule 238  capacity -> '(' _capacity_ Integer_lit ')'
+rule 239  instrin -> '(' _instrin_ Integer_lit ')'
+rule 240  instrout -> '(' _instrout_ Integer_lit ')'
+rule 241  argument -> '(' _argument_ Identifier ')'
+rule 242  PipeDTPaths_section -> pipeline_info_list '(' _dtpaths_ dtpath_list ')'
+rule 243  PipeDTPaths_section ->		/* empty */
+rule 244  pipeline_info_list -> pipeline_info
+rule 245  pipeline_info_list -> pipeline_info_list pipeline_info
+rule 246  pipeline_info -> pipeline
+rule 247  pipeline_info -> '(' Identifier pipeline ')'
+rule 248  pipeline_info -> '(' Identifier parallel ')'
+rule 249  pipeline_info -> '(' Identifier alternate ')'
+rule 250  pipeline -> '(' _pipeline_ Identifier_list ')'
+rule 251  parallel -> '(' _parallel_ Identifier_list ')'
+rule 252  alternate -> '(' _alternate_ Identifier_list ')'
+rule 253  dtpath_list -> dtpath_list dtpaths
+rule 254  dtpath_list -> dtpaths
+rule 255  dtpaths -> '(' _type_ t_type dt_list ')'
+rule 256  t_type -> _uni_
+rule 257  t_type -> _bi_
+rule 258  dt_list -> dt_list dt
+rule 259  dt_list -> dt
+rule 260  dt -> '(' from to dtcomponent_list ')'
+rule 261  from -> Identifier
+rule 262  to -> Identifier
+rule 263  dtcomponent_list -> dtcomponent_list Identifier
+rule 264  dtcomponent_list -> Identifier
+rule 265  Storage_section ->		/* empty */
+rule 266  Storage_section -> storage_list
+rule 267  storage_list -> storage
+rule 268  storage_list -> storage_list storage
+rule 269  storage -> '(' Identifier storageattr_list ')'
+rule 270  storage -> '(' Identifier ')'
+rule 271  storageattr_list -> storageattr
+rule 272  storageattr_list -> storageattr_list storageattr
+rule 273  storageattr -> '(' _type_ Identifier ')'
+rule 274  storageattr -> '(' _mnemonic_ _char_string_ ')'
+rule 275  storageattr -> '(' _size_ Integer_lit ')'
+rule 276  storageattr -> '(' _width_ Integer_lit ')'
+rule 277  storageattr -> '(' _accesstimes_ Integer_lit ')'
+rule 278  storageattr -> '(' _accessports_ accessport_list ')'
+rule 279  storageattr -> '(' _addrrange_ addrrange_list ')'
+rule 280  storageattr -> '(' _write_policy_ write_policy_options ')'
+rule 281  storageattr -> '(' _replacement_policy_ replacement_policy_options ')'
+rule 282  storageattr -> '(' _wordsize_ Integer_lit ')'
+rule 283  storageattr -> '(' _linesize_ Integer_lit ')'
+rule 284  storageattr -> '(' _num_lines_ Integer_lit ')'
+rule 285  storageattr -> '(' _associativity_ Integer_lit ')'
+rule 286  storageattr -> '(' _level_ Integer_lit ')'
+rule 287  storageattr -> '(' _next_level_ Integer_lit ')'
+rule 288  storageattr -> '(' _prev_level_ Integer_lit ')'
+rule 289  storageattr -> '(' _storage_connections_ stconnection_list ')'
+rule 290  storageattr -> '(' _read_latency_ Integer_lit ')'
+rule 291  storageattr -> '(' _write_latency_ Integer_lit ')'
+rule 292  storageattr -> '(' _num_banks_ Integer_lit ')'
+rule 293  storageattr -> '(' _access_mode_ Integer_lit ')'
+rule 294  storageattr -> '(' _num_parallel_read_ Integer_lit ')'
+rule 295  storageattr -> '(' _num_parallel_write_ Integer_lit ')'
+rule 296  storageattr -> '(' _read_write_conflict_ Integer_lit ')'
+rule 297  accessport_list -> accessport
+rule 298  accessport_list -> accessport_list accessport
+rule 299  accessport -> '(' Identifier ')'
+rule 300  accessport -> '(' Identifier '(' _accesswidths_ Integer_lit_list ')' ')'
+rule 301  addrrange_list -> addrrange
+rule 302  addrrange_list -> addrrange_list addrrange
+rule 303  addrrange -> '(' integer integer ')'
+rule 304  addrrange -> '(' integer integer '(' _stride_ integer ')' ')'
+rule 305  stconnection_list -> stconnection
+rule 306  stconnection_list -> stconnection_list stconnection
+rule 307  stconnection -> '(' Identifier Identifier ')'
+rule 308  write_policy_options -> _write_back_
+rule 309  write_policy_options -> _write_through_
+rule 310  replacement_policy_options -> _lru_
+rule 311  replacement_policy_options -> _fifo_
+rule 312  integer -> Integer_lit
+
+Terminals, with rules where they appear
+
+$ (-1)
+'(' (40) 7 12 13 16 17 24 25 27 28 29 30 31 32 33 34 35 36 37 44 45
+    49 52 53 54 56 57 69 70 73 76 77 78 117 118 121 124 128 130 131
+    132 135 140 146 147 148 149 150 155 165 172 192 195 196 197 198
+    199 203 204 207 208 209 210 213 214 217 218 221 222 225 226 227
+    228 229 230 231 234 235 238 239 240 241 242 247 248 249 250 251
+    252 255 260 269 270 273 274 275 276 277 278 279 280 281 282 283
+    284 285 286 287 288 289 290 291 292 293 294 295 296 299 300 303
+    304 307
+')' (41) 7 12 13 16 17 24 25 27 28 29 30 31 32 33 34 35 36 37 44 45
+    49 52 53 54 56 57 69 70 73 76 77 78 117 118 121 124 128 130 131
+    132 135 140 146 147 148 149 150 155 165 172 192 195 196 197 198
+    199 203 204 207 208 209 210 213 214 217 218 221 222 225 226 227
+    228 229 230 231 234 235 238 239 240 241 242 247 248 249 250 251
+    252 255 260 269 270 273 274 275 276 277 278 279 280 281 282 283
+    284 285 286 287 288 289 290 291 292 293 294 295 296 299 300 303
+    304 307
+'*' (42)
+'+' (43)
+',' (44)
+'-' (45) 65
+'/' (47)
+':' (58)
+'<' (60)
+'=' (61)
+'>' (62)
+'[' (91) 61
+'\\' (92)
+']' (93) 61
+error (256)
+_opgroup_ (258) 12
+_opcode_ (259) 16 17
+_optype_ (260) 31
+_operands_ (261) 32
+_behavior_ (262) 33 34
+_asm_format_ (263) 36
+_dump_format_ (264) 37
+_asm_print_ (265) 28
+_asm_cond_ (266) 27
+_bytesize_ (267) 35
+_dataop_ (268) 38
+_controlop_ (269) 39
+_flowop_ (270) 40
+_src_ (271)
+_dst_ (272) 143
+_mem_dst_ (273)
+_mem_src_ (274)
+_vargroups_ (275) 13
+_datatype_ (276) 56 149
+_classtype_ (277) 150
+_wordlen_ (278) 69
+_slots_ (279) 70
+_type_ (280) 76 255 273
+_data_ (281) 81
+_control_ (282) 82
+_flow_ (283) 83
+_bitwidth_ (284) 77
+_opcode_mapping_ (285) 117
+_operand_mapping_ (286) 118
+_op_mapping_ (287) 121 146
+_generic_ (288) 130 147
+_target_ (289) 131 148
+_target_risa_ (290) 132
+_regs_ (291) 57
+_subtype_ (292) 155
+_latch_ (293) 159
+_input_ (294) 197
+_output_ (295) 198
+_other_ (296) 199
+_storage_ (297) 160
+_port_ (298) 162
+_connection_ (299) 161
+_units_ (300)
+_latches_ (301) 195 196
+_ports_ (302) 203 204
+_feedback_enq_ (303) 207 208
+_feedback_deq_ (304) 209 210
+_feedback_ (305)
+_queues_enq_ (306) 213 214
+_queues_deq_ (307) 217 218
+_connections_ (308) 221 222
+_storages_ (309)
+_opcodes_ (310) 225 226
+_opcodes_enq_ (311) 227 228
+_opcodes_deq_ (312) 229 230
+_timing_ (313) 231
+_capacity_ (314) 238
+_mnemonic_ (315) 274
+_pipeline_ (316) 250
+_dtpaths_ (317) 242
+_uni_ (318) 256
+_bi_ (319) 257
+_icache_ (320)
+_dcache_ (321)
+_memory_ (322)
+_size_ (323) 275
+_width_ (324) 276
+_line_ (325)
+_linesize_ (326) 283
+_wordsize_ (327) 282
+_num_lines_ (328) 284
+_write_policy_ (329) 280
+_write_policy_options (330)
+_replacement_policy_ (331) 281
+_replacement_policy_options (332)
+_level_ (333) 286
+_storage_connections_ (334) 289
+_next_level_ (335) 287
+_prev_level_ (336) 288
+_lru_ (337) 310
+_fifo_ (338) 311
+_write_back_ (339) 308
+_read_latency_ (340) 290
+_write_latency_ (341) 291
+_write_through_ (342) 309
+_associativity_ (343) 285
+_num_banks_ (344) 292
+_access_mode_ (345) 293
+_num_parallel_read_ (346) 294
+_num_parallel_write_ (347) 295
+_read_write_conflict_ (348) 296
+_addrrange_ (349) 279
+_operations_section_ (350) 7
+_instruction_section_ (351) 7
+_opmapping_section_ (352) 7
+_architecture_section_ (353) 7
+_pipeline_section_ (354) 7
+_storage_section_ (355) 7
+_char_string_ (356) 27 28 33 172 274
+_predicate_ (357) 124
+_subcomponents_ (358) 192
+_parallel_ (359) 251
+_alternate_ (360) 252
+_path_ (361)
+_accesstimes_ (362) 277
+_accessports_ (363) 278
+_accesswidths_ (364) 300
+_stride_ (365) 304
+_circ_ (366) 49
+_none_ (367) 34 196 204 208 210 214 218 222
+_all_ (368) 226 228 230 235
+_true_ (369) 129
+_unit_ (370) 78 158
+_argument_ (371) 241
+Identifier (372) 12 18 19 20 21 44 45 48 49 52 53 54 56 60 61 78 128
+    135 140 141 148 149 150 156 157 165 168 169 170 171 193 194 201
+    202 205 206 211 212 215 216 219 220 223 224 241 247 248 249 261
+    262 263 264 269 270 273 299 300 307
+Integer_lit (373) 35 64 65 69 77 142 234 235 236 237 238 239 240 275
+    276 277 282 283 284 285 286 287 288 290 291 292 293 294 295 296
+    312
+_tree_mappings_ (374) 84 85 86 87
+_end_tree_mappings_ (375) 84 85 86 87
+ISEL_GENERIC (376) 97
+ISEL_TARGET (377) 98
+ISEL_LHS (378) 99
+ISEL_RHS (379) 100
+ISEL_DST (380) 112
+ISEL_SRC (381) 113
+ISEL_LPAREN (382) 112 113
+ISEL_RPAREN (383) 112 113
+ISEL_LBRACE (384) 93 95 97 98 99 100 105 116
+ISEL_RBRACE (385) 94 96 97 98 99 100 105 116
+ISEL_COLON (386)
+ISEL_EQUAL (387) 106 107 109 110
+ISEL_ADD_OPERATOR (388)
+ISEL_SUB_OPERATOR (389)
+ISEL_EQ_OPERATOR (390)
+ISEL_LT_OPERATOR (391)
+_instrin_ (392) 239
+_instrout_ (393) 240
+ISEL_NUM (394) 114 116
+ISEL_TYPE (395) 115
+ISEL_OPCODE (396) 105
+
+Nonterminals, with rules where they appear
+
+description (156)
+    on left: 7
+@1 (157)
+    on left: 1, on right: 7
+@2 (158)
+    on left: 2, on right: 7
+@3 (159)
+    on left: 3, on right: 7
+@4 (160)
+    on left: 4, on right: 7
+@5 (161)
+    on left: 5, on right: 7
+@6 (162)
+    on left: 6, on right: 7
+Operation_section (163)
+    on left: 8 9, on right: 7
+op_group_list (164)
+    on left: 10 11, on right: 8 10
+op_group (165)
+    on left: 12 13, on right: 10 11
+op_list (166)
+    on left: 14 15, on right: 12 14
+op (167)
+    on left: 16 17, on right: 14 15
+Opcode_list (168)
+    on left: 18 19, on right: 16 17 18
+Identifier_list (169)
+    on left: 20 21 55, on right: 20 225 227 229 234 250 251 252
+opattribute_list (170)
+    on left: 22 23, on right: 16 22
+listOfAsmFormats (171)
+    on left: 24 25, on right: 25 36
+asmPrintFormat (172)
+    on left: 26, on right: 24 25 29 30
+asmCond (173)
+    on left: 27, on right: 26
+asmPrint (174)
+    on left: 28, on right: 26
+listOfIRFormats (175)
+    on left: 29 30, on right: 30 37
+opattribute (176)
+    on left: 31 32 33 34 35 36 37, on right: 22 23
+optype (177)
+    on left: 38 39 40, on right: 31
+operand_list (178)
+    on left: 41 42 43, on right: 32 42
+one_operand (179)
+    on left: 44 45, on right: 42 43
+operand_semgroups (180)
+    on left: 46 47, on right: 44 46
+operand_semgroup (181)
+    on left: 48 49, on right: 46 47
+vargroup_list (182)
+    on left: 50 51, on right: 13 50
+vargroup (183)
+    on left: 52 53 54, on right: 50 51
+datatype (184)
+    on left: 56, on right: 52
+regs (185)
+    on left: 57, on right: 52 53
+reg_list (186)
+    on left: 58 59, on right: 54 57 59
+reg (187)
+    on left: 60 61, on right: 58 59
+range_list (188)
+    on left: 62 63, on right: 61 62
+range (189)
+    on left: 64 65, on right: 62 63
+Instruction_section (190)
+    on left: 66 67 68, on right: 7
+word_len (191)
+    on left: 69, on right: 66
+slot_list (192)
+    on left: 70, on right: 66 67
+s_list (193)
+    on left: 71 72, on right: 70 71
+slot (194)
+    on left: 73, on right: 71 72
+instr_attr_list (195)
+    on left: 74 75, on right: 73 75
+instr_attr (196)
+    on left: 76 77 78, on right: 74 75
+type_name_list (197)
+    on left: 79 80, on right: 76 80
+type_name (198)
+    on left: 81 82 83, on right: 79 80
+OpMapping_section (199)
+    on left: 84 85 86 87, on right: 7
+tree_description (200)
+    on left: 88, on right: 84 85 86 87
+ruleList (201)
+    on left: 89 90, on right: 88 89
+rule (202)
+    on left: 91 92, on right: 89 90
+generics (203)
+    on left: 93, on right: 91
+targets (204)
+    on left: 94, on right: 91
+lhs (205)
+    on left: 95, on right: 92
+rhs (206)
+    on left: 96, on right: 92
+genericPart (207)
+    on left: 97, on right: 93
+targetPart (208)
+    on left: 98, on right: 94
+lhsPart (209)
+    on left: 99, on right: 95
+rhsPart (210)
+    on left: 100, on right: 96
+opGenList (211)
+    on left: 101 102, on right: 97 99 101
+opTarList (212)
+    on left: 103 104, on right: 98 100 103
+Op (213)
+    on left: 105, on right: 101 102 103 104
+dstList (214)
+    on left: 106 107 108, on right: 105 106
+srcList (215)
+    on left: 109 110 111, on right: 105 109
+dstNum (216)
+    on left: 112, on right: 106 107
+srcNum (217)
+    on left: 113, on right: 109 110
+val (218)
+    on left: 114, on right: 112 113
+argType (219)
+    on left: 115, on right: 106 107 109 110
+argIdent (220)
+    on left: 116, on right: 106 107 109 110
+opcode_mapping (221)
+    on left: 117, on right: 84 86
+operand_mapping (222)
+    on left: 118, on right: 84 85
+opcode_map_list (223)
+    on left: 119 120, on right: 117 119
+opcode_map (224)
+    on left: 121, on right: 119 120
+pred_dr_ops_list (225)
+    on left: 122 123, on right: 121 123
+pred_dr_ops (226)
+    on left: 124 125, on right: 122 123
+pred_list (227)
+    on left: 126 127, on right: 124 127
+pred (228)
+    on left: 128 129, on right: 126 127
+oper_seq (229)
+    on left: 130 131 132, on right: 124 125
+operlist (230)
+    on left: 133 134, on right: 130 131 132 133
+oper (231)
+    on left: 135, on right: 133 134
+mapvar_list (232)
+    on left: 136 137 138, on right: 135 138
+mapvar (233)
+    on left: 139 140, on right: 137 138
+mapvar_id (234)
+    on left: 141 142 143, on right: 128 139 140
+operand_map_list (235)
+    on left: 144 145, on right: 118 144
+operand_map (236)
+    on left: 146, on right: 144 145
+generic_operand (237)
+    on left: 147, on right: 146
+target_operand (238)
+    on left: 148, on right: 146
+data_type (239)
+    on left: 149, on right: 147
+class_type (240)
+    on left: 150, on right: 147
+ArchComponent_section (241)
+    on left: 151 152, on right: 7
+subtype_decls (242)
+    on left: 153 154, on right: 151 154
+subtype_decl (243)
+    on left: 155, on right: 153 154
+subtype_list (244)
+    on left: 156 157, on right: 155 156
+base_type (245)
+    on left: 158 159 160 161 162, on right: 155
+compinst_list (246)
+    on left: 163 164, on right: 151 163
+compinst (247)
+    on left: 165, on right: 163 164
+component_list (248)
+    on left: 166 167, on right: 165 166
+one_comp (249)
+    on left: 168 169 170 171, on right: 166 167
+comp_initstr (250)
+    on left: 172, on right: 168 169
+comp_attributes (251)
+    on left: 173 174 175 176, on right: 168 170 173 174
+comp_attribute (252)
+    on left: 177 178 179 180 181 182 183 184 185 186 187 188 189 190
+    191, on right: 173 175
+sub_comps (253)
+    on left: 192, on right: 177
+subcomp_list (254)
+    on left: 193 194, on right: 192 193
+latches (255)
+    on left: 195 196, on right: 178
+aggregate_latchlist (256)
+    on left: 197 198 199 200, on right: 195 197 198 199
+latch_list (257)
+    on left: 201 202, on right: 197 198 199 201
+ports (258)
+    on left: 203 204, on right: 179
+port_list (259)
+    on left: 205 206, on right: 203 205
+feedback_enq (260)
+    on left: 207 208, on right: 184
+feedback_deq (261)
+    on left: 209 210, on right: 185
+feedbacks_list (262)
+    on left: 211 212, on right: 207 209 211
+queue_enq (263)
+    on left: 213 214, on right: 186
+queue_enq_list (264)
+    on left: 215 216, on right: 213 215
+queue_deq (265)
+    on left: 217 218, on right: 187
+queue_deq_list (266)
+    on left: 219 220, on right: 217 219
+connections (267)
+    on left: 221 222, on right: 180
+connection_list (268)
+    on left: 223 224, on right: 221 223
+opcodes (269)
+    on left: 225 226, on right: 181
+opcodes_enq (270)
+    on left: 227 228, on right: 188
+opcodes_deq (271)
+    on left: 229 230, on right: 189
+timings (272)
+    on left: 231, on right: 174 176
+cyclenum_list (273)
+    on left: 232 233, on right: 231 233
+cyclenum (274)
+    on left: 234 235, on right: 232 233
+Integer_lit_list (275)
+    on left: 236 237, on right: 237 300
+capacity (276)
+    on left: 238, on right: 182
+instrin (277)
+    on left: 239, on right: 190
+instrout (278)
+    on left: 240, on right: 191
+argument (279)
+    on left: 241, on right: 183
+PipeDTPaths_section (280)
+    on left: 242 243, on right: 7
+pipeline_info_list (281)
+    on left: 244 245, on right: 242 245
+pipeline_info (282)
+    on left: 246 247 248 249, on right: 244 245
+pipeline (283)
+    on left: 250, on right: 246 247
+parallel (284)
+    on left: 251, on right: 248
+alternate (285)
+    on left: 252, on right: 249
+dtpath_list (286)
+    on left: 253 254, on right: 242 253
+dtpaths (287)
+    on left: 255, on right: 253 254
+t_type (288)
+    on left: 256 257, on right: 255
+dt_list (289)
+    on left: 258 259, on right: 255 258
+dt (290)
+    on left: 260, on right: 258 259
+from (291)
+    on left: 261, on right: 260
+to (292)
+    on left: 262, on right: 260
+dtcomponent_list (293)
+    on left: 263 264, on right: 260 263
+Storage_section (294)
+    on left: 265 266, on right: 7
+storage_list (295)
+    on left: 267 268, on right: 266 268
+storage (296)
+    on left: 269 270, on right: 267 268
+storageattr_list (297)
+    on left: 271 272, on right: 269 272
+storageattr (298)
+    on left: 273 274 275 276 277 278 279 280 281 282 283 284 285 286
+    287 288 289 290 291 292 293 294 295 296, on right: 271 272
+accessport_list (299)
+    on left: 297 298, on right: 278 298
+accessport (300)
+    on left: 299 300, on right: 297 298
+addrrange_list (301)
+    on left: 301 302, on right: 279 302
+addrrange (302)
+    on left: 303 304, on right: 301 302
+stconnection_list (303)
+    on left: 305 306, on right: 289 306
+stconnection (304)
+    on left: 307, on right: 305 306
+write_policy_options (305)
+    on left: 308 309, on right: 280
+replacement_policy_options (306)
+    on left: 310 311, on right: 281
+integer (307)
+    on left: 312, on right: 303 304
+
+
+state 0
+
+    $default	reduce using rule 1 (@1)
+
+    description	go to state 666
+    @1  	go to state 1
+
+
+
+state 1
+
+    description  ->  @1 . '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 2
+
+
+
+state 2
+
+    description  ->  @1 '(' . _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _operations_section_	shift, and go to state 3
+
+
+
+state 3
+
+    description  ->  @1 '(' _operations_section_ . Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 4
+
+    $default	reduce using rule 9 (Operation_section)
+
+    Operation_section	go to state 5
+    op_group_list	go to state 6
+    op_group	go to state 7
+
+
+
+state 4
+
+    op_group  ->  '(' . _opgroup_ Identifier op_list ')'   (rule 12)
+    op_group  ->  '(' . _vargroups_ vargroup_list ')'   (rule 13)
+
+    _opgroup_	shift, and go to state 8
+    _vargroups_	shift, and go to state 9
+
+
+
+state 5
+
+    description  ->  @1 '(' _operations_section_ Operation_section . ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    ')' 	shift, and go to state 10
+
+
+
+state 6
+
+    Operation_section  ->  op_group_list .   (rule 8)
+    op_group_list  ->  op_group_list . op_group   (rule 10)
+
+    '(' 	shift, and go to state 4
+
+    $default	reduce using rule 8 (Operation_section)
+
+    op_group	go to state 11
+
+
+
+state 7
+
+    op_group_list  ->  op_group .   (rule 11)
+
+    $default	reduce using rule 11 (op_group_list)
+
+
+
+state 8
+
+    op_group  ->  '(' _opgroup_ . Identifier op_list ')'   (rule 12)
+
+    Identifier	shift, and go to state 12
+
+
+
+state 9
+
+    op_group  ->  '(' _vargroups_ . vargroup_list ')'   (rule 13)
+
+    '(' 	shift, and go to state 13
+
+    vargroup_list	go to state 14
+    vargroup	go to state 15
+
+
+
+state 10
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' . @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    $default	reduce using rule 2 (@2)
+
+    @2  	go to state 16
+
+
+
+state 11
+
+    op_group_list  ->  op_group_list op_group .   (rule 10)
+
+    $default	reduce using rule 10 (op_group_list)
+
+
+
+state 12
+
+    op_group  ->  '(' _opgroup_ Identifier . op_list ')'   (rule 12)
+
+    '(' 	shift, and go to state 17
+
+    op_list	go to state 18
+    op  	go to state 19
+
+
+
+state 13
+
+    vargroup  ->  '(' . Identifier datatype regs ')'   (rule 52)
+    vargroup  ->  '(' . Identifier regs ')'   (rule 53)
+    vargroup  ->  '(' . Identifier '(' reg_list ')' ')'   (rule 54)
+
+    Identifier	shift, and go to state 20
+
+
+
+state 14
+
+    op_group  ->  '(' _vargroups_ vargroup_list . ')'   (rule 13)
+    vargroup_list  ->  vargroup_list . vargroup   (rule 50)
+
+    '(' 	shift, and go to state 13
+    ')' 	shift, and go to state 21
+
+    vargroup	go to state 22
+
+
+
+state 15
+
+    vargroup_list  ->  vargroup .   (rule 51)
+
+    $default	reduce using rule 51 (vargroup_list)
+
+
+
+state 16
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 . '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 23
+
+
+
+state 17
+
+    op  ->  '(' . _opcode_ Opcode_list opattribute_list ')'   (rule 16)
+    op  ->  '(' . _opcode_ Opcode_list ')'   (rule 17)
+
+    _opcode_	shift, and go to state 24
+
+
+
+state 18
+
+    op_group  ->  '(' _opgroup_ Identifier op_list . ')'   (rule 12)
+    op_list  ->  op_list . op   (rule 14)
+
+    '(' 	shift, and go to state 17
+    ')' 	shift, and go to state 25
+
+    op  	go to state 26
+
+
+
+state 19
+
+    op_list  ->  op .   (rule 15)
+
+    $default	reduce using rule 15 (op_list)
+
+
+
+state 20
+
+    vargroup  ->  '(' Identifier . datatype regs ')'   (rule 52)
+    vargroup  ->  '(' Identifier . regs ')'   (rule 53)
+    vargroup  ->  '(' Identifier . '(' reg_list ')' ')'   (rule 54)
+
+    '(' 	shift, and go to state 27
+
+    datatype	go to state 28
+    regs	go to state 29
+
+
+
+state 21
+
+    op_group  ->  '(' _vargroups_ vargroup_list ')' .   (rule 13)
+
+    $default	reduce using rule 13 (op_group)
+
+
+
+state 22
+
+    vargroup_list  ->  vargroup_list vargroup .   (rule 50)
+
+    $default	reduce using rule 50 (vargroup_list)
+
+
+
+state 23
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' . _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _instruction_section_	shift, and go to state 30
+
+
+
+state 24
+
+    op  ->  '(' _opcode_ . Opcode_list opattribute_list ')'   (rule 16)
+    op  ->  '(' _opcode_ . Opcode_list ')'   (rule 17)
+
+    Identifier	shift, and go to state 31
+
+    Opcode_list	go to state 32
+
+
+
+state 25
+
+    op_group  ->  '(' _opgroup_ Identifier op_list ')' .   (rule 12)
+
+    $default	reduce using rule 12 (op_group)
+
+
+
+state 26
+
+    op_list  ->  op_list op .   (rule 14)
+
+    $default	reduce using rule 14 (op_list)
+
+
+
+state 27
+
+    vargroup  ->  '(' Identifier '(' . reg_list ')' ')'   (rule 54)
+    datatype  ->  '(' . _datatype_ Identifier ')'   (rule 56)
+    regs  ->  '(' . _regs_ reg_list ')'   (rule 57)
+
+    _datatype_	shift, and go to state 33
+    _regs_	shift, and go to state 34
+    Identifier	shift, and go to state 35
+
+    reg_list	go to state 36
+    reg 	go to state 37
+
+
+
+state 28
+
+    vargroup  ->  '(' Identifier datatype . regs ')'   (rule 52)
+
+    '(' 	shift, and go to state 38
+
+    regs	go to state 39
+
+
+
+state 29
+
+    vargroup  ->  '(' Identifier regs . ')'   (rule 53)
+
+    ')' 	shift, and go to state 40
+
+
+
+state 30
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ . Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 41
+
+    $default	reduce using rule 68 (Instruction_section)
+
+    Instruction_section	go to state 42
+    word_len	go to state 43
+    slot_list	go to state 44
+
+
+
+state 31
+
+    Opcode_list  ->  Identifier .   (rule 19)
+
+    $default	reduce using rule 19 (Opcode_list)
+
+
+
+state 32
+
+    op  ->  '(' _opcode_ Opcode_list . opattribute_list ')'   (rule 16)
+    op  ->  '(' _opcode_ Opcode_list . ')'   (rule 17)
+    Opcode_list  ->  Opcode_list . Identifier   (rule 18)
+
+    Identifier	shift, and go to state 45
+    '(' 	shift, and go to state 46
+    ')' 	shift, and go to state 47
+
+    opattribute_list	go to state 48
+    opattribute	go to state 49
+
+
+
+state 33
+
+    datatype  ->  '(' _datatype_ . Identifier ')'   (rule 56)
+
+    Identifier	shift, and go to state 50
+
+
+
+state 34
+
+    regs  ->  '(' _regs_ . reg_list ')'   (rule 57)
+
+    Identifier	shift, and go to state 35
+
+    reg_list	go to state 51
+    reg 	go to state 37
+
+
+
+state 35
+
+    reg  ->  Identifier .   (rule 60)
+    reg  ->  Identifier . '[' range_list ']'   (rule 61)
+
+    '[' 	shift, and go to state 52
+
+    $default	reduce using rule 60 (reg)
+
+
+
+state 36
+
+    vargroup  ->  '(' Identifier '(' reg_list . ')' ')'   (rule 54)
+    reg_list  ->  reg_list . reg   (rule 59)
+
+    Identifier	shift, and go to state 35
+    ')' 	shift, and go to state 53
+
+    reg 	go to state 54
+
+
+
+state 37
+
+    reg_list  ->  reg .   (rule 58)
+
+    $default	reduce using rule 58 (reg_list)
+
+
+
+state 38
+
+    regs  ->  '(' . _regs_ reg_list ')'   (rule 57)
+
+    _regs_	shift, and go to state 34
+
+
+
+state 39
+
+    vargroup  ->  '(' Identifier datatype regs . ')'   (rule 52)
+
+    ')' 	shift, and go to state 55
+
+
+
+state 40
+
+    vargroup  ->  '(' Identifier regs ')' .   (rule 53)
+
+    $default	reduce using rule 53 (vargroup)
+
+
+
+state 41
+
+    word_len  ->  '(' . _wordlen_ Integer_lit ')'   (rule 69)
+    slot_list  ->  '(' . _slots_ s_list ')'   (rule 70)
+
+    _wordlen_	shift, and go to state 56
+    _slots_	shift, and go to state 57
+
+
+
+state 42
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section . ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    ')' 	shift, and go to state 58
+
+
+
+state 43
+
+    Instruction_section  ->  word_len . slot_list   (rule 66)
+
+    '(' 	shift, and go to state 59
+
+    slot_list	go to state 60
+
+
+
+state 44
+
+    Instruction_section  ->  slot_list .   (rule 67)
+
+    $default	reduce using rule 67 (Instruction_section)
+
+
+
+state 45
+
+    Opcode_list  ->  Opcode_list Identifier .   (rule 18)
+
+    $default	reduce using rule 18 (Opcode_list)
+
+
+
+state 46
+
+    opattribute  ->  '(' . _optype_ optype ')'   (rule 31)
+    opattribute  ->  '(' . _operands_ operand_list ')'   (rule 32)
+    opattribute  ->  '(' . _behavior_ _char_string_ ')'   (rule 33)
+    opattribute  ->  '(' . _behavior_ _none_ ')'   (rule 34)
+    opattribute  ->  '(' . _bytesize_ Integer_lit ')'   (rule 35)
+    opattribute  ->  '(' . _asm_format_ listOfAsmFormats ')'   (rule 36)
+    opattribute  ->  '(' . _dump_format_ listOfIRFormats ')'   (rule 37)
+
+    _optype_	shift, and go to state 61
+    _operands_	shift, and go to state 62
+    _behavior_	shift, and go to state 63
+    _asm_format_	shift, and go to state 64
+    _dump_format_	shift, and go to state 65
+    _bytesize_	shift, and go to state 66
+
+
+
+state 47
+
+    op  ->  '(' _opcode_ Opcode_list ')' .   (rule 17)
+
+    $default	reduce using rule 17 (op)
+
+
+
+state 48
+
+    op  ->  '(' _opcode_ Opcode_list opattribute_list . ')'   (rule 16)
+    opattribute_list  ->  opattribute_list . opattribute   (rule 22)
+
+    '(' 	shift, and go to state 46
+    ')' 	shift, and go to state 67
+
+    opattribute	go to state 68
+
+
+
+state 49
+
+    opattribute_list  ->  opattribute .   (rule 23)
+
+    $default	reduce using rule 23 (opattribute_list)
+
+
+
+state 50
+
+    datatype  ->  '(' _datatype_ Identifier . ')'   (rule 56)
+
+    ')' 	shift, and go to state 69
+
+
+
+state 51
+
+    regs  ->  '(' _regs_ reg_list . ')'   (rule 57)
+    reg_list  ->  reg_list . reg   (rule 59)
+
+    Identifier	shift, and go to state 35
+    ')' 	shift, and go to state 70
+
+    reg 	go to state 54
+
+
+
+state 52
+
+    reg  ->  Identifier '[' . range_list ']'   (rule 61)
+
+    Integer_lit	shift, and go to state 71
+
+    range_list	go to state 72
+    range	go to state 73
+
+
+
+state 53
+
+    vargroup  ->  '(' Identifier '(' reg_list ')' . ')'   (rule 54)
+
+    ')' 	shift, and go to state 74
+
+
+
+state 54
+
+    reg_list  ->  reg_list reg .   (rule 59)
+
+    $default	reduce using rule 59 (reg_list)
+
+
+
+state 55
+
+    vargroup  ->  '(' Identifier datatype regs ')' .   (rule 52)
+
+    $default	reduce using rule 52 (vargroup)
+
+
+
+state 56
+
+    word_len  ->  '(' _wordlen_ . Integer_lit ')'   (rule 69)
+
+    Integer_lit	shift, and go to state 75
+
+
+
+state 57
+
+    slot_list  ->  '(' _slots_ . s_list ')'   (rule 70)
+
+    '(' 	shift, and go to state 76
+
+    s_list	go to state 77
+    slot	go to state 78
+
+
+
+state 58
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' . @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    $default	reduce using rule 3 (@3)
+
+    @3  	go to state 79
+
+
+
+state 59
+
+    slot_list  ->  '(' . _slots_ s_list ')'   (rule 70)
+
+    _slots_	shift, and go to state 57
+
+
+
+state 60
+
+    Instruction_section  ->  word_len slot_list .   (rule 66)
+
+    $default	reduce using rule 66 (Instruction_section)
+
+
+
+state 61
+
+    opattribute  ->  '(' _optype_ . optype ')'   (rule 31)
+
+    _dataop_	shift, and go to state 80
+    _controlop_	shift, and go to state 81
+    _flowop_	shift, and go to state 82
+
+    optype	go to state 83
+
+
+
+state 62
+
+    opattribute  ->  '(' _operands_ . operand_list ')'   (rule 32)
+
+    '(' 	shift, and go to state 84
+
+    '(' 	[reduce using rule 41 (operand_list)]
+    $default	reduce using rule 41 (operand_list)
+
+    operand_list	go to state 85
+    one_operand	go to state 86
+
+
+
+state 63
+
+    opattribute  ->  '(' _behavior_ . _char_string_ ')'   (rule 33)
+    opattribute  ->  '(' _behavior_ . _none_ ')'   (rule 34)
+
+    _char_string_	shift, and go to state 87
+    _none_	shift, and go to state 88
+
+
+
+state 64
+
+    opattribute  ->  '(' _asm_format_ . listOfAsmFormats ')'   (rule 36)
+
+    '(' 	shift, and go to state 89
+
+    listOfAsmFormats	go to state 90
+
+
+
+state 65
+
+    opattribute  ->  '(' _dump_format_ . listOfIRFormats ')'   (rule 37)
+
+    '(' 	shift, and go to state 91
+
+    listOfIRFormats	go to state 92
+
+
+
+state 66
+
+    opattribute  ->  '(' _bytesize_ . Integer_lit ')'   (rule 35)
+
+    Integer_lit	shift, and go to state 93
+
+
+
+state 67
+
+    op  ->  '(' _opcode_ Opcode_list opattribute_list ')' .   (rule 16)
+
+    $default	reduce using rule 16 (op)
+
+
+
+state 68
+
+    opattribute_list  ->  opattribute_list opattribute .   (rule 22)
+
+    $default	reduce using rule 22 (opattribute_list)
+
+
+
+state 69
+
+    datatype  ->  '(' _datatype_ Identifier ')' .   (rule 56)
+
+    $default	reduce using rule 56 (datatype)
+
+
+
+state 70
+
+    regs  ->  '(' _regs_ reg_list ')' .   (rule 57)
+
+    $default	reduce using rule 57 (regs)
+
+
+
+state 71
+
+    range  ->  Integer_lit .   (rule 64)
+    range  ->  Integer_lit . '-' Integer_lit   (rule 65)
+
+    '-' 	shift, and go to state 94
+
+    $default	reduce using rule 64 (range)
+
+
+
+state 72
+
+    reg  ->  Identifier '[' range_list . ']'   (rule 61)
+    range_list  ->  range_list . range   (rule 62)
+
+    Integer_lit	shift, and go to state 71
+    ']' 	shift, and go to state 95
+
+    range	go to state 96
+
+
+
+state 73
+
+    range_list  ->  range .   (rule 63)
+
+    $default	reduce using rule 63 (range_list)
+
+
+
+state 74
+
+    vargroup  ->  '(' Identifier '(' reg_list ')' ')' .   (rule 54)
+
+    $default	reduce using rule 54 (vargroup)
+
+
+
+state 75
+
+    word_len  ->  '(' _wordlen_ Integer_lit . ')'   (rule 69)
+
+    ')' 	shift, and go to state 97
+
+
+
+state 76
+
+    slot  ->  '(' . instr_attr_list ')'   (rule 73)
+
+    '(' 	shift, and go to state 98
+
+    instr_attr_list	go to state 99
+    instr_attr	go to state 100
+
+
+
+state 77
+
+    slot_list  ->  '(' _slots_ s_list . ')'   (rule 70)
+    s_list  ->  s_list . slot   (rule 71)
+
+    '(' 	shift, and go to state 76
+    ')' 	shift, and go to state 101
+
+    slot	go to state 102
+
+
+
+state 78
+
+    s_list  ->  slot .   (rule 72)
+
+    $default	reduce using rule 72 (s_list)
+
+
+
+state 79
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 . '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 103
+
+
+
+state 80
+
+    optype  ->  _dataop_ .   (rule 38)
+
+    $default	reduce using rule 38 (optype)
+
+
+
+state 81
+
+    optype  ->  _controlop_ .   (rule 39)
+
+    $default	reduce using rule 39 (optype)
+
+
+
+state 82
+
+    optype  ->  _flowop_ .   (rule 40)
+
+    $default	reduce using rule 40 (optype)
+
+
+
+state 83
+
+    opattribute  ->  '(' _optype_ optype . ')'   (rule 31)
+
+    ')' 	shift, and go to state 104
+
+
+
+state 84
+
+    one_operand  ->  '(' . Identifier Identifier operand_semgroups ')'   (rule 44)
+    one_operand  ->  '(' . Identifier Identifier ')'   (rule 45)
+
+    Identifier	shift, and go to state 105
+
+
+
+state 85
+
+    opattribute  ->  '(' _operands_ operand_list . ')'   (rule 32)
+    operand_list  ->  operand_list . one_operand   (rule 42)
+
+    '(' 	shift, and go to state 84
+    ')' 	shift, and go to state 106
+
+    one_operand	go to state 107
+
+
+
+state 86
+
+    operand_list  ->  one_operand .   (rule 43)
+
+    $default	reduce using rule 43 (operand_list)
+
+
+
+state 87
+
+    opattribute  ->  '(' _behavior_ _char_string_ . ')'   (rule 33)
+
+    ')' 	shift, and go to state 108
+
+
+
+state 88
+
+    opattribute  ->  '(' _behavior_ _none_ . ')'   (rule 34)
+
+    ')' 	shift, and go to state 109
+
+
+
+state 89
+
+    listOfAsmFormats  ->  '(' . asmPrintFormat ')'   (rule 24)
+
+    '(' 	shift, and go to state 110
+
+    asmPrintFormat	go to state 111
+    asmCond	go to state 112
+
+
+
+state 90
+
+    listOfAsmFormats  ->  listOfAsmFormats . '(' asmPrintFormat ')'   (rule 25)
+    opattribute  ->  '(' _asm_format_ listOfAsmFormats . ')'   (rule 36)
+
+    '(' 	shift, and go to state 113
+    ')' 	shift, and go to state 114
+
+
+
+state 91
+
+    listOfIRFormats  ->  '(' . asmPrintFormat ')'   (rule 29)
+
+    '(' 	shift, and go to state 110
+
+    asmPrintFormat	go to state 115
+    asmCond	go to state 112
+
+
+
+state 92
+
+    listOfIRFormats  ->  listOfIRFormats . '(' asmPrintFormat ')'   (rule 30)
+    opattribute  ->  '(' _dump_format_ listOfIRFormats . ')'   (rule 37)
+
+    '(' 	shift, and go to state 116
+    ')' 	shift, and go to state 117
+
+
+
+state 93
+
+    opattribute  ->  '(' _bytesize_ Integer_lit . ')'   (rule 35)
+
+    ')' 	shift, and go to state 118
+
+
+
+state 94
+
+    range  ->  Integer_lit '-' . Integer_lit   (rule 65)
+
+    Integer_lit	shift, and go to state 119
+
+
+
+state 95
+
+    reg  ->  Identifier '[' range_list ']' .   (rule 61)
+
+    $default	reduce using rule 61 (reg)
+
+
+
+state 96
+
+    range_list  ->  range_list range .   (rule 62)
+
+    $default	reduce using rule 62 (range_list)
+
+
+
+state 97
+
+    word_len  ->  '(' _wordlen_ Integer_lit ')' .   (rule 69)
+
+    $default	reduce using rule 69 (word_len)
+
+
+
+state 98
+
+    instr_attr  ->  '(' . _type_ type_name_list ')'   (rule 76)
+    instr_attr  ->  '(' . _bitwidth_ Integer_lit ')'   (rule 77)
+    instr_attr  ->  '(' . _unit_ Identifier ')'   (rule 78)
+
+    _type_	shift, and go to state 120
+    _bitwidth_	shift, and go to state 121
+    _unit_	shift, and go to state 122
+
+
+
+state 99
+
+    slot  ->  '(' instr_attr_list . ')'   (rule 73)
+    instr_attr_list  ->  instr_attr_list . instr_attr   (rule 75)
+
+    '(' 	shift, and go to state 98
+    ')' 	shift, and go to state 123
+
+    instr_attr	go to state 124
+
+
+
+state 100
+
+    instr_attr_list  ->  instr_attr .   (rule 74)
+
+    $default	reduce using rule 74 (instr_attr_list)
+
+
+
+state 101
+
+    slot_list  ->  '(' _slots_ s_list ')' .   (rule 70)
+
+    $default	reduce using rule 70 (slot_list)
+
+
+
+state 102
+
+    s_list  ->  s_list slot .   (rule 71)
+
+    $default	reduce using rule 71 (s_list)
+
+
+
+state 103
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' . _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _opmapping_section_	shift, and go to state 125
+
+
+
+state 104
+
+    opattribute  ->  '(' _optype_ optype ')' .   (rule 31)
+
+    $default	reduce using rule 31 (opattribute)
+
+
+
+state 105
+
+    one_operand  ->  '(' Identifier . Identifier operand_semgroups ')'   (rule 44)
+    one_operand  ->  '(' Identifier . Identifier ')'   (rule 45)
+
+    Identifier	shift, and go to state 126
+
+
+
+state 106
+
+    opattribute  ->  '(' _operands_ operand_list ')' .   (rule 32)
+
+    $default	reduce using rule 32 (opattribute)
+
+
+
+state 107
+
+    operand_list  ->  operand_list one_operand .   (rule 42)
+
+    $default	reduce using rule 42 (operand_list)
+
+
+
+state 108
+
+    opattribute  ->  '(' _behavior_ _char_string_ ')' .   (rule 33)
+
+    $default	reduce using rule 33 (opattribute)
+
+
+
+state 109
+
+    opattribute  ->  '(' _behavior_ _none_ ')' .   (rule 34)
+
+    $default	reduce using rule 34 (opattribute)
+
+
+
+state 110
+
+    asmCond  ->  '(' . _asm_cond_ _char_string_ ')'   (rule 27)
+
+    _asm_cond_	shift, and go to state 127
+
+
+
+state 111
+
+    listOfAsmFormats  ->  '(' asmPrintFormat . ')'   (rule 24)
+
+    ')' 	shift, and go to state 128
+
+
+
+state 112
+
+    asmPrintFormat  ->  asmCond . asmPrint   (rule 26)
+
+    '(' 	shift, and go to state 129
+
+    asmPrint	go to state 130
+
+
+
+state 113
+
+    listOfAsmFormats  ->  listOfAsmFormats '(' . asmPrintFormat ')'   (rule 25)
+
+    '(' 	shift, and go to state 110
+
+    asmPrintFormat	go to state 131
+    asmCond	go to state 112
+
+
+
+state 114
+
+    opattribute  ->  '(' _asm_format_ listOfAsmFormats ')' .   (rule 36)
+
+    $default	reduce using rule 36 (opattribute)
+
+
+
+state 115
+
+    listOfIRFormats  ->  '(' asmPrintFormat . ')'   (rule 29)
+
+    ')' 	shift, and go to state 132
+
+
+
+state 116
+
+    listOfIRFormats  ->  listOfIRFormats '(' . asmPrintFormat ')'   (rule 30)
+
+    '(' 	shift, and go to state 110
+
+    asmPrintFormat	go to state 133
+    asmCond	go to state 112
+
+
+
+state 117
+
+    opattribute  ->  '(' _dump_format_ listOfIRFormats ')' .   (rule 37)
+
+    $default	reduce using rule 37 (opattribute)
+
+
+
+state 118
+
+    opattribute  ->  '(' _bytesize_ Integer_lit ')' .   (rule 35)
+
+    $default	reduce using rule 35 (opattribute)
+
+
+
+state 119
+
+    range  ->  Integer_lit '-' Integer_lit .   (rule 65)
+
+    $default	reduce using rule 65 (range)
+
+
+
+state 120
+
+    instr_attr  ->  '(' _type_ . type_name_list ')'   (rule 76)
+
+    _data_	shift, and go to state 134
+    _control_	shift, and go to state 135
+    _flow_	shift, and go to state 136
+
+    type_name_list	go to state 137
+    type_name	go to state 138
+
+
+
+state 121
+
+    instr_attr  ->  '(' _bitwidth_ . Integer_lit ')'   (rule 77)
+
+    Integer_lit	shift, and go to state 139
+
+
+
+state 122
+
+    instr_attr  ->  '(' _unit_ . Identifier ')'   (rule 78)
+
+    Identifier	shift, and go to state 140
+
+
+
+state 123
+
+    slot  ->  '(' instr_attr_list ')' .   (rule 73)
+
+    $default	reduce using rule 73 (slot)
+
+
+
+state 124
+
+    instr_attr_list  ->  instr_attr_list instr_attr .   (rule 75)
+
+    $default	reduce using rule 75 (instr_attr_list)
+
+
+
+state 125
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ . OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _tree_mappings_	shift, and go to state 141
+    '(' 	shift, and go to state 142
+
+    OpMapping_section	go to state 143
+    opcode_mapping	go to state 144
+    operand_mapping	go to state 145
+
+
+
+state 126
+
+    one_operand  ->  '(' Identifier Identifier . operand_semgroups ')'   (rule 44)
+    one_operand  ->  '(' Identifier Identifier . ')'   (rule 45)
+
+    Identifier	shift, and go to state 146
+    '(' 	shift, and go to state 147
+    ')' 	shift, and go to state 148
+
+    operand_semgroups	go to state 149
+    operand_semgroup	go to state 150
+
+
+
+state 127
+
+    asmCond  ->  '(' _asm_cond_ . _char_string_ ')'   (rule 27)
+
+    _char_string_	shift, and go to state 151
+
+
+
+state 128
+
+    listOfAsmFormats  ->  '(' asmPrintFormat ')' .   (rule 24)
+
+    $default	reduce using rule 24 (listOfAsmFormats)
+
+
+
+state 129
+
+    asmPrint  ->  '(' . _asm_print_ _char_string_ ')'   (rule 28)
+
+    _asm_print_	shift, and go to state 152
+
+
+
+state 130
+
+    asmPrintFormat  ->  asmCond asmPrint .   (rule 26)
+
+    $default	reduce using rule 26 (asmPrintFormat)
+
+
+
+state 131
+
+    listOfAsmFormats  ->  listOfAsmFormats '(' asmPrintFormat . ')'   (rule 25)
+
+    ')' 	shift, and go to state 153
+
+
+
+state 132
+
+    listOfIRFormats  ->  '(' asmPrintFormat ')' .   (rule 29)
+
+    $default	reduce using rule 29 (listOfIRFormats)
+
+
+
+state 133
+
+    listOfIRFormats  ->  listOfIRFormats '(' asmPrintFormat . ')'   (rule 30)
+
+    ')' 	shift, and go to state 154
+
+
+
+state 134
+
+    type_name  ->  _data_ .   (rule 81)
+
+    $default	reduce using rule 81 (type_name)
+
+
+
+state 135
+
+    type_name  ->  _control_ .   (rule 82)
+
+    $default	reduce using rule 82 (type_name)
+
+
+
+state 136
+
+    type_name  ->  _flow_ .   (rule 83)
+
+    $default	reduce using rule 83 (type_name)
+
+
+
+state 137
+
+    instr_attr  ->  '(' _type_ type_name_list . ')'   (rule 76)
+    type_name_list  ->  type_name_list . type_name   (rule 80)
+
+    _data_	shift, and go to state 134
+    _control_	shift, and go to state 135
+    _flow_	shift, and go to state 136
+    ')' 	shift, and go to state 155
+
+    type_name	go to state 156
+
+
+
+state 138
+
+    type_name_list  ->  type_name .   (rule 79)
+
+    $default	reduce using rule 79 (type_name_list)
+
+
+
+state 139
+
+    instr_attr  ->  '(' _bitwidth_ Integer_lit . ')'   (rule 77)
+
+    ')' 	shift, and go to state 157
+
+
+
+state 140
+
+    instr_attr  ->  '(' _unit_ Identifier . ')'   (rule 78)
+
+    ')' 	shift, and go to state 158
+
+
+
+state 141
+
+    OpMapping_section  ->  _tree_mappings_ . tree_description _end_tree_mappings_   (rule 87)
+
+    ISEL_LBRACE	shift, and go to state 159
+
+    tree_description	go to state 160
+    ruleList	go to state 161
+    rule	go to state 162
+    generics	go to state 163
+    lhs 	go to state 164
+
+
+
+state 142
+
+    opcode_mapping  ->  '(' . _opcode_mapping_ opcode_map_list ')'   (rule 117)
+    operand_mapping  ->  '(' . _operand_mapping_ operand_map_list ')'   (rule 118)
+
+    _opcode_mapping_	shift, and go to state 165
+    _operand_mapping_	shift, and go to state 166
+
+
+
+state 143
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section . ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    ')' 	shift, and go to state 167
+
+
+
+state 144
+
+    OpMapping_section  ->  opcode_mapping . operand_mapping _tree_mappings_ tree_description _end_tree_mappings_   (rule 84)
+    OpMapping_section  ->  opcode_mapping . _tree_mappings_ tree_description _end_tree_mappings_   (rule 86)
+
+    _tree_mappings_	shift, and go to state 168
+    '(' 	shift, and go to state 169
+
+    operand_mapping	go to state 170
+
+
+
+state 145
+
+    OpMapping_section  ->  operand_mapping . _tree_mappings_ tree_description _end_tree_mappings_   (rule 85)
+
+    _tree_mappings_	shift, and go to state 171
+
+
+
+state 146
+
+    operand_semgroup  ->  Identifier .   (rule 48)
+
+    $default	reduce using rule 48 (operand_semgroup)
+
+
+
+state 147
+
+    operand_semgroup  ->  '(' . _circ_ Identifier ')'   (rule 49)
+
+    _circ_	shift, and go to state 172
+
+
+
+state 148
+
+    one_operand  ->  '(' Identifier Identifier ')' .   (rule 45)
+
+    $default	reduce using rule 45 (one_operand)
+
+
+
+state 149
+
+    one_operand  ->  '(' Identifier Identifier operand_semgroups . ')'   (rule 44)
+    operand_semgroups  ->  operand_semgroups . operand_semgroup   (rule 46)
+
+    Identifier	shift, and go to state 146
+    '(' 	shift, and go to state 147
+    ')' 	shift, and go to state 173
+
+    operand_semgroup	go to state 174
+
+
+
+state 150
+
+    operand_semgroups  ->  operand_semgroup .   (rule 47)
+
+    $default	reduce using rule 47 (operand_semgroups)
+
+
+
+state 151
+
+    asmCond  ->  '(' _asm_cond_ _char_string_ . ')'   (rule 27)
+
+    ')' 	shift, and go to state 175
+
+
+
+state 152
+
+    asmPrint  ->  '(' _asm_print_ . _char_string_ ')'   (rule 28)
+
+    _char_string_	shift, and go to state 176
+
+
+
+state 153
+
+    listOfAsmFormats  ->  listOfAsmFormats '(' asmPrintFormat ')' .   (rule 25)
+
+    $default	reduce using rule 25 (listOfAsmFormats)
+
+
+
+state 154
+
+    listOfIRFormats  ->  listOfIRFormats '(' asmPrintFormat ')' .   (rule 30)
+
+    $default	reduce using rule 30 (listOfIRFormats)
+
+
+
+state 155
+
+    instr_attr  ->  '(' _type_ type_name_list ')' .   (rule 76)
+
+    $default	reduce using rule 76 (instr_attr)
+
+
+
+state 156
+
+    type_name_list  ->  type_name_list type_name .   (rule 80)
+
+    $default	reduce using rule 80 (type_name_list)
+
+
+
+state 157
+
+    instr_attr  ->  '(' _bitwidth_ Integer_lit ')' .   (rule 77)
+
+    $default	reduce using rule 77 (instr_attr)
+
+
+
+state 158
+
+    instr_attr  ->  '(' _unit_ Identifier ')' .   (rule 78)
+
+    $default	reduce using rule 78 (instr_attr)
+
+
+
+state 159
+
+    generics  ->  ISEL_LBRACE . genericPart   (rule 93)
+    lhs  ->  ISEL_LBRACE . lhsPart   (rule 95)
+
+    ISEL_LBRACE	shift, and go to state 177
+
+    genericPart	go to state 178
+    lhsPart	go to state 179
+
+
+
+state 160
+
+    OpMapping_section  ->  _tree_mappings_ tree_description . _end_tree_mappings_   (rule 87)
+
+    _end_tree_mappings_	shift, and go to state 180
+
+
+
+state 161
+
+    tree_description  ->  ruleList .   (rule 88)
+    ruleList  ->  ruleList . rule   (rule 89)
+
+    ISEL_LBRACE	shift, and go to state 159
+
+    $default	reduce using rule 88 (tree_description)
+
+    rule	go to state 181
+    generics	go to state 163
+    lhs 	go to state 164
+
+
+
+state 162
+
+    ruleList  ->  rule .   (rule 90)
+
+    $default	reduce using rule 90 (ruleList)
+
+
+
+state 163
+
+    rule  ->  generics . targets   (rule 91)
+
+    ISEL_LBRACE	shift, and go to state 182
+
+    targets	go to state 183
+    targetPart	go to state 184
+
+
+
+state 164
+
+    rule  ->  lhs . rhs   (rule 92)
+
+    ISEL_LBRACE	shift, and go to state 185
+
+    rhs 	go to state 186
+    rhsPart	go to state 187
+
+
+
+state 165
+
+    opcode_mapping  ->  '(' _opcode_mapping_ . opcode_map_list ')'   (rule 117)
+
+    '(' 	shift, and go to state 188
+
+    opcode_map_list	go to state 189
+    opcode_map	go to state 190
+
+
+
+state 166
+
+    operand_mapping  ->  '(' _operand_mapping_ . operand_map_list ')'   (rule 118)
+
+    '(' 	shift, and go to state 191
+
+    operand_map_list	go to state 192
+    operand_map	go to state 193
+
+
+
+state 167
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' . @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    $default	reduce using rule 4 (@4)
+
+    @4  	go to state 194
+
+
+
+state 168
+
+    OpMapping_section  ->  opcode_mapping _tree_mappings_ . tree_description _end_tree_mappings_   (rule 86)
+
+    ISEL_LBRACE	shift, and go to state 159
+
+    tree_description	go to state 195
+    ruleList	go to state 161
+    rule	go to state 162
+    generics	go to state 163
+    lhs 	go to state 164
+
+
+
+state 169
+
+    operand_mapping  ->  '(' . _operand_mapping_ operand_map_list ')'   (rule 118)
+
+    _operand_mapping_	shift, and go to state 166
+
+
+
+state 170
+
+    OpMapping_section  ->  opcode_mapping operand_mapping . _tree_mappings_ tree_description _end_tree_mappings_   (rule 84)
+
+    _tree_mappings_	shift, and go to state 196
+
+
+
+state 171
+
+    OpMapping_section  ->  operand_mapping _tree_mappings_ . tree_description _end_tree_mappings_   (rule 85)
+
+    ISEL_LBRACE	shift, and go to state 159
+
+    tree_description	go to state 197
+    ruleList	go to state 161
+    rule	go to state 162
+    generics	go to state 163
+    lhs 	go to state 164
+
+
+
+state 172
+
+    operand_semgroup  ->  '(' _circ_ . Identifier ')'   (rule 49)
+
+    Identifier	shift, and go to state 198
+
+
+
+state 173
+
+    one_operand  ->  '(' Identifier Identifier operand_semgroups ')' .   (rule 44)
+
+    $default	reduce using rule 44 (one_operand)
+
+
+
+state 174
+
+    operand_semgroups  ->  operand_semgroups operand_semgroup .   (rule 46)
+
+    $default	reduce using rule 46 (operand_semgroups)
+
+
+
+state 175
+
+    asmCond  ->  '(' _asm_cond_ _char_string_ ')' .   (rule 27)
+
+    $default	reduce using rule 27 (asmCond)
+
+
+
+state 176
+
+    asmPrint  ->  '(' _asm_print_ _char_string_ . ')'   (rule 28)
+
+    ')' 	shift, and go to state 199
+
+
+
+state 177
+
+    genericPart  ->  ISEL_LBRACE . ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 97)
+    lhsPart  ->  ISEL_LBRACE . ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 99)
+
+    ISEL_GENERIC	shift, and go to state 200
+    ISEL_LHS	shift, and go to state 201
+
+
+
+state 178
+
+    generics  ->  ISEL_LBRACE genericPart .   (rule 93)
+
+    $default	reduce using rule 93 (generics)
+
+
+
+state 179
+
+    lhs  ->  ISEL_LBRACE lhsPart .   (rule 95)
+
+    $default	reduce using rule 95 (lhs)
+
+
+
+state 180
+
+    OpMapping_section  ->  _tree_mappings_ tree_description _end_tree_mappings_ .   (rule 87)
+
+    $default	reduce using rule 87 (OpMapping_section)
+
+
+
+state 181
+
+    ruleList  ->  ruleList rule .   (rule 89)
+
+    $default	reduce using rule 89 (ruleList)
+
+
+
+state 182
+
+    targetPart  ->  ISEL_LBRACE . ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 98)
+
+    ISEL_TARGET	shift, and go to state 202
+
+
+
+state 183
+
+    rule  ->  generics targets .   (rule 91)
+
+    $default	reduce using rule 91 (rule)
+
+
+
+state 184
+
+    targets  ->  targetPart . ISEL_RBRACE   (rule 94)
+
+    ISEL_RBRACE	shift, and go to state 203
+
+
+
+state 185
+
+    rhsPart  ->  ISEL_LBRACE . ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 100)
+
+    ISEL_RHS	shift, and go to state 204
+
+
+
+state 186
+
+    rule  ->  lhs rhs .   (rule 92)
+
+    $default	reduce using rule 92 (rule)
+
+
+
+state 187
+
+    rhs  ->  rhsPart . ISEL_RBRACE   (rule 96)
+
+    ISEL_RBRACE	shift, and go to state 205
+
+
+
+state 188
+
+    opcode_map  ->  '(' . _op_mapping_ pred_dr_ops_list ')'   (rule 121)
+
+    _op_mapping_	shift, and go to state 206
+
+
+
+state 189
+
+    opcode_mapping  ->  '(' _opcode_mapping_ opcode_map_list . ')'   (rule 117)
+    opcode_map_list  ->  opcode_map_list . opcode_map   (rule 119)
+
+    '(' 	shift, and go to state 188
+    ')' 	shift, and go to state 207
+
+    opcode_map	go to state 208
+
+
+
+state 190
+
+    opcode_map_list  ->  opcode_map .   (rule 120)
+
+    $default	reduce using rule 120 (opcode_map_list)
+
+
+
+state 191
+
+    operand_map  ->  '(' . _op_mapping_ generic_operand target_operand ')'   (rule 146)
+
+    _op_mapping_	shift, and go to state 209
+
+
+
+state 192
+
+    operand_mapping  ->  '(' _operand_mapping_ operand_map_list . ')'   (rule 118)
+    operand_map_list  ->  operand_map_list . operand_map   (rule 144)
+
+    '(' 	shift, and go to state 191
+    ')' 	shift, and go to state 210
+
+    operand_map	go to state 211
+
+
+
+state 193
+
+    operand_map_list  ->  operand_map .   (rule 145)
+
+    $default	reduce using rule 145 (operand_map_list)
+
+
+
+state 194
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 . '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 212
+
+
+
+state 195
+
+    OpMapping_section  ->  opcode_mapping _tree_mappings_ tree_description . _end_tree_mappings_   (rule 86)
+
+    _end_tree_mappings_	shift, and go to state 213
+
+
+
+state 196
+
+    OpMapping_section  ->  opcode_mapping operand_mapping _tree_mappings_ . tree_description _end_tree_mappings_   (rule 84)
+
+    ISEL_LBRACE	shift, and go to state 159
+
+    tree_description	go to state 214
+    ruleList	go to state 161
+    rule	go to state 162
+    generics	go to state 163
+    lhs 	go to state 164
+
+
+
+state 197
+
+    OpMapping_section  ->  operand_mapping _tree_mappings_ tree_description . _end_tree_mappings_   (rule 85)
+
+    _end_tree_mappings_	shift, and go to state 215
+
+
+
+state 198
+
+    operand_semgroup  ->  '(' _circ_ Identifier . ')'   (rule 49)
+
+    ')' 	shift, and go to state 216
+
+
+
+state 199
+
+    asmPrint  ->  '(' _asm_print_ _char_string_ ')' .   (rule 28)
+
+    $default	reduce using rule 28 (asmPrint)
+
+
+
+state 200
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC . ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 97)
+
+    ISEL_LBRACE	shift, and go to state 217
+
+
+
+state 201
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS . ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE   (rule 99)
+
+    ISEL_LBRACE	shift, and go to state 218
+
+
+
+state 202
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET . ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 98)
+
+    ISEL_LBRACE	shift, and go to state 219
+
+
+
+state 203
+
+    targets  ->  targetPart ISEL_RBRACE .   (rule 94)
+
+    $default	reduce using rule 94 (targets)
+
+
+
+state 204
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS . ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE   (rule 100)
+
+    ISEL_LBRACE	shift, and go to state 220
+
+
+
+state 205
+
+    rhs  ->  rhsPart ISEL_RBRACE .   (rule 96)
+
+    $default	reduce using rule 96 (rhs)
+
+
+
+state 206
+
+    opcode_map  ->  '(' _op_mapping_ . pred_dr_ops_list ')'   (rule 121)
+
+    '(' 	shift, and go to state 221
+
+    pred_dr_ops_list	go to state 222
+    pred_dr_ops	go to state 223
+    oper_seq	go to state 224
+
+
+
+state 207
+
+    opcode_mapping  ->  '(' _opcode_mapping_ opcode_map_list ')' .   (rule 117)
+
+    $default	reduce using rule 117 (opcode_mapping)
+
+
+
+state 208
+
+    opcode_map_list  ->  opcode_map_list opcode_map .   (rule 119)
+
+    $default	reduce using rule 119 (opcode_map_list)
+
+
+
+state 209
+
+    operand_map  ->  '(' _op_mapping_ . generic_operand target_operand ')'   (rule 146)
+
+    '(' 	shift, and go to state 225
+
+    generic_operand	go to state 226
+
+
+
+state 210
+
+    operand_mapping  ->  '(' _operand_mapping_ operand_map_list ')' .   (rule 118)
+
+    $default	reduce using rule 118 (operand_mapping)
+
+
+
+state 211
+
+    operand_map_list  ->  operand_map_list operand_map .   (rule 144)
+
+    $default	reduce using rule 144 (operand_map_list)
+
+
+
+state 212
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' . _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _architecture_section_	shift, and go to state 227
+
+
+
+state 213
+
+    OpMapping_section  ->  opcode_mapping _tree_mappings_ tree_description _end_tree_mappings_ .   (rule 86)
+
+    $default	reduce using rule 86 (OpMapping_section)
+
+
+
+state 214
+
+    OpMapping_section  ->  opcode_mapping operand_mapping _tree_mappings_ tree_description . _end_tree_mappings_   (rule 84)
+
+    _end_tree_mappings_	shift, and go to state 228
+
+
+
+state 215
+
+    OpMapping_section  ->  operand_mapping _tree_mappings_ tree_description _end_tree_mappings_ .   (rule 85)
+
+    $default	reduce using rule 85 (OpMapping_section)
+
+
+
+state 216
+
+    operand_semgroup  ->  '(' _circ_ Identifier ')' .   (rule 49)
+
+    $default	reduce using rule 49 (operand_semgroup)
+
+
+
+state 217
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE . opGenList ISEL_RBRACE ISEL_RBRACE   (rule 97)
+
+    ISEL_LBRACE	shift, and go to state 229
+
+    opGenList	go to state 230
+    Op  	go to state 231
+
+
+
+state 218
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE . opGenList ISEL_RBRACE ISEL_RBRACE   (rule 99)
+
+    ISEL_LBRACE	shift, and go to state 229
+
+    opGenList	go to state 232
+    Op  	go to state 231
+
+
+
+state 219
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE . opTarList ISEL_RBRACE ISEL_RBRACE   (rule 98)
+
+    ISEL_LBRACE	shift, and go to state 229
+
+    opTarList	go to state 233
+    Op  	go to state 234
+
+
+
+state 220
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE . opTarList ISEL_RBRACE ISEL_RBRACE   (rule 100)
+
+    ISEL_LBRACE	shift, and go to state 229
+
+    opTarList	go to state 235
+    Op  	go to state 234
+
+
+
+state 221
+
+    pred_dr_ops  ->  '(' . _predicate_ pred_list oper_seq ')'   (rule 124)
+    oper_seq  ->  '(' . _generic_ operlist ')'   (rule 130)
+    oper_seq  ->  '(' . _target_ operlist ')'   (rule 131)
+    oper_seq  ->  '(' . _target_risa_ operlist ')'   (rule 132)
+
+    _generic_	shift, and go to state 236
+    _target_	shift, and go to state 237
+    _target_risa_	shift, and go to state 238
+    _predicate_	shift, and go to state 239
+
+
+
+state 222
+
+    opcode_map  ->  '(' _op_mapping_ pred_dr_ops_list . ')'   (rule 121)
+    pred_dr_ops_list  ->  pred_dr_ops_list . pred_dr_ops   (rule 123)
+
+    '(' 	shift, and go to state 221
+    ')' 	shift, and go to state 240
+
+    pred_dr_ops	go to state 241
+    oper_seq	go to state 224
+
+
+
+state 223
+
+    pred_dr_ops_list  ->  pred_dr_ops .   (rule 122)
+
+    $default	reduce using rule 122 (pred_dr_ops_list)
+
+
+
+state 224
+
+    pred_dr_ops  ->  oper_seq .   (rule 125)
+
+    $default	reduce using rule 125 (pred_dr_ops)
+
+
+
+state 225
+
+    generic_operand  ->  '(' . _generic_ data_type class_type ')'   (rule 147)
+
+    _generic_	shift, and go to state 242
+
+
+
+state 226
+
+    operand_map  ->  '(' _op_mapping_ generic_operand . target_operand ')'   (rule 146)
+
+    '(' 	shift, and go to state 243
+
+    target_operand	go to state 244
+
+
+
+state 227
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ . ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 245
+
+    $default	reduce using rule 152 (ArchComponent_section)
+
+    ArchComponent_section	go to state 246
+    subtype_decls	go to state 247
+    subtype_decl	go to state 248
+
+
+
+state 228
+
+    OpMapping_section  ->  opcode_mapping operand_mapping _tree_mappings_ tree_description _end_tree_mappings_ .   (rule 84)
+
+    $default	reduce using rule 84 (OpMapping_section)
+
+
+
+state 229
+
+    Op  ->  ISEL_LBRACE . ISEL_OPCODE dstList srcList ISEL_RBRACE   (rule 105)
+
+    ISEL_OPCODE	shift, and go to state 249
+
+
+
+state 230
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList . ISEL_RBRACE ISEL_RBRACE   (rule 97)
+    opGenList  ->  opGenList . Op   (rule 101)
+
+    ISEL_LBRACE	shift, and go to state 229
+    ISEL_RBRACE	shift, and go to state 250
+
+    Op  	go to state 251
+
+
+
+state 231
+
+    opGenList  ->  Op .   (rule 102)
+
+    $default	reduce using rule 102 (opGenList)
+
+
+
+state 232
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList . ISEL_RBRACE ISEL_RBRACE   (rule 99)
+    opGenList  ->  opGenList . Op   (rule 101)
+
+    ISEL_LBRACE	shift, and go to state 229
+    ISEL_RBRACE	shift, and go to state 252
+
+    Op  	go to state 251
+
+
+
+state 233
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList . ISEL_RBRACE ISEL_RBRACE   (rule 98)
+    opTarList  ->  opTarList . Op   (rule 103)
+
+    ISEL_LBRACE	shift, and go to state 229
+    ISEL_RBRACE	shift, and go to state 253
+
+    Op  	go to state 254
+
+
+
+state 234
+
+    opTarList  ->  Op .   (rule 104)
+
+    $default	reduce using rule 104 (opTarList)
+
+
+
+state 235
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList . ISEL_RBRACE ISEL_RBRACE   (rule 100)
+    opTarList  ->  opTarList . Op   (rule 103)
+
+    ISEL_LBRACE	shift, and go to state 229
+    ISEL_RBRACE	shift, and go to state 255
+
+    Op  	go to state 254
+
+
+
+state 236
+
+    oper_seq  ->  '(' _generic_ . operlist ')'   (rule 130)
+
+    '(' 	shift, and go to state 256
+
+    operlist	go to state 257
+    oper	go to state 258
+
+
+
+state 237
+
+    oper_seq  ->  '(' _target_ . operlist ')'   (rule 131)
+
+    '(' 	shift, and go to state 256
+
+    operlist	go to state 259
+    oper	go to state 258
+
+
+
+state 238
+
+    oper_seq  ->  '(' _target_risa_ . operlist ')'   (rule 132)
+
+    '(' 	shift, and go to state 256
+
+    operlist	go to state 260
+    oper	go to state 258
+
+
+
+state 239
+
+    pred_dr_ops  ->  '(' _predicate_ . pred_list oper_seq ')'   (rule 124)
+
+    _true_	shift, and go to state 261
+    '(' 	shift, and go to state 262
+
+    pred_list	go to state 263
+    pred	go to state 264
+
+
+
+state 240
+
+    opcode_map  ->  '(' _op_mapping_ pred_dr_ops_list ')' .   (rule 121)
+
+    $default	reduce using rule 121 (opcode_map)
+
+
+
+state 241
+
+    pred_dr_ops_list  ->  pred_dr_ops_list pred_dr_ops .   (rule 123)
+
+    $default	reduce using rule 123 (pred_dr_ops_list)
+
+
+
+state 242
+
+    generic_operand  ->  '(' _generic_ . data_type class_type ')'   (rule 147)
+
+    '(' 	shift, and go to state 265
+
+    data_type	go to state 266
+
+
+
+state 243
+
+    target_operand  ->  '(' . _target_ Identifier ')'   (rule 148)
+
+    _target_	shift, and go to state 267
+
+
+
+state 244
+
+    operand_map  ->  '(' _op_mapping_ generic_operand target_operand . ')'   (rule 146)
+
+    ')' 	shift, and go to state 268
+
+
+
+state 245
+
+    subtype_decl  ->  '(' . _subtype_ base_type subtype_list ')'   (rule 155)
+
+    _subtype_	shift, and go to state 269
+
+
+
+state 246
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section . ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    ')' 	shift, and go to state 270
+
+
+
+state 247
+
+    ArchComponent_section  ->  subtype_decls . compinst_list   (rule 151)
+    subtype_decls  ->  subtype_decls . subtype_decl   (rule 154)
+
+    '(' 	shift, and go to state 271
+
+    subtype_decl	go to state 272
+    compinst_list	go to state 273
+    compinst	go to state 274
+
+
+
+state 248
+
+    subtype_decls  ->  subtype_decl .   (rule 153)
+
+    $default	reduce using rule 153 (subtype_decls)
+
+
+
+state 249
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE . dstList srcList ISEL_RBRACE   (rule 105)
+
+    ISEL_DST	shift, and go to state 275
+
+    ISEL_DST	[reduce using rule 108 (dstList)]
+    $default	reduce using rule 108 (dstList)
+
+    dstList	go to state 276
+    dstNum	go to state 277
+
+
+
+state 250
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE . ISEL_RBRACE   (rule 97)
+
+    ISEL_RBRACE	shift, and go to state 278
+
+
+
+state 251
+
+    opGenList  ->  opGenList Op .   (rule 101)
+
+    $default	reduce using rule 101 (opGenList)
+
+
+
+state 252
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE . ISEL_RBRACE   (rule 99)
+
+    ISEL_RBRACE	shift, and go to state 279
+
+
+
+state 253
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE . ISEL_RBRACE   (rule 98)
+
+    ISEL_RBRACE	shift, and go to state 280
+
+
+
+state 254
+
+    opTarList  ->  opTarList Op .   (rule 103)
+
+    $default	reduce using rule 103 (opTarList)
+
+
+
+state 255
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE . ISEL_RBRACE   (rule 100)
+
+    ISEL_RBRACE	shift, and go to state 281
+
+
+
+state 256
+
+    oper  ->  '(' . Identifier mapvar_list ')'   (rule 135)
+
+    Identifier	shift, and go to state 282
+
+
+
+state 257
+
+    oper_seq  ->  '(' _generic_ operlist . ')'   (rule 130)
+    operlist  ->  operlist . oper   (rule 133)
+
+    '(' 	shift, and go to state 256
+    ')' 	shift, and go to state 283
+
+    oper	go to state 284
+
+
+
+state 258
+
+    operlist  ->  oper .   (rule 134)
+
+    $default	reduce using rule 134 (operlist)
+
+
+
+state 259
+
+    oper_seq  ->  '(' _target_ operlist . ')'   (rule 131)
+    operlist  ->  operlist . oper   (rule 133)
+
+    '(' 	shift, and go to state 256
+    ')' 	shift, and go to state 285
+
+    oper	go to state 284
+
+
+
+state 260
+
+    oper_seq  ->  '(' _target_risa_ operlist . ')'   (rule 132)
+    operlist  ->  operlist . oper   (rule 133)
+
+    '(' 	shift, and go to state 256
+    ')' 	shift, and go to state 286
+
+    oper	go to state 284
+
+
+
+state 261
+
+    pred  ->  _true_ .   (rule 129)
+
+    $default	reduce using rule 129 (pred)
+
+
+
+state 262
+
+    pred  ->  '(' . Identifier mapvar_id ')'   (rule 128)
+
+    Identifier	shift, and go to state 287
+
+
+
+state 263
+
+    pred_dr_ops  ->  '(' _predicate_ pred_list . oper_seq ')'   (rule 124)
+    pred_list  ->  pred_list . pred   (rule 127)
+
+    _true_	shift, and go to state 261
+    '(' 	shift, and go to state 288
+
+    pred	go to state 289
+    oper_seq	go to state 290
+
+
+
+state 264
+
+    pred_list  ->  pred .   (rule 126)
+
+    $default	reduce using rule 126 (pred_list)
+
+
+
+state 265
+
+    data_type  ->  '(' . _datatype_ Identifier ')'   (rule 149)
+
+    _datatype_	shift, and go to state 291
+
+
+
+state 266
+
+    generic_operand  ->  '(' _generic_ data_type . class_type ')'   (rule 147)
+
+    '(' 	shift, and go to state 292
+
+    class_type	go to state 293
+
+
+
+state 267
+
+    target_operand  ->  '(' _target_ . Identifier ')'   (rule 148)
+
+    Identifier	shift, and go to state 294
+
+
+
+state 268
+
+    operand_map  ->  '(' _op_mapping_ generic_operand target_operand ')' .   (rule 146)
+
+    $default	reduce using rule 146 (operand_map)
+
+
+
+state 269
+
+    subtype_decl  ->  '(' _subtype_ . base_type subtype_list ')'   (rule 155)
+
+    _latch_	shift, and go to state 295
+    _storage_	shift, and go to state 296
+    _port_	shift, and go to state 297
+    _connection_	shift, and go to state 298
+    _unit_	shift, and go to state 299
+
+    base_type	go to state 300
+
+
+
+state 270
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' . @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    $default	reduce using rule 5 (@5)
+
+    @5  	go to state 301
+
+
+
+state 271
+
+    subtype_decl  ->  '(' . _subtype_ base_type subtype_list ')'   (rule 155)
+    compinst  ->  '(' . Identifier component_list ')'   (rule 165)
+
+    _subtype_	shift, and go to state 269
+    Identifier	shift, and go to state 302
+
+
+
+state 272
+
+    subtype_decls  ->  subtype_decls subtype_decl .   (rule 154)
+
+    $default	reduce using rule 154 (subtype_decls)
+
+
+
+state 273
+
+    ArchComponent_section  ->  subtype_decls compinst_list .   (rule 151)
+    compinst_list  ->  compinst_list . compinst   (rule 163)
+
+    '(' 	shift, and go to state 303
+
+    $default	reduce using rule 151 (ArchComponent_section)
+
+    compinst	go to state 304
+
+
+
+state 274
+
+    compinst_list  ->  compinst .   (rule 164)
+
+    $default	reduce using rule 164 (compinst_list)
+
+
+
+state 275
+
+    dstNum  ->  ISEL_DST . ISEL_LPAREN val ISEL_RPAREN   (rule 112)
+
+    ISEL_LPAREN	shift, and go to state 305
+
+
+
+state 276
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList . srcList ISEL_RBRACE   (rule 105)
+    dstList  ->  dstList . dstNum ISEL_EQUAL argType argIdent   (rule 106)
+
+    ISEL_DST	shift, and go to state 275
+    ISEL_SRC	shift, and go to state 306
+
+    ISEL_SRC	[reduce using rule 111 (srcList)]
+    $default	reduce using rule 111 (srcList)
+
+    srcList	go to state 307
+    dstNum	go to state 308
+    srcNum	go to state 309
+
+
+
+state 277
+
+    dstList  ->  dstNum . ISEL_EQUAL argType argIdent   (rule 107)
+
+    ISEL_EQUAL	shift, and go to state 310
+
+
+
+state 278
+
+    genericPart  ->  ISEL_LBRACE ISEL_GENERIC ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE .   (rule 97)
+
+    $default	reduce using rule 97 (genericPart)
+
+
+
+state 279
+
+    lhsPart  ->  ISEL_LBRACE ISEL_LHS ISEL_LBRACE opGenList ISEL_RBRACE ISEL_RBRACE .   (rule 99)
+
+    $default	reduce using rule 99 (lhsPart)
+
+
+
+state 280
+
+    targetPart  ->  ISEL_LBRACE ISEL_TARGET ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE .   (rule 98)
+
+    $default	reduce using rule 98 (targetPart)
+
+
+
+state 281
+
+    rhsPart  ->  ISEL_LBRACE ISEL_RHS ISEL_LBRACE opTarList ISEL_RBRACE ISEL_RBRACE .   (rule 100)
+
+    $default	reduce using rule 100 (rhsPart)
+
+
+
+state 282
+
+    oper  ->  '(' Identifier . mapvar_list ')'   (rule 135)
+
+    _dst_	shift, and go to state 311
+    Identifier	shift, and go to state 312
+    Integer_lit	shift, and go to state 313
+    '(' 	shift, and go to state 314
+
+    _dst_	[reduce using rule 136 (mapvar_list)]
+    Identifier	[reduce using rule 136 (mapvar_list)]
+    Integer_lit	[reduce using rule 136 (mapvar_list)]
+    '(' 	[reduce using rule 136 (mapvar_list)]
+    $default	reduce using rule 136 (mapvar_list)
+
+    mapvar_list	go to state 315
+    mapvar	go to state 316
+    mapvar_id	go to state 317
+
+
+
+state 283
+
+    oper_seq  ->  '(' _generic_ operlist ')' .   (rule 130)
+
+    $default	reduce using rule 130 (oper_seq)
+
+
+
+state 284
+
+    operlist  ->  operlist oper .   (rule 133)
+
+    $default	reduce using rule 133 (operlist)
+
+
+
+state 285
+
+    oper_seq  ->  '(' _target_ operlist ')' .   (rule 131)
+
+    $default	reduce using rule 131 (oper_seq)
+
+
+
+state 286
+
+    oper_seq  ->  '(' _target_risa_ operlist ')' .   (rule 132)
+
+    $default	reduce using rule 132 (oper_seq)
+
+
+
+state 287
+
+    pred  ->  '(' Identifier . mapvar_id ')'   (rule 128)
+
+    _dst_	shift, and go to state 311
+    Identifier	shift, and go to state 312
+    Integer_lit	shift, and go to state 313
+
+    mapvar_id	go to state 318
+
+
+
+state 288
+
+    pred  ->  '(' . Identifier mapvar_id ')'   (rule 128)
+    oper_seq  ->  '(' . _generic_ operlist ')'   (rule 130)
+    oper_seq  ->  '(' . _target_ operlist ')'   (rule 131)
+    oper_seq  ->  '(' . _target_risa_ operlist ')'   (rule 132)
+
+    _generic_	shift, and go to state 236
+    _target_	shift, and go to state 237
+    _target_risa_	shift, and go to state 238
+    Identifier	shift, and go to state 287
+
+
+
+state 289
+
+    pred_list  ->  pred_list pred .   (rule 127)
+
+    $default	reduce using rule 127 (pred_list)
+
+
+
+state 290
+
+    pred_dr_ops  ->  '(' _predicate_ pred_list oper_seq . ')'   (rule 124)
+
+    ')' 	shift, and go to state 319
+
+
+
+state 291
+
+    data_type  ->  '(' _datatype_ . Identifier ')'   (rule 149)
+
+    Identifier	shift, and go to state 320
+
+
+
+state 292
+
+    class_type  ->  '(' . _classtype_ Identifier ')'   (rule 150)
+
+    _classtype_	shift, and go to state 321
+
+
+
+state 293
+
+    generic_operand  ->  '(' _generic_ data_type class_type . ')'   (rule 147)
+
+    ')' 	shift, and go to state 322
+
+
+
+state 294
+
+    target_operand  ->  '(' _target_ Identifier . ')'   (rule 148)
+
+    ')' 	shift, and go to state 323
+
+
+
+state 295
+
+    base_type  ->  _latch_ .   (rule 159)
+
+    $default	reduce using rule 159 (base_type)
+
+
+
+state 296
+
+    base_type  ->  _storage_ .   (rule 160)
+
+    $default	reduce using rule 160 (base_type)
+
+
+
+state 297
+
+    base_type  ->  _port_ .   (rule 162)
+
+    $default	reduce using rule 162 (base_type)
+
+
+
+state 298
+
+    base_type  ->  _connection_ .   (rule 161)
+
+    $default	reduce using rule 161 (base_type)
+
+
+
+state 299
+
+    base_type  ->  _unit_ .   (rule 158)
+
+    $default	reduce using rule 158 (base_type)
+
+
+
+state 300
+
+    subtype_decl  ->  '(' _subtype_ base_type . subtype_list ')'   (rule 155)
+
+    Identifier	shift, and go to state 324
+
+    subtype_list	go to state 325
+
+
+
+state 301
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 . '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 326
+
+
+
+state 302
+
+    compinst  ->  '(' Identifier . component_list ')'   (rule 165)
+
+    Identifier	shift, and go to state 327
+
+    component_list	go to state 328
+    one_comp	go to state 329
+
+
+
+state 303
+
+    compinst  ->  '(' . Identifier component_list ')'   (rule 165)
+
+    Identifier	shift, and go to state 302
+
+
+
+state 304
+
+    compinst_list  ->  compinst_list compinst .   (rule 163)
+
+    $default	reduce using rule 163 (compinst_list)
+
+
+
+state 305
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN . val ISEL_RPAREN   (rule 112)
+
+    ISEL_NUM	shift, and go to state 330
+
+    val 	go to state 331
+
+
+
+state 306
+
+    srcNum  ->  ISEL_SRC . ISEL_LPAREN val ISEL_RPAREN   (rule 113)
+
+    ISEL_LPAREN	shift, and go to state 332
+
+
+
+state 307
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList srcList . ISEL_RBRACE   (rule 105)
+    srcList  ->  srcList . srcNum ISEL_EQUAL argType argIdent   (rule 109)
+
+    ISEL_SRC	shift, and go to state 306
+    ISEL_RBRACE	shift, and go to state 333
+
+    srcNum	go to state 334
+
+
+
+state 308
+
+    dstList  ->  dstList dstNum . ISEL_EQUAL argType argIdent   (rule 106)
+
+    ISEL_EQUAL	shift, and go to state 335
+
+
+
+state 309
+
+    srcList  ->  srcNum . ISEL_EQUAL argType argIdent   (rule 110)
+
+    ISEL_EQUAL	shift, and go to state 336
+
+
+
+state 310
+
+    dstList  ->  dstNum ISEL_EQUAL . argType argIdent   (rule 107)
+
+    ISEL_TYPE	shift, and go to state 337
+
+    argType	go to state 338
+
+
+
+state 311
+
+    mapvar_id  ->  _dst_ .   (rule 143)
+
+    $default	reduce using rule 143 (mapvar_id)
+
+
+
+state 312
+
+    mapvar_id  ->  Identifier .   (rule 141)
+
+    $default	reduce using rule 141 (mapvar_id)
+
+
+
+state 313
+
+    mapvar_id  ->  Integer_lit .   (rule 142)
+
+    $default	reduce using rule 142 (mapvar_id)
+
+
+
+state 314
+
+    mapvar  ->  '(' . Identifier mapvar_id ')'   (rule 140)
+
+    Identifier	shift, and go to state 339
+
+
+
+state 315
+
+    oper  ->  '(' Identifier mapvar_list . ')'   (rule 135)
+    mapvar_list  ->  mapvar_list . mapvar   (rule 138)
+
+    _dst_	shift, and go to state 311
+    Identifier	shift, and go to state 312
+    Integer_lit	shift, and go to state 313
+    '(' 	shift, and go to state 314
+    ')' 	shift, and go to state 340
+
+    mapvar	go to state 341
+    mapvar_id	go to state 317
+
+
+
+state 316
+
+    mapvar_list  ->  mapvar .   (rule 137)
+
+    $default	reduce using rule 137 (mapvar_list)
+
+
+
+state 317
+
+    mapvar  ->  mapvar_id .   (rule 139)
+
+    $default	reduce using rule 139 (mapvar)
+
+
+
+state 318
+
+    pred  ->  '(' Identifier mapvar_id . ')'   (rule 128)
+
+    ')' 	shift, and go to state 342
+
+
+
+state 319
+
+    pred_dr_ops  ->  '(' _predicate_ pred_list oper_seq ')' .   (rule 124)
+
+    $default	reduce using rule 124 (pred_dr_ops)
+
+
+
+state 320
+
+    data_type  ->  '(' _datatype_ Identifier . ')'   (rule 149)
+
+    ')' 	shift, and go to state 343
+
+
+
+state 321
+
+    class_type  ->  '(' _classtype_ . Identifier ')'   (rule 150)
+
+    Identifier	shift, and go to state 344
+
+
+
+state 322
+
+    generic_operand  ->  '(' _generic_ data_type class_type ')' .   (rule 147)
+
+    $default	reduce using rule 147 (generic_operand)
+
+
+
+state 323
+
+    target_operand  ->  '(' _target_ Identifier ')' .   (rule 148)
+
+    $default	reduce using rule 148 (target_operand)
+
+
+
+state 324
+
+    subtype_list  ->  Identifier .   (rule 157)
+
+    $default	reduce using rule 157 (subtype_list)
+
+
+
+state 325
+
+    subtype_decl  ->  '(' _subtype_ base_type subtype_list . ')'   (rule 155)
+    subtype_list  ->  subtype_list . Identifier   (rule 156)
+
+    Identifier	shift, and go to state 345
+    ')' 	shift, and go to state 346
+
+
+
+state 326
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' . _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    _pipeline_section_	shift, and go to state 347
+
+
+
+state 327
+
+    one_comp  ->  Identifier . comp_initstr comp_attributes   (rule 168)
+    one_comp  ->  Identifier . comp_initstr   (rule 169)
+    one_comp  ->  Identifier . comp_attributes   (rule 170)
+    one_comp  ->  Identifier .   (rule 171)
+
+    '(' 	shift, and go to state 348
+
+    $default	reduce using rule 171 (one_comp)
+
+    comp_initstr	go to state 349
+    comp_attributes	go to state 350
+    comp_attribute	go to state 351
+    sub_comps	go to state 352
+    latches	go to state 353
+    ports	go to state 354
+    feedback_enq	go to state 355
+    feedback_deq	go to state 356
+    queue_enq	go to state 357
+    queue_deq	go to state 358
+    connections	go to state 359
+    opcodes	go to state 360
+    opcodes_enq	go to state 361
+    opcodes_deq	go to state 362
+    timings	go to state 363
+    capacity	go to state 364
+    instrin	go to state 365
+    instrout	go to state 366
+    argument	go to state 367
+
+
+
+state 328
+
+    compinst  ->  '(' Identifier component_list . ')'   (rule 165)
+    component_list  ->  component_list . one_comp   (rule 166)
+
+    Identifier	shift, and go to state 327
+    ')' 	shift, and go to state 368
+
+    one_comp	go to state 369
+
+
+
+state 329
+
+    component_list  ->  one_comp .   (rule 167)
+
+    $default	reduce using rule 167 (component_list)
+
+
+
+state 330
+
+    val  ->  ISEL_NUM .   (rule 114)
+
+    $default	reduce using rule 114 (val)
+
+
+
+state 331
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN val . ISEL_RPAREN   (rule 112)
+
+    ISEL_RPAREN	shift, and go to state 370
+
+
+
+state 332
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN . val ISEL_RPAREN   (rule 113)
+
+    ISEL_NUM	shift, and go to state 330
+
+    val 	go to state 371
+
+
+
+state 333
+
+    Op  ->  ISEL_LBRACE ISEL_OPCODE dstList srcList ISEL_RBRACE .   (rule 105)
+
+    $default	reduce using rule 105 (Op)
+
+
+
+state 334
+
+    srcList  ->  srcList srcNum . ISEL_EQUAL argType argIdent   (rule 109)
+
+    ISEL_EQUAL	shift, and go to state 372
+
+
+
+state 335
+
+    dstList  ->  dstList dstNum ISEL_EQUAL . argType argIdent   (rule 106)
+
+    ISEL_TYPE	shift, and go to state 337
+
+    argType	go to state 373
+
+
+
+state 336
+
+    srcList  ->  srcNum ISEL_EQUAL . argType argIdent   (rule 110)
+
+    ISEL_TYPE	shift, and go to state 337
+
+    argType	go to state 374
+
+
+
+state 337
+
+    argType  ->  ISEL_TYPE .   (rule 115)
+
+    $default	reduce using rule 115 (argType)
+
+
+
+state 338
+
+    dstList  ->  dstNum ISEL_EQUAL argType . argIdent   (rule 107)
+
+    ISEL_LBRACE	shift, and go to state 375
+
+    argIdent	go to state 376
+
+
+
+state 339
+
+    mapvar  ->  '(' Identifier . mapvar_id ')'   (rule 140)
+
+    _dst_	shift, and go to state 311
+    Identifier	shift, and go to state 312
+    Integer_lit	shift, and go to state 313
+
+    mapvar_id	go to state 377
+
+
+
+state 340
+
+    oper  ->  '(' Identifier mapvar_list ')' .   (rule 135)
+
+    $default	reduce using rule 135 (oper)
+
+
+
+state 341
+
+    mapvar_list  ->  mapvar_list mapvar .   (rule 138)
+
+    $default	reduce using rule 138 (mapvar_list)
+
+
+
+state 342
+
+    pred  ->  '(' Identifier mapvar_id ')' .   (rule 128)
+
+    $default	reduce using rule 128 (pred)
+
+
+
+state 343
+
+    data_type  ->  '(' _datatype_ Identifier ')' .   (rule 149)
+
+    $default	reduce using rule 149 (data_type)
+
+
+
+state 344
+
+    class_type  ->  '(' _classtype_ Identifier . ')'   (rule 150)
+
+    ')' 	shift, and go to state 378
+
+
+
+state 345
+
+    subtype_list  ->  subtype_list Identifier .   (rule 156)
+
+    $default	reduce using rule 156 (subtype_list)
+
+
+
+state 346
+
+    subtype_decl  ->  '(' _subtype_ base_type subtype_list ')' .   (rule 155)
+
+    $default	reduce using rule 155 (subtype_decl)
+
+
+
+state 347
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ . PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 379
+
+    $default	reduce using rule 243 (PipeDTPaths_section)
+
+    PipeDTPaths_section	go to state 380
+    pipeline_info_list	go to state 381
+    pipeline_info	go to state 382
+    pipeline	go to state 383
+
+
+
+state 348
+
+    comp_initstr  ->  '(' . _char_string_ ')'   (rule 172)
+    sub_comps  ->  '(' . _subcomponents_ subcomp_list ')'   (rule 192)
+    latches  ->  '(' . _latches_ aggregate_latchlist ')'   (rule 195)
+    latches  ->  '(' . _latches_ _none_ ')'   (rule 196)
+    ports  ->  '(' . _ports_ port_list ')'   (rule 203)
+    ports  ->  '(' . _ports_ _none_ ')'   (rule 204)
+    feedback_enq  ->  '(' . _feedback_enq_ feedbacks_list ')'   (rule 207)
+    feedback_enq  ->  '(' . _feedback_enq_ _none_ ')'   (rule 208)
+    feedback_deq  ->  '(' . _feedback_deq_ feedbacks_list ')'   (rule 209)
+    feedback_deq  ->  '(' . _feedback_deq_ _none_ ')'   (rule 210)
+    queue_enq  ->  '(' . _queues_enq_ queue_enq_list ')'   (rule 213)
+    queue_enq  ->  '(' . _queues_enq_ _none_ ')'   (rule 214)
+    queue_deq  ->  '(' . _queues_deq_ queue_deq_list ')'   (rule 217)
+    queue_deq  ->  '(' . _queues_deq_ _none_ ')'   (rule 218)
+    connections  ->  '(' . _connections_ connection_list ')'   (rule 221)
+    connections  ->  '(' . _connections_ _none_ ')'   (rule 222)
+    opcodes  ->  '(' . _opcodes_ Identifier_list ')'   (rule 225)
+    opcodes  ->  '(' . _opcodes_ _all_ ')'   (rule 226)
+    opcodes_enq  ->  '(' . _opcodes_enq_ Identifier_list ')'   (rule 227)
+    opcodes_enq  ->  '(' . _opcodes_enq_ _all_ ')'   (rule 228)
+    opcodes_deq  ->  '(' . _opcodes_deq_ Identifier_list ')'   (rule 229)
+    opcodes_deq  ->  '(' . _opcodes_deq_ _all_ ')'   (rule 230)
+    timings  ->  '(' . _timing_ cyclenum_list ')'   (rule 231)
+    capacity  ->  '(' . _capacity_ Integer_lit ')'   (rule 238)
+    instrin  ->  '(' . _instrin_ Integer_lit ')'   (rule 239)
+    instrout  ->  '(' . _instrout_ Integer_lit ')'   (rule 240)
+    argument  ->  '(' . _argument_ Identifier ')'   (rule 241)
+
+    _latches_	shift, and go to state 384
+    _ports_	shift, and go to state 385
+    _feedback_enq_	shift, and go to state 386
+    _feedback_deq_	shift, and go to state 387
+    _queues_enq_	shift, and go to state 388
+    _queues_deq_	shift, and go to state 389
+    _connections_	shift, and go to state 390
+    _opcodes_	shift, and go to state 391
+    _opcodes_enq_	shift, and go to state 392
+    _opcodes_deq_	shift, and go to state 393
+    _timing_	shift, and go to state 394
+    _capacity_	shift, and go to state 395
+    _char_string_	shift, and go to state 396
+    _subcomponents_	shift, and go to state 397
+    _argument_	shift, and go to state 398
+    _instrin_	shift, and go to state 399
+    _instrout_	shift, and go to state 400
+
+
+
+state 349
+
+    one_comp  ->  Identifier comp_initstr . comp_attributes   (rule 168)
+    one_comp  ->  Identifier comp_initstr .   (rule 169)
+
+    '(' 	shift, and go to state 401
+
+    $default	reduce using rule 169 (one_comp)
+
+    comp_attributes	go to state 402
+    comp_attribute	go to state 351
+    sub_comps	go to state 352
+    latches	go to state 353
+    ports	go to state 354
+    feedback_enq	go to state 355
+    feedback_deq	go to state 356
+    queue_enq	go to state 357
+    queue_deq	go to state 358
+    connections	go to state 359
+    opcodes	go to state 360
+    opcodes_enq	go to state 361
+    opcodes_deq	go to state 362
+    timings	go to state 363
+    capacity	go to state 364
+    instrin	go to state 365
+    instrout	go to state 366
+    argument	go to state 367
+
+
+
+state 350
+
+    one_comp  ->  Identifier comp_attributes .   (rule 170)
+    comp_attributes  ->  comp_attributes . comp_attribute   (rule 173)
+    comp_attributes  ->  comp_attributes . timings   (rule 174)
+
+    '(' 	shift, and go to state 401
+
+    $default	reduce using rule 170 (one_comp)
+
+    comp_attribute	go to state 403
+    sub_comps	go to state 352
+    latches	go to state 353
+    ports	go to state 354
+    feedback_enq	go to state 355
+    feedback_deq	go to state 356
+    queue_enq	go to state 357
+    queue_deq	go to state 358
+    connections	go to state 359
+    opcodes	go to state 360
+    opcodes_enq	go to state 361
+    opcodes_deq	go to state 362
+    timings	go to state 404
+    capacity	go to state 364
+    instrin	go to state 365
+    instrout	go to state 366
+    argument	go to state 367
+
+
+
+state 351
+
+    comp_attributes  ->  comp_attribute .   (rule 175)
+
+    $default	reduce using rule 175 (comp_attributes)
+
+
+
+state 352
+
+    comp_attribute  ->  sub_comps .   (rule 177)
+
+    $default	reduce using rule 177 (comp_attribute)
+
+
+
+state 353
+
+    comp_attribute  ->  latches .   (rule 178)
+
+    $default	reduce using rule 178 (comp_attribute)
+
+
+
+state 354
+
+    comp_attribute  ->  ports .   (rule 179)
+
+    $default	reduce using rule 179 (comp_attribute)
+
+
+
+state 355
+
+    comp_attribute  ->  feedback_enq .   (rule 184)
+
+    $default	reduce using rule 184 (comp_attribute)
+
+
+
+state 356
+
+    comp_attribute  ->  feedback_deq .   (rule 185)
+
+    $default	reduce using rule 185 (comp_attribute)
+
+
+
+state 357
+
+    comp_attribute  ->  queue_enq .   (rule 186)
+
+    $default	reduce using rule 186 (comp_attribute)
+
+
+
+state 358
+
+    comp_attribute  ->  queue_deq .   (rule 187)
+
+    $default	reduce using rule 187 (comp_attribute)
+
+
+
+state 359
+
+    comp_attribute  ->  connections .   (rule 180)
+
+    $default	reduce using rule 180 (comp_attribute)
+
+
+
+state 360
+
+    comp_attribute  ->  opcodes .   (rule 181)
+
+    $default	reduce using rule 181 (comp_attribute)
+
+
+
+state 361
+
+    comp_attribute  ->  opcodes_enq .   (rule 188)
+
+    $default	reduce using rule 188 (comp_attribute)
+
+
+
+state 362
+
+    comp_attribute  ->  opcodes_deq .   (rule 189)
+
+    $default	reduce using rule 189 (comp_attribute)
+
+
+
+state 363
+
+    comp_attributes  ->  timings .   (rule 176)
+
+    $default	reduce using rule 176 (comp_attributes)
+
+
+
+state 364
+
+    comp_attribute  ->  capacity .   (rule 182)
+
+    $default	reduce using rule 182 (comp_attribute)
+
+
+
+state 365
+
+    comp_attribute  ->  instrin .   (rule 190)
+
+    $default	reduce using rule 190 (comp_attribute)
+
+
+
+state 366
+
+    comp_attribute  ->  instrout .   (rule 191)
+
+    $default	reduce using rule 191 (comp_attribute)
+
+
+
+state 367
+
+    comp_attribute  ->  argument .   (rule 183)
+
+    $default	reduce using rule 183 (comp_attribute)
+
+
+
+state 368
+
+    compinst  ->  '(' Identifier component_list ')' .   (rule 165)
+
+    $default	reduce using rule 165 (compinst)
+
+
+
+state 369
+
+    component_list  ->  component_list one_comp .   (rule 166)
+
+    $default	reduce using rule 166 (component_list)
+
+
+
+state 370
+
+    dstNum  ->  ISEL_DST ISEL_LPAREN val ISEL_RPAREN .   (rule 112)
+
+    $default	reduce using rule 112 (dstNum)
+
+
+
+state 371
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN val . ISEL_RPAREN   (rule 113)
+
+    ISEL_RPAREN	shift, and go to state 405
+
+
+
+state 372
+
+    srcList  ->  srcList srcNum ISEL_EQUAL . argType argIdent   (rule 109)
+
+    ISEL_TYPE	shift, and go to state 337
+
+    argType	go to state 406
+
+
+
+state 373
+
+    dstList  ->  dstList dstNum ISEL_EQUAL argType . argIdent   (rule 106)
+
+    ISEL_LBRACE	shift, and go to state 375
+
+    argIdent	go to state 407
+
+
+
+state 374
+
+    srcList  ->  srcNum ISEL_EQUAL argType . argIdent   (rule 110)
+
+    ISEL_LBRACE	shift, and go to state 375
+
+    argIdent	go to state 408
+
+
+
+state 375
+
+    argIdent  ->  ISEL_LBRACE . ISEL_NUM ISEL_RBRACE   (rule 116)
+
+    ISEL_NUM	shift, and go to state 409
+
+
+
+state 376
+
+    dstList  ->  dstNum ISEL_EQUAL argType argIdent .   (rule 107)
+
+    $default	reduce using rule 107 (dstList)
+
+
+
+state 377
+
+    mapvar  ->  '(' Identifier mapvar_id . ')'   (rule 140)
+
+    ')' 	shift, and go to state 410
+
+
+
+state 378
+
+    class_type  ->  '(' _classtype_ Identifier ')' .   (rule 150)
+
+    $default	reduce using rule 150 (class_type)
+
+
+
+state 379
+
+    pipeline_info  ->  '(' . Identifier pipeline ')'   (rule 247)
+    pipeline_info  ->  '(' . Identifier parallel ')'   (rule 248)
+    pipeline_info  ->  '(' . Identifier alternate ')'   (rule 249)
+    pipeline  ->  '(' . _pipeline_ Identifier_list ')'   (rule 250)
+
+    _pipeline_	shift, and go to state 411
+    Identifier	shift, and go to state 412
+
+
+
+state 380
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section . ')' @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    ')' 	shift, and go to state 413
+
+
+
+state 381
+
+    PipeDTPaths_section  ->  pipeline_info_list . '(' _dtpaths_ dtpath_list ')'   (rule 242)
+    pipeline_info_list  ->  pipeline_info_list . pipeline_info   (rule 245)
+
+    '(' 	shift, and go to state 414
+
+    pipeline_info	go to state 415
+    pipeline	go to state 383
+
+
+
+state 382
+
+    pipeline_info_list  ->  pipeline_info .   (rule 244)
+
+    $default	reduce using rule 244 (pipeline_info_list)
+
+
+
+state 383
+
+    pipeline_info  ->  pipeline .   (rule 246)
+
+    $default	reduce using rule 246 (pipeline_info)
+
+
+
+state 384
+
+    latches  ->  '(' _latches_ . aggregate_latchlist ')'   (rule 195)
+    latches  ->  '(' _latches_ . _none_ ')'   (rule 196)
+
+    _none_	shift, and go to state 416
+
+    $default	reduce using rule 200 (aggregate_latchlist)
+
+    aggregate_latchlist	go to state 417
+
+
+
+state 385
+
+    ports  ->  '(' _ports_ . port_list ')'   (rule 203)
+    ports  ->  '(' _ports_ . _none_ ')'   (rule 204)
+
+    _none_	shift, and go to state 418
+    Identifier	shift, and go to state 419
+
+    port_list	go to state 420
+
+
+
+state 386
+
+    feedback_enq  ->  '(' _feedback_enq_ . feedbacks_list ')'   (rule 207)
+    feedback_enq  ->  '(' _feedback_enq_ . _none_ ')'   (rule 208)
+
+    _none_	shift, and go to state 421
+    Identifier	shift, and go to state 422
+
+    feedbacks_list	go to state 423
+
+
+
+state 387
+
+    feedback_deq  ->  '(' _feedback_deq_ . feedbacks_list ')'   (rule 209)
+    feedback_deq  ->  '(' _feedback_deq_ . _none_ ')'   (rule 210)
+
+    _none_	shift, and go to state 424
+    Identifier	shift, and go to state 422
+
+    feedbacks_list	go to state 425
+
+
+
+state 388
+
+    queue_enq  ->  '(' _queues_enq_ . queue_enq_list ')'   (rule 213)
+    queue_enq  ->  '(' _queues_enq_ . _none_ ')'   (rule 214)
+
+    _none_	shift, and go to state 426
+    Identifier	shift, and go to state 427
+
+    queue_enq_list	go to state 428
+
+
+
+state 389
+
+    queue_deq  ->  '(' _queues_deq_ . queue_deq_list ')'   (rule 217)
+    queue_deq  ->  '(' _queues_deq_ . _none_ ')'   (rule 218)
+
+    _none_	shift, and go to state 429
+    Identifier	shift, and go to state 430
+
+    queue_deq_list	go to state 431
+
+
+
+state 390
+
+    connections  ->  '(' _connections_ . connection_list ')'   (rule 221)
+    connections  ->  '(' _connections_ . _none_ ')'   (rule 222)
+
+    _none_	shift, and go to state 432
+    Identifier	shift, and go to state 433
+
+    connection_list	go to state 434
+
+
+
+state 391
+
+    opcodes  ->  '(' _opcodes_ . Identifier_list ')'   (rule 225)
+    opcodes  ->  '(' _opcodes_ . _all_ ')'   (rule 226)
+
+    _all_	shift, and go to state 435
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 437
+
+
+
+state 392
+
+    opcodes_enq  ->  '(' _opcodes_enq_ . Identifier_list ')'   (rule 227)
+    opcodes_enq  ->  '(' _opcodes_enq_ . _all_ ')'   (rule 228)
+
+    _all_	shift, and go to state 438
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 439
+
+
+
+state 393
+
+    opcodes_deq  ->  '(' _opcodes_deq_ . Identifier_list ')'   (rule 229)
+    opcodes_deq  ->  '(' _opcodes_deq_ . _all_ ')'   (rule 230)
+
+    _all_	shift, and go to state 440
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 441
+
+
+
+state 394
+
+    timings  ->  '(' _timing_ . cyclenum_list ')'   (rule 231)
+
+    '(' 	shift, and go to state 442
+
+    cyclenum_list	go to state 443
+    cyclenum	go to state 444
+
+
+
+state 395
+
+    capacity  ->  '(' _capacity_ . Integer_lit ')'   (rule 238)
+
+    Integer_lit	shift, and go to state 445
+
+
+
+state 396
+
+    comp_initstr  ->  '(' _char_string_ . ')'   (rule 172)
+
+    ')' 	shift, and go to state 446
+
+
+
+state 397
+
+    sub_comps  ->  '(' _subcomponents_ . subcomp_list ')'   (rule 192)
+
+    Identifier	shift, and go to state 447
+
+    subcomp_list	go to state 448
+
+
+
+state 398
+
+    argument  ->  '(' _argument_ . Identifier ')'   (rule 241)
+
+    Identifier	shift, and go to state 449
+
+
+
+state 399
+
+    instrin  ->  '(' _instrin_ . Integer_lit ')'   (rule 239)
+
+    Integer_lit	shift, and go to state 450
+
+
+
+state 400
+
+    instrout  ->  '(' _instrout_ . Integer_lit ')'   (rule 240)
+
+    Integer_lit	shift, and go to state 451
+
+
+
+state 401
+
+    sub_comps  ->  '(' . _subcomponents_ subcomp_list ')'   (rule 192)
+    latches  ->  '(' . _latches_ aggregate_latchlist ')'   (rule 195)
+    latches  ->  '(' . _latches_ _none_ ')'   (rule 196)
+    ports  ->  '(' . _ports_ port_list ')'   (rule 203)
+    ports  ->  '(' . _ports_ _none_ ')'   (rule 204)
+    feedback_enq  ->  '(' . _feedback_enq_ feedbacks_list ')'   (rule 207)
+    feedback_enq  ->  '(' . _feedback_enq_ _none_ ')'   (rule 208)
+    feedback_deq  ->  '(' . _feedback_deq_ feedbacks_list ')'   (rule 209)
+    feedback_deq  ->  '(' . _feedback_deq_ _none_ ')'   (rule 210)
+    queue_enq  ->  '(' . _queues_enq_ queue_enq_list ')'   (rule 213)
+    queue_enq  ->  '(' . _queues_enq_ _none_ ')'   (rule 214)
+    queue_deq  ->  '(' . _queues_deq_ queue_deq_list ')'   (rule 217)
+    queue_deq  ->  '(' . _queues_deq_ _none_ ')'   (rule 218)
+    connections  ->  '(' . _connections_ connection_list ')'   (rule 221)
+    connections  ->  '(' . _connections_ _none_ ')'   (rule 222)
+    opcodes  ->  '(' . _opcodes_ Identifier_list ')'   (rule 225)
+    opcodes  ->  '(' . _opcodes_ _all_ ')'   (rule 226)
+    opcodes_enq  ->  '(' . _opcodes_enq_ Identifier_list ')'   (rule 227)
+    opcodes_enq  ->  '(' . _opcodes_enq_ _all_ ')'   (rule 228)
+    opcodes_deq  ->  '(' . _opcodes_deq_ Identifier_list ')'   (rule 229)
+    opcodes_deq  ->  '(' . _opcodes_deq_ _all_ ')'   (rule 230)
+    timings  ->  '(' . _timing_ cyclenum_list ')'   (rule 231)
+    capacity  ->  '(' . _capacity_ Integer_lit ')'   (rule 238)
+    instrin  ->  '(' . _instrin_ Integer_lit ')'   (rule 239)
+    instrout  ->  '(' . _instrout_ Integer_lit ')'   (rule 240)
+    argument  ->  '(' . _argument_ Identifier ')'   (rule 241)
+
+    _latches_	shift, and go to state 384
+    _ports_	shift, and go to state 385
+    _feedback_enq_	shift, and go to state 386
+    _feedback_deq_	shift, and go to state 387
+    _queues_enq_	shift, and go to state 388
+    _queues_deq_	shift, and go to state 389
+    _connections_	shift, and go to state 390
+    _opcodes_	shift, and go to state 391
+    _opcodes_enq_	shift, and go to state 392
+    _opcodes_deq_	shift, and go to state 393
+    _timing_	shift, and go to state 394
+    _capacity_	shift, and go to state 395
+    _subcomponents_	shift, and go to state 397
+    _argument_	shift, and go to state 398
+    _instrin_	shift, and go to state 399
+    _instrout_	shift, and go to state 400
+
+
+
+state 402
+
+    one_comp  ->  Identifier comp_initstr comp_attributes .   (rule 168)
+    comp_attributes  ->  comp_attributes . comp_attribute   (rule 173)
+    comp_attributes  ->  comp_attributes . timings   (rule 174)
+
+    '(' 	shift, and go to state 401
+
+    $default	reduce using rule 168 (one_comp)
+
+    comp_attribute	go to state 403
+    sub_comps	go to state 352
+    latches	go to state 353
+    ports	go to state 354
+    feedback_enq	go to state 355
+    feedback_deq	go to state 356
+    queue_enq	go to state 357
+    queue_deq	go to state 358
+    connections	go to state 359
+    opcodes	go to state 360
+    opcodes_enq	go to state 361
+    opcodes_deq	go to state 362
+    timings	go to state 404
+    capacity	go to state 364
+    instrin	go to state 365
+    instrout	go to state 366
+    argument	go to state 367
+
+
+
+state 403
+
+    comp_attributes  ->  comp_attributes comp_attribute .   (rule 173)
+
+    $default	reduce using rule 173 (comp_attributes)
+
+
+
+state 404
+
+    comp_attributes  ->  comp_attributes timings .   (rule 174)
+
+    $default	reduce using rule 174 (comp_attributes)
+
+
+
+state 405
+
+    srcNum  ->  ISEL_SRC ISEL_LPAREN val ISEL_RPAREN .   (rule 113)
+
+    $default	reduce using rule 113 (srcNum)
+
+
+
+state 406
+
+    srcList  ->  srcList srcNum ISEL_EQUAL argType . argIdent   (rule 109)
+
+    ISEL_LBRACE	shift, and go to state 375
+
+    argIdent	go to state 452
+
+
+
+state 407
+
+    dstList  ->  dstList dstNum ISEL_EQUAL argType argIdent .   (rule 106)
+
+    $default	reduce using rule 106 (dstList)
+
+
+
+state 408
+
+    srcList  ->  srcNum ISEL_EQUAL argType argIdent .   (rule 110)
+
+    $default	reduce using rule 110 (srcList)
+
+
+
+state 409
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM . ISEL_RBRACE   (rule 116)
+
+    ISEL_RBRACE	shift, and go to state 453
+
+
+
+state 410
+
+    mapvar  ->  '(' Identifier mapvar_id ')' .   (rule 140)
+
+    $default	reduce using rule 140 (mapvar)
+
+
+
+state 411
+
+    pipeline  ->  '(' _pipeline_ . Identifier_list ')'   (rule 250)
+
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 454
+
+
+
+state 412
+
+    pipeline_info  ->  '(' Identifier . pipeline ')'   (rule 247)
+    pipeline_info  ->  '(' Identifier . parallel ')'   (rule 248)
+    pipeline_info  ->  '(' Identifier . alternate ')'   (rule 249)
+
+    '(' 	shift, and go to state 455
+
+    pipeline	go to state 456
+    parallel	go to state 457
+    alternate	go to state 458
+
+
+
+state 413
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' . @6 '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    $default	reduce using rule 6 (@6)
+
+    @6  	go to state 459
+
+
+
+state 414
+
+    PipeDTPaths_section  ->  pipeline_info_list '(' . _dtpaths_ dtpath_list ')'   (rule 242)
+    pipeline_info  ->  '(' . Identifier pipeline ')'   (rule 247)
+    pipeline_info  ->  '(' . Identifier parallel ')'   (rule 248)
+    pipeline_info  ->  '(' . Identifier alternate ')'   (rule 249)
+    pipeline  ->  '(' . _pipeline_ Identifier_list ')'   (rule 250)
+
+    _pipeline_	shift, and go to state 411
+    _dtpaths_	shift, and go to state 460
+    Identifier	shift, and go to state 412
+
+
+
+state 415
+
+    pipeline_info_list  ->  pipeline_info_list pipeline_info .   (rule 245)
+
+    $default	reduce using rule 245 (pipeline_info_list)
+
+
+
+state 416
+
+    latches  ->  '(' _latches_ _none_ . ')'   (rule 196)
+
+    ')' 	shift, and go to state 461
+
+
+
+state 417
+
+    latches  ->  '(' _latches_ aggregate_latchlist . ')'   (rule 195)
+    aggregate_latchlist  ->  aggregate_latchlist . '(' _input_ latch_list ')'   (rule 197)
+    aggregate_latchlist  ->  aggregate_latchlist . '(' _output_ latch_list ')'   (rule 198)
+    aggregate_latchlist  ->  aggregate_latchlist . '(' _other_ latch_list ')'   (rule 199)
+
+    '(' 	shift, and go to state 462
+    ')' 	shift, and go to state 463
+
+
+
+state 418
+
+    ports  ->  '(' _ports_ _none_ . ')'   (rule 204)
+
+    ')' 	shift, and go to state 464
+
+
+
+state 419
+
+    port_list  ->  Identifier .   (rule 206)
+
+    $default	reduce using rule 206 (port_list)
+
+
+
+state 420
+
+    ports  ->  '(' _ports_ port_list . ')'   (rule 203)
+    port_list  ->  port_list . Identifier   (rule 205)
+
+    Identifier	shift, and go to state 465
+    ')' 	shift, and go to state 466
+
+
+
+state 421
+
+    feedback_enq  ->  '(' _feedback_enq_ _none_ . ')'   (rule 208)
+
+    ')' 	shift, and go to state 467
+
+
+
+state 422
+
+    feedbacks_list  ->  Identifier .   (rule 212)
+
+    $default	reduce using rule 212 (feedbacks_list)
+
+
+
+state 423
+
+    feedback_enq  ->  '(' _feedback_enq_ feedbacks_list . ')'   (rule 207)
+    feedbacks_list  ->  feedbacks_list . Identifier   (rule 211)
+
+    Identifier	shift, and go to state 468
+    ')' 	shift, and go to state 469
+
+
+
+state 424
+
+    feedback_deq  ->  '(' _feedback_deq_ _none_ . ')'   (rule 210)
+
+    ')' 	shift, and go to state 470
+
+
+
+state 425
+
+    feedback_deq  ->  '(' _feedback_deq_ feedbacks_list . ')'   (rule 209)
+    feedbacks_list  ->  feedbacks_list . Identifier   (rule 211)
+
+    Identifier	shift, and go to state 468
+    ')' 	shift, and go to state 471
+
+
+
+state 426
+
+    queue_enq  ->  '(' _queues_enq_ _none_ . ')'   (rule 214)
+
+    ')' 	shift, and go to state 472
+
+
+
+state 427
+
+    queue_enq_list  ->  Identifier .   (rule 216)
+
+    $default	reduce using rule 216 (queue_enq_list)
+
+
+
+state 428
+
+    queue_enq  ->  '(' _queues_enq_ queue_enq_list . ')'   (rule 213)
+    queue_enq_list  ->  queue_enq_list . Identifier   (rule 215)
+
+    Identifier	shift, and go to state 473
+    ')' 	shift, and go to state 474
+
+
+
+state 429
+
+    queue_deq  ->  '(' _queues_deq_ _none_ . ')'   (rule 218)
+
+    ')' 	shift, and go to state 475
+
+
+
+state 430
+
+    queue_deq_list  ->  Identifier .   (rule 220)
+
+    $default	reduce using rule 220 (queue_deq_list)
+
+
+
+state 431
+
+    queue_deq  ->  '(' _queues_deq_ queue_deq_list . ')'   (rule 217)
+    queue_deq_list  ->  queue_deq_list . Identifier   (rule 219)
+
+    Identifier	shift, and go to state 476
+    ')' 	shift, and go to state 477
+
+
+
+state 432
+
+    connections  ->  '(' _connections_ _none_ . ')'   (rule 222)
+
+    ')' 	shift, and go to state 478
+
+
+
+state 433
+
+    connection_list  ->  Identifier .   (rule 224)
+
+    $default	reduce using rule 224 (connection_list)
+
+
+
+state 434
+
+    connections  ->  '(' _connections_ connection_list . ')'   (rule 221)
+    connection_list  ->  connection_list . Identifier   (rule 223)
+
+    Identifier	shift, and go to state 479
+    ')' 	shift, and go to state 480
+
+
+
+state 435
+
+    opcodes  ->  '(' _opcodes_ _all_ . ')'   (rule 226)
+
+    ')' 	shift, and go to state 481
+
+
+
+state 436
+
+    Identifier_list  ->  Identifier .   (rule 21)
+
+    $default	reduce using rule 21 (Identifier_list)
+
+
+
+state 437
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    opcodes  ->  '(' _opcodes_ Identifier_list . ')'   (rule 225)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 483
+
+
+
+state 438
+
+    opcodes_enq  ->  '(' _opcodes_enq_ _all_ . ')'   (rule 228)
+
+    ')' 	shift, and go to state 484
+
+
+
+state 439
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    opcodes_enq  ->  '(' _opcodes_enq_ Identifier_list . ')'   (rule 227)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 485
+
+
+
+state 440
+
+    opcodes_deq  ->  '(' _opcodes_deq_ _all_ . ')'   (rule 230)
+
+    ')' 	shift, and go to state 486
+
+
+
+state 441
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    opcodes_deq  ->  '(' _opcodes_deq_ Identifier_list . ')'   (rule 229)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 487
+
+
+
+state 442
+
+    cyclenum  ->  '(' . Identifier_list Integer_lit ')'   (rule 234)
+    cyclenum  ->  '(' . _all_ Integer_lit ')'   (rule 235)
+
+    _all_	shift, and go to state 488
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 489
+
+
+
+state 443
+
+    timings  ->  '(' _timing_ cyclenum_list . ')'   (rule 231)
+    cyclenum_list  ->  cyclenum_list . cyclenum   (rule 233)
+
+    '(' 	shift, and go to state 442
+    ')' 	shift, and go to state 490
+
+    cyclenum	go to state 491
+
+
+
+state 444
+
+    cyclenum_list  ->  cyclenum .   (rule 232)
+
+    $default	reduce using rule 232 (cyclenum_list)
+
+
+
+state 445
+
+    capacity  ->  '(' _capacity_ Integer_lit . ')'   (rule 238)
+
+    ')' 	shift, and go to state 492
+
+
+
+state 446
+
+    comp_initstr  ->  '(' _char_string_ ')' .   (rule 172)
+
+    $default	reduce using rule 172 (comp_initstr)
+
+
+
+state 447
+
+    subcomp_list  ->  Identifier .   (rule 194)
+
+    $default	reduce using rule 194 (subcomp_list)
+
+
+
+state 448
+
+    sub_comps  ->  '(' _subcomponents_ subcomp_list . ')'   (rule 192)
+    subcomp_list  ->  subcomp_list . Identifier   (rule 193)
+
+    Identifier	shift, and go to state 493
+    ')' 	shift, and go to state 494
+
+
+
+state 449
+
+    argument  ->  '(' _argument_ Identifier . ')'   (rule 241)
+
+    ')' 	shift, and go to state 495
+
+
+
+state 450
+
+    instrin  ->  '(' _instrin_ Integer_lit . ')'   (rule 239)
+
+    ')' 	shift, and go to state 496
+
+
+
+state 451
+
+    instrout  ->  '(' _instrout_ Integer_lit . ')'   (rule 240)
+
+    ')' 	shift, and go to state 497
+
+
+
+state 452
+
+    srcList  ->  srcList srcNum ISEL_EQUAL argType argIdent .   (rule 109)
+
+    $default	reduce using rule 109 (srcList)
+
+
+
+state 453
+
+    argIdent  ->  ISEL_LBRACE ISEL_NUM ISEL_RBRACE .   (rule 116)
+
+    $default	reduce using rule 116 (argIdent)
+
+
+
+state 454
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    pipeline  ->  '(' _pipeline_ Identifier_list . ')'   (rule 250)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 498
+
+
+
+state 455
+
+    pipeline  ->  '(' . _pipeline_ Identifier_list ')'   (rule 250)
+    parallel  ->  '(' . _parallel_ Identifier_list ')'   (rule 251)
+    alternate  ->  '(' . _alternate_ Identifier_list ')'   (rule 252)
+
+    _pipeline_	shift, and go to state 411
+    _parallel_	shift, and go to state 499
+    _alternate_	shift, and go to state 500
+
+
+
+state 456
+
+    pipeline_info  ->  '(' Identifier pipeline . ')'   (rule 247)
+
+    ')' 	shift, and go to state 501
+
+
+
+state 457
+
+    pipeline_info  ->  '(' Identifier parallel . ')'   (rule 248)
+
+    ')' 	shift, and go to state 502
+
+
+
+state 458
+
+    pipeline_info  ->  '(' Identifier alternate . ')'   (rule 249)
+
+    ')' 	shift, and go to state 503
+
+
+
+state 459
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 . '(' _storage_section_ Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 504
+
+
+
+state 460
+
+    PipeDTPaths_section  ->  pipeline_info_list '(' _dtpaths_ . dtpath_list ')'   (rule 242)
+
+    '(' 	shift, and go to state 505
+
+    dtpath_list	go to state 506
+    dtpaths	go to state 507
+
+
+
+state 461
+
+    latches  ->  '(' _latches_ _none_ ')' .   (rule 196)
+
+    $default	reduce using rule 196 (latches)
+
+
+
+state 462
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' . _input_ latch_list ')'   (rule 197)
+    aggregate_latchlist  ->  aggregate_latchlist '(' . _output_ latch_list ')'   (rule 198)
+    aggregate_latchlist  ->  aggregate_latchlist '(' . _other_ latch_list ')'   (rule 199)
+
+    _input_	shift, and go to state 508
+    _output_	shift, and go to state 509
+    _other_	shift, and go to state 510
+
+
+
+state 463
+
+    latches  ->  '(' _latches_ aggregate_latchlist ')' .   (rule 195)
+
+    $default	reduce using rule 195 (latches)
+
+
+
+state 464
+
+    ports  ->  '(' _ports_ _none_ ')' .   (rule 204)
+
+    $default	reduce using rule 204 (ports)
+
+
+
+state 465
+
+    port_list  ->  port_list Identifier .   (rule 205)
+
+    $default	reduce using rule 205 (port_list)
+
+
+
+state 466
+
+    ports  ->  '(' _ports_ port_list ')' .   (rule 203)
+
+    $default	reduce using rule 203 (ports)
+
+
+
+state 467
+
+    feedback_enq  ->  '(' _feedback_enq_ _none_ ')' .   (rule 208)
+
+    $default	reduce using rule 208 (feedback_enq)
+
+
+
+state 468
+
+    feedbacks_list  ->  feedbacks_list Identifier .   (rule 211)
+
+    $default	reduce using rule 211 (feedbacks_list)
+
+
+
+state 469
+
+    feedback_enq  ->  '(' _feedback_enq_ feedbacks_list ')' .   (rule 207)
+
+    $default	reduce using rule 207 (feedback_enq)
+
+
+
+state 470
+
+    feedback_deq  ->  '(' _feedback_deq_ _none_ ')' .   (rule 210)
+
+    $default	reduce using rule 210 (feedback_deq)
+
+
+
+state 471
+
+    feedback_deq  ->  '(' _feedback_deq_ feedbacks_list ')' .   (rule 209)
+
+    $default	reduce using rule 209 (feedback_deq)
+
+
+
+state 472
+
+    queue_enq  ->  '(' _queues_enq_ _none_ ')' .   (rule 214)
+
+    $default	reduce using rule 214 (queue_enq)
+
+
+
+state 473
+
+    queue_enq_list  ->  queue_enq_list Identifier .   (rule 215)
+
+    $default	reduce using rule 215 (queue_enq_list)
+
+
+
+state 474
+
+    queue_enq  ->  '(' _queues_enq_ queue_enq_list ')' .   (rule 213)
+
+    $default	reduce using rule 213 (queue_enq)
+
+
+
+state 475
+
+    queue_deq  ->  '(' _queues_deq_ _none_ ')' .   (rule 218)
+
+    $default	reduce using rule 218 (queue_deq)
+
+
+
+state 476
+
+    queue_deq_list  ->  queue_deq_list Identifier .   (rule 219)
+
+    $default	reduce using rule 219 (queue_deq_list)
+
+
+
+state 477
+
+    queue_deq  ->  '(' _queues_deq_ queue_deq_list ')' .   (rule 217)
+
+    $default	reduce using rule 217 (queue_deq)
+
+
+
+state 478
+
+    connections  ->  '(' _connections_ _none_ ')' .   (rule 222)
+
+    $default	reduce using rule 222 (connections)
+
+
+
+state 479
+
+    connection_list  ->  connection_list Identifier .   (rule 223)
+
+    $default	reduce using rule 223 (connection_list)
+
+
+
+state 480
+
+    connections  ->  '(' _connections_ connection_list ')' .   (rule 221)
+
+    $default	reduce using rule 221 (connections)
+
+
+
+state 481
+
+    opcodes  ->  '(' _opcodes_ _all_ ')' .   (rule 226)
+
+    $default	reduce using rule 226 (opcodes)
+
+
+
+state 482
+
+    Identifier_list  ->  Identifier_list Identifier .   (rule 20)
+
+    $default	reduce using rule 20 (Identifier_list)
+
+
+
+state 483
+
+    opcodes  ->  '(' _opcodes_ Identifier_list ')' .   (rule 225)
+
+    $default	reduce using rule 225 (opcodes)
+
+
+
+state 484
+
+    opcodes_enq  ->  '(' _opcodes_enq_ _all_ ')' .   (rule 228)
+
+    $default	reduce using rule 228 (opcodes_enq)
+
+
+
+state 485
+
+    opcodes_enq  ->  '(' _opcodes_enq_ Identifier_list ')' .   (rule 227)
+
+    $default	reduce using rule 227 (opcodes_enq)
+
+
+
+state 486
+
+    opcodes_deq  ->  '(' _opcodes_deq_ _all_ ')' .   (rule 230)
+
+    $default	reduce using rule 230 (opcodes_deq)
+
+
+
+state 487
+
+    opcodes_deq  ->  '(' _opcodes_deq_ Identifier_list ')' .   (rule 229)
+
+    $default	reduce using rule 229 (opcodes_deq)
+
+
+
+state 488
+
+    cyclenum  ->  '(' _all_ . Integer_lit ')'   (rule 235)
+
+    Integer_lit	shift, and go to state 511
+
+
+
+state 489
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    cyclenum  ->  '(' Identifier_list . Integer_lit ')'   (rule 234)
+
+    Identifier	shift, and go to state 482
+    Integer_lit	shift, and go to state 512
+
+
+
+state 490
+
+    timings  ->  '(' _timing_ cyclenum_list ')' .   (rule 231)
+
+    $default	reduce using rule 231 (timings)
+
+
+
+state 491
+
+    cyclenum_list  ->  cyclenum_list cyclenum .   (rule 233)
+
+    $default	reduce using rule 233 (cyclenum_list)
+
+
+
+state 492
+
+    capacity  ->  '(' _capacity_ Integer_lit ')' .   (rule 238)
+
+    $default	reduce using rule 238 (capacity)
+
+
+
+state 493
+
+    subcomp_list  ->  subcomp_list Identifier .   (rule 193)
+
+    $default	reduce using rule 193 (subcomp_list)
+
+
+
+state 494
+
+    sub_comps  ->  '(' _subcomponents_ subcomp_list ')' .   (rule 192)
+
+    $default	reduce using rule 192 (sub_comps)
+
+
+
+state 495
+
+    argument  ->  '(' _argument_ Identifier ')' .   (rule 241)
+
+    $default	reduce using rule 241 (argument)
+
+
+
+state 496
+
+    instrin  ->  '(' _instrin_ Integer_lit ')' .   (rule 239)
+
+    $default	reduce using rule 239 (instrin)
+
+
+
+state 497
+
+    instrout  ->  '(' _instrout_ Integer_lit ')' .   (rule 240)
+
+    $default	reduce using rule 240 (instrout)
+
+
+
+state 498
+
+    pipeline  ->  '(' _pipeline_ Identifier_list ')' .   (rule 250)
+
+    $default	reduce using rule 250 (pipeline)
+
+
+
+state 499
+
+    parallel  ->  '(' _parallel_ . Identifier_list ')'   (rule 251)
+
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 513
+
+
+
+state 500
+
+    alternate  ->  '(' _alternate_ . Identifier_list ')'   (rule 252)
+
+    Identifier	shift, and go to state 436
+
+    Identifier	[reduce using rule 55 (Identifier_list)]
+    $default	reduce using rule 55 (Identifier_list)
+
+    Identifier_list	go to state 514
+
+
+
+state 501
+
+    pipeline_info  ->  '(' Identifier pipeline ')' .   (rule 247)
+
+    $default	reduce using rule 247 (pipeline_info)
+
+
+
+state 502
+
+    pipeline_info  ->  '(' Identifier parallel ')' .   (rule 248)
+
+    $default	reduce using rule 248 (pipeline_info)
+
+
+
+state 503
+
+    pipeline_info  ->  '(' Identifier alternate ')' .   (rule 249)
+
+    $default	reduce using rule 249 (pipeline_info)
+
+
+
+state 504
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' . _storage_section_ Storage_section ')'   (rule 7)
+
+    _storage_section_	shift, and go to state 515
+
+
+
+state 505
+
+    dtpaths  ->  '(' . _type_ t_type dt_list ')'   (rule 255)
+
+    _type_	shift, and go to state 516
+
+
+
+state 506
+
+    PipeDTPaths_section  ->  pipeline_info_list '(' _dtpaths_ dtpath_list . ')'   (rule 242)
+    dtpath_list  ->  dtpath_list . dtpaths   (rule 253)
+
+    '(' 	shift, and go to state 505
+    ')' 	shift, and go to state 517
+
+    dtpaths	go to state 518
+
+
+
+state 507
+
+    dtpath_list  ->  dtpaths .   (rule 254)
+
+    $default	reduce using rule 254 (dtpath_list)
+
+
+
+state 508
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _input_ . latch_list ')'   (rule 197)
+
+    Identifier	shift, and go to state 519
+
+    latch_list	go to state 520
+
+
+
+state 509
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _output_ . latch_list ')'   (rule 198)
+
+    Identifier	shift, and go to state 519
+
+    latch_list	go to state 521
+
+
+
+state 510
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _other_ . latch_list ')'   (rule 199)
+
+    Identifier	shift, and go to state 519
+
+    latch_list	go to state 522
+
+
+
+state 511
+
+    cyclenum  ->  '(' _all_ Integer_lit . ')'   (rule 235)
+
+    ')' 	shift, and go to state 523
+
+
+
+state 512
+
+    cyclenum  ->  '(' Identifier_list Integer_lit . ')'   (rule 234)
+
+    ')' 	shift, and go to state 524
+
+
+
+state 513
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    parallel  ->  '(' _parallel_ Identifier_list . ')'   (rule 251)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 525
+
+
+
+state 514
+
+    Identifier_list  ->  Identifier_list . Identifier   (rule 20)
+    alternate  ->  '(' _alternate_ Identifier_list . ')'   (rule 252)
+
+    Identifier	shift, and go to state 482
+    ')' 	shift, and go to state 526
+
+
+
+state 515
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ . Storage_section ')'   (rule 7)
+
+    '(' 	shift, and go to state 527
+
+    $default	reduce using rule 265 (Storage_section)
+
+    Storage_section	go to state 528
+    storage_list	go to state 529
+    storage	go to state 530
+
+
+
+state 516
+
+    dtpaths  ->  '(' _type_ . t_type dt_list ')'   (rule 255)
+
+    _uni_	shift, and go to state 531
+    _bi_	shift, and go to state 532
+
+    t_type	go to state 533
+
+
+
+state 517
+
+    PipeDTPaths_section  ->  pipeline_info_list '(' _dtpaths_ dtpath_list ')' .   (rule 242)
+
+    $default	reduce using rule 242 (PipeDTPaths_section)
+
+
+
+state 518
+
+    dtpath_list  ->  dtpath_list dtpaths .   (rule 253)
+
+    $default	reduce using rule 253 (dtpath_list)
+
+
+
+state 519
+
+    latch_list  ->  Identifier .   (rule 202)
+
+    $default	reduce using rule 202 (latch_list)
+
+
+
+state 520
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _input_ latch_list . ')'   (rule 197)
+    latch_list  ->  latch_list . Identifier   (rule 201)
+
+    Identifier	shift, and go to state 534
+    ')' 	shift, and go to state 535
+
+
+
+state 521
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _output_ latch_list . ')'   (rule 198)
+    latch_list  ->  latch_list . Identifier   (rule 201)
+
+    Identifier	shift, and go to state 534
+    ')' 	shift, and go to state 536
+
+
+
+state 522
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _other_ latch_list . ')'   (rule 199)
+    latch_list  ->  latch_list . Identifier   (rule 201)
+
+    Identifier	shift, and go to state 534
+    ')' 	shift, and go to state 537
+
+
+
+state 523
+
+    cyclenum  ->  '(' _all_ Integer_lit ')' .   (rule 235)
+
+    $default	reduce using rule 235 (cyclenum)
+
+
+
+state 524
+
+    cyclenum  ->  '(' Identifier_list Integer_lit ')' .   (rule 234)
+
+    $default	reduce using rule 234 (cyclenum)
+
+
+
+state 525
+
+    parallel  ->  '(' _parallel_ Identifier_list ')' .   (rule 251)
+
+    $default	reduce using rule 251 (parallel)
+
+
+
+state 526
+
+    alternate  ->  '(' _alternate_ Identifier_list ')' .   (rule 252)
+
+    $default	reduce using rule 252 (alternate)
+
+
+
+state 527
+
+    storage  ->  '(' . Identifier storageattr_list ')'   (rule 269)
+    storage  ->  '(' . Identifier ')'   (rule 270)
+
+    Identifier	shift, and go to state 538
+
+
+
+state 528
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section . ')'   (rule 7)
+
+    ')' 	shift, and go to state 539
+
+
+
+state 529
+
+    Storage_section  ->  storage_list .   (rule 266)
+    storage_list  ->  storage_list . storage   (rule 268)
+
+    '(' 	shift, and go to state 527
+
+    $default	reduce using rule 266 (Storage_section)
+
+    storage	go to state 540
+
+
+
+state 530
+
+    storage_list  ->  storage .   (rule 267)
+
+    $default	reduce using rule 267 (storage_list)
+
+
+
+state 531
+
+    t_type  ->  _uni_ .   (rule 256)
+
+    $default	reduce using rule 256 (t_type)
+
+
+
+state 532
+
+    t_type  ->  _bi_ .   (rule 257)
+
+    $default	reduce using rule 257 (t_type)
+
+
+
+state 533
+
+    dtpaths  ->  '(' _type_ t_type . dt_list ')'   (rule 255)
+
+    '(' 	shift, and go to state 541
+
+    dt_list	go to state 542
+    dt  	go to state 543
+
+
+
+state 534
+
+    latch_list  ->  latch_list Identifier .   (rule 201)
+
+    $default	reduce using rule 201 (latch_list)
+
+
+
+state 535
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _input_ latch_list ')' .   (rule 197)
+
+    $default	reduce using rule 197 (aggregate_latchlist)
+
+
+
+state 536
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _output_ latch_list ')' .   (rule 198)
+
+    $default	reduce using rule 198 (aggregate_latchlist)
+
+
+
+state 537
+
+    aggregate_latchlist  ->  aggregate_latchlist '(' _other_ latch_list ')' .   (rule 199)
+
+    $default	reduce using rule 199 (aggregate_latchlist)
+
+
+
+state 538
+
+    storage  ->  '(' Identifier . storageattr_list ')'   (rule 269)
+    storage  ->  '(' Identifier . ')'   (rule 270)
+
+    '(' 	shift, and go to state 544
+    ')' 	shift, and go to state 545
+
+    storageattr_list	go to state 546
+    storageattr	go to state 547
+
+
+
+state 539
+
+    description  ->  @1 '(' _operations_section_ Operation_section ')' @2 '(' _instruction_section_ Instruction_section ')' @3 '(' _opmapping_section_ OpMapping_section ')' @4 '(' _architecture_section_ ArchComponent_section ')' @5 '(' _pipeline_section_ PipeDTPaths_section ')' @6 '(' _storage_section_ Storage_section ')' .   (rule 7)
+
+    $default	reduce using rule 7 (description)
+
+
+
+state 540
+
+    storage_list  ->  storage_list storage .   (rule 268)
+
+    $default	reduce using rule 268 (storage_list)
+
+
+
+state 541
+
+    dt  ->  '(' . from to dtcomponent_list ')'   (rule 260)
+
+    Identifier	shift, and go to state 548
+
+    from	go to state 549
+
+
+
+state 542
+
+    dtpaths  ->  '(' _type_ t_type dt_list . ')'   (rule 255)
+    dt_list  ->  dt_list . dt   (rule 258)
+
+    '(' 	shift, and go to state 541
+    ')' 	shift, and go to state 550
+
+    dt  	go to state 551
+
+
+
+state 543
+
+    dt_list  ->  dt .   (rule 259)
+
+    $default	reduce using rule 259 (dt_list)
+
+
+
+state 544
+
+    storageattr  ->  '(' . _type_ Identifier ')'   (rule 273)
+    storageattr  ->  '(' . _mnemonic_ _char_string_ ')'   (rule 274)
+    storageattr  ->  '(' . _size_ Integer_lit ')'   (rule 275)
+    storageattr  ->  '(' . _width_ Integer_lit ')'   (rule 276)
+    storageattr  ->  '(' . _accesstimes_ Integer_lit ')'   (rule 277)
+    storageattr  ->  '(' . _accessports_ accessport_list ')'   (rule 278)
+    storageattr  ->  '(' . _addrrange_ addrrange_list ')'   (rule 279)
+    storageattr  ->  '(' . _write_policy_ write_policy_options ')'   (rule 280)
+    storageattr  ->  '(' . _replacement_policy_ replacement_policy_options ')'   (rule 281)
+    storageattr  ->  '(' . _wordsize_ Integer_lit ')'   (rule 282)
+    storageattr  ->  '(' . _linesize_ Integer_lit ')'   (rule 283)
+    storageattr  ->  '(' . _num_lines_ Integer_lit ')'   (rule 284)
+    storageattr  ->  '(' . _associativity_ Integer_lit ')'   (rule 285)
+    storageattr  ->  '(' . _level_ Integer_lit ')'   (rule 286)
+    storageattr  ->  '(' . _next_level_ Integer_lit ')'   (rule 287)
+    storageattr  ->  '(' . _prev_level_ Integer_lit ')'   (rule 288)
+    storageattr  ->  '(' . _storage_connections_ stconnection_list ')'   (rule 289)
+    storageattr  ->  '(' . _read_latency_ Integer_lit ')'   (rule 290)
+    storageattr  ->  '(' . _write_latency_ Integer_lit ')'   (rule 291)
+    storageattr  ->  '(' . _num_banks_ Integer_lit ')'   (rule 292)
+    storageattr  ->  '(' . _access_mode_ Integer_lit ')'   (rule 293)
+    storageattr  ->  '(' . _num_parallel_read_ Integer_lit ')'   (rule 294)
+    storageattr  ->  '(' . _num_parallel_write_ Integer_lit ')'   (rule 295)
+    storageattr  ->  '(' . _read_write_conflict_ Integer_lit ')'   (rule 296)
+
+    _type_	shift, and go to state 552
+    _mnemonic_	shift, and go to state 553
+    _size_	shift, and go to state 554
+    _width_	shift, and go to state 555
+    _linesize_	shift, and go to state 556
+    _wordsize_	shift, and go to state 557
+    _num_lines_	shift, and go to state 558
+    _write_policy_	shift, and go to state 559
+    _replacement_policy_	shift, and go to state 560
+    _level_	shift, and go to state 561
+    _storage_connections_	shift, and go to state 562
+    _next_level_	shift, and go to state 563
+    _prev_level_	shift, and go to state 564
+    _read_latency_	shift, and go to state 565
+    _write_latency_	shift, and go to state 566
+    _associativity_	shift, and go to state 567
+    _num_banks_	shift, and go to state 568
+    _access_mode_	shift, and go to state 569
+    _num_parallel_read_	shift, and go to state 570
+    _num_parallel_write_	shift, and go to state 571
+    _read_write_conflict_	shift, and go to state 572
+    _addrrange_	shift, and go to state 573
+    _accesstimes_	shift, and go to state 574
+    _accessports_	shift, and go to state 575
+
+
+
+state 545
+
+    storage  ->  '(' Identifier ')' .   (rule 270)
+
+    $default	reduce using rule 270 (storage)
+
+
+
+state 546
+
+    storage  ->  '(' Identifier storageattr_list . ')'   (rule 269)
+    storageattr_list  ->  storageattr_list . storageattr   (rule 272)
+
+    '(' 	shift, and go to state 544
+    ')' 	shift, and go to state 576
+
+    storageattr	go to state 577
+
+
+
+state 547
+
+    storageattr_list  ->  storageattr .   (rule 271)
+
+    $default	reduce using rule 271 (storageattr_list)
+
+
+
+state 548
+
+    from  ->  Identifier .   (rule 261)
+
+    $default	reduce using rule 261 (from)
+
+
+
+state 549
+
+    dt  ->  '(' from . to dtcomponent_list ')'   (rule 260)
+
+    Identifier	shift, and go to state 578
+
+    to  	go to state 579
+
+
+
+state 550
+
+    dtpaths  ->  '(' _type_ t_type dt_list ')' .   (rule 255)
+
+    $default	reduce using rule 255 (dtpaths)
+
+
+
+state 551
+
+    dt_list  ->  dt_list dt .   (rule 258)
+
+    $default	reduce using rule 258 (dt_list)
+
+
+
+state 552
+
+    storageattr  ->  '(' _type_ . Identifier ')'   (rule 273)
+
+    Identifier	shift, and go to state 580
+
+
+
+state 553
+
+    storageattr  ->  '(' _mnemonic_ . _char_string_ ')'   (rule 274)
+
+    _char_string_	shift, and go to state 581
+
+
+
+state 554
+
+    storageattr  ->  '(' _size_ . Integer_lit ')'   (rule 275)
+
+    Integer_lit	shift, and go to state 582
+
+
+
+state 555
+
+    storageattr  ->  '(' _width_ . Integer_lit ')'   (rule 276)
+
+    Integer_lit	shift, and go to state 583
+
+
+
+state 556
+
+    storageattr  ->  '(' _linesize_ . Integer_lit ')'   (rule 283)
+
+    Integer_lit	shift, and go to state 584
+
+
+
+state 557
+
+    storageattr  ->  '(' _wordsize_ . Integer_lit ')'   (rule 282)
+
+    Integer_lit	shift, and go to state 585
+
+
+
+state 558
+
+    storageattr  ->  '(' _num_lines_ . Integer_lit ')'   (rule 284)
+
+    Integer_lit	shift, and go to state 586
+
+
+
+state 559
+
+    storageattr  ->  '(' _write_policy_ . write_policy_options ')'   (rule 280)
+
+    _write_back_	shift, and go to state 587
+    _write_through_	shift, and go to state 588
+
+    write_policy_options	go to state 589
+
+
+
+state 560
+
+    storageattr  ->  '(' _replacement_policy_ . replacement_policy_options ')'   (rule 281)
+
+    _lru_	shift, and go to state 590
+    _fifo_	shift, and go to state 591
+
+    replacement_policy_options	go to state 592
+
+
+
+state 561
+
+    storageattr  ->  '(' _level_ . Integer_lit ')'   (rule 286)
+
+    Integer_lit	shift, and go to state 593
+
+
+
+state 562
+
+    storageattr  ->  '(' _storage_connections_ . stconnection_list ')'   (rule 289)
+
+    '(' 	shift, and go to state 594
+
+    stconnection_list	go to state 595
+    stconnection	go to state 596
+
+
+
+state 563
+
+    storageattr  ->  '(' _next_level_ . Integer_lit ')'   (rule 287)
+
+    Integer_lit	shift, and go to state 597
+
+
+
+state 564
+
+    storageattr  ->  '(' _prev_level_ . Integer_lit ')'   (rule 288)
+
+    Integer_lit	shift, and go to state 598
+
+
+
+state 565
+
+    storageattr  ->  '(' _read_latency_ . Integer_lit ')'   (rule 290)
+
+    Integer_lit	shift, and go to state 599
+
+
+
+state 566
+
+    storageattr  ->  '(' _write_latency_ . Integer_lit ')'   (rule 291)
+
+    Integer_lit	shift, and go to state 600
+
+
+
+state 567
+
+    storageattr  ->  '(' _associativity_ . Integer_lit ')'   (rule 285)
+
+    Integer_lit	shift, and go to state 601
+
+
+
+state 568
+
+    storageattr  ->  '(' _num_banks_ . Integer_lit ')'   (rule 292)
+
+    Integer_lit	shift, and go to state 602
+
+
+
+state 569
+
+    storageattr  ->  '(' _access_mode_ . Integer_lit ')'   (rule 293)
+
+    Integer_lit	shift, and go to state 603
+
+
+
+state 570
+
+    storageattr  ->  '(' _num_parallel_read_ . Integer_lit ')'   (rule 294)
+
+    Integer_lit	shift, and go to state 604
+
+
+
+state 571
+
+    storageattr  ->  '(' _num_parallel_write_ . Integer_lit ')'   (rule 295)
+
+    Integer_lit	shift, and go to state 605
+
+
+
+state 572
+
+    storageattr  ->  '(' _read_write_conflict_ . Integer_lit ')'   (rule 296)
+
+    Integer_lit	shift, and go to state 606
+
+
+
+state 573
+
+    storageattr  ->  '(' _addrrange_ . addrrange_list ')'   (rule 279)
+
+    '(' 	shift, and go to state 607
+
+    addrrange_list	go to state 608
+    addrrange	go to state 609
+
+
+
+state 574
+
+    storageattr  ->  '(' _accesstimes_ . Integer_lit ')'   (rule 277)
+
+    Integer_lit	shift, and go to state 610
+
+
+
+state 575
+
+    storageattr  ->  '(' _accessports_ . accessport_list ')'   (rule 278)
+
+    '(' 	shift, and go to state 611
+
+    accessport_list	go to state 612
+    accessport	go to state 613
+
+
+
+state 576
+
+    storage  ->  '(' Identifier storageattr_list ')' .   (rule 269)
+
+    $default	reduce using rule 269 (storage)
+
+
+
+state 577
+
+    storageattr_list  ->  storageattr_list storageattr .   (rule 272)
+
+    $default	reduce using rule 272 (storageattr_list)
+
+
+
+state 578
+
+    to  ->  Identifier .   (rule 262)
+
+    $default	reduce using rule 262 (to)
+
+
+
+state 579
+
+    dt  ->  '(' from to . dtcomponent_list ')'   (rule 260)
+
+    Identifier	shift, and go to state 614
+
+    dtcomponent_list	go to state 615
+
+
+
+state 580
+
+    storageattr  ->  '(' _type_ Identifier . ')'   (rule 273)
+
+    ')' 	shift, and go to state 616
+
+
+
+state 581
+
+    storageattr  ->  '(' _mnemonic_ _char_string_ . ')'   (rule 274)
+
+    ')' 	shift, and go to state 617
+
+
+
+state 582
+
+    storageattr  ->  '(' _size_ Integer_lit . ')'   (rule 275)
+
+    ')' 	shift, and go to state 618
+
+
+
+state 583
+
+    storageattr  ->  '(' _width_ Integer_lit . ')'   (rule 276)
+
+    ')' 	shift, and go to state 619
+
+
+
+state 584
+
+    storageattr  ->  '(' _linesize_ Integer_lit . ')'   (rule 283)
+
+    ')' 	shift, and go to state 620
+
+
+
+state 585
+
+    storageattr  ->  '(' _wordsize_ Integer_lit . ')'   (rule 282)
+
+    ')' 	shift, and go to state 621
+
+
+
+state 586
+
+    storageattr  ->  '(' _num_lines_ Integer_lit . ')'   (rule 284)
+
+    ')' 	shift, and go to state 622
+
+
+
+state 587
+
+    write_policy_options  ->  _write_back_ .   (rule 308)
+
+    $default	reduce using rule 308 (write_policy_options)
+
+
+
+state 588
+
+    write_policy_options  ->  _write_through_ .   (rule 309)
+
+    $default	reduce using rule 309 (write_policy_options)
+
+
+
+state 589
+
+    storageattr  ->  '(' _write_policy_ write_policy_options . ')'   (rule 280)
+
+    ')' 	shift, and go to state 623
+
+
+
+state 590
+
+    replacement_policy_options  ->  _lru_ .   (rule 310)
+
+    $default	reduce using rule 310 (replacement_policy_options)
+
+
+
+state 591
+
+    replacement_policy_options  ->  _fifo_ .   (rule 311)
+
+    $default	reduce using rule 311 (replacement_policy_options)
+
+
+
+state 592
+
+    storageattr  ->  '(' _replacement_policy_ replacement_policy_options . ')'   (rule 281)
+
+    ')' 	shift, and go to state 624
+
+
+
+state 593
+
+    storageattr  ->  '(' _level_ Integer_lit . ')'   (rule 286)
+
+    ')' 	shift, and go to state 625
+
+
+
+state 594
+
+    stconnection  ->  '(' . Identifier Identifier ')'   (rule 307)
+
+    Identifier	shift, and go to state 626
+
+
+
+state 595
+
+    storageattr  ->  '(' _storage_connections_ stconnection_list . ')'   (rule 289)
+    stconnection_list  ->  stconnection_list . stconnection   (rule 306)
+
+    '(' 	shift, and go to state 594
+    ')' 	shift, and go to state 627
+
+    stconnection	go to state 628
+
+
+
+state 596
+
+    stconnection_list  ->  stconnection .   (rule 305)
+
+    $default	reduce using rule 305 (stconnection_list)
+
+
+
+state 597
+
+    storageattr  ->  '(' _next_level_ Integer_lit . ')'   (rule 287)
+
+    ')' 	shift, and go to state 629
+
+
+
+state 598
+
+    storageattr  ->  '(' _prev_level_ Integer_lit . ')'   (rule 288)
+
+    ')' 	shift, and go to state 630
+
+
+
+state 599
+
+    storageattr  ->  '(' _read_latency_ Integer_lit . ')'   (rule 290)
+
+    ')' 	shift, and go to state 631
+
+
+
+state 600
+
+    storageattr  ->  '(' _write_latency_ Integer_lit . ')'   (rule 291)
+
+    ')' 	shift, and go to state 632
+
+
+
+state 601
+
+    storageattr  ->  '(' _associativity_ Integer_lit . ')'   (rule 285)
+
+    ')' 	shift, and go to state 633
+
+
+
+state 602
+
+    storageattr  ->  '(' _num_banks_ Integer_lit . ')'   (rule 292)
+
+    ')' 	shift, and go to state 634
+
+
+
+state 603
+
+    storageattr  ->  '(' _access_mode_ Integer_lit . ')'   (rule 293)
+
+    ')' 	shift, and go to state 635
+
+
+
+state 604
+
+    storageattr  ->  '(' _num_parallel_read_ Integer_lit . ')'   (rule 294)
+
+    ')' 	shift, and go to state 636
+
+
+
+state 605
+
+    storageattr  ->  '(' _num_parallel_write_ Integer_lit . ')'   (rule 295)
+
+    ')' 	shift, and go to state 637
+
+
+
+state 606
+
+    storageattr  ->  '(' _read_write_conflict_ Integer_lit . ')'   (rule 296)
+
+    ')' 	shift, and go to state 638
+
+
+
+state 607
+
+    addrrange  ->  '(' . integer integer ')'   (rule 303)
+    addrrange  ->  '(' . integer integer '(' _stride_ integer ')' ')'   (rule 304)
+
+    Integer_lit	shift, and go to state 639
+
+    integer	go to state 640
+
+
+
+state 608
+
+    storageattr  ->  '(' _addrrange_ addrrange_list . ')'   (rule 279)
+    addrrange_list  ->  addrrange_list . addrrange   (rule 302)
+
+    '(' 	shift, and go to state 607
+    ')' 	shift, and go to state 641
+
+    addrrange	go to state 642
+
+
+
+state 609
+
+    addrrange_list  ->  addrrange .   (rule 301)
+
+    $default	reduce using rule 301 (addrrange_list)
+
+
+
+state 610
+
+    storageattr  ->  '(' _accesstimes_ Integer_lit . ')'   (rule 277)
+
+    ')' 	shift, and go to state 643
+
+
+
+state 611
+
+    accessport  ->  '(' . Identifier ')'   (rule 299)
+    accessport  ->  '(' . Identifier '(' _accesswidths_ Integer_lit_list ')' ')'   (rule 300)
+
+    Identifier	shift, and go to state 644
+
+
+
+state 612
+
+    storageattr  ->  '(' _accessports_ accessport_list . ')'   (rule 278)
+    accessport_list  ->  accessport_list . accessport   (rule 298)
+
+    '(' 	shift, and go to state 611
+    ')' 	shift, and go to state 645
+
+    accessport	go to state 646
+
+
+
+state 613
+
+    accessport_list  ->  accessport .   (rule 297)
+
+    $default	reduce using rule 297 (accessport_list)
+
+
+
+state 614
+
+    dtcomponent_list  ->  Identifier .   (rule 264)
+
+    $default	reduce using rule 264 (dtcomponent_list)
+
+
+
+state 615
+
+    dt  ->  '(' from to dtcomponent_list . ')'   (rule 260)
+    dtcomponent_list  ->  dtcomponent_list . Identifier   (rule 263)
+
+    Identifier	shift, and go to state 647
+    ')' 	shift, and go to state 648
+
+
+
+state 616
+
+    storageattr  ->  '(' _type_ Identifier ')' .   (rule 273)
+
+    $default	reduce using rule 273 (storageattr)
+
+
+
+state 617
+
+    storageattr  ->  '(' _mnemonic_ _char_string_ ')' .   (rule 274)
+
+    $default	reduce using rule 274 (storageattr)
+
+
+
+state 618
+
+    storageattr  ->  '(' _size_ Integer_lit ')' .   (rule 275)
+
+    $default	reduce using rule 275 (storageattr)
+
+
+
+state 619
+
+    storageattr  ->  '(' _width_ Integer_lit ')' .   (rule 276)
+
+    $default	reduce using rule 276 (storageattr)
+
+
+
+state 620
+
+    storageattr  ->  '(' _linesize_ Integer_lit ')' .   (rule 283)
+
+    $default	reduce using rule 283 (storageattr)
+
+
+
+state 621
+
+    storageattr  ->  '(' _wordsize_ Integer_lit ')' .   (rule 282)
+
+    $default	reduce using rule 282 (storageattr)
+
+
+
+state 622
+
+    storageattr  ->  '(' _num_lines_ Integer_lit ')' .   (rule 284)
+
+    $default	reduce using rule 284 (storageattr)
+
+
+
+state 623
+
+    storageattr  ->  '(' _write_policy_ write_policy_options ')' .   (rule 280)
+
+    $default	reduce using rule 280 (storageattr)
+
+
+
+state 624
+
+    storageattr  ->  '(' _replacement_policy_ replacement_policy_options ')' .   (rule 281)
+
+    $default	reduce using rule 281 (storageattr)
+
+
+
+state 625
+
+    storageattr  ->  '(' _level_ Integer_lit ')' .   (rule 286)
+
+    $default	reduce using rule 286 (storageattr)
+
+
+
+state 626
+
+    stconnection  ->  '(' Identifier . Identifier ')'   (rule 307)
+
+    Identifier	shift, and go to state 649
+
+
+
+state 627
+
+    storageattr  ->  '(' _storage_connections_ stconnection_list ')' .   (rule 289)
+
+    $default	reduce using rule 289 (storageattr)
+
+
+
+state 628
+
+    stconnection_list  ->  stconnection_list stconnection .   (rule 306)
+
+    $default	reduce using rule 306 (stconnection_list)
+
+
+
+state 629
+
+    storageattr  ->  '(' _next_level_ Integer_lit ')' .   (rule 287)
+
+    $default	reduce using rule 287 (storageattr)
+
+
+
+state 630
+
+    storageattr  ->  '(' _prev_level_ Integer_lit ')' .   (rule 288)
+
+    $default	reduce using rule 288 (storageattr)
+
+
+
+state 631
+
+    storageattr  ->  '(' _read_latency_ Integer_lit ')' .   (rule 290)
+
+    $default	reduce using rule 290 (storageattr)
+
+
+
+state 632
+
+    storageattr  ->  '(' _write_latency_ Integer_lit ')' .   (rule 291)
+
+    $default	reduce using rule 291 (storageattr)
+
+
+
+state 633
+
+    storageattr  ->  '(' _associativity_ Integer_lit ')' .   (rule 285)
+
+    $default	reduce using rule 285 (storageattr)
+
+
+
+state 634
+
+    storageattr  ->  '(' _num_banks_ Integer_lit ')' .   (rule 292)
+
+    $default	reduce using rule 292 (storageattr)
+
+
+
+state 635
+
+    storageattr  ->  '(' _access_mode_ Integer_lit ')' .   (rule 293)
+
+    $default	reduce using rule 293 (storageattr)
+
+
+
+state 636
+
+    storageattr  ->  '(' _num_parallel_read_ Integer_lit ')' .   (rule 294)
+
+    $default	reduce using rule 294 (storageattr)
+
+
+
+state 637
+
+    storageattr  ->  '(' _num_parallel_write_ Integer_lit ')' .   (rule 295)
+
+    $default	reduce using rule 295 (storageattr)
+
+
+
+state 638
+
+    storageattr  ->  '(' _read_write_conflict_ Integer_lit ')' .   (rule 296)
+
+    $default	reduce using rule 296 (storageattr)
+
+
+
+state 639
+
+    integer  ->  Integer_lit .   (rule 312)
+
+    $default	reduce using rule 312 (integer)
+
+
+
+state 640
+
+    addrrange  ->  '(' integer . integer ')'   (rule 303)
+    addrrange  ->  '(' integer . integer '(' _stride_ integer ')' ')'   (rule 304)
+
+    Integer_lit	shift, and go to state 639
+
+    integer	go to state 650
+
+
+
+state 641
+
+    storageattr  ->  '(' _addrrange_ addrrange_list ')' .   (rule 279)
+
+    $default	reduce using rule 279 (storageattr)
+
+
+
+state 642
+
+    addrrange_list  ->  addrrange_list addrrange .   (rule 302)
+
+    $default	reduce using rule 302 (addrrange_list)
+
+
+
+state 643
+
+    storageattr  ->  '(' _accesstimes_ Integer_lit ')' .   (rule 277)
+
+    $default	reduce using rule 277 (storageattr)
+
+
+
+state 644
+
+    accessport  ->  '(' Identifier . ')'   (rule 299)
+    accessport  ->  '(' Identifier . '(' _accesswidths_ Integer_lit_list ')' ')'   (rule 300)
+
+    '(' 	shift, and go to state 651
+    ')' 	shift, and go to state 652
+
+
+
+state 645
+
+    storageattr  ->  '(' _accessports_ accessport_list ')' .   (rule 278)
+
+    $default	reduce using rule 278 (storageattr)
+
+
+
+state 646
+
+    accessport_list  ->  accessport_list accessport .   (rule 298)
+
+    $default	reduce using rule 298 (accessport_list)
+
+
+
+state 647
+
+    dtcomponent_list  ->  dtcomponent_list Identifier .   (rule 263)
+
+    $default	reduce using rule 263 (dtcomponent_list)
+
+
+
+state 648
+
+    dt  ->  '(' from to dtcomponent_list ')' .   (rule 260)
+
+    $default	reduce using rule 260 (dt)
+
+
+
+state 649
+
+    stconnection  ->  '(' Identifier Identifier . ')'   (rule 307)
+
+    ')' 	shift, and go to state 653
+
+
+
+state 650
+
+    addrrange  ->  '(' integer integer . ')'   (rule 303)
+    addrrange  ->  '(' integer integer . '(' _stride_ integer ')' ')'   (rule 304)
+
+    '(' 	shift, and go to state 654
+    ')' 	shift, and go to state 655
+
+
+
+state 651
+
+    accessport  ->  '(' Identifier '(' . _accesswidths_ Integer_lit_list ')' ')'   (rule 300)
+
+    _accesswidths_	shift, and go to state 656
+
+
+
+state 652
+
+    accessport  ->  '(' Identifier ')' .   (rule 299)
+
+    $default	reduce using rule 299 (accessport)
+
+
+
+state 653
+
+    stconnection  ->  '(' Identifier Identifier ')' .   (rule 307)
+
+    $default	reduce using rule 307 (stconnection)
+
+
+
+state 654
+
+    addrrange  ->  '(' integer integer '(' . _stride_ integer ')' ')'   (rule 304)
+
+    _stride_	shift, and go to state 657
+
+
+
+state 655
+
+    addrrange  ->  '(' integer integer ')' .   (rule 303)
+
+    $default	reduce using rule 303 (addrrange)
+
+
+
+state 656
+
+    accessport  ->  '(' Identifier '(' _accesswidths_ . Integer_lit_list ')' ')'   (rule 300)
+
+    Integer_lit	shift, and go to state 658
+
+    Integer_lit_list	go to state 659
+
+
+
+state 657
+
+    addrrange  ->  '(' integer integer '(' _stride_ . integer ')' ')'   (rule 304)
+
+    Integer_lit	shift, and go to state 639
+
+    integer	go to state 660
+
+
+
+state 658
+
+    Integer_lit_list  ->  Integer_lit .   (rule 236)
+
+    $default	reduce using rule 236 (Integer_lit_list)
+
+
+
+state 659
+
+    Integer_lit_list  ->  Integer_lit_list . Integer_lit   (rule 237)
+    accessport  ->  '(' Identifier '(' _accesswidths_ Integer_lit_list . ')' ')'   (rule 300)
+
+    Integer_lit	shift, and go to state 661
+    ')' 	shift, and go to state 662
+
+
+
+state 660
+
+    addrrange  ->  '(' integer integer '(' _stride_ integer . ')' ')'   (rule 304)
+
+    ')' 	shift, and go to state 663
+
+
+
+state 661
+
+    Integer_lit_list  ->  Integer_lit_list Integer_lit .   (rule 237)
+
+    $default	reduce using rule 237 (Integer_lit_list)
+
+
+
+state 662
+
+    accessport  ->  '(' Identifier '(' _accesswidths_ Integer_lit_list ')' . ')'   (rule 300)
+
+    ')' 	shift, and go to state 664
+
+
+
+state 663
+
+    addrrange  ->  '(' integer integer '(' _stride_ integer ')' . ')'   (rule 304)
+
+    ')' 	shift, and go to state 665
+
+
+
+state 664
+
+    accessport  ->  '(' Identifier '(' _accesswidths_ Integer_lit_list ')' ')' .   (rule 300)
+
+    $default	reduce using rule 300 (accessport)
+
+
+
+state 665
+
+    addrrange  ->  '(' integer integer '(' _stride_ integer ')' ')' .   (rule 304)
+
+    $default	reduce using rule 304 (addrrange)
+
+
+
+state 666
+
+    $   	go to state 667
+
+
+
+state 667
+
+    $   	go to state 668
+
+
+
+state 668
+
+    $default	accept

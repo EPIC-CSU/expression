@@ -1,0 +1,307 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: acesMIPS Build System Lib - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26B7.tmp" with contents
+[
+/nologo /MDd /W3 /GR /GX /ZI /Od /I "../../systemDll/NewBaseClassDll" /I "../../pcProDll/include" /I "../../pcProDll/disamb" /I "../../pcProDll/mutation" /I "../../pcProDll" /I "..\..\pcProDll" /I "..\..\pcProDll\include" /I "..\..\systemDll\acesMIPSderivedClassDll" /I "../../systemDll/Memory Subsystem" /I "..\..\SystemDll\acesMIPSbuildSystemDll" /I "..\..\pcProDll\disamb" /I "..\..\pcProDll\mutation" /I "..\..\pcProDll\regalloc" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_GUI" /Fp"Debug/acesMIPSbuild System.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26B7.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Debug\acesMIPS Build System Lib.lib"  ".\Debug\acesMIPSbuildSystem.obj" "
+<h3>Output Window</h3>
+Compiling...
+acesMIPSbuildSystem.cpp
+C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp(1341) : warning C4243: type cast conversion from 'class AssociativeCache *' to 'class MemoryModule *' exists, but is inaccessible
+C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp(1352) : warning C4243: type cast conversion from 'class AssociativeCache *' to 'class MemoryModule *' exists, but is inaccessible
+C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp(1361) : warning C4243: type cast conversion from 'class Sram *' to 'class MemoryModule *' exists, but is inaccessible
+C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp(1372) : warning C4243: type cast conversion from 'class StreamBuffer *' to 'class MemoryModule *' exists, but is inaccessible
+C:\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPSbuildSystemDll\acesMIPSbuildSystem.cpp(1379) : warning C4243: type cast conversion from 'class Dram *' to 'class MemoryModule *' exists, but is inaccessible
+Creating library...
+<h3>
+--------------------Configuration: acesMIPSdll - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26B8.tmp" with contents
+[
+"../systemDll/acesMIPS Simulator Functions Lib/debug/acesMIPS Simulator Functions Lib.lib" "../systemDll/acesMIPS Base Class Lib/debug/acesMIPS Base Class Lib.lib" "../systemDll/acesMIPS Derived Class Lib/debug/acesMIPS Derived Class Lib.lib" "../systemDll/acesMIPS Build System Lib/debug/acesMIPS Build System Lib.lib" "../expression dll/Debug/expression dll.lib" /nologo /subsystem:windows /dll /incremental:yes /pdb:"../acesMIPSdll/bin/acesMIPSdll.pdb" /debug /machine:I386 /nodefaultlib:"nafxcwd.lib" /nodefaultlib:"libcd.lib" /nodefaultlib:"libcmtd.lib" /out:"../acesMIPSdll/bin/acesMIPSdll.dll" /implib:"../acesMIPSdll/bin/acesMIPSdll.lib" /pdbtype:sept 
+.\Debug\Optimizations.obj
+.\Debug\OptimizationsSupport.obj
+.\Debug\optparse.obj
+.\Debug\OptParse_lexer.obj
+.\Debug\profit_function.obj
+.\Debug\RegSetMapping.obj
+.\Debug\rISASchedulerSupport.obj
+.\Debug\ThumbPass.obj
+.\Debug\AsmBB.obj
+.\Debug\AsmGen.obj
+.\Debug\symbols.obj
+.\Debug\symtabs.obj
+.\Debug\ICBaseHTGNode.obj
+.\Debug\ICBasicBlockNode.obj
+.\Debug\ICIfHTGNode.obj
+.\Debug\ICLoopHTGNode.obj
+.\Debug\ICNormalInstr.obj
+.\Debug\ICOperation.obj
+.\Debug\ICRoutine.obj
+.\Debug\ICSimpleHTGNode.obj
+.\Debug\PredicationInformation.obj
+.\Debug\global_memory_alloc.obj
+.\Debug\liferanges.obj
+.\Debug\ReadDefsFile.obj
+.\Debug\replace_global_addresses.obj
+.\Debug\storagealloc.obj
+.\Debug\PercControlOp.obj
+.\Debug\PercDataOp.obj
+.\Debug\PercNormalInstr.obj
+.\Debug\PercRoutine.obj
+.\Debug\DoubleMCNode.obj
+.\Debug\IGNode.obj
+.\Debug\IGraph.obj
+.\Debug\InitRegMapping.obj
+.\Debug\InterferenceGraph.obj
+.\Debug\IRHelper.obj
+.\Debug\MCNode.obj
+.\Debug\MetaMCNode.obj
+.\Debug\MultiChain.obj
+.\Debug\RegAlloc.obj
+.\Debug\RegArchModel.obj
+.\Debug\RegCoalesce.obj
+.\Debug\RegisterMapping.obj
+.\Debug\RegNode.obj
+.\Debug\Spills.obj
+.\Debug\SpillSupport.obj
+.\Debug\CopyProp.obj
+.\Debug\DeadCodeElimination.obj
+.\Debug\DeadLabelElimination.obj
+.\Debug\NewCopyElimination.obj
+.\Debug\ValueProp.obj
+.\Debug\CompDefs.obj
+.\Debug\CompLiveDead.obj
+.\Debug\CompLiveDeadInstr.obj
+.\Debug\CompMultiChain.obj
+.\Debug\CompRegClass.obj
+.\Debug\CompUDChain.obj
+.\Debug\MaintainUD.obj
+.\Debug\ReservationTables.obj
+.\Debug\SchedulerSupport.obj
+.\Debug\SpreadInstrs.obj
+.\Debug\TbzBaseHTGNode.obj
+.\Debug\TbzBaseOperation.obj
+.\Debug\TbzBasicBlockNode.obj
+.\Debug\TbzIfHTGNode.obj
+.\Debug\TbzLoopHTGNode.obj
+.\Debug\TbzNormalInstr.obj
+.\Debug\TbzRoutine.obj
+.\Debug\TbzSimpleHTGNode.obj
+.\Debug\InstrSel.obj
+.\Debug\InstrSelIburg.obj
+.\Debug\InstrSelSA.obj
+.\Debug\InstrSelSAPrim.obj
+.\Debug\ISBaseOperation.obj
+.\Debug\ISControlOp.obj
+.\Debug\iselparse.obj
+.\Debug\ISelParse_lexer.obj
+.\Debug\ISIfHTGNode.obj
+.\Debug\ISLoopHTGNode.obj
+.\Debug\ISNormalInstr.obj
+.\Debug\ISSimpleHTGNode.obj
+.\Debug\MutPass.obj
+.\Debug\NewInstrSel.obj
+.\Debug\NewInstrSelSupport.obj
+.\Debug\IburgToIR.obj
+.\Debug\MutBaseOperation.obj
+.\Debug\MutComputeOp.obj
+.\Debug\MutFConstArg.obj
+.\Debug\MutIConstArg.obj
+.\Debug\MutIfHTGNode.obj
+.\Debug\MutLableArg.obj
+.\Debug\MutLoopHTGNode.obj
+.\Debug\MutMemoryOp.obj
+.\Debug\MutNormalInstr.obj
+.\Debug\MutRealRegArg.obj
+.\Debug\MutSimpleHTGNode.obj
+.\Debug\SemActPrimitives.obj
+.\Debug\SemanticAction.obj
+.\Debug\TreeBuilding.obj
+.\Debug\TreeParser.obj
+.\Debug\UDDU.obj
+.\Debug\auxiliary.obj
+.\Debug\BasicSet.obj
+.\Debug\charString.obj
+.\Debug\dependency.obj
+.\Debug\disamb.obj
+.\Debug\disamb_parser.obj
+.\Debug\DisambComputeOp.obj
+.\Debug\DisambIConstArg.obj
+.\Debug\DisambMemoryOp.obj
+.\Debug\DisambNormalInstr.obj
+.\Debug\DisambRealRegArg.obj
+.\Debug\DisambRegisterArg.obj
+.\Debug\DisambRoutine.obj
+.\Debug\error.obj
+.\Debug\expr_utils.obj
+.\Debug\exprs.obj
+.\Debug\gcd.obj
+.\Debug\intMatrix.obj
+.\Debug\myvector.obj
+.\Debug\PartofProperty.obj
+.\Debug\poly.obj
+.\Debug\polyhedron.obj
+.\Debug\FConstArg.obj
+.\Debug\IConstArg.obj
+.\Debug\ImmediateArg.obj
+.\Debug\LabelArg.obj
+.\Debug\LatchRegArg.obj
+.\Debug\RealRegArg.obj
+.\Debug\RegisterArg.obj
+.\Debug\VirtualRegArg.obj
+.\Debug\BaseOperation.obj
+.\Debug\CallOp.obj
+.\Debug\ComputeOp.obj
+.\Debug\ControlOp.obj
+.\Debug\DataOp.obj
+.\Debug\FlowOp.obj
+.\Debug\GotoOp.obj
+.\Debug\HeaderOp.obj
+.\Debug\IfOp.obj
+.\Debug\JumpOp.obj
+.\Debug\MemoryOp.obj
+.\Debug\NormalOp.obj
+.\Debug\BaseInstruction.obj
+.\Debug\ControlOpSlot.obj
+.\Debug\DataOpSlot.obj
+.\Debug\FlowOpSlot.obj
+.\Debug\NormalInstr.obj
+.\Debug\BasicBlockEdge.obj
+.\Debug\BasicBlockNode.obj
+.\Debug\BasicBlockPredecessors.obj
+.\Debug\ControlFlowGraph.obj
+.\Debug\BaseHTGNode.obj
+.\Debug\BuildHTG.obj
+.\Debug\HTGTraversal.obj
+.\Debug\IfHTGNode.obj
+.\Debug\LoopHTGNode.obj
+.\Debug\SimpleHTGNode.obj
+.\Debug\BuildLoop.obj
+.\Debug\Loop.obj
+.\Debug\LoopList.obj
+.\Debug\LoopManipulate.obj
+.\Debug\Assertions.obj
+.\Debug\BaseProperties.obj
+.\Debug\BranchProperty.obj
+.\Debug\CnstProp.obj
+.\Debug\CompDefBBProperty.obj
+.\Debug\DeleteProperty.obj
+.\Debug\DUChainProperty.obj
+.\Debug\GToTRegMapProperty.obj
+.\Debug\IBSLoopProperty.obj
+.\Debug\InstrTypeProperty.obj
+.\Debug\LiveDeadBBProperty.obj
+.\Debug\LiveDeadInstrProperty.obj
+.\Debug\MultiChainProperty.obj
+.\Debug\OpPredicate.obj
+.\Debug\PredidArgProperty.obj
+.\Debug\RegOrderArgProperty.obj
+.\Debug\RegPressProperty.obj
+.\Debug\SSAArgProperty.obj
+.\Debug\UDChainProperty.obj
+.\Debug\GenericOpCodes.obj
+.\Debug\OpCode.obj
+.\Debug\OpCodeFileDSSupport.obj
+.\Debug\OpCodeTable.obj
+.\Debug\RegisterFile.obj
+.\Debug\RegisterFileList.obj
+.\Debug\ErrorMesgs.obj
+.\Debug\FilePointer.obj
+.\Debug\RegisterPressure.obj
+.\Debug\express_defs_lexer.obj
+.\Debug\express_defs_parser.obj
+.\Debug\express_lexer.obj
+.\Debug\express_parser.obj
+.\Debug\opcodefile_lexer.obj
+.\Debug\opcodefile_parser.obj
+.\Debug\parserSupport.obj
+.\Debug\AddCallNameProperty.obj
+.\Debug\BuildIR.obj
+.\Debug\BuildIRSupportFuncs.obj
+.\Debug\BuildSSA.obj
+.\Debug\CallPatch.obj
+.\Debug\CompilerRTStatus.obj
+.\Debug\ControlParms.obj
+.\Debug\Flags.obj
+.\Debug\GenericNode.obj
+.\Debug\IfOppositesTable.obj
+.\Debug\InitCall.obj
+.\Debug\IRSupportFuncs.obj
+.\Debug\IRTraversal.obj
+.\Debug\Main.obj
+.\Debug\NewBuildIR.obj
+.\Debug\NewBuildSSA.obj
+.\Debug\NoGUIMain.obj
+.\Debug\NoGUIMainSupportFuncs.obj
+.\Debug\PatchForDoubles.obj
+.\Debug\Program.obj
+.\Debug\RenameTable.obj
+.\Debug\Routine.obj
+.\Debug\SetScheduleProperties.obj
+.\Debug\SymbolTable.obj
+.\Debug\PhiInstr.obj
+.\Debug\PhiOp.obj
+.\Debug\BezierEdge.obj
+.\Debug\GraphNode.obj
+.\Debug\pcProDll.obj
+.\Debug\StdAfx.obj
+.\Debug\DebugSwitches.obj
+.\Debug\pcProDllMFC.res
+"\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPS Derived Class Lib\Debug\acesMIPS Derived Class Lib.lib"
+"\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPS Build System Lib\Debug\acesMIPS Build System Lib.lib"
+"\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPS Simulator Functions Lib\Debug\acesMIPS Simulator Functions Lib.lib"
+"\release5\acesMIPS0522\acesMIPS\expr\expression dll\Debug\expression dll.lib"
+"\release5\acesMIPS0522\acesMIPS\expr\systemDll\acesMIPS Base Class Lib\Debug\acesMIPS Base Class Lib.lib"
+\release5\acesMIPS0522\acesMIPS\expr\acesMIPSfuncSimulator\Debug\acesMIPSfuncSimulator.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26B8.tmp"
+<h3>Output Window</h3>
+Linking...
+   Creating library ../acesMIPSdll/bin/acesMIPSdll.lib and object ../acesMIPSdll/bin/acesMIPSdll.exp
+<h3>
+--------------------Configuration: acesMIPSconsole - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26C7.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GR /GX /ZI /Od /I "../pcProDll/include" /I "../pcProDll/disamb" /I "../pcProDll/mutation" /I "../pcProDll/regalloc" /D "_CONSOLE" /D "_MBCS" /D "WIN32" /D "_DEBUG" /FR"Debug/" /Fp"Debug/acesMIPSconsole.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\release5\acesMIPS0522\acesMIPS\expr\pcProGUI\Console\console.cpp"
+"C:\release5\acesMIPS0522\acesMIPS\expr\pcProGUI\Console\my_ostream.cpp"
+"C:\release5\acesMIPS0522\acesMIPS\expr\pcProConsole\pcProConsole.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26C7.tmp" 
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26C8.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/acesMIPSconsole.pdb" /debug /machine:I386 /out:"../acesMIPSdll/bin/acesMIPSconsole.exe" /pdbtype:sept 
+.\Debug\console.obj
+.\Debug\my_ostream.obj
+.\Debug\pcProConsole.obj
+\release5\acesMIPS0522\acesMIPS\expr\acesMIPSdll\bin\acesMIPSdll.lib
+"\release5\acesMIPS0522\acesMIPS\expr\expression dll\Debug\expression dll.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP26C8.tmp"
+<h3>Output Window</h3>
+Compiling...
+console.cpp
+my_ostream.cpp
+pcProConsole.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+acesMIPSconsole.exe - 0 error(s), 5 warning(s)
+</pre>
+</body>
+</html>

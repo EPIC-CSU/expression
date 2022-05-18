@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: expression dll - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1754.tmp" with contents
+[
+/nologo /MTd /W3 /GX /ZI /Od /I "BackEnd/rtgen" /I "Parser" /I "Symtab" /I "IR" /I "BackEnd" /I "..\pcProDll\include" /I "..\systemDll\baseClassDll" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /FR"Debug/" /Fp"Debug/expression dll.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\release5\acesMIPS0422\acesMIPS\expr\expression dll\Main\main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1754.tmp" 
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1755.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/expression dll.pdb" /debug /machine:I386 /out:"../acesMIPSdll/bin/expression dll.dll" /implib:"Debug/expression dll.lib" /pdbtype:sept 
+".\Debug\errors.obj"
+".\Debug\expression.obj"
+".\Debug\lexer.obj"
+".\Debug\symbols.obj"
+".\Debug\symtabs.obj"
+".\Debug\main.obj"
+".\Debug\architecture_section.obj"
+".\Debug\forwrefs.obj"
+".\Debug\node.obj"
+".\Debug\SimulatorGenerator.obj"
+".\Debug\SimulatorGeneratorSupportFuncs.obj"
+".\Debug\append_dt_segments.obj"
+".\Debug\compose_transfers.obj"
+".\Debug\decorate_pipeline.obj"
+".\Debug\express_interface.obj"
+".\Debug\gen_instrs.obj"
+".\Debug\gen_pipeline.obj"
+".\Debug\GenerateRT.obj"
+".\Debug\get_restab.obj"
+".\Debug\instr_formats.obj"
+".\Debug\resource_identifier.obj"
+".\Debug\rt_database.obj"
+".\Debug\mdesgen.obj"
+".\Debug\GenerateTiming.obj"
+".\Debug\PredicationInfoGen.obj"
+".\Debug\PredTable.obj"
+".\Debug\PredTableNode.obj"
+".\Debug\regInfoGen.obj"
+".\Debug\targetRegInfoGen.obj"
+".\Debug\asmFormatGen.obj"
+".\Debug\irDumpGen.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1755.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+Linking...
+<h3>
+--------------------Configuration: expression console - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1756.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/expression console.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\release5\acesMIPS0422\acesMIPS\expr\expression console\main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1756.tmp" 
+Creating temporary file "C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1757.tmp" with contents
+[
+"../expression dll/Debug/expression dll.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/expression console.pdb" /debug /machine:I386 /out:"../acesMIPSdll/bin/expression console.exe" 
+".\Debug\main.obj"
+"\release5\acesMIPS0422\acesMIPS\expr\expression dll\Debug\expression dll.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\sudeep\LOCALS~1\Temp\RSP1757.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+expression console.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

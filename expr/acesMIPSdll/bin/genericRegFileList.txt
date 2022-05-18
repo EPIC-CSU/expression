@@ -1,0 +1,8 @@
+gR 32 1
+gcc 1 1
+gsp 1 1
+gf 32 2
+gfp 1 1
+temp 128 1
+ghilo 2 1
+risa 32 1
